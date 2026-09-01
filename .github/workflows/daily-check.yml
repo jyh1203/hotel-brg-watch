@@ -4,6 +4,13 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "30 15 * * *" # 00:30 Asia/Seoul
+  push:
+    branches: [main]
+    paths:
+      - "site/app.js"
+      - "site/index.html"
+      - "site/style.css"
+      - ".github/workflows/daily-check.yml"
 
 permissions:
   contents: write
@@ -27,11 +34,15 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+        if: github.event_name != 'push'
       - run: npx playwright install --with-deps chromium
+        if: github.event_name != 'push'
       - run: npm run collect
+        if: github.event_name != 'push'
         continue-on-error: true
       - run: npm run build
       - name: Save collected history
+        if: github.event_name != 'push'
         run: |
           git config user.name "hotel-brg-bot"
           git config user.email "hotel-brg-bot@users.noreply.github.com"
