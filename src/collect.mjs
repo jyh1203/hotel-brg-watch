@@ -34,10 +34,29 @@ async function krwRates() {
   return { rates, dates, source: Object.keys(errors).length ? "frankfurter.app+fallback" : "frankfurter.app", errors };
 }
 
+async function selectDisplayCurrency(page, currency) {
+  const labels = {
+    EUR: /^EuroEUR$/,
+    JPY: /^Japanese YenJPY$/,
+    KRW: /^South Korean WonKRW$/
+  };
+  const currencyButton = page.locator("button:visible").filter({ hasText: /Currency/ }).first();
+  await currencyButton.waitFor({ timeout: 30000 });
+  if ((await currencyButton.innerText()).includes(currency)) return;
+  await currencyButton.click();
+  await page.getByText(labels[currency]).first().click();
+  await page.getByRole("button", { name: "Done" }).click();
+  await page.waitForFunction((targetCurrency) => {
+    const text = document.body.innerText.replaceAll("\u200b", "");
+    return text.includes(`Currency${targetCurrency}`);
+  }, currency, { timeout: 15000 });
+}
+
 async function collectStay(browser, stay, fx) {
   const context = await browser.newContext({ locale: "ko-KR", timezoneId: "Asia/Seoul" });
   const page = await context.newPage();
-  const searchUrl = buildGoogleHotelsUrl(stay, config.currency);
+  const currency = stay.booked.currency;
+  const searchUrl = buildGoogleHotelsUrl(stay, currency);
   try {
     await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
     await page.getByText(stay.hotel, { exact: true }).first().waitFor({ timeout: 30000 });
@@ -56,13 +75,26 @@ async function collectStay(browser, stay, fx) {
     const detailUrl = buildPriceDetailUrl(searchUrl, href ?? page.url());
     await page.goto(detailUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
     await page.getByText("Prices", { exact: true }).first().waitFor({ timeout: 30000 });
-    await page.waitForFunction(() => /(?:₩|KRW\s?)[\d,]+/i.test(document.body.innerText), null, { timeout: 30000 });
+    await selectDisplayCurrency(page, currency);
+    await page.waitForFunction((targetCurrency) => {
+      const patterns = {
+        KRW: /(?:₩|KRW\s?)[\d,]+/i,
+        EUR: /(?:€|EUR\s?)[\d,]+/i,
+        JPY: /(?:¥|￥|JPY\s?)[\d,]+/i
+      };
+      const lines = document.body.innerText.split(/\r?\n/);
+      const start = lines.findIndex((line) => /Sponsored.*Featured options/i.test(line));
+      const end = lines.findIndex((line, index) => index > start && /^All options$/i.test(line.trim()));
+      const roomPrices = lines.slice(Math.max(0, start), end > start ? end : lines.length).join("\n");
+      return start >= 0 && patterns[targetCurrency].test(roomPrices);
+    }, currency, { timeout: 30000 });
     const text = await page.locator("body").innerText();
-    const prices = parseGoogleHotelPrices(text, stay);
+    const prices = parseGoogleHotelPrices(text, stay, currency);
     const bookedKrw = Math.round(stay.booked.total * fx.rates[stay.booked.currency]);
     const displayedCandidate = prices.exactCandidate ?? prices.freeCancellation ?? prices.lowestProvider;
     if (!displayedCandidate) throw new Error("가격 후보를 찾지 못했습니다.");
     const candidate = prices.exactCandidate ?? prices.freeCancellation;
+    const addKrwReference = (rate) => rate ? { ...rate, totalKrw: Math.round(rate.totalAmount * fx.rates[currency]) } : rate;
     return {
       id: stay.id,
       status: "ok",
@@ -72,8 +104,14 @@ async function collectStay(browser, stay, fx) {
       bookedAmount: stay.booked.total,
       bookedCurrency: stay.booked.currency,
       ...prices,
+      providers: prices.providers.map(addKrwReference),
+      roomRates: prices.roomRates.map(addKrwReference),
+      lowestProvider: addKrwReference(prices.lowestProvider),
+      freeCancellation: addKrwReference(prices.freeCancellation),
+      exactCandidate: addKrwReference(prices.exactCandidate),
       candidateKind: prices.exactCandidate ? "exact" : prices.freeCancellation ? "free-cancel-review" : "headline-review",
-      candidateSavingsKrw: candidate ? bookedKrw - candidate.totalKrw : null
+      candidateSavingsAmount: candidate ? stay.booked.total - candidate.totalAmount : null,
+      candidateSavingsKrw: candidate ? Math.round((stay.booked.total - candidate.totalAmount) * fx.rates[currency]) : null
     };
   } catch (error) {
     await fs.mkdir(artifactRoot, { recursive: true });

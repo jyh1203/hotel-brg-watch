@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { chromium } from "playwright";
 
-test("dashboard renders every configured stay when the latest crawl is partial", async () => {
+test("dashboard renders every configured stay with currency charts", async () => {
   const server = spawn(process.execPath, ["src/server.mjs"], { stdio: "ignore" });
   const browser = await chromium.launch({ headless: true });
   try {
@@ -21,8 +21,11 @@ test("dashboard renders every configured stay when the latest crawl is partial",
     await page.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
     assert.deepEqual(errors, []);
     assert.equal(await page.locator("#cards .card").count(), 5);
+    assert.equal(await page.locator("#cards .chart").count(), 5);
     assert.match(await page.locator("#summary").innerText(), /5\/5\s*결과 표시/);
-    assert.match(await page.locator("#cards").innerText(), /최근 유효 결과/);
+    assert.match(await page.locator("#cards").innerText(), /(오늘 후보가|최근 후보가)/);
+    assert.match(await page.locator("#cards").innerText(), /EUR 기준/);
+    assert.match(await page.locator("#cards").innerText(), /JPY 기준/);
   } finally {
     await browser.close();
     server.kill("SIGTERM");

@@ -39,6 +39,7 @@ export function buildGoogleHotelsUrl(stay, currency = "KRW") {
     q: stay.hotel,
     adults: String(stay.adults),
     hl: "en",
+    curr: currency,
     ts: buildTravelState(stay, currency)
   });
   return `https://www.google.com/travel/search?${params}`;
@@ -46,6 +47,7 @@ export function buildGoogleHotelsUrl(stay, currency = "KRW") {
 
 export function buildPriceDetailUrl(searchUrl, hotelHref) {
   const detail = new URL(hotelHref, searchUrl);
+  detail.searchParams.set("curr", new URL(searchUrl).searchParams.get("curr") ?? "KRW");
   detail.searchParams.set("ap", "ugEGcHJpY2Vz");
   return detail.toString();
 }
