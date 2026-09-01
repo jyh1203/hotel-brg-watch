@@ -64,7 +64,7 @@ async function render() {
       stale: !currentCandidate && Boolean(fallback)
     };
   });
-  const todayOk = run.results?.filter((result) => result.status === "ok").length ?? 0;
+  const todayCandidateCount = run.results?.filter((result) => result.status === "ok" && candidateOf(result)).length ?? 0;
   const shownCount = displayed.filter((item) => candidateOf(item.sourceResult)).length;
   const savings = displayed.reduce((sum, item) => sum + Math.max(0, item.sourceResult?.candidateSavingsKrw ?? 0), 0);
   const rates = run.fx?.rates ?? (run.fx?.rate ? { EUR: run.fx.rate } : {});
@@ -73,7 +73,7 @@ async function render() {
     .join(" · ") || "환율 없음";
   document.querySelector("#summary").innerHTML = `
     <div><b>${shownCount}/${stays.length}</b><span>결과 표시</span></div>
-    <div><b>${todayOk}/${stays.length}</b><span>오늘 정상 수집</span></div>
+    <div><b>${todayCandidateCount}/${stays.length}</b><span>오늘 가격 확보</span></div>
     <div><b>${won.format(savings)}</b><span>잠재 절감액</span></div>
     <div><b>${esc(fxText)}</b><span>원화 환산 기준</span></div>`;
 
