@@ -1,7 +1,30 @@
 {
   "currency": "KRW",
-  "fallbackEurKrw": 1600,
+  "fallbackKrwPerUnit": {
+    "EUR": 1600,
+    "JPY": 9.5
+  },
   "stays": [
+    {
+      "id": "osaka-four-points-flex",
+      "hotel": "Four Points Flex by Sheraton Osaka Umeda",
+      "city": { "name": "Osaka", "googleEntityId": "/m/0dqyw" },
+      "checkIn": "2026-09-17",
+      "checkOut": "2026-09-21",
+      "adults": 2,
+      "booked": {
+        "currency": "JPY",
+        "roomSubtotal": 56760,
+        "taxesAndFees": 5676,
+        "total": 62436,
+        "nightly": [8800, 9240, 18920, 19800],
+        "room": "1 Bed Small Double Room / Guest Room / 1 Twin Bed",
+        "cancellation": "무료취소",
+        "cancellationDeadline": "2026-09-15 23:59 (호텔 현지시간)",
+        "note": "오사카 숙박세는 총액에 포함되지 않으며 호텔에서 별도 지불"
+      },
+      "match": { "roomPatterns": ["room, 1 twin bed|small double", "1 single bed|1 twin bed"], "requireFreeCancellation": true }
+    },
     {
       "id": "madrid-carlton",
       "hotel": "AC Hotel Carlton Madrid",
@@ -9,7 +32,17 @@
       "checkIn": "2027-04-03",
       "checkOut": "2027-04-07",
       "adults": 2,
-      "booked": { "totalEur": 733.60, "room": "Standard King", "cancellation": "무료취소·현장결제" },
+      "booked": {
+        "currency": "EUR",
+        "roomSubtotal": 666.90,
+        "taxesAndFees": 66.69,
+        "total": 733.60,
+        "nightly": [162.45, 145.35, 171.00, 188.10],
+        "room": "Standard King Room / Guest Room / 1 King",
+        "cancellation": "무료취소",
+        "cancellationDeadline": "2027-04-02 23:59 (호텔 현지시간)",
+        "note": "표시 객실료는 VAT 별도이며 세금·요금은 객실료의 10%"
+      },
       "match": { "roomPatterns": ["standard", "king"], "requireFreeCancellation": true }
     },
     {
@@ -19,7 +52,17 @@
       "checkIn": "2027-04-07",
       "checkOut": "2027-04-10",
       "adults": 2,
-      "booked": { "totalEur": 492.00, "room": "Stylish Guest Room, 1 Double", "cancellation": "무료취소·현장결제" },
+      "booked": {
+        "currency": "EUR",
+        "roomSubtotal": 492.00,
+        "taxesAndFees": 0.00,
+        "total": 492.00,
+        "nightly": [166.00, 156.00, 170.00],
+        "room": "Stylish Room / Guest Room / 1 Double Bed",
+        "cancellation": "무료취소",
+        "cancellationDeadline": "2027-04-06 23:59 (호텔 현지시간)",
+        "note": "Marriott 화면에는 별도 세금 항목 없이 총액 €492로 표시"
+      },
       "match": { "roomPatterns": ["stylish", "double"], "requireFreeCancellation": true }
     },
     {
@@ -29,7 +72,17 @@
       "checkIn": "2027-04-10",
       "checkOut": "2027-04-12",
       "adults": 2,
-      "booked": { "totalEur": 278.80, "room": "Moxy Sleeper, 1 Queen", "cancellation": "무료취소·현장결제" },
+      "booked": {
+        "currency": "EUR",
+        "roomSubtotal": 269.00,
+        "taxesAndFees": 9.80,
+        "total": 278.80,
+        "nightly": [123.00, 146.00],
+        "room": "Moxy Sleeper / Guest Room / 1 Queen",
+        "cancellation": "무료취소",
+        "cancellationDeadline": "2027-04-09 23:59 (호텔 현지시간)",
+        "note": "비교 시 객실료 €269와 세금 포함 총액 €278.80을 구분"
+      },
       "match": { "roomPatterns": ["moxy sleeper", "queen|double"], "requireFreeCancellation": true }
     },
     {
@@ -39,7 +92,17 @@
       "checkIn": "2027-04-13",
       "checkOut": "2027-04-16",
       "adults": 2,
-      "booked": { "totalEur": 665.94, "room": "Classic Room, 1 King", "cancellation": "무료취소·현장결제" },
+      "booked": {
+        "currency": "EUR",
+        "roomSubtotal": 555.00,
+        "taxesAndFees": 110.94,
+        "total": 665.94,
+        "nightly": [185.00, 185.00, 185.00],
+        "room": "Classic Room / 1 King Bed",
+        "cancellation": "무료취소",
+        "cancellationDeadline": "2027-04-11 23:59 (호텔 현지시간)",
+        "note": "체크인 시 예약에 사용한 동일 신용카드 실물 제시 필요"
+      },
       "match": { "roomPatterns": ["classic", "king"], "requireFreeCancellation": true }
     }
   ]

@@ -536,6 +536,790 @@
           "candidateSavingsKrw": null
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-01T13:21:08.146Z",
+      "fx": {
+        "rates": {
+          "JPY": 8.5648,
+          "EUR": 1586.37
+        },
+        "dates": {
+          "JPY": "2026-08-31",
+          "EUR": "2026-08-31"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "osaka-four-points-flex",
+          "status": "ok",
+          "hotel": "Four Points Flex by Sheraton Osaka Umeda",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+Flex+by+Sheraton+Osaka+Umeda&adults=2&hl=en&ts=CAEaMQoTEhEKCC9tLzBkcXl3OgVPc2FrYRIaEhQKBwjqDxAJGBESBwjqDxAJGBUYBDICEAAqBwoFOgNLUlc&ved=2ahUKEwjj1OTGvM2WAxUcQcIFHWp6CQgQrsMEegQIAxAs&qs=MihDaG9JcjlXc2tvN1cwTENSQVJvTkwyY3ZNVEZtZW5SdWRHYzBlaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 534752,
+          "bookedAmount": 62436,
+          "bookedCurrency": "JPY",
+          "nights": 4,
+          "providers": [
+            {
+              "provider": ",",
+              "nightlyKrw": 143272,
+              "totalKrw": 573088
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 143280,
+              "totalKrw": 573120
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 143280,
+              "totalKrw": 573120
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 143532,
+              "totalKrw": 574128
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 146272,
+              "totalKrw": 585088
+            },
+            {
+              "provider": "Evendo",
+              "nightlyKrw": 146436,
+              "totalKrw": 585744
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 146541,
+              "totalKrw": 586164
+            },
+            {
+              "provider": "Rakuten Travel",
+              "nightlyKrw": 151587,
+              "totalKrw": 606348
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 162408,
+              "totalKrw": 649632
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 162819,
+              "totalKrw": 651276
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 162408,
+              "totalKrw": 649632,
+              "context": "Hotels.com · ₩162,408 · Visit site · Save with Member Prices",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 162412,
+              "totalKrw": 649648,
+              "context": "Save with Member Prices · Room, 1 Twin Bed · 1 single bed · Free cancellation until Sep 15 · ₩162,412 · Visit site · Room, 1 Twin Bed",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 183340,
+              "totalKrw": 733360,
+              "context": "Visit site · Room, 1 Twin Bed · 1 single bed · Free cancellation until Sep 15 · breakfast · ₩183,340 · Visit site · Room, 1 Double Bed",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 171826,
+              "totalKrw": 687304,
+              "context": "Visit site · Room, 1 Double Bed · 1 double bed · Free cancellation until Sep 15 · ₩171,826 · Visit site · 1 more room rate",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 143280,
+              "totalKrw": 573120,
+              "context": "Four Points Flex by Sheraton Osaka Umeda · Official Site · Free cancellation until Sep 14 · ₩143,280 · Get price · Lower this price plus get free Wi-Fi with free enrollment",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 162819,
+              "totalKrw": 651276,
+              "context": "Get rewards · Booking.com · Free cancellation until Sep 14 · Free Wi-Fi · ₩162,819 · Visit site · Agoda",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 146541,
+              "totalKrw": 586164,
+              "context": "Visit site · Agoda · Free cancellation until Sep 15 · ₩146,541 · Visit site",
+              "freeCancellation": true
+            }
+          ],
+          "lowestProvider": {
+            "provider": ",",
+            "nightlyKrw": 143272,
+            "totalKrw": 573088
+          },
+          "freeCancellation": {
+            "nightlyKrw": 143280,
+            "totalKrw": 573120,
+            "context": "Four Points Flex by Sheraton Osaka Umeda · Official Site · Free cancellation until Sep 14 · ₩143,280 · Get price · Lower this price plus get free Wi-Fi with free enrollment",
+            "freeCancellation": true
+          },
+          "exactCandidate": {
+            "nightlyKrw": 183340,
+            "totalKrw": 733360,
+            "context": "Visit site · Room, 1 Twin Bed · 1 single bed · Free cancellation until Sep 15 · breakfast · ₩183,340 · Visit site · Room, 1 Double Bed",
+            "freeCancellation": true
+          },
+          "dateConfirmed": false,
+          "candidateKind": "exact",
+          "candidateSavingsKrw": -198608
+        },
+        {
+          "id": "madrid-carlton",
+          "status": "ok",
+          "hotel": "AC Hotel Carlton Madrid",
+          "detailUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGAMSBwjrDxAEGAcyAggAGgAqBwoFOgNLUlc&ved=0CAAQ5JsGahcKEwjg6L3KvM2WAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJN0xQNXo4eWlyOXpLQVJvTEwyY3ZNWFI0T0hacU1EQVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1163761,
+          "bookedAmount": 733.6,
+          "bookedCurrency": "EUR",
+          "nights": 4,
+          "providers": [
+            {
+              "provider": ",",
+              "nightlyKrw": 307475,
+              "totalKrw": 1229900
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 308171,
+              "totalKrw": 1232684
+            },
+            {
+              "provider": "TUI.com",
+              "nightlyKrw": 352794,
+              "totalKrw": 1411176
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 307475,
+              "totalKrw": 1229900,
+              "context": "Booking.com · ₩307,475 · Visit site · Read Real Guest Reviews · 24/7 Customer service",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 307480,
+              "totalKrw": 1229920,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Standard Queen Room, Guest room, 1 Queen · 1 queen bed · Free cancellation until Apr 2 · ₩307,480 · Visit site · Standard Twin Room",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 307480,
+              "totalKrw": 1229920,
+              "context": "Visit site · Standard Twin Room · 1 single bed · ₩307,480 · Visit site · kr.bluepillow.com",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 308171,
+              "totalKrw": 1232684,
+              "context": "Visit site · kr.bluepillow.com · Free cancellation until Apr 2 · ₩308,171 · Visit site",
+              "freeCancellation": true
+            }
+          ],
+          "lowestProvider": {
+            "provider": ",",
+            "nightlyKrw": 307475,
+            "totalKrw": 1229900
+          },
+          "freeCancellation": {
+            "nightlyKrw": 307480,
+            "totalKrw": 1229920,
+            "context": "Read Real Guest Reviews · 24/7 Customer service · Standard Queen Room, Guest room, 1 Queen · 1 queen bed · Free cancellation until Apr 2 · ₩307,480 · Visit site · Standard Twin Room",
+            "freeCancellation": true
+          },
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsKrw": -66159
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "ok",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "detailUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGAcSBwjrDxAEGAoyAggAGgAqBwoFOgNLUlc&ved=0CAAQ5JsGahcKEwiw6o_NvM2WAxUAAAAAHQAAAAAQBw&qs=MidDaGtJZ2I2T3RmTzF4NFliR2cwdlp5OHhNV0ozT0dZeE1GOHlFQUU&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 780494,
+          "bookedAmount": 492,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "nightlyKrw": 239974,
+              "totalKrw": 719922
+            },
+            {
+              "provider": "kr.bluepillow.com",
+              "nightlyKrw": 240513,
+              "totalKrw": 721539
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 239974,
+              "totalKrw": 719922,
+              "context": "Booking.com · ₩239,974 · Visit site · Read Real Guest Reviews · 24/7 Customer service",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 239974,
+              "totalKrw": 719922,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Guest Room with Twin beds · 1 double bed · ₩239,974 · Visit site · Guest Room with Twin beds",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 266520,
+              "totalKrw": 799560,
+              "context": "Visit site · Guest Room with Twin beds · 1 double bed · Free cancellation until Apr 6 · ₩266,520 · Visit site · Vintage Guest room with Twin Beds",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 365801,
+              "totalKrw": 1097403,
+              "context": "Visit site · Vintage Guest room with Twin Beds · 1 double bed · 3 guests · ₩365,801 · Visit site · Visit site for more options",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 240513,
+              "totalKrw": 721539,
+              "context": "Visit site · Visit site for more options · kr.bluepillow.com · ₩240,513 · Visit site",
+              "freeCancellation": false
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "nightlyKrw": 239974,
+            "totalKrw": 719922
+          },
+          "freeCancellation": {
+            "nightlyKrw": 266520,
+            "totalKrw": 799560,
+            "context": "Visit site · Guest Room with Twin beds · 1 double bed · Free cancellation until Apr 6 · ₩266,520 · Visit site · Vintage Guest room with Twin Beds",
+            "freeCancellation": true
+          },
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsKrw": -19066
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&ts=CAEaNAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBIaEhQKBwjrDxAEGAoSBwjrDxAEGAwYAjICEAAqBwoFOgNLUlc&ved=2ahUKEwj0xrjPvM2WAxXSS8IFHYlxJ-AQrsMEegQIAxAs&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 442280,
+          "bookedAmount": 278.8,
+          "bookedCurrency": "EUR",
+          "nights": 2,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "nightlyKrw": 196543,
+              "totalKrw": 393086
+            },
+            {
+              "provider": "kr.bluepillow.com",
+              "nightlyKrw": 197070,
+              "totalKrw": 394140
+            },
+            {
+              "provider": "TUI.com",
+              "nightlyKrw": 238912,
+              "totalKrw": 477824
+            }
+          ],
+          "roomRates": [],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "nightlyKrw": 196543,
+            "totalKrw": 393086
+          },
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "ok",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGA0SBwjrDxAEGBAyAggAGgAqBwoFOgNLUlc&ved=0CAAQ5JsGahcKEwiwxbPTvM2WAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJaTlhSm5kRzJvSTNGQVJvTEwyY3ZNWFJrTVcwd2F6SVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1056427,
+          "bookedAmount": 665.94,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "providers": [
+            {
+              "provider": "Hotels.com",
+              "nightlyKrw": 326549,
+              "totalKrw": 979647
+            },
+            {
+              "provider": "Booking.com",
+              "nightlyKrw": 327443,
+              "totalKrw": 982329
+            },
+            {
+              "provider": "Reserving",
+              "nightlyKrw": 327443,
+              "totalKrw": 982329
+            },
+            {
+              "provider": "kr.bluepillow.com",
+              "nightlyKrw": 328195,
+              "totalKrw": 984585
+            },
+            {
+              "provider": "TUI.com",
+              "nightlyKrw": 375889,
+              "totalKrw": 1127667
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 326549,
+              "totalKrw": 979647,
+              "context": "Hotels.com · ₩326,549 · Visit site · Save with Member Prices",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 326555,
+              "totalKrw": 979665,
+              "context": "Save with Member Prices · Classic Room, 1 King Bed · 1 king bed · ₩326,555 · Visit site · Classic Room, 1 King Bed",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 359578,
+              "totalKrw": 1078734,
+              "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · ₩359,578 · Visit site · Classic Room, 1 King Bed",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 380021,
+              "totalKrw": 1140063,
+              "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · breakfast · ₩380,021 · Visit site · 25 more room rates",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 327443,
+              "totalKrw": 982329,
+              "context": "25 more room rates · Booking.com · Free Wi-Fi · ₩327,443 · Visit site · kr.bluepillow.com",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 328195,
+              "totalKrw": 984585,
+              "context": "₩327,443 · Visit site · kr.bluepillow.com · ₩328,195 · Visit site",
+              "freeCancellation": false
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Hotels.com",
+            "nightlyKrw": 326549,
+            "totalKrw": 979647
+          },
+          "freeCancellation": {
+            "nightlyKrw": 359578,
+            "totalKrw": 1078734,
+            "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · ₩359,578 · Visit site · Classic Room, 1 King Bed",
+            "freeCancellation": true
+          },
+          "exactCandidate": {
+            "nightlyKrw": 359578,
+            "totalKrw": 1078734,
+            "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · ₩359,578 · Visit site · Classic Room, 1 King Bed",
+            "freeCancellation": true
+          },
+          "dateConfirmed": true,
+          "candidateKind": "exact",
+          "candidateSavingsKrw": -22307
+        }
+      ]
+    },
+    {
+      "capturedAt": "2026-09-01T13:22:19.778Z",
+      "fx": {
+        "rates": {
+          "JPY": 8.5648,
+          "EUR": 1586.37
+        },
+        "dates": {
+          "JPY": "2026-08-31",
+          "EUR": "2026-08-31"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "osaka-four-points-flex",
+          "status": "ok",
+          "hotel": "Four Points Flex by Sheraton Osaka Umeda",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+Flex+by+Sheraton+Osaka+Umeda&adults=2&hl=en&ts=CAEaMQoTEhEKCC9tLzBkcXl3OgVPc2FrYRIaEhQKBwjqDxAJGBESBwjqDxAJGBUYBDICEAAqBwoFOgNLUlc&ved=2ahUKEwiH8qfpvM2WAxXKTsIFHaGQKakQrsMEegQIAxAs&qs=MihDaG9JcjlXc2tvN1cwTENSQVJvTkwyY3ZNVEZtZW5SdWRHYzBlaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 534752,
+          "bookedAmount": 62436,
+          "bookedCurrency": "JPY",
+          "nights": 4,
+          "providers": [
+            {
+              "provider": ",",
+              "nightlyKrw": 143272,
+              "totalKrw": 573088
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 143280,
+              "totalKrw": 573120
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 143280,
+              "totalKrw": 573120
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 143532,
+              "totalKrw": 574128
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 146272,
+              "totalKrw": 585088
+            },
+            {
+              "provider": "Evendo",
+              "nightlyKrw": 146436,
+              "totalKrw": 585744
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 146541,
+              "totalKrw": 586164
+            },
+            {
+              "provider": "Rakuten Travel",
+              "nightlyKrw": 151587,
+              "totalKrw": 606348
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 162408,
+              "totalKrw": 649632
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 162819,
+              "totalKrw": 651276
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 143280,
+              "totalKrw": 573120,
+              "context": "Four Points Flex by Sheraton Osaka Umeda · Official Site · ₩143,280 · Get price · Best Rate Guarantee · Earn Marriott Rewards",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 143280,
+              "totalKrw": 573120,
+              "context": "Get rewards · 1Bed Small Double, Guest room, 1 Twin · 1 single bed · Free cancellation until Sep 14 · ₩143,280 · Visit site · Double 14sqm, Guest room, 1 Double",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 151587,
+              "totalKrw": 606348,
+              "context": "Visit site · Double 14sqm, Guest room, 1 Double · 1 double bed · Free cancellation until Sep 14 · ₩151,587 · Visit site · Booking.com",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 162819,
+              "totalKrw": 651276,
+              "context": "Visit site · Booking.com · Free cancellation until Sep 14 · Free Wi-Fi · ₩162,819 · Visit site · Hotels.com",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 162408,
+              "totalKrw": 649632,
+              "context": "Visit site · Hotels.com · Free cancellation until Sep 15 · Free Wi-Fi · ₩162,408 · Visit site · Agoda",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 146541,
+              "totalKrw": 586164,
+              "context": "Visit site · Agoda · Free cancellation until Sep 15 · ₩146,541 · Visit site",
+              "freeCancellation": true
+            }
+          ],
+          "lowestProvider": {
+            "provider": ",",
+            "nightlyKrw": 143272,
+            "totalKrw": 573088
+          },
+          "freeCancellation": {
+            "nightlyKrw": 143280,
+            "totalKrw": 573120,
+            "context": "Get rewards · 1Bed Small Double, Guest room, 1 Twin · 1 single bed · Free cancellation until Sep 14 · ₩143,280 · Visit site · Double 14sqm, Guest room, 1 Double",
+            "freeCancellation": true
+          },
+          "exactCandidate": {
+            "nightlyKrw": 143280,
+            "totalKrw": 573120,
+            "context": "Get rewards · 1Bed Small Double, Guest room, 1 Twin · 1 single bed · Free cancellation until Sep 14 · ₩143,280 · Visit site · Double 14sqm, Guest room, 1 Double",
+            "freeCancellation": true
+          },
+          "dateConfirmed": false,
+          "candidateKind": "exact",
+          "candidateSavingsKrw": -38368
+        },
+        {
+          "id": "madrid-carlton",
+          "status": "ok",
+          "hotel": "AC Hotel Carlton Madrid",
+          "detailUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGAMSBwjrDxAEGAcyAggAGgAqBwoFOgNLUlc&ved=0CAAQ5JsGahcKEwj46dHsvM2WAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJN0xQNXo4eWlyOXpLQVJvTEwyY3ZNWFI0T0hacU1EQVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1163761,
+          "bookedAmount": 733.6,
+          "bookedCurrency": "EUR",
+          "nights": 4,
+          "providers": [
+            {
+              "provider": ",",
+              "nightlyKrw": 307475,
+              "totalKrw": 1229900
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 308171,
+              "totalKrw": 1232684
+            },
+            {
+              "provider": "TUI.com",
+              "nightlyKrw": 352794,
+              "totalKrw": 1411176
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 307475,
+              "totalKrw": 1229900,
+              "context": "Booking.com · ₩307,475 · Visit site · Read Real Guest Reviews · 24/7 Customer service",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 307480,
+              "totalKrw": 1229920,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Standard Queen Room, Guest room, 1 Queen · 1 queen bed · Free cancellation until Apr 2 · ₩307,480 · Visit site · Standard Twin Room",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 307480,
+              "totalKrw": 1229920,
+              "context": "Visit site · Standard Twin Room · 1 single bed · ₩307,480 · Visit site · kr.bluepillow.com",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 308171,
+              "totalKrw": 1232684,
+              "context": "Visit site · kr.bluepillow.com · Free cancellation until Apr 2 · ₩308,171 · Visit site",
+              "freeCancellation": true
+            }
+          ],
+          "lowestProvider": {
+            "provider": ",",
+            "nightlyKrw": 307475,
+            "totalKrw": 1229900
+          },
+          "freeCancellation": {
+            "nightlyKrw": 307480,
+            "totalKrw": 1229920,
+            "context": "Read Real Guest Reviews · 24/7 Customer service · Standard Queen Room, Guest room, 1 Queen · 1 queen bed · Free cancellation until Apr 2 · ₩307,480 · Visit site · Standard Twin Room",
+            "freeCancellation": true
+          },
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsKrw": -66159
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "ok",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "detailUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGAcSBwjrDxAEGAoyAggAGgAqBwoFOgNLUlc&ved=0CAAQ5JsGahcKEwiYrpDwvM2WAxUAAAAAHQAAAAAQBw&qs=MidDaGtJZ2I2T3RmTzF4NFliR2cwdlp5OHhNV0ozT0dZeE1GOHlFQUU&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 780494,
+          "bookedAmount": 492,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "nightlyKrw": 239974,
+              "totalKrw": 719922
+            },
+            {
+              "provider": "kr.bluepillow.com",
+              "nightlyKrw": 240513,
+              "totalKrw": 721539
+            }
+          ],
+          "roomRates": [],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "nightlyKrw": 239974,
+            "totalKrw": 719922
+          },
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&ts=CAEaNAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBIaEhQKBwjrDxAEGAoSBwjrDxAEGAwYAjICEAAqBwoFOgNLUlc&ved=2ahUKEwjAuobyvM2WAxWTTsIFHRgRIgQQrsMEegQIAxAs&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 442280,
+          "bookedAmount": 278.8,
+          "bookedCurrency": "EUR",
+          "nights": 2,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "nightlyKrw": 196543,
+              "totalKrw": 393086
+            },
+            {
+              "provider": "kr.bluepillow.com",
+              "nightlyKrw": 197070,
+              "totalKrw": 394140
+            },
+            {
+              "provider": "TUI.com",
+              "nightlyKrw": 238912,
+              "totalKrw": 477824
+            }
+          ],
+          "roomRates": [],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "nightlyKrw": 196543,
+            "totalKrw": 393086
+          },
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "ok",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGA0SBwjrDxAEGBAyAggAGgAqBwoFOgNLUlc&ved=0CAAQ5JsGahcKEwiI3tT1vM2WAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJaTlhSm5kRzJvSTNGQVJvTEwyY3ZNWFJrTVcwd2F6SVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1056427,
+          "bookedAmount": 665.94,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "providers": [
+            {
+              "provider": "Hotels.com",
+              "nightlyKrw": 326549,
+              "totalKrw": 979647
+            },
+            {
+              "provider": "Booking.com",
+              "nightlyKrw": 327443,
+              "totalKrw": 982329
+            },
+            {
+              "provider": "Reserving",
+              "nightlyKrw": 327443,
+              "totalKrw": 982329
+            },
+            {
+              "provider": "kr.bluepillow.com",
+              "nightlyKrw": 328195,
+              "totalKrw": 984585
+            },
+            {
+              "provider": "TUI.com",
+              "nightlyKrw": 375889,
+              "totalKrw": 1127667
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 326549,
+              "totalKrw": 979647,
+              "context": "Hotels.com · ₩326,549 · Visit site · Save with Member Prices",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 326555,
+              "totalKrw": 979665,
+              "context": "Save with Member Prices · Classic Room, 1 King Bed · 1 king bed · ₩326,555 · Visit site · Classic Room, 1 King Bed",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 359578,
+              "totalKrw": 1078734,
+              "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · ₩359,578 · Visit site · Classic Room, 1 King Bed",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 380021,
+              "totalKrw": 1140063,
+              "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · breakfast · ₩380,021 · Visit site · Visit site for more options",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 327443,
+              "totalKrw": 982329,
+              "context": "Visit site for more options · Booking.com · Free Wi-Fi · ₩327,443 · Visit site · kr.bluepillow.com",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 328195,
+              "totalKrw": 984585,
+              "context": "₩327,443 · Visit site · kr.bluepillow.com · ₩328,195 · Visit site",
+              "freeCancellation": false
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Hotels.com",
+            "nightlyKrw": 326549,
+            "totalKrw": 979647
+          },
+          "freeCancellation": {
+            "nightlyKrw": 359578,
+            "totalKrw": 1078734,
+            "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · ₩359,578 · Visit site · Classic Room, 1 King Bed",
+            "freeCancellation": true
+          },
+          "exactCandidate": {
+            "nightlyKrw": 359578,
+            "totalKrw": 1078734,
+            "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · ₩359,578 · Visit site · Classic Room, 1 King Bed",
+            "freeCancellation": true
+          },
+          "dateConfirmed": true,
+          "candidateKind": "exact",
+          "candidateSavingsKrw": -22307
+        }
+      ]
     }
   ]
 }

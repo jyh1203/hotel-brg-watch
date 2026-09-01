@@ -10,15 +10,28 @@ const config = JSON.parse(await fs.readFile(path.join(root, "config/stays.json")
 const historyPath = path.join(root, "data/history.json");
 const artifactRoot = path.join(root, "artifacts", new Date().toISOString().slice(0, 10));
 
-async function eurKrw() {
-  try {
-    const response = await fetch("https://api.frankfurter.app/latest?from=EUR&to=KRW", { signal: AbortSignal.timeout(10000) });
-    if (!response.ok) throw new Error(`FX HTTP ${response.status}`);
-    const data = await response.json();
-    return { rate: data.rates.KRW, source: "frankfurter.app", date: data.date };
-  } catch (error) {
-    return { rate: config.fallbackEurKrw, source: "fallback", error: error.message };
-  }
+async function krwRates() {
+  const currencies = [...new Set(config.stays.map((stay) => stay.booked.currency))];
+  const rates = {};
+  const dates = {};
+  const errors = {};
+  await Promise.all(currencies.map(async (currency) => {
+    if (currency === "KRW") {
+      rates[currency] = 1;
+      return;
+    }
+    try {
+      const response = await fetch(`https://api.frankfurter.app/latest?from=${currency}&to=KRW`, { signal: AbortSignal.timeout(10000) });
+      if (!response.ok) throw new Error(`FX HTTP ${response.status}`);
+      const data = await response.json();
+      rates[currency] = data.rates.KRW;
+      dates[currency] = data.date;
+    } catch (error) {
+      rates[currency] = config.fallbackKrwPerUnit[currency];
+      errors[currency] = error.message;
+    }
+  }));
+  return { rates, dates, source: Object.keys(errors).length ? "frankfurter.app+fallback" : "frankfurter.app", errors };
 }
 
 async function collectStay(browser, stay, fx) {
@@ -45,7 +58,7 @@ async function collectStay(browser, stay, fx) {
     await page.getByText("Prices", { exact: true }).first().waitFor({ timeout: 30000 });
     const text = await page.locator("body").innerText();
     const prices = parseGoogleHotelPrices(text, stay);
-    const bookedKrw = Math.round(stay.booked.totalEur * fx.rate);
+    const bookedKrw = Math.round(stay.booked.total * fx.rates[stay.booked.currency]);
     const candidate = prices.exactCandidate ?? prices.freeCancellation;
     return {
       id: stay.id,
@@ -53,7 +66,8 @@ async function collectStay(browser, stay, fx) {
       hotel: stay.hotel,
       detailUrl,
       bookedKrw,
-      bookedEur: stay.booked.totalEur,
+      bookedAmount: stay.booked.total,
+      bookedCurrency: stay.booked.currency,
       ...prices,
       candidateKind: prices.exactCandidate ? "exact" : prices.freeCancellation ? "free-cancel-review" : "headline-review",
       candidateSavingsKrw: candidate ? bookedKrw - candidate.totalKrw : null
@@ -69,7 +83,7 @@ async function collectStay(browser, stay, fx) {
 
 await fs.mkdir(path.dirname(historyPath), { recursive: true });
 const browser = await chromium.launch({ headless: true });
-const fx = await eurKrw();
+const fx = await krwRates();
 const results = [];
 for (const stay of config.stays) {
   console.log(`Checking ${stay.hotel}...`);

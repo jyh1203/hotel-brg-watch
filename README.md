@@ -1,6 +1,6 @@
 # Hotel BRG Watch
 
-2027년 스페인·프랑스 여행의 Marriott 예약가를 기준으로 Google Hotels 공개 요금을 매일 확인하는 개인용 대시보드입니다.
+2026년 오사카 및 2027년 스페인·프랑스 여행의 Marriott 예약가를 기준으로 Google Hotels 공개 요금을 매일 확인하는 개인용 대시보드입니다.
 
 ## 무엇을 보여주나
 
@@ -15,10 +15,13 @@
 
 ## 대상 예약
 
+- Four Points Flex by Sheraton Osaka Umeda, 2026-09-17~21
 - AC Hotel Carlton Madrid, 2027-04-03~07
 - Hotel Ercilla de Bilbao, 2027-04-07~10
 - Moxy Bordeaux, 2027-04-10~12
 - Four Points Barcelona Diagonal, 2027-04-13~16
+
+공개 저장소이므로 호텔 확인번호는 기준 데이터에 저장하지 않습니다.
 
 예약 조건과 기준가는 [`config/stays.json`](config/stays.json)에서 수정합니다.
 
