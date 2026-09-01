@@ -4,6 +4,7 @@ import process from "node:process";
 import { chromium } from "playwright";
 import { buildGoogleHotelsUrl, buildPriceDetailUrl } from "./google-hotels-url.mjs";
 import { parseGoogleHotelPrices } from "./parse-google-hotels.mjs";
+import { collectMarriottRate } from "./marriott.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const config = JSON.parse(await fs.readFile(path.join(root, "config/stays.json"), "utf8"));
@@ -123,19 +124,52 @@ async function collectStay(browser, stay, fx) {
 }
 
 await fs.mkdir(path.dirname(historyPath), { recursive: true });
-const browser = await chromium.launch({ headless: true });
+const collectMarriott = process.env.PLAYWRIGHT_HEADFUL === "1";
+const googleBrowser = await chromium.launch({ headless: true });
 const fx = await krwRates();
 const results = [];
 for (const stay of config.stays) {
   console.log(`Checking ${stay.hotel}...`);
-  let result = await collectStay(browser, stay, fx);
+  let result = await collectStay(googleBrowser, stay, fx);
   if (result.status === "error") {
     console.log(`Retrying ${stay.hotel} after: ${result.error.split("\n")[0]}`);
-    result = await collectStay(browser, stay, fx);
+    result = await collectStay(googleBrowser, stay, fx);
   }
   results.push(result);
 }
-await browser.close();
+await googleBrowser.close();
+
+if (collectMarriott) {
+  const marriottBrowser = await chromium.launch({
+    headless: false,
+    args: ["--disable-blink-features=AutomationControlled"]
+  });
+  const marriottContext = await marriottBrowser.newContext({
+    userAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    locale: "en-US",
+    timezoneId: "America/New_York",
+    viewport: { width: 1365, height: 900 }
+  });
+  for (let index = 0; index < config.stays.length; index += 1) {
+    const stay = config.stays[index];
+    console.log(`Checking Marriott official rate for ${stay.hotel}...`);
+    let marriott = await collectMarriottRate(marriottContext, stay, fx);
+    if (marriott.status === "error") {
+      console.log(`Retrying Marriott for ${stay.hotel} after: ${marriott.error}`);
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+      marriott = await collectMarriottRate(marriottContext, stay, fx);
+    }
+    results[index].marriott = marriott;
+    await new Promise((resolve) => setTimeout(resolve, 2500));
+  }
+  await marriottContext.close();
+  await marriottBrowser.close();
+} else {
+  for (const result of results) result.marriott = {
+      status: "error",
+      error: "Marriott 공식가는 PLAYWRIGHT_HEADFUL=1 실행에서 수집됩니다."
+  };
+}
 
 let history = { schemaVersion: 1, runs: [] };
 try { history = JSON.parse(await fs.readFile(historyPath, "utf8")); } catch {}

@@ -6,6 +6,7 @@ const esc = (value) => String(value ?? "").replace(/[&<>\"]/g, (character) => (
   { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[character]
 ));
 const candidateOf = (result) => result && (result.exactCandidate ?? result.freeCancellation ?? result.lowestProvider);
+const marriottOf = (result) => result?.marriott?.status === "ok" ? result.marriott : null;
 const dayKey = (value) => new Intl.DateTimeFormat("en-CA", {
   timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit"
 }).format(new Date(value));
@@ -34,6 +35,14 @@ function latestCandidate(runs, stayId, beforeIndex = runs.length) {
   return null;
 }
 
+function latestMarriott(runs, stayId, beforeIndex = runs.length) {
+  for (let index = beforeIndex - 1; index >= 0; index -= 1) {
+    const result = runs[index].results?.find((item) => item.id === stayId);
+    if (marriottOf(result)) return { rate: result.marriott, run: runs[index], index };
+  }
+  return null;
+}
+
 function previousDayCandidate(runs, stayId, sourceIndex, sourceCapturedAt) {
   const sourceDay = dayKey(sourceCapturedAt);
   for (let index = sourceIndex - 1; index >= 0; index -= 1) {
@@ -49,10 +58,13 @@ function dailySeries(runs, stay) {
   runs.forEach((run) => {
     const result = run.results?.find((item) => item.id === stay.id);
     const candidate = candidateOf(result);
-    const amount = localAmount(candidate, stay, run);
-    if (result?.status === "ok" && Number.isFinite(amount)) {
-      byDay.set(dayKey(run.capturedAt), { day: dayKey(run.capturedAt), amount, result });
-    }
+    const googleAmount = localAmount(candidate, stay, run);
+    const marriottAmount = marriottOf(result)?.totalAmount;
+    const day = dayKey(run.capturedAt);
+    const previous = byDay.get(day) ?? { day };
+    if (result?.status === "ok" && Number.isFinite(googleAmount)) previous.googleAmount = googleAmount;
+    if (Number.isFinite(marriottAmount)) previous.marriottAmount = marriottAmount;
+    if (Number.isFinite(previous.googleAmount) || Number.isFinite(previous.marriottAmount)) byDay.set(day, previous);
   });
   return [...byDay.values()].slice(-60);
 }
@@ -63,7 +75,9 @@ function chartMarkup(series, stay) {
   const height = 130;
   const pad = { left: 12, right: 12, top: 16, bottom: 24 };
   const booked = stay.booked.total;
-  const values = [...series.map((point) => point.amount), booked];
+  const googleValues = series.map((point) => point.googleAmount).filter(Number.isFinite);
+  const marriottValues = series.map((point) => point.marriottAmount).filter(Number.isFinite);
+  const values = [...googleValues, ...marriottValues, booked];
   let min = Math.min(...values);
   let max = Math.max(...values);
   const gap = max - min || Math.max(1, max * 0.05);
@@ -73,17 +87,22 @@ function chartMarkup(series, stay) {
     ? width / 2
     : pad.left + index * ((width - pad.left - pad.right) / (series.length - 1));
   const y = (value) => pad.top + ((max - value) / (max - min)) * (height - pad.top - pad.bottom);
-  const points = series.map((point, index) => `${x(index).toFixed(1)},${y(point.amount).toFixed(1)}`).join(" ");
-  const circles = series.map((point, index) => `<circle cx="${x(index).toFixed(1)}" cy="${y(point.amount).toFixed(1)}" r="4"><title>${point.day} ${money(point.amount, stay.booked.currency)}</title></circle>`).join("");
+  const line = (key, css) => {
+    const available = series.map((point, index) => ({ point, index })).filter(({ point }) => Number.isFinite(point[key]));
+    const points = available.map(({ point, index }) => `${x(index).toFixed(1)},${y(point[key]).toFixed(1)}`).join(" ");
+    const circles = available.map(({ point, index }) => `<circle class="${css}-dot" cx="${x(index).toFixed(1)}" cy="${y(point[key]).toFixed(1)}" r="4"><title>${point.day} ${money(point[key], stay.booked.currency)}</title></circle>`).join("");
+    return `${available.length > 1 ? `<polyline class="${css}-line" points="${points}"></polyline>` : ""}${circles}`;
+  };
   return `<div class="chart">
-    <div class="chart-head"><b>일별 후보가</b><span>${series.length}일 기록 · ${stay.booked.currency} 기준</span></div>
-    <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(stay.hotel)} 일별 후보가 그래프">
+    <div class="chart-head"><b>일별 가격 추이</b><span>${series.length}일 기록 · ${stay.booked.currency} 기준</span></div>
+    <div class="chart-legend"><span class="booked-key">내 예약</span><span class="google-key">Google 후보</span><span class="marriott-key">Marriott 공식</span></div>
+    <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(stay.hotel)} 일별 가격 비교 그래프">
       <line class="baseline" x1="${pad.left}" x2="${width - pad.right}" y1="${y(booked).toFixed(1)}" y2="${y(booked).toFixed(1)}"><title>예약가 ${money(booked, stay.booked.currency)}</title></line>
-      <polyline points="${points}"></polyline>${circles}
+      ${line("googleAmount", "google")}${line("marriottAmount", "marriott")}
       <text x="${pad.left}" y="${height - 5}">${series[0].day.slice(5)}</text>
       <text x="${width - pad.right}" y="${height - 5}" text-anchor="end">${series.at(-1).day.slice(5)}</text>
     </svg>
-    <div class="chart-caption"><span>예약 기준선 ${money(booked, stay.booked.currency)}</span><span>최저 ${money(Math.min(...series.map((point) => point.amount)), stay.booked.currency)}</span></div>
+    <div class="chart-caption"><span>예약 기준선 ${money(booked, stay.booked.currency)}</span><span>Google ${googleValues.length ? money(Math.min(...googleValues), stay.booked.currency) : "기록 없음"} · Marriott ${marriottValues.length ? money(Math.min(...marriottValues), stay.booked.currency) : "기록 없음"}</span></div>
   </div>`;
 }
 
@@ -126,6 +145,10 @@ async function render() {
   const todayCandidateCount = displayed.filter((item) => (
     candidateOf(item.sourceResult) && dayKey(item.sourceRun.capturedAt) === dayKey(run.capturedAt)
   )).length;
+  const todayMarriottCount = stays.filter((stay) => {
+    const result = run.results?.find((item) => item.id === stay.id);
+    return Boolean(marriottOf(result));
+  }).length;
   const shownCount = displayed.filter((item) => candidateOf(item.sourceResult)).length;
   const cheaperCount = displayed.filter((item) => {
     const amount = localAmount(candidateOf(item.sourceResult), item.stay, item.sourceRun);
@@ -137,7 +160,8 @@ async function render() {
     .join(" · ") || "환율 없음";
   document.querySelector("#summary").innerHTML = `
     <div><b>${shownCount}/${stays.length}</b><span>결과 표시</span></div>
-    <div><b>${todayCandidateCount}/${stays.length}</b><span>오늘 가격 확보</span></div>
+    <div><b>${todayCandidateCount}/${stays.length}</b><span>Google 오늘 가격</span></div>
+    <div><b>${todayMarriottCount}/${stays.length}</b><span>Marriott 오늘 가격</span></div>
     <div><b>${cheaperCount}곳</b><span>동일조건 가격 우위</span></div>
     <div><b>${esc(fxText)}</b><span>원화는 참고 환산만</span></div>`;
 
@@ -159,6 +183,17 @@ async function render() {
     const rate = fxRate(sourceRun, bookedCurrency);
     const bookedKrw = rate ? Math.round(stay.booked.total * rate) : null;
     const difference = stay.booked.total - todayAmount;
+    const currentMarriott = marriottOf(current);
+    const marriottFallback = currentMarriott ? null : latestMarriott(runs, stay.id, runs.length - 1);
+    const marriottRate = currentMarriott ?? marriottFallback?.rate;
+    const marriottRun = currentMarriott ? run : marriottFallback?.run;
+    const marriottAmount = marriottRate?.totalAmount;
+    const marriottKrw = Number.isFinite(marriottRate?.totalKrw)
+      ? marriottRate.totalKrw
+      : Number.isFinite(marriottAmount) && marriottRun ? Math.round(marriottAmount * fxRate(marriottRun, bookedCurrency)) : null;
+    const marriottStale = !currentMarriott && Boolean(marriottFallback);
+    const marriottLink = marriottRate?.sourceUrl ?? current?.marriott?.sourceUrl ??
+      `https://www.marriott.com/en-us/hotels/${stay.marriott.propertyCode.toLowerCase()}-${stay.marriott.slug}/rooms/`;
     const currentWarning = stale
       ? `<p class="freshness">최신 수집값이 비어 있어 ${new Date(sourceRun.capturedAt).toLocaleString("ko-KR")}의 최근 유효 결과를 표시합니다.</p>`
       : "";
@@ -168,11 +203,11 @@ async function render() {
     return `<article class="card ${stale ? "stale" : ""}">
       <div class="card-head"><div><p>${stay.checkIn} → ${stay.checkOut}</p><h2>${esc(stay.hotel)}</h2></div><span class="pill ${sourceResult.candidateKind === "exact" && !stale ? "match" : "review"}">${state}</span></div>
       ${currentWarning}
-      <div class="prices"><div><span>내 예약 총액</span><b>${money(stay.booked.total, bookedCurrency)}</b><small>${bookedKrw == null ? "원화 환산 불가" : `${won.format(bookedKrw)} 참고`}</small></div><div><span>${stale ? "최근 후보가" : "오늘 후보가"}</span><b>${money(todayAmount, bookedCurrency)}</b><small>${todayKrw == null ? "원화 환산 불가" : `${won.format(todayKrw)} 참고`}</small><small>${delta == null ? "전일 유효 기록 없음" : `${delta > 0 ? "+" : ""}${money(delta, bookedCurrency)} vs ${dayKey(previous.run.capturedAt)}`}</small></div></div>
+      <div class="prices three"><div><span>내 예약 총액</span><b>${money(stay.booked.total, bookedCurrency)}</b><small>${bookedKrw == null ? "원화 환산 불가" : `${won.format(bookedKrw)} 참고`}</small></div><div><span>${stale ? "최근 Google 후보가" : "오늘 Google 후보가"}</span><b>${money(todayAmount, bookedCurrency)}</b><small>${todayKrw == null ? "원화 환산 불가" : `${won.format(todayKrw)} 참고`}</small><small>${delta == null ? "전일 유효 기록 없음" : `${delta > 0 ? "+" : ""}${money(delta, bookedCurrency)} vs ${dayKey(previous.run.capturedAt)}`}</small></div><div><span>${marriottStale ? "최근 Marriott 공식가" : "오늘 Marriott 공식가"}</span><b>${Number.isFinite(marriottAmount) ? money(marriottAmount, bookedCurrency) : "수집 실패"}</b><small>${marriottKrw == null ? "원화 환산 없음" : `${won.format(marriottKrw)} 참고`}</small><small>${marriottRate ? (marriottRate.taxesIncluded ? "세금·요금 포함" : "세금·요금 제외 표시") : esc(current?.marriott?.error ?? "공식가 기록 없음")}</small></div></div>
       ${chartMarkup(dailySeries(runs, stay), stay)}
       <p class="room"><b>${esc(stay.booked.room)}</b><br>${esc(stay.booked.cancellation)} · ${esc(stay.booked.cancellationDeadline)}<br>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}<br>${esc(stay.booked.note)}</p>
       <p class="saving ${difference > 0 && sourceResult.candidateKind !== "headline-review" ? "positive" : ""}">${comparison}</p>
-      <a href="${esc(sourceResult.detailUrl ?? current?.searchUrl ?? "#")}" target="_blank" rel="noreferrer">Google Hotels에서 조건 확인 →</a>
+      <div class="source-links"><a href="${esc(sourceResult.detailUrl ?? current?.searchUrl ?? "#")}" target="_blank" rel="noreferrer">Google 후보 출처·조건 확인 →</a><a href="${esc(marriottLink)}" target="_blank" rel="noreferrer">Marriott 공식가·객실 확인 →</a></div>
     </article>`;
   }).join("");
 }

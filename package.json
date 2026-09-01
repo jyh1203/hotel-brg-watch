@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "collect": "node src/collect.mjs",
+    "collect:full": "PLAYWRIGHT_HEADFUL=1 node src/collect.mjs",
     "build": "node src/build-dashboard.mjs",
     "dev": "node src/server.mjs",
     "test": "node --test"

@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { parseGoogleHotelPrices, nightsBetween } from "../src/parse-google-hotels.mjs";
 import { buildGoogleHotelsUrl } from "../src/google-hotels-url.mjs";
+import { buildMarriottAvailabilityUrl, parseMarriottRate } from "../src/marriott.mjs";
 
 const stay = {
   hotel: "Moxy Bordeaux", city: { name: "Bordeaux", googleEntityId: "/m/01b85" },
@@ -38,4 +39,27 @@ test("parses Japanese-yen prices in the booked currency", () => {
   const parsed = parseGoogleHotelPrices(text, osaka, "JPY");
   assert.equal(parsed.lowestProvider.totalAmount, 56000);
   assert.equal(parsed.exactCandidate.totalAmount, 60000);
+});
+
+test("parses the selected room total from Marriott's official rate page", () => {
+  const text = `Currently Selected Room\nStandard King Room, Guest room, 1 King\nRoom Details\nRates from\n166EUR Avg / Night\n666 Total Per Room\nView Rates`;
+  assert.deepEqual(parseMarriottRate(text), {
+    room: "Standard King Room, Guest room, 1 King",
+    nightlyAmount: 166,
+    currency: "EUR",
+    totalAmount: 666,
+    taxesIncluded: false
+  });
+});
+
+test("builds a Marriott official availability link for the booked room", () => {
+  const configured = {
+    ...stay,
+    marriott: { propertyCode: "BODOX", slug: "moxy-bordeaux", roomPoolCode: "genr" }
+  };
+  const url = new URL(buildMarriottAvailabilityUrl(configured));
+  assert.equal(url.hostname, "www.marriott.com");
+  assert.equal(url.searchParams.get("propertyCode"), "BODOX");
+  assert.equal(url.searchParams.get("roomPoolCode"), "genr");
+  assert.equal(url.searchParams.get("fromDate"), "04/10/2027");
 });

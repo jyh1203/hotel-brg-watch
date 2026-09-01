@@ -37,7 +37,7 @@ jobs:
         if: github.event_name != 'push'
       - run: npx playwright install --with-deps chromium
         if: github.event_name != 'push'
-      - run: npm run collect
+      - run: xvfb-run -a npm run collect:full
         if: github.event_name != 'push'
         continue-on-error: true
       - run: npm run build

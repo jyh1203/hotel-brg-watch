@@ -12,6 +12,11 @@
       "checkIn": "2026-09-17",
       "checkOut": "2026-09-21",
       "adults": 2,
+      "marriott": {
+        "propertyCode": "OSAUU",
+        "slug": "four-points-flex-osaka-umeda",
+        "roomPoolCode": "sngl"
+      },
       "booked": {
         "currency": "JPY",
         "roomSubtotal": 56760,
@@ -32,6 +37,11 @@
       "checkIn": "2027-04-03",
       "checkOut": "2027-04-07",
       "adults": 2,
+      "marriott": {
+        "propertyCode": "MADCA",
+        "slug": "ac-hotel-carlton-madrid",
+        "roomPoolCode": "doub"
+      },
       "booked": {
         "currency": "EUR",
         "roomSubtotal": 666.90,
@@ -52,6 +62,11 @@
       "checkIn": "2027-04-07",
       "checkOut": "2027-04-10",
       "adults": 2,
+      "marriott": {
+        "propertyCode": "BIOAK",
+        "slug": "hotel-ercilla-de-bilbao-autograph-collection",
+        "roomPoolCode": "genr"
+      },
       "booked": {
         "currency": "EUR",
         "roomSubtotal": 492.00,
@@ -72,6 +87,11 @@
       "checkIn": "2027-04-10",
       "checkOut": "2027-04-12",
       "adults": 2,
+      "marriott": {
+        "propertyCode": "BODOX",
+        "slug": "moxy-bordeaux",
+        "roomPoolCode": "genr"
+      },
       "booked": {
         "currency": "EUR",
         "roomSubtotal": 269.00,
@@ -92,6 +112,11 @@
       "checkIn": "2027-04-13",
       "checkOut": "2027-04-16",
       "adults": 2,
+      "marriott": {
+        "propertyCode": "BCNFP",
+        "slug": "four-points-barcelona-diagonal",
+        "roomPoolCode": "king"
+      },
       "booked": {
         "currency": "EUR",
         "roomSubtotal": 555.00,
