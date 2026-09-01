@@ -64,7 +64,9 @@ async function render() {
       stale: !currentCandidate && Boolean(fallback)
     };
   });
-  const todayCandidateCount = run.results?.filter((result) => result.status === "ok" && candidateOf(result)).length ?? 0;
+  const todayCandidateCount = displayed.filter((item) => (
+    candidateOf(item.sourceResult) && dayKey(item.sourceRun.capturedAt) === dayKey(run.capturedAt)
+  )).length;
   const shownCount = displayed.filter((item) => candidateOf(item.sourceResult)).length;
   const savings = displayed.reduce((sum, item) => sum + Math.max(0, item.sourceResult?.candidateSavingsKrw ?? 0), 0);
   const rates = run.fx?.rates ?? (run.fx?.rate ? { EUR: run.fx.rate } : {});
