@@ -1,0 +1,46 @@
+{
+  "currency": "KRW",
+  "fallbackEurKrw": 1600,
+  "stays": [
+    {
+      "id": "madrid-carlton",
+      "hotel": "AC Hotel Carlton Madrid",
+      "city": { "name": "Madrid", "googleEntityId": "/m/056_y" },
+      "checkIn": "2027-04-03",
+      "checkOut": "2027-04-07",
+      "adults": 2,
+      "booked": { "totalEur": 733.60, "room": "Standard King", "cancellation": "무료취소·현장결제" },
+      "match": { "roomPatterns": ["standard", "king"], "requireFreeCancellation": true }
+    },
+    {
+      "id": "bilbao-ercilla",
+      "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+      "city": { "name": "Bilbao", "googleEntityId": "/m/01dzy" },
+      "checkIn": "2027-04-07",
+      "checkOut": "2027-04-10",
+      "adults": 2,
+      "booked": { "totalEur": 492.00, "room": "Stylish Guest Room, 1 Double", "cancellation": "무료취소·현장결제" },
+      "match": { "roomPatterns": ["stylish", "double"], "requireFreeCancellation": true }
+    },
+    {
+      "id": "bordeaux-moxy",
+      "hotel": "Moxy Bordeaux",
+      "city": { "name": "Bordeaux", "googleEntityId": "/m/01b85" },
+      "checkIn": "2027-04-10",
+      "checkOut": "2027-04-12",
+      "adults": 2,
+      "booked": { "totalEur": 278.80, "room": "Moxy Sleeper, 1 Queen", "cancellation": "무료취소·현장결제" },
+      "match": { "roomPatterns": ["moxy sleeper", "queen|double"], "requireFreeCancellation": true }
+    },
+    {
+      "id": "barcelona-four-points",
+      "hotel": "Four Points by Sheraton Barcelona Diagonal",
+      "city": { "name": "Barcelona", "googleEntityId": "/m/01f62" },
+      "checkIn": "2027-04-13",
+      "checkOut": "2027-04-16",
+      "adults": 2,
+      "booked": { "totalEur": 665.94, "room": "Classic Room, 1 King", "cancellation": "무료취소·현장결제" },
+      "match": { "roomPatterns": ["classic", "king"], "requireFreeCancellation": true }
+    }
+  ]
+}

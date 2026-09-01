@@ -1,0 +1,561 @@
+{
+  "schemaVersion": 1,
+  "runs": [
+    {
+      "capturedAt": "2026-09-01T12:25:59.314Z",
+      "fx": {
+        "rate": 1586.37,
+        "source": "frankfurter.app",
+        "date": "2026-08-31"
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "status": "error",
+          "hotel": "AC Hotel Carlton Madrid",
+          "searchUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&ts=CAEaPgoUEhIKCC9tLzA1Nl95OgZNYWRyaWQaABIWEhIKBwjrDxAEGAMSBwjrDxAEGAcYAjICCAEqBgoEOktSVxoA",
+          "error": "호텔 상세 링크를 찾지 못했습니다."
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "error",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "searchUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&ts=CAEaPgoUEhIKCC9tLzAxZHp5OgZCaWxiYW8aABIWEhIKBwjrDxAEGAcSBwjrDxAEGAoYAjICCAEqBgoEOktSVxoA",
+          "error": "호텔 상세 링크를 찾지 못했습니다."
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "error",
+          "hotel": "Moxy Bordeaux",
+          "searchUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&ts=CAEaQAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBoAEhYSEgoHCOsPEAQYChIHCOsPEAQYDBgCMgIIASoGCgQ6S1JXGgA",
+          "error": "호텔 상세 링크를 찾지 못했습니다."
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "error",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "searchUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&ts=CAEaQQoXEhUKCC9tLzAxZjYyOglCYXJjZWxvbmEaABIWEhIKBwjrDxAEGA0SBwjrDxAEGBAYAjICCAEqBgoEOktSVxoA",
+          "error": "호텔 상세 링크를 찾지 못했습니다."
+        }
+      ]
+    },
+    {
+      "capturedAt": "2026-09-01T12:27:35.058Z",
+      "fx": {
+        "rate": 1586.37,
+        "source": "frankfurter.app",
+        "date": "2026-08-31"
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "status": "error",
+          "hotel": "AC Hotel Carlton Madrid",
+          "searchUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&ts=CAEaPgoUEhIKCC9tLzA1Nl95OgZNYWRyaWQaABIWEhIKBwjrDxAEGAMSBwjrDxAEGAcYAjICCAEqBgoEOktSVxoA",
+          "error": "호텔 상세 링크를 찾지 못했습니다."
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "error",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "searchUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&ts=CAEaPgoUEhIKCC9tLzAxZHp5OgZCaWxiYW8aABIWEhIKBwjrDxAEGAcSBwjrDxAEGAoYAjICCAEqBgoEOktSVxoA",
+          "error": "호텔 상세 링크를 찾지 못했습니다."
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&ts=CAEaNAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBIaEhQKBwjrDxAEGAoSBwjrDxAEGAwYAjICEAAqBwoFOgNLUlc&ved=2ahUKEwj44qLRsM2WAxWbQcIFHdMQAZYQrsMEegQIAxAi&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 442280,
+          "bookedEur": 278.8,
+          "nights": 2,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "nightlyKrw": 196579,
+              "totalKrw": 393158
+            },
+            {
+              "provider": "kr.bluepillow.com",
+              "nightlyKrw": 197059,
+              "totalKrw": 394118
+            },
+            {
+              "provider": "TUI.com",
+              "nightlyKrw": 238957,
+              "totalKrw": 477914
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 196579,
+              "totalKrw": 393158,
+              "context": "Booking.com · ₩196,579 · Visit site · Read Real Guest Reviews · 24/7 Customer service",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 196582,
+              "totalKrw": 393164,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · ₩196,582 · Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s)",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 229239,
+              "totalKrw": 458478,
+              "context": "Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · ₩229,239 · Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 352541,
+              "totalKrw": 705082,
+              "context": "Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View · 1 double bed · 4 guests · ₩352,541 · Visit site · Visit site for more options",
+              "freeCancellation": false
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "nightlyKrw": 196579,
+            "totalKrw": 393158
+          },
+          "freeCancellation": {
+            "nightlyKrw": 229239,
+            "totalKrw": 458478,
+            "context": "Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · ₩229,239 · Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View",
+            "freeCancellation": true
+          },
+          "exactCandidate": {
+            "nightlyKrw": 229239,
+            "totalKrw": 458478,
+            "context": "Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · ₩229,239 · Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View",
+            "freeCancellation": true
+          },
+          "dateConfirmed": true,
+          "candidateKind": "exact",
+          "candidateSavingsKrw": -16198
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "error",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "searchUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&ts=CAEaQQoXEhUKCC9tLzAxZjYyOglCYXJjZWxvbmEaABIWEhIKBwjrDxAEGA0SBwjrDxAEGBAYAjICCAEqBgoEOktSVxoA",
+          "error": "호텔 상세 링크를 찾지 못했습니다."
+        }
+      ]
+    },
+    {
+      "capturedAt": "2026-09-01T12:28:36.133Z",
+      "fx": {
+        "rate": 1586.37,
+        "source": "frankfurter.app",
+        "date": "2026-08-31"
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "status": "ok",
+          "hotel": "AC Hotel Carlton Madrid",
+          "detailUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGAMSBwjrDxAEGAcyAggAGgAqBwoFOgNLUlc&ved=0CAAQ5JsGahcKEwjQwpvnsM2WAxUAAAAAHQAAAAAQAw&qs=MiZDaGdJN0xQNXo4eWlyOXpLQVJvTEwyY3ZNWFI0T0hacU1EQVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1163761,
+          "bookedEur": 733.6,
+          "nights": 4,
+          "providers": [
+            {
+              "provider": ",",
+              "nightlyKrw": 307532,
+              "totalKrw": 1230128
+            },
+            {
+              "provider": ",",
+              "nightlyKrw": 308156,
+              "totalKrw": 1232624
+            },
+            {
+              "provider": "TUI.com",
+              "nightlyKrw": 352860,
+              "totalKrw": 1411440
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 307532,
+              "totalKrw": 1230128,
+              "context": "Booking.com · ₩307,532 · Visit site · Read Real Guest Reviews · 24/7 Customer service",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 307537,
+              "totalKrw": 1230148,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Standard Queen Room, Guest room, 1 Queen · 1 queen bed · Free cancellation until Apr 2 · ₩307,537 · Visit site · Standard Twin Room",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 307537,
+              "totalKrw": 1230148,
+              "context": "Visit site · Standard Twin Room · 1 single bed · ₩307,537 · Visit site · kr.bluepillow.com",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 308156,
+              "totalKrw": 1232624,
+              "context": "Visit site · kr.bluepillow.com · Free cancellation until Apr 2 · ₩308,156 · Visit site",
+              "freeCancellation": true
+            }
+          ],
+          "lowestProvider": {
+            "provider": ",",
+            "nightlyKrw": 307532,
+            "totalKrw": 1230128
+          },
+          "freeCancellation": {
+            "nightlyKrw": 307537,
+            "totalKrw": 1230148,
+            "context": "Read Real Guest Reviews · 24/7 Customer service · Standard Queen Room, Guest room, 1 Queen · 1 queen bed · Free cancellation until Apr 2 · ₩307,537 · Visit site · Standard Twin Room",
+            "freeCancellation": true
+          },
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsKrw": -66387
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "ok",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "detailUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGAcSBwjrDxAEGAoyAggAGgAqBwoFOgNLUlc&ved=0CAAQ5JsGahcKEwjgvtfqsM2WAxUAAAAAHQAAAAAQAw&qs=MidDaGtJZ2I2T3RmTzF4NFliR2cwdlp5OHhNV0ozT0dZeE1GOHlFQUU&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 780494,
+          "bookedEur": 492,
+          "nights": 3,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "nightlyKrw": 240019,
+              "totalKrw": 720057
+            },
+            {
+              "provider": "kr.bluepillow.com",
+              "nightlyKrw": 240501,
+              "totalKrw": 721503
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 240019,
+              "totalKrw": 720057,
+              "context": "Booking.com · ₩240,019 · Visit site · Read Real Guest Reviews · 24/7 Customer service",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 240019,
+              "totalKrw": 720057,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Guest Room with Twin beds · 1 double bed · ₩240,019 · Visit site · Guest Room with Twin beds",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 266570,
+              "totalKrw": 799710,
+              "context": "Visit site · Guest Room with Twin beds · 1 double bed · Free cancellation until Apr 6 · ₩266,570 · Visit site · Vintage Guest room with Twin Beds",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 365869,
+              "totalKrw": 1097607,
+              "context": "Visit site · Vintage Guest room with Twin Beds · 1 double bed · 3 guests · ₩365,869 · Visit site · 1 more room rate",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 240501,
+              "totalKrw": 721503,
+              "context": "Visit site · 1 more room rate · kr.bluepillow.com · ₩240,501 · Visit site",
+              "freeCancellation": false
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "nightlyKrw": 240019,
+            "totalKrw": 720057
+          },
+          "freeCancellation": {
+            "nightlyKrw": 266570,
+            "totalKrw": 799710,
+            "context": "Visit site · Guest Room with Twin beds · 1 double bed · Free cancellation until Apr 6 · ₩266,570 · Visit site · Vintage Guest room with Twin Beds",
+            "freeCancellation": true
+          },
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsKrw": -19216
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&ts=CAEaNAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBIaEhQKBwjrDxAEGAoSBwjrDxAEGAwYAjICEAAqBwoFOgNLUlc&ved=2ahUKEwjg697tsM2WAxXSRcIFHThlOcYQrsMEegQIAxAs&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 442280,
+          "bookedEur": 278.8,
+          "nights": 2,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "nightlyKrw": 196579,
+              "totalKrw": 393158
+            },
+            {
+              "provider": "kr.bluepillow.com",
+              "nightlyKrw": 197059,
+              "totalKrw": 394118
+            },
+            {
+              "provider": "TUI.com",
+              "nightlyKrw": 238957,
+              "totalKrw": 477914
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 196543,
+              "totalKrw": 393086,
+              "context": "Booking.com · ₩196,543 · Visit site · Read Real Guest Reviews · 24/7 Customer service",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 196545,
+              "totalKrw": 393090,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · ₩196,545 · Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s)",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 229197,
+              "totalKrw": 458394,
+              "context": "Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · ₩229,197 · Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 352475,
+              "totalKrw": 704950,
+              "context": "Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View · 1 double bed · 4 guests · ₩352,475 · Visit site · 1 more room rate",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 197070,
+              "totalKrw": 394140,
+              "context": "Visit site · 1 more room rate · kr.bluepillow.com · ₩197,070 · Visit site",
+              "freeCancellation": false
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "nightlyKrw": 196579,
+            "totalKrw": 393158
+          },
+          "freeCancellation": {
+            "nightlyKrw": 229197,
+            "totalKrw": 458394,
+            "context": "Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · ₩229,197 · Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View",
+            "freeCancellation": true
+          },
+          "exactCandidate": {
+            "nightlyKrw": 229197,
+            "totalKrw": 458394,
+            "context": "Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · ₩229,197 · Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View",
+            "freeCancellation": true
+          },
+          "dateConfirmed": true,
+          "candidateKind": "exact",
+          "candidateSavingsKrw": -16114
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "ok",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGA0SBwjrDxAEGBAyAggAGgAqBwoFOgNLUlc&ved=0CAAQ5JsGahcKEwjQwvfysM2WAxUAAAAAHQAAAAAQAw&qs=MiZDaGdJaTlhSm5kRzJvSTNGQVJvTEwyY3ZNWFJrTVcwd2F6SVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1056427,
+          "bookedEur": 665.94,
+          "nights": 3,
+          "providers": [
+            {
+              "provider": "Hotels.com",
+              "nightlyKrw": 326549,
+              "totalKrw": 979647
+            },
+            {
+              "provider": "Booking.com",
+              "nightlyKrw": 327504,
+              "totalKrw": 982512
+            },
+            {
+              "provider": "Reserving",
+              "nightlyKrw": 327504,
+              "totalKrw": 982512
+            },
+            {
+              "provider": "kr.bluepillow.com",
+              "nightlyKrw": 328178,
+              "totalKrw": 984534
+            },
+            {
+              "provider": "TUI.com",
+              "nightlyKrw": 375959,
+              "totalKrw": 1127877
+            }
+          ],
+          "roomRates": [
+            {
+              "nightlyKrw": 326549,
+              "totalKrw": 979647,
+              "context": "Hotels.com · ₩326,549 · Visit site · Save with Member Prices",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 326555,
+              "totalKrw": 979665,
+              "context": "Save with Member Prices · Classic Room, 1 King Bed · 1 king bed · ₩326,555 · Visit site · Classic Room, 1 King Bed",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 359578,
+              "totalKrw": 1078734,
+              "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · ₩359,578 · Visit site · Classic Room, 1 King Bed",
+              "freeCancellation": true
+            },
+            {
+              "nightlyKrw": 380021,
+              "totalKrw": 1140063,
+              "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · breakfast · ₩380,021 · Visit site · 25 more room rates",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 327443,
+              "totalKrw": 982329,
+              "context": "25 more room rates · Booking.com · Free Wi-Fi · ₩327,443 · Visit site · kr.bluepillow.com",
+              "freeCancellation": false
+            },
+            {
+              "nightlyKrw": 328195,
+              "totalKrw": 984585,
+              "context": "₩327,443 · Visit site · kr.bluepillow.com · ₩328,195 · Visit site",
+              "freeCancellation": false
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Hotels.com",
+            "nightlyKrw": 326549,
+            "totalKrw": 979647
+          },
+          "freeCancellation": {
+            "nightlyKrw": 359578,
+            "totalKrw": 1078734,
+            "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · ₩359,578 · Visit site · Classic Room, 1 King Bed",
+            "freeCancellation": true
+          },
+          "exactCandidate": {
+            "nightlyKrw": 359578,
+            "totalKrw": 1078734,
+            "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · ₩359,578 · Visit site · Classic Room, 1 King Bed",
+            "freeCancellation": true
+          },
+          "dateConfirmed": true,
+          "candidateKind": "exact",
+          "candidateSavingsKrw": -22307
+        }
+      ]
+    }
+  ],
+  "config": {
+    "currency": "KRW",
+    "fallbackEurKrw": 1600,
+    "stays": [
+      {
+        "id": "madrid-carlton",
+        "hotel": "AC Hotel Carlton Madrid",
+        "city": {
+          "name": "Madrid",
+          "googleEntityId": "/m/056_y"
+        },
+        "checkIn": "2027-04-03",
+        "checkOut": "2027-04-07",
+        "adults": 2,
+        "booked": {
+          "totalEur": 733.6,
+          "room": "Standard King",
+          "cancellation": "무료취소·현장결제"
+        },
+        "match": {
+          "roomPatterns": [
+            "standard",
+            "king"
+          ],
+          "requireFreeCancellation": true
+        }
+      },
+      {
+        "id": "bilbao-ercilla",
+        "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+        "city": {
+          "name": "Bilbao",
+          "googleEntityId": "/m/01dzy"
+        },
+        "checkIn": "2027-04-07",
+        "checkOut": "2027-04-10",
+        "adults": 2,
+        "booked": {
+          "totalEur": 492,
+          "room": "Stylish Guest Room, 1 Double",
+          "cancellation": "무료취소·현장결제"
+        },
+        "match": {
+          "roomPatterns": [
+            "stylish",
+            "double"
+          ],
+          "requireFreeCancellation": true
+        }
+      },
+      {
+        "id": "bordeaux-moxy",
+        "hotel": "Moxy Bordeaux",
+        "city": {
+          "name": "Bordeaux",
+          "googleEntityId": "/m/01b85"
+        },
+        "checkIn": "2027-04-10",
+        "checkOut": "2027-04-12",
+        "adults": 2,
+        "booked": {
+          "totalEur": 278.8,
+          "room": "Moxy Sleeper, 1 Queen",
+          "cancellation": "무료취소·현장결제"
+        },
+        "match": {
+          "roomPatterns": [
+            "moxy sleeper",
+            "queen|double"
+          ],
+          "requireFreeCancellation": true
+        }
+      },
+      {
+        "id": "barcelona-four-points",
+        "hotel": "Four Points by Sheraton Barcelona Diagonal",
+        "city": {
+          "name": "Barcelona",
+          "googleEntityId": "/m/01f62"
+        },
+        "checkIn": "2027-04-13",
+        "checkOut": "2027-04-16",
+        "adults": 2,
+        "booked": {
+          "totalEur": 665.94,
+          "room": "Classic Room, 1 King",
+          "cancellation": "무료취소·현장결제"
+        },
+        "match": {
+          "roomPatterns": [
+            "classic",
+            "king"
+          ],
+          "requireFreeCancellation": true
+        }
+      }
+    ]
+  }
+}
