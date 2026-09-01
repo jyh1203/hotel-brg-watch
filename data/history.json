@@ -1320,6 +1320,102 @@
           "candidateSavingsKrw": -22307
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-01T13:24:26.218Z",
+      "fx": {
+        "rates": {
+          "EUR": 1586.37,
+          "JPY": 8.5648
+        },
+        "dates": {
+          "EUR": "2026-08-31",
+          "JPY": "2026-08-31"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "osaka-four-points-flex",
+          "status": "error",
+          "hotel": "Four Points Flex by Sheraton Osaka Umeda",
+          "searchUrl": "https://www.google.com/travel/search?q=Four+Points+Flex+by+Sheraton+Osaka+Umeda&adults=2&hl=en&ts=CAEaPQoTEhEKCC9tLzBkcXl3OgVPc2FrYRoAEhYSEgoHCOoPEAkYERIHCOoPEAkYFRgCMgIIASoGCgQ6S1JXGgA",
+          "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByText('Four Points Flex by Sheraton Osaka Umeda', { exact: true }).first() to be visible\n"
+        },
+        {
+          "id": "madrid-carlton",
+          "status": "ok",
+          "hotel": "AC Hotel Carlton Madrid",
+          "detailUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGAMSBwjrDxAEGAcyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwjAzrmsvc2WAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJN0xQNXo4eWlyOXpLQVJvTEwyY3ZNWFI0T0hacU1EQVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1163761,
+          "bookedAmount": 733.6,
+          "bookedCurrency": "EUR",
+          "nights": 4,
+          "providers": [],
+          "roomRates": [],
+          "lowestProvider": null,
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "ok",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "detailUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGAcSBwjrDxAEGAoyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwig06euvc2WAxUAAAAAHQAAAAAQBw&qs=MidDaGtJZ2I2T3RmTzF4NFliR2cwdlp5OHhNV0ozT0dZeE1GOHlFQUU&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 780494,
+          "bookedAmount": 492,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "providers": [],
+          "roomRates": [],
+          "lowestProvider": null,
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&ts=CAEaNAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBIaEhQKBwjrDxAEGAoSBwjrDxAEGAwYAjICEAAqBwoFOgNVU0Q&ved=2ahUKEwiJ4tGvvc2WAxXcA_kAHcaGCtEQrsMEegQIAxAs&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 442280,
+          "bookedAmount": 278.8,
+          "bookedCurrency": "EUR",
+          "nights": 2,
+          "providers": [],
+          "roomRates": [],
+          "lowestProvider": null,
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "ok",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGA0SBwjrDxAEGBAyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwiAsZyyvc2WAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJaTlhSm5kRzJvSTNGQVJvTEwyY3ZNWFJrTVcwd2F6SVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1056427,
+          "bookedAmount": 665.94,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "providers": [],
+          "roomRates": [],
+          "lowestProvider": null,
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        }
+      ]
     }
   ]
 }
