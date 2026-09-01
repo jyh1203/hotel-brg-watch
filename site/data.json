@@ -458,6 +458,84 @@
           "candidateSavingsKrw": -22307
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-01T13:05:08.881Z",
+      "fx": {
+        "rate": 1586.37,
+        "source": "frankfurter.app",
+        "date": "2026-08-31"
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "status": "ok",
+          "hotel": "AC Hotel Carlton Madrid",
+          "detailUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGAMSBwjrDxAEGAcyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwjon_-Euc2WAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJN0xQNXo4eWlyOXpLQVJvTEwyY3ZNWFI0T0hacU1EQVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1163761,
+          "bookedEur": 733.6,
+          "nights": 4,
+          "providers": [],
+          "roomRates": [],
+          "lowestProvider": null,
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "ok",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "detailUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGAcSBwjrDxAEGAoyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwjw0vWGuc2WAxUAAAAAHQAAAAAQBw&qs=MidDaGtJZ2I2T3RmTzF4NFliR2cwdlp5OHhNV0ozT0dZeE1GOHlFQUU&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 780494,
+          "bookedEur": 492,
+          "nights": 3,
+          "providers": [],
+          "roomRates": [],
+          "lowestProvider": null,
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&ts=CAEaNAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBIaEhQKBwjrDxAEGAoSBwjrDxAEGAwYAjICEAAqBwoFOgNVU0Q&ved=2ahUKEwi8mYSIuc2WAxWvTH8AHeIaONEQrsMEegQIAxAs&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 442280,
+          "bookedEur": 278.8,
+          "nights": 2,
+          "providers": [],
+          "roomRates": [],
+          "lowestProvider": null,
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "ok",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&ts=CAEaHBIYEhIKBwjrDxAEGA0SBwjrDxAEGBAyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwjAqtKKuc2WAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJaTlhSm5kRzJvSTNGQVJvTEwyY3ZNWFJrTVcwd2F6SVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1056427,
+          "bookedEur": 665.94,
+          "nights": 3,
+          "providers": [],
+          "roomRates": [],
+          "lowestProvider": null,
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsKrw": null
+        }
+      ]
     }
   ],
   "config": {
