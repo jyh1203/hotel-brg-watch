@@ -56,9 +56,12 @@ async function collectStay(browser, stay, fx) {
     const detailUrl = buildPriceDetailUrl(searchUrl, href ?? page.url());
     await page.goto(detailUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
     await page.getByText("Prices", { exact: true }).first().waitFor({ timeout: 30000 });
+    await page.waitForFunction(() => /(?:₩|KRW\s?)[\d,]+/i.test(document.body.innerText), null, { timeout: 30000 });
     const text = await page.locator("body").innerText();
     const prices = parseGoogleHotelPrices(text, stay);
     const bookedKrw = Math.round(stay.booked.total * fx.rates[stay.booked.currency]);
+    const displayedCandidate = prices.exactCandidate ?? prices.freeCancellation ?? prices.lowestProvider;
+    if (!displayedCandidate) throw new Error("가격 후보를 찾지 못했습니다.");
     const candidate = prices.exactCandidate ?? prices.freeCancellation;
     return {
       id: stay.id,
@@ -87,7 +90,12 @@ const fx = await krwRates();
 const results = [];
 for (const stay of config.stays) {
   console.log(`Checking ${stay.hotel}...`);
-  results.push(await collectStay(browser, stay, fx));
+  let result = await collectStay(browser, stay, fx);
+  if (result.status === "error") {
+    console.log(`Retrying ${stay.hotel} after: ${result.error.split("\n")[0]}`);
+    result = await collectStay(browser, stay, fx);
+  }
+  results.push(result);
 }
 await browser.close();
 

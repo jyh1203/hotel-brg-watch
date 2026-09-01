@@ -42,6 +42,20 @@ npm run dev
 
 GitHub Actions가 매일 한국시간 00:30에 가격을 수집하고 `data/history.json`에 기록한 뒤 GitHub Pages를 갱신합니다. 저장소의 **Settings → Pages → Source**를 **GitHub Actions**로 설정해야 합니다.
 
+실행 흐름은 다음과 같습니다.
+
+1. GitHub Actions가 매일 00:30 KST에 저장소를 체크아웃합니다.
+2. Node.js와 Playwright Chromium을 설치합니다.
+3. `config/stays.json`에서 호텔·숙박일·성인 수·기준 예약가·객실 조건을 읽습니다.
+4. Frankfurter API에서 EUR/JPY→KRW 환율을 받아 기준 예약가를 원화로 환산합니다.
+5. 각 호텔을 Google Hotels에서 실제 날짜와 성인 2명 조건으로 순차 검색합니다.
+6. 헤드라인 최저가, 무료취소 요금, 객실명·침대 패턴까지 맞는 요금을 분리합니다. 가격표가 비면 한 번 재시도합니다.
+7. 결과와 수집 시각을 `data/history.json`에 최대 400회분 저장합니다.
+8. `site/data.json`을 만들고 정적 파일을 GitHub Pages에 배포합니다.
+9. 사이트는 오늘 결과를 전일의 마지막 유효 결과와 비교합니다. 오늘 수집이 실패하거나 가격표가 비면 카드 자체를 숨기지 않고 최근 유효 결과와 그 시각을 표시합니다.
+
+Actions의 `workflow_dispatch`를 사용하면 GitHub의 **Actions → Daily hotel price check → Run workflow**에서 수동 실행할 수도 있습니다.
+
 Google이 GitHub Actions 트래픽을 차단하면 해당 호텔은 오류로 남습니다. 이 경우 로컬에서 `npm run collect`를 실행하면 이력을 계속 추가할 수 있습니다.
 
 ## BRG 주의
