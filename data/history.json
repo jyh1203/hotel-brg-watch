@@ -2615,6 +2615,192 @@
           }
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-01T14:51:57.225Z",
+      "fx": {
+        "rates": {
+          "EUR": 1593.17,
+          "JPY": 8.5825
+        },
+        "dates": {
+          "EUR": "2026-09-01",
+          "JPY": "2026-09-01"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "osaka-four-points-flex",
+          "status": "error",
+          "hotel": "Four Points Flex by Sheraton Osaka Umeda",
+          "searchUrl": "https://www.google.com/travel/search?q=Four+Points+Flex+by+Sheraton+Osaka+Umeda&adults=2&hl=en&curr=JPY&ts=CAEaPQoTEhEKCC9tLzBkcXl3OgVPc2FrYRoAEhYSEgoHCOoPEAkYERIHCOoPEAkYFRgCMgIIASoGCgQ6SlBZGgA",
+          "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByText('Four Points Flex by Sheraton Osaka Umeda', { exact: true }).first() to be visible\n",
+          "marriott": {
+            "status": "ok",
+            "room": "1Bed Small Double, Guest room, 1 Twin",
+            "nightlyAmount": 14421,
+            "currency": "JPY",
+            "totalAmount": 57684,
+            "taxesIncluded": false,
+            "totalKrw": 495073,
+            "sourceUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?lengthOfStay=4&fromDate=09%2F17%2F2026&toDate=09%2F21%2F2026&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=OSAUU&useRewardsPoints=false&flexibleDateSearch=false&t-start=09%2F17%2F2026&t-end=09%2F21%2F2026&fromDateDefaultFormat=09%2F17%2F2026&toDateDefaultFormat=09%2F21%2F2026&fromToDate_submit=09%2F21%2F2026&fromToDate=09%2F17%2F2026&roomPoolCode=sngl",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/osauu-four-points-flex-osaka-umeda/rooms/",
+            "note": "Marriott 공개 최저 일반요금. 기본 화면은 세금·요금 제외 표시이므로 BRG 제출 전 결제 단계 총액 확인 필요"
+          }
+        },
+        {
+          "id": "madrid-carlton",
+          "status": "error",
+          "hotel": "AC Hotel Carlton Madrid",
+          "searchUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&curr=EUR&ts=CAEaPgoUEhIKCC9tLzA1Nl95OgZNYWRyaWQaABIWEhIKBwjrDxAEGAMSBwjrDxAEGAcYAjICCAEqBgoEOkVVUhoA",
+          "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Done' })\n    - locator resolved to <button data-id=\"iib5kc\" aria-label=\"Done\" jscontroller=\"soHxf\" data-idom-class=\"nCP5yc AjY5Oe DuMIQc LQeN7 z18xM rtW97 Q74FEc Pn8YIe undefined\" class=\"VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc LQeN7 z18xM rtW97 Q74FEc Pn8YIe undefined\" jsaction=\"click:cOuCgd(preventDefault=true); mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc; touchcancel:JMtRjd; focus:AHmuwe; blur:O22p3e; conte…>…</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not stable\n    - retrying click action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and stable\n    - element is not stable\n  - retrying click action\n    - waiting 100ms\n    - waiting for element to be visible, enabled and stable\n  - element was detached from the DOM, retrying\n",
+          "marriott": {
+            "status": "ok",
+            "room": "Standard King Room, Guest room, 1 King",
+            "nightlyAmount": 166,
+            "currency": "EUR",
+            "totalAmount": 666,
+            "taxesIncluded": false,
+            "totalKrw": 1061051,
+            "sourceUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?lengthOfStay=4&fromDate=04%2F03%2F2027&toDate=04%2F07%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=MADCA&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F03%2F2027&t-end=04%2F07%2F2027&fromDateDefaultFormat=04%2F03%2F2027&toDateDefaultFormat=04%2F07%2F2027&fromToDate_submit=04%2F07%2F2027&fromToDate=04%2F03%2F2027&roomPoolCode=doub",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+            "note": "Marriott 공개 최저 일반요금. 기본 화면은 세금·요금 제외 표시이므로 BRG 제출 전 결제 단계 총액 확인 필요"
+          }
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "ok",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "detailUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGAcSBwjrDxAEGAoyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwjQuKGU0M2WAxUAAAAAHQAAAAAQBg&qs=MidDaGtJZ2I2T3RmTzF4NFliR2cwdlp5OHhNV0ozT0dZeE1GOHlFQUU&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 783840,
+          "bookedAmount": 492,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "providers": [
+            {
+              "provider": "Super.com",
+              "currency": "EUR",
+              "nightlyAmount": 118,
+              "totalAmount": 354,
+              "totalKrw": 563982
+            },
+            {
+              "provider": "Booking.com",
+              "currency": "EUR",
+              "nightlyAmount": 137,
+              "totalAmount": 411,
+              "totalKrw": 654793
+            },
+            {
+              "provider": "Bluepillow.com",
+              "currency": "EUR",
+              "nightlyAmount": 137,
+              "totalAmount": 411,
+              "totalKrw": 654793
+            }
+          ],
+          "roomRates": [
+            {
+              "currency": "EUR",
+              "nightlyAmount": 137,
+              "totalAmount": 411,
+              "context": "Booking.com · €137 · Visit site · Read Real Guest Reviews · 24/7 Customer service",
+              "freeCancellation": false,
+              "totalKrw": 654793
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 137,
+              "totalAmount": 411,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Guest Room with Twin beds · 1 double bed · €137 · Visit site · Guest Room with Twin beds",
+              "freeCancellation": false,
+              "totalKrw": 654793
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 152,
+              "totalAmount": 456,
+              "context": "Visit site · Guest Room with Twin beds · 1 double bed · Free cancellation until Apr 6 · €152 · Visit site · Vintage Guest room with Twin Beds",
+              "freeCancellation": true,
+              "totalKrw": 726486
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 209,
+              "totalAmount": 627,
+              "context": "Visit site · Vintage Guest room with Twin Beds · 1 double bed · 3 guests · €209 · Visit site · 1 more room rate",
+              "freeCancellation": false,
+              "totalKrw": 998918
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Super.com",
+            "currency": "EUR",
+            "nightlyAmount": 118,
+            "totalAmount": 354,
+            "totalKrw": 563982
+          },
+          "freeCancellation": {
+            "currency": "EUR",
+            "nightlyAmount": 152,
+            "totalAmount": 456,
+            "context": "Visit site · Guest Room with Twin beds · 1 double bed · Free cancellation until Apr 6 · €152 · Visit site · Vintage Guest room with Twin Beds",
+            "freeCancellation": true,
+            "totalKrw": 726486
+          },
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsAmount": 36,
+          "candidateSavingsKrw": 57354,
+          "marriott": {
+            "status": "ok",
+            "room": "Stylish, Guest room, 1 Double",
+            "nightlyAmount": 146,
+            "currency": "EUR",
+            "totalAmount": 438,
+            "taxesIncluded": false,
+            "totalKrw": 697808,
+            "sourceUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+            "note": "Marriott 공개 최저 일반요금. 기본 화면은 세금·요금 제외 표시이므로 BRG 제출 전 결제 단계 총액 확인 필요"
+          }
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "error",
+          "hotel": "Moxy Bordeaux",
+          "searchUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&curr=EUR&ts=CAEaQAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBoAEhYSEgoHCOsPEAQYChIHCOsPEAQYDBgCMgIIASoGCgQ6RVVSGgA",
+          "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+          "marriott": {
+            "status": "ok",
+            "room": "Moxy Sleeper, Guest room, 1 Queen",
+            "nightlyAmount": 114,
+            "currency": "EUR",
+            "totalAmount": 229,
+            "taxesIncluded": false,
+            "totalKrw": 364836,
+            "sourceUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+            "note": "Marriott 공개 최저 일반요금. 기본 화면은 세금·요금 제외 표시이므로 BRG 제출 전 결제 단계 총액 확인 필요"
+          }
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "error",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "searchUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&curr=EUR&ts=CAEaQQoXEhUKCC9tLzAxZjYyOglCYXJjZWxvbmEaABIWEhIKBwjrDxAEGA0SBwjrDxAEGBAYAjICCAEqBgoEOkVVUhoA",
+          "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+          "marriott": {
+            "status": "error",
+            "error": "동일 객실의 Marriott 공식가를 찾지 못했습니다.",
+            "sourceUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/"
+          }
+        }
+      ]
     }
   ]
 }
