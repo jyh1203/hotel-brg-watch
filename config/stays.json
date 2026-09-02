@@ -135,34 +135,6 @@
         "note": "체크인 시 예약에 사용한 동일 신용카드 실물 제시 필요"
       },
       "match": { "roomPatterns": ["classic", "king"], "requireFreeCancellation": true }
-    },
-    {
-      "id": "barcelona-four-points-2n",
-      "hotel": "Four Points by Sheraton Barcelona Diagonal",
-      "displayName": "Four Points by Sheraton Barcelona Diagonal (2박안)",
-      "city": { "name": "Barcelona", "googleEntityId": "/m/01f62" },
-      "checkIn": "2027-04-13",
-      "checkOut": "2027-04-15",
-      "adults": 2,
-      "allInEstimate": { "percent": 0.10, "fixed": 36.96, "note": "VAT 10% + 숙박 전체 고정 세금·요금 €36.96 추정" },
-      "marriott": {
-        "propertyCode": "BCNFP",
-        "slug": "four-points-barcelona-diagonal",
-        "roomPoolCode": "king",
-        "requireFreeCancellation": false
-      },
-      "booked": {
-        "currency": "EUR",
-        "roomSubtotal": 370.00,
-        "taxesAndFees": 73.96,
-        "total": 443.96,
-        "nightly": [185.00, 185.00],
-        "room": "Classic Room / 1 King Bed",
-        "cancellation": "회원 전용 변경 가능 요금",
-        "cancellationDeadline": "예약 상세에서 정확한 마감 확인 필요",
-        "note": "바르셀로나 2박 비교안; 체크인 시 예약 보장에 사용한 신용카드 확인 가능"
-      },
-      "match": { "roomPatterns": ["classic", "king"], "requireFreeCancellation": true }
     }
   ]
 }

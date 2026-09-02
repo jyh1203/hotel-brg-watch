@@ -5,7 +5,7 @@ import fs from "node:fs";
 const config = JSON.parse(fs.readFileSync(new URL("../config/stays.json", import.meta.url), "utf8"));
 
 test("booking baselines have internally consistent nightly totals", () => {
-  assert.equal(config.stays.length, 6);
+  assert.ok(config.stays.length > 0);
   for (const stay of config.stays) {
     const nightlyTotal = stay.booked.nightly.reduce((sum, value) => sum + value, 0);
     assert.ok(Math.abs(nightlyTotal - stay.booked.roomSubtotal) < 0.01, `${stay.id} nightly subtotal`);

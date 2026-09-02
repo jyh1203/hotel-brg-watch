@@ -25,7 +25,6 @@
 - Hotel Ercilla de Bilbao, 2027-04-07~10
 - Moxy Bordeaux, 2027-04-10~12
 - Four Points Barcelona Diagonal, 2027-04-13~16
-- Four Points Barcelona Diagonal 2박 비교안, 2027-04-13~15
 
 공개 저장소이므로 호텔 확인번호는 기준 데이터에 저장하지 않습니다.
 
