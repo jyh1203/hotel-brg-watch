@@ -14,14 +14,17 @@
     .chart-legend span:before{content:"";display:inline-block;width:14px;height:3px;margin-right:5px;vertical-align:middle}
     .booked-key:before{background:#d19823}.google-key:before{background:#23734d}.marriott-key:before{background:#2469a0}
     .source-links{display:flex;flex-wrap:wrap;gap:8px 18px}
+    .header-actions{display:flex;align-items:flex-end;flex-direction:column;gap:10px}
+    .trip-link{color:#fff;background:#ffffff18;border:1px solid #ffffff40;border-radius:999px;padding:9px 13px;text-decoration:none;font-size:12px;font-weight:800}
+    .trip-link:hover{background:#ffffff28}
     @media(max-width:1000px){.summary{grid-template-columns:repeat(2,1fr)}.prices.three{grid-template-columns:1fr}}
-    @media(max-width:720px){.summary{grid-template-columns:1fr}}
+    @media(max-width:720px){.summary{grid-template-columns:1fr}.header-actions{align-items:flex-start}}
   </style>
 </head>
 <body>
   <header>
     <div><p class="eyebrow">DAILY HOTEL RATE MONITOR</p><h1>Hotel BRG Watch</h1></div>
-    <p id="updated">불러오는 중…</p>
+    <div class="header-actions"><a class="trip-link" href="trip.html">스페인·프랑스 일정표 보기 →</a><p id="updated">불러오는 중…</p></div>
   </header>
   <main>
     <section class="notice"><strong>BRG 판단 원칙</strong><span>BRG 우위는 세전 객실료끼리 비교하고, 카드와 그래프는 Google·Marriott 표시가에 호텔별 세금·요금 모델을 적용한 예상 총액을 내 예약 총액과 비교합니다. 예상 총액은 최종 결제 단계에서 다시 확인해야 하며 원화는 당일 환율 참고값입니다.</span></section>

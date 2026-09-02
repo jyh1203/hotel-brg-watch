@@ -12,6 +12,7 @@ on:
       - "site/data.json"
       - "site/app.js"
       - "site/index.html"
+      - "site/trip.html"
       - "site/style.css"
       - ".github/workflows/daily-check.yml"
 

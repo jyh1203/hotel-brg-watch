@@ -2,6 +2,9 @@
 
 2026년 오사카 및 2027년 스페인·프랑스 여행의 Marriott 예약가를 기준으로 Google Hotels 후보가와 Marriott 공식 공개가를 매일 확인하는 개인용 대시보드입니다.
 
+- BRG 대시보드: <https://jyh1203.github.io/hotel-brg-watch/>
+- 스페인·프랑스 일정표: <https://jyh1203.github.io/hotel-brg-watch/trip.html>
+
 ## 무엇을 보여주나
 
 - 전일 대비 가격 변화
