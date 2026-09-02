@@ -28,6 +28,7 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.equal(await page.locator(".source-links a").count(), 12);
     assert.match(await page.locator("#cards").innerText(), /EUR 기준/);
     assert.match(await page.locator("#cards").innerText(), /JPY 기준/);
+    assert.match(await page.locator("#cards").innerText(), /BRG 신청 중/);
   } finally {
     await browser.close();
     server.kill("SIGTERM");

@@ -105,6 +105,7 @@
         "room": "Moxy Sleeper / Guest Room / 1 Queen",
         "cancellation": "무료취소",
         "cancellationDeadline": "2027-04-09 23:59 (호텔 현지시간)",
+        "status": "BRG 신청 중",
         "note": "비교 시 객실료 €269와 세금 포함 총액 €278.80을 구분"
       },
       "match": { "roomPatterns": ["moxy sleeper", "queen|double"], "requireFreeCancellation": true }
