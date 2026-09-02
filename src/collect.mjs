@@ -103,6 +103,7 @@ async function collectStay(browser, stay, fx) {
       detailUrl,
       bookedKrw,
       bookedAmount: stay.booked.total,
+      bookedRoomSubtotal: stay.booked.roomSubtotal,
       bookedCurrency: stay.booked.currency,
       ...prices,
       providers: prices.providers.map(addKrwReference),
@@ -111,8 +112,8 @@ async function collectStay(browser, stay, fx) {
       freeCancellation: addKrwReference(prices.freeCancellation),
       exactCandidate: addKrwReference(prices.exactCandidate),
       candidateKind: prices.exactCandidate ? "exact" : prices.freeCancellation ? "free-cancel-review" : "headline-review",
-      candidateSavingsAmount: candidate ? stay.booked.total - candidate.totalAmount : null,
-      candidateSavingsKrw: candidate ? Math.round((stay.booked.total - candidate.totalAmount) * fx.rates[currency]) : null
+      candidateSavingsAmount: candidate ? stay.booked.roomSubtotal - candidate.totalAmount : null,
+      candidateSavingsKrw: candidate ? Math.round((stay.booked.roomSubtotal - candidate.totalAmount) * fx.rates[currency]) : null
     };
   } catch (error) {
     await fs.mkdir(artifactRoot, { recursive: true });

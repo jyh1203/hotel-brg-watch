@@ -3609,6 +3609,11 @@
         "checkIn": "2026-09-17",
         "checkOut": "2026-09-21",
         "adults": 2,
+        "allInEstimate": {
+          "percent": 0.1,
+          "fixed": 0,
+          "note": "소비세 10% 추정; 오사카 숙박세는 별도"
+        },
         "marriott": {
           "propertyCode": "OSAUU",
           "slug": "four-points-flex-osaka-umeda",
@@ -3648,6 +3653,11 @@
         "checkIn": "2027-04-03",
         "checkOut": "2027-04-07",
         "adults": 2,
+        "allInEstimate": {
+          "percent": 0.1,
+          "fixed": 0,
+          "note": "VAT 10% 추정"
+        },
         "marriott": {
           "propertyCode": "MADCA",
           "slug": "ac-hotel-carlton-madrid",
@@ -3687,6 +3697,11 @@
         "checkIn": "2027-04-07",
         "checkOut": "2027-04-10",
         "adults": 2,
+        "allInEstimate": {
+          "percent": 0,
+          "fixed": 0,
+          "note": "예약 화면상 별도 세금·요금 없음"
+        },
         "marriott": {
           "propertyCode": "BIOAK",
           "slug": "hotel-ercilla-de-bilbao-autograph-collection",
@@ -3725,6 +3740,11 @@
         "checkIn": "2027-04-10",
         "checkOut": "2027-04-12",
         "adults": 2,
+        "allInEstimate": {
+          "percent": 0,
+          "fixed": 9.8,
+          "note": "숙박 전체 고정 세금·요금 €9.80 추정"
+        },
         "marriott": {
           "propertyCode": "BODOX",
           "slug": "moxy-bordeaux",
@@ -3762,6 +3782,11 @@
         "checkIn": "2027-04-13",
         "checkOut": "2027-04-16",
         "adults": 2,
+        "allInEstimate": {
+          "percent": 0.1,
+          "fixed": 55.44,
+          "note": "VAT 10% + 숙박 전체 고정 세금·요금 €55.44 추정"
+        },
         "marriott": {
           "propertyCode": "BCNFP",
           "slug": "four-points-barcelona-diagonal",

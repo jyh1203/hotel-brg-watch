@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "30 15 * * *" # 00:30 Asia/Seoul
+    - cron: "17 21 * * *" # 06:17 Asia/Seoul fallback if GitHub delays the primary run
   push:
     branches: [main]
     paths:
@@ -24,6 +25,7 @@ concurrency:
 jobs:
   collect-and-publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -37,9 +39,9 @@ jobs:
         if: github.event_name != 'push'
       - run: npx playwright install --with-deps chromium
         if: github.event_name != 'push'
-      - run: xvfb-run -a npm run collect:full
+      - name: Collect Google Hotels and Marriott rates
+        run: xvfb-run -a npm run collect:full
         if: github.event_name != 'push'
-        continue-on-error: true
       - run: npm run build
       - name: Save collected history
         if: github.event_name != 'push'

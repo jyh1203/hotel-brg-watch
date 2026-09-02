@@ -23,8 +23,8 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.equal(await page.locator("#cards .card").count(), 5);
     assert.equal(await page.locator("#cards .chart").count(), 5);
     assert.match(await page.locator("#summary").innerText(), /5\/5\s*결과 표시/);
-    assert.match(await page.locator("#cards").innerText(), /(오늘 Google 후보가|최근 Google 후보가)/);
-    assert.match(await page.locator("#cards").innerText(), /Marriott 공식가/);
+    assert.match(await page.locator("#cards").innerText(), /(오늘 Google 예상 총액|최근 Google 예상 총액)/);
+    assert.match(await page.locator("#cards").innerText(), /Marriott 예상 총액/);
     assert.equal(await page.locator(".source-links a").count(), 10);
     assert.match(await page.locator("#cards").innerText(), /EUR 기준/);
     assert.match(await page.locator("#cards").innerText(), /JPY 기준/);
