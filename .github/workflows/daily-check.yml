@@ -13,6 +13,7 @@ on:
       - "site/app.js"
       - "site/index.html"
       - "site/trip.html"
+      - "site/trip_osaka.html"
       - "site/style.css"
       - ".github/workflows/daily-check.yml"
 

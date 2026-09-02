@@ -4,6 +4,7 @@
 
 - BRG 대시보드: <https://jyh1203.github.io/hotel-brg-watch/>
 - 스페인·프랑스 일정표: <https://jyh1203.github.io/hotel-brg-watch/trip.html>
+- 오사카 일정표: <https://jyh1203.github.io/hotel-brg-watch/trip_osaka.html>
 
 ## 무엇을 보여주나
 
