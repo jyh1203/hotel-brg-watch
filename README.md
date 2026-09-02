@@ -21,6 +21,7 @@
 - Hotel Ercilla de Bilbao, 2027-04-07~10
 - Moxy Bordeaux, 2027-04-10~12
 - Four Points Barcelona Diagonal, 2027-04-13~16
+- Four Points Barcelona Diagonal 2박 비교안, 2027-04-13~15
 
 공개 저장소이므로 호텔 확인번호는 기준 데이터에 저장하지 않습니다.
 
@@ -53,7 +54,7 @@ GitHub Actions가 매일 한국시간 00:30에 가격을 수집하고 `data/hist
 4. Frankfurter API에서 EUR/JPY→KRW 환율을 받아 원화 참고값을 만듭니다. 가격 판단 기준은 예약 통화입니다.
 5. 각 호텔을 Google Hotels에서 실제 날짜와 성인 2명 조건으로 순차 검색하며, 오사카는 JPY·유럽은 EUR로 조회합니다.
 6. 헤드라인 최저가, 무료취소 요금, 객실명·침대 패턴까지 맞는 Google 요금을 분리합니다. 가격표가 비면 한 번 재시도합니다.
-7. Xvfb 가상 화면의 실제 브라우저로 Marriott 공식 예약 페이지를 열어 동일 객실의 공개 최저 일반요금을 읽습니다. 차단 또는 품절이면 오류를 저장하고 직전 유효값을 유지합니다.
+7. Xvfb 가상 화면의 실제 브라우저로 Marriott 공식 예약 페이지를 열고 `View Rates`를 펼쳐 동일 객실의 회원 변경 가능·무료취소 요금만 읽습니다. 선불·비환불 요금은 제외하며, 차단 또는 품절이면 오류를 저장하고 직전 유효값을 유지합니다.
 8. Google 상세 가격표 링크와 Marriott 공식 예약 링크를 결과에 함께 저장합니다.
 9. 결과와 수집 시각을 `data/history.json`에 최대 400회분 저장합니다.
 10. `site/data.json`을 만들고 정적 파일을 GitHub Pages에 배포합니다.

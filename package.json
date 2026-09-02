@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "pretest": "node src/build-dashboard.mjs",
     "collect": "node src/collect.mjs",
     "collect:full": "PLAYWRIGHT_HEADFUL=1 node src/collect.mjs",
     "build": "node src/build-dashboard.mjs",

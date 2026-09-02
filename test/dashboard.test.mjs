@@ -20,12 +20,12 @@ test("dashboard renders every configured stay with currency charts", async () =>
     page.on("pageerror", (error) => errors.push(error.message));
     await page.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
     assert.deepEqual(errors, []);
-    assert.equal(await page.locator("#cards .card").count(), 5);
-    assert.equal(await page.locator("#cards .chart").count(), 5);
-    assert.match(await page.locator("#summary").innerText(), /5\/5\s*결과 표시/);
+    assert.equal(await page.locator("#cards .card").count(), 6);
+    assert.equal(await page.locator("#cards .chart").count(), 6);
+    assert.match(await page.locator("#summary").innerText(), /\d\/6\s*결과 표시/);
     assert.match(await page.locator("#cards").innerText(), /(오늘 Google 예상 총액|최근 Google 예상 총액)/);
     assert.match(await page.locator("#cards").innerText(), /Marriott 예상 총액/);
-    assert.equal(await page.locator(".source-links a").count(), 10);
+    assert.equal(await page.locator(".source-links a").count(), 12);
     assert.match(await page.locator("#cards").innerText(), /EUR 기준/);
     assert.match(await page.locator("#cards").innerText(), /JPY 기준/);
   } finally {

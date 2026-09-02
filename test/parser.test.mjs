@@ -41,15 +41,23 @@ test("parses Japanese-yen prices in the booked currency", () => {
   assert.equal(parsed.exactCandidate.totalAmount, 60000);
 });
 
-test("parses the selected room total from Marriott's official rate page", () => {
-  const text = `Currently Selected Room\nStandard King Room, Guest room, 1 King\nRoom Details\nRates from\n166EUR Avg / Night\n666 Total Per Room\nView Rates`;
+test("parses the member flexible rate and rejects the lower prepaid headline", () => {
+  const text = `Currently Selected Room\nMoxy Sleeper, Guest room, 1 Queen\nRoom Details\nRates from\n114EUR Avg / Night\n229 Total Per Room\nHide Rates\nFlexible Rate\nMOST POPULAR\nFree cancellation before or on Apr 09, 2027\nMember Rate\n134EUR Avg / Night\n269 Total Per Room\nSelect\nNon-Member Rate\n139EUR Avg / Night\n278 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\nMember Rate\n114EUR Avg / Night\n229 Total Per Room`;
   assert.deepEqual(parseMarriottRate(text), {
-    room: "Standard King Room, Guest room, 1 King",
-    nightlyAmount: 166,
+    room: "Moxy Sleeper, Guest room, 1 Queen",
+    rateName: "Member Flexible Rate",
+    cancellation: "Free cancellation before or on Apr 09, 2027",
+    nightlyAmount: 134,
     currency: "EUR",
-    totalAmount: 666,
-    taxesIncluded: false
+    totalAmount: 269,
+    taxesIncluded: false,
+    prepaid: false
   });
+});
+
+test("does not treat a prepaid-only Marriott rate as comparable", () => {
+  const text = `Currently Selected Room\nMoxy Sleeper, Guest room, 1 Queen\nRoom Details\nRates from\n114EUR Avg / Night\n229 Total Per Room\nPrepay Non-refundable Non-changeable`;
+  assert.equal(parseMarriottRate(text), null);
 });
 
 test("builds a Marriott official availability link for the booked room", () => {

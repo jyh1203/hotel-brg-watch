@@ -174,9 +174,14 @@ async function render() {
 
   document.querySelector("#cards").innerHTML = displayed.map(({ stay, current, sourceResult, sourceRun, sourceIndex, stale }) => {
     if (!sourceResult) {
+      const googleLink = current?.searchUrl ?? `https://www.google.com/travel/search?q=${encodeURIComponent(stay.hotel)}`;
+      const marriottLink = `https://www.marriott.com/en-us/hotels/${stay.marriott.propertyCode.toLowerCase()}-${stay.marriott.slug}/rooms/`;
       return `<article class="card error">
         <div class="card-head"><div><p>${stay.checkIn} → ${stay.checkOut}</p><h2>${esc(stay.hotel)}</h2></div><span class="pill failed">수집 오류</span></div>
         <p>${esc(current?.error ?? "표시할 가격 후보를 찾지 못했습니다.")}</p>
+        ${chartMarkup([], stay)}
+        <p class="room"><b>${esc(stay.booked.room)}</b><br>${esc(stay.booked.cancellation)} · ${esc(stay.booked.cancellationDeadline)}<br>예약 총액 ${money(stay.booked.total, stay.booked.currency)}</p>
+        <div class="source-links"><a href="${esc(googleLink)}" target="_blank" rel="noreferrer">Google 후보 출처·조건 확인 →</a><a href="${esc(marriottLink)}" target="_blank" rel="noreferrer">Marriott 공식가·객실 확인 →</a></div>
       </article>`;
     }
     const today = candidateOf(sourceResult);
@@ -213,7 +218,7 @@ async function render() {
     return `<article class="card ${stale ? "stale" : ""}">
       <div class="card-head"><div><p>${stay.checkIn} → ${stay.checkOut}</p><h2>${esc(stay.hotel)}</h2></div><span class="pill ${sourceResult.candidateKind === "exact" && !stale ? "match" : "review"}">${state}</span></div>
       ${currentWarning}
-      <div class="prices three"><div><span>내 예약 총액</span><b>${money(stay.booked.total, bookedCurrency)}</b><small>${bookedKrw == null ? "원화 환산 불가" : `${won.format(bookedKrw)} 참고`}</small><small>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}</small></div><div><span>${stale ? "최근 Google 예상 총액" : "오늘 Google 예상 총액"}</span><b>${money(todayAmount, bookedCurrency)}</b><small>표시가 ${money(todayRawAmount, bookedCurrency)} + 세금·요금 추정</small><small>${todayKrw == null ? "원화 환산 불가" : `${won.format(todayKrw)} 참고`} · ${delta == null ? "전일 유효 기록 없음" : `${delta > 0 ? "+" : ""}${money(delta, bookedCurrency)} vs ${dayKey(previous.run.capturedAt)}`}</small></div><div><span>${marriottStale ? "최근 Marriott 예상 총액" : "오늘 Marriott 예상 총액"}</span><b>${Number.isFinite(marriottAmount) ? money(marriottAmount, bookedCurrency) : "수집 실패"}</b><small>${Number.isFinite(marriottRawAmount) ? `공식 표시가 ${money(marriottRawAmount, bookedCurrency)} + 세금·요금 추정` : esc(current?.marriott?.error ?? "공식가 기록 없음")}</small><small>${marriottKrw == null ? "원화 환산 없음" : `${won.format(marriottKrw)} 참고`} · ${esc(stay.allInEstimate?.note ?? "")}</small></div></div>
+      <div class="prices three"><div><span>내 예약 총액</span><b>${money(stay.booked.total, bookedCurrency)}</b><small>${bookedKrw == null ? "원화 환산 불가" : `${won.format(bookedKrw)} 참고`}</small><small>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}</small></div><div><span>${stale ? "최근 Google 예상 총액" : "오늘 Google 예상 총액"}</span><b>${money(todayAmount, bookedCurrency)}</b><small>표시가 ${money(todayRawAmount, bookedCurrency)} + 세금·요금 추정</small><small>${todayKrw == null ? "원화 환산 불가" : `${won.format(todayKrw)} 참고`} · ${delta == null ? "전일 유효 기록 없음" : `${delta > 0 ? "+" : ""}${money(delta, bookedCurrency)} vs ${dayKey(previous.run.capturedAt)}`}</small></div><div><span>${marriottStale ? "최근 Marriott 예상 총액" : "오늘 Marriott 예상 총액"}</span><b>${Number.isFinite(marriottAmount) ? money(marriottAmount, bookedCurrency) : "수집 실패"}</b><small>${Number.isFinite(marriottRawAmount) ? `공식 표시가 ${money(marriottRawAmount, bookedCurrency)} + 세금·요금 추정` : esc(current?.marriott?.error ?? "공식가 기록 없음")}</small><small>${marriottRate?.rateName ? `${esc(marriottRate.rateName)} · ${esc(marriottRate.cancellation ?? "무료취소")}` : "선불·비환불 요금은 비교에서 제외"}</small><small>${marriottKrw == null ? "원화 환산 없음" : `${won.format(marriottKrw)} 참고`} · ${esc(stay.allInEstimate?.note ?? "")}</small></div></div>
       ${chartMarkup(dailySeries(runs, stay), stay)}
       <p class="room"><b>${esc(stay.booked.room)}</b><br>${esc(stay.booked.cancellation)} · ${esc(stay.booked.cancellationDeadline)}<br>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}<br>${esc(stay.booked.note)}</p>
       <p class="saving ${brgDifference > 0 && sourceResult.candidateKind !== "headline-review" ? "positive" : ""}">${comparison}</p>
