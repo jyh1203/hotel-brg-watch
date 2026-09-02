@@ -72,14 +72,14 @@
       },
       "booked": {
         "currency": "EUR",
-        "roomSubtotal": 492.00,
+        "roomSubtotal": 487.00,
         "taxesAndFees": 0.00,
-        "total": 492.00,
-        "nightly": [166.00, 156.00, 170.00],
+        "total": 487.00,
+        "nightly": [156.00, 161.00, 170.00],
         "room": "Stylish Room / Guest Room / 1 Double Bed",
         "cancellation": "무료취소",
         "cancellationDeadline": "2027-04-06 23:59 (호텔 현지시간)",
-        "note": "Marriott 화면에는 별도 세금 항목 없이 총액 €492로 표시"
+        "note": "변경 예약 기준: Marriott 화면에는 별도 세금 항목 없이 총액 €487로 표시"
       },
       "match": { "roomPatterns": ["stylish", "double"], "requireFreeCancellation": true }
     },
