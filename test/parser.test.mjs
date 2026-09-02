@@ -47,12 +47,21 @@ test("parses the member flexible rate and rejects the lower prepaid headline", (
     room: "Moxy Sleeper, Guest room, 1 Queen",
     rateName: "Member Flexible Rate",
     cancellation: "Free cancellation before or on Apr 09, 2027",
+    freeCancellation: true,
     nightlyAmount: 134,
     currency: "EUR",
     totalAmount: 269,
     taxesIncluded: false,
     prepaid: false
   });
+});
+
+test("parses a member flexible rate even when the rate card omits cancellation prose", () => {
+  const text = `Currently Selected Room\nClassic, Guest room, 1 King Super\nRoom Details\nRates from\n167EUR Avg / Night\n334 Total Per Room\nHide Rates\nFlexible Rate\nMOST POPULAR\nMember Rate\n185EUR Avg / Night\n370 Total Per Room\nSelect\nNon-Member Rate\n189EUR Avg / Night\n378 Total Per Room\nPrepay Non-refundable Non-changeable`;
+  const parsed = parseMarriottRate(text);
+  assert.equal(parsed.totalAmount, 370);
+  assert.equal(parsed.freeCancellation, false);
+  assert.equal(parsed.prepaid, false);
 });
 
 test("does not treat a prepaid-only Marriott rate as comparable", () => {

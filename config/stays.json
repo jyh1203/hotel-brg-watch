@@ -137,7 +137,8 @@
     },
     {
       "id": "barcelona-four-points-2n",
-      "hotel": "Four Points by Sheraton Barcelona Diagonal (2박안)",
+      "hotel": "Four Points by Sheraton Barcelona Diagonal",
+      "displayName": "Four Points by Sheraton Barcelona Diagonal (2박안)",
       "city": { "name": "Barcelona", "googleEntityId": "/m/01f62" },
       "checkIn": "2027-04-13",
       "checkOut": "2027-04-15",
@@ -146,7 +147,8 @@
       "marriott": {
         "propertyCode": "BCNFP",
         "slug": "four-points-barcelona-diagonal",
-        "roomPoolCode": "king"
+        "roomPoolCode": "king",
+        "requireFreeCancellation": false
       },
       "booked": {
         "currency": "EUR",

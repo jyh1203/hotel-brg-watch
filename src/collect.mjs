@@ -8,11 +8,16 @@ import { collectMarriottRate } from "./marriott.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const config = JSON.parse(await fs.readFile(path.join(root, "config/stays.json"), "utf8"));
+const requestedIds = new Set((process.env.STAY_IDS ?? "").split(",").map((id) => id.trim()).filter(Boolean));
+const stays = requestedIds.size
+  ? config.stays.filter((stay) => requestedIds.has(stay.id))
+  : config.stays;
+if (!stays.length) throw new Error("STAY_IDS와 일치하는 호텔이 없습니다.");
 const historyPath = path.join(root, "data/history.json");
 const artifactRoot = path.join(root, "artifacts", new Date().toISOString().slice(0, 10));
 
 async function krwRates() {
-  const currencies = [...new Set(config.stays.map((stay) => stay.booked.currency))];
+  const currencies = [...new Set(stays.map((stay) => stay.booked.currency))];
   const rates = {};
   const dates = {};
   const errors = {};
@@ -129,7 +134,7 @@ const collectMarriott = process.env.PLAYWRIGHT_HEADFUL === "1";
 const googleBrowser = await chromium.launch({ headless: true });
 const fx = await krwRates();
 const results = [];
-for (const stay of config.stays) {
+for (const stay of stays) {
   console.log(`Checking ${stay.hotel}...`);
   let result = await collectStay(googleBrowser, stay, fx);
   if (result.status === "error") {
@@ -151,8 +156,8 @@ if (collectMarriott) {
     timezoneId: "America/New_York",
     viewport: { width: 1365, height: 900 }
   });
-  for (let index = 0; index < config.stays.length; index += 1) {
-    const stay = config.stays[index];
+  for (let index = 0; index < stays.length; index += 1) {
+    const stay = stays[index];
     console.log(`Checking Marriott official rate for ${stay.hotel}...`);
     let marriott = await collectMarriottRate(marriottContext, stay, fx);
     if (marriott.status === "error") {
