@@ -5788,6 +5788,379 @@
           }
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-03T18:53:53.408Z",
+      "fx": {
+        "rates": {
+          "EUR": 1576.49,
+          "JPY": 8.6998
+        },
+        "dates": {
+          "EUR": "2026-09-03",
+          "JPY": "2026-09-03"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "osaka-four-points-flex",
+          "status": "error",
+          "hotel": "Four Points Flex by Sheraton Osaka Umeda",
+          "searchUrl": "https://www.google.com/travel/search?q=Four+Points+Flex+by+Sheraton+Osaka+Umeda&adults=2&hl=en&curr=JPY&ts=CAEaPQoTEhEKCC9tLzBkcXl3OgVPc2FrYRoAEhYSEgoHCOoPEAkYERIHCOoPEAkYFRgCMgIIASoGCgQ6SlBZGgA",
+          "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByText('Four Points Flex by Sheraton Osaka Umeda', { exact: true }).first() to be visible\n",
+          "marriott": {
+            "status": "error",
+            "error": "Marriott가 자동 접속을 차단했습니다.",
+            "sourceUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?lengthOfStay=4&fromDate=09%2F17%2F2026&toDate=09%2F21%2F2026&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=OSAUU&useRewardsPoints=false&flexibleDateSearch=false&t-start=09%2F17%2F2026&t-end=09%2F21%2F2026&fromDateDefaultFormat=09%2F17%2F2026&toDateDefaultFormat=09%2F21%2F2026&fromToDate_submit=09%2F21%2F2026&fromToDate=09%2F17%2F2026&roomPoolCode=sngl",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/osauu-four-points-flex-osaka-umeda/rooms/"
+          }
+        },
+        {
+          "id": "madrid-carlton",
+          "status": "ok",
+          "hotel": "AC Hotel Carlton Madrid",
+          "detailUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGAMSBwjrDxAEGAcyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwjgjNCjitOWAxUAAAAAHQAAAAAQBA&qs=MiZDaGdJN0xQNXo4eWlyOXpLQVJvTEwyY3ZNWFI0T0hacU1EQVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1156513,
+          "bookedAmount": 733.6,
+          "bookedRoomSubtotal": 666.9,
+          "bookedCurrency": "EUR",
+          "nights": 4,
+          "providers": [
+            {
+              "provider": ",",
+              "currency": "EUR",
+              "nightlyAmount": 175,
+              "totalAmount": 700,
+              "totalKrw": 1103543
+            },
+            {
+              "provider": ",",
+              "currency": "EUR",
+              "nightlyAmount": 176,
+              "totalAmount": 704,
+              "totalKrw": 1109849
+            },
+            {
+              "provider": "Nightly price with taxes + fees",
+              "currency": "EUR",
+              "nightlyAmount": 193,
+              "totalAmount": 772,
+              "totalKrw": 1217050
+            }
+          ],
+          "roomRates": [
+            {
+              "currency": "EUR",
+              "nightlyAmount": 175,
+              "totalAmount": 700,
+              "context": "Bluepillow.com · €175 · Visit site · Direct booking · Active customer support",
+              "freeCancellation": false,
+              "totalKrw": 1103543
+            }
+          ],
+          "lowestProvider": {
+            "provider": ",",
+            "currency": "EUR",
+            "nightlyAmount": 175,
+            "totalAmount": 700,
+            "totalKrw": 1103543
+          },
+          "freeCancellation": null,
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "headline-review",
+          "candidateSavingsAmount": null,
+          "candidateSavingsKrw": null,
+          "marriott": {
+            "status": "error",
+            "error": "Marriott가 자동 접속을 차단했습니다.",
+            "sourceUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?lengthOfStay=4&fromDate=04%2F03%2F2027&toDate=04%2F07%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=MADCA&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F03%2F2027&t-end=04%2F07%2F2027&fromDateDefaultFormat=04%2F03%2F2027&toDateDefaultFormat=04%2F07%2F2027&fromToDate_submit=04%2F07%2F2027&fromToDate=04%2F03%2F2027&roomPoolCode=doub",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/"
+          }
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "error",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "searchUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&curr=EUR&ts=CAEaPgoUEhIKCC9tLzAxZHp5OgZCaWxiYW8aABIWEhIKBwjrDxAEGAcSBwjrDxAEGAoYAjICCAEqBgoEOkVVUhoA",
+          "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+          "marriott": {
+            "status": "error",
+            "error": "Marriott가 자동 접속을 차단했습니다.",
+            "sourceUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/"
+          }
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&curr=EUR&ts=CAEaNAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBIaEhQKBwjrDxAEGAoSBwjrDxAEGAwYAjICEAAqBwoFOgNVU0Q&ved=2ahUKEwjY77jGitOWAxULSasCHeItHW4QrsMEegQIAxAs&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 439525,
+          "bookedAmount": 278.8,
+          "bookedRoomSubtotal": 269,
+          "bookedCurrency": "EUR",
+          "nights": 2,
+          "providers": [
+            {
+              "provider": "Super.com",
+              "currency": "EUR",
+              "nightlyAmount": 95,
+              "totalAmount": 190,
+              "totalKrw": 299533
+            },
+            {
+              "provider": "Booking.com",
+              "currency": "EUR",
+              "nightlyAmount": 108,
+              "totalAmount": 216,
+              "totalKrw": 340522
+            },
+            {
+              "provider": "Bluepillow.com",
+              "currency": "EUR",
+              "nightlyAmount": 112,
+              "totalAmount": 224,
+              "totalKrw": 353134
+            }
+          ],
+          "roomRates": [
+            {
+              "currency": "EUR",
+              "nightlyAmount": 108,
+              "totalAmount": 216,
+              "context": "Booking.com · €108 · Visit site · Read Real Guest Reviews · 24/7 Customer service",
+              "freeCancellation": false,
+              "totalKrw": 340522
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 108,
+              "totalAmount": 216,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · €108 · Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s)",
+              "freeCancellation": false,
+              "totalKrw": 340522
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 126,
+              "totalAmount": 252,
+              "context": "Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €126 · Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View",
+              "freeCancellation": true,
+              "totalKrw": 397275
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 192,
+              "totalAmount": 384,
+              "context": "Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View · 1 double bed · 4 guests · €192 · Visit site · Visit site for more options",
+              "freeCancellation": false,
+              "totalKrw": 605372
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Super.com",
+            "currency": "EUR",
+            "nightlyAmount": 95,
+            "totalAmount": 190,
+            "totalKrw": 299533
+          },
+          "freeCancellation": {
+            "currency": "EUR",
+            "nightlyAmount": 126,
+            "totalAmount": 252,
+            "context": "Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €126 · Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View",
+            "freeCancellation": true,
+            "totalKrw": 397275
+          },
+          "exactCandidate": {
+            "currency": "EUR",
+            "nightlyAmount": 126,
+            "totalAmount": 252,
+            "context": "Visit site · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €126 · Visit site · Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View",
+            "freeCancellation": true,
+            "totalKrw": 397275
+          },
+          "dateConfirmed": true,
+          "candidateKind": "exact",
+          "candidateSavingsAmount": 17,
+          "candidateSavingsKrw": 26800,
+          "marriott": {
+            "status": "error",
+            "error": "Marriott가 자동 접속을 차단했습니다.",
+            "sourceUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/"
+          }
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "ok",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGA0SBwjrDxAEGBAyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwj4ha7KitOWAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJaTlhSm5kRzJvSTNGQVJvTEwyY3ZNWFJrTVcwd2F6SVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1049848,
+          "bookedAmount": 665.94,
+          "bookedRoomSubtotal": 555,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "providers": [
+            {
+              "provider": "Expedia.com",
+              "currency": "EUR",
+              "nightlyAmount": 169,
+              "totalAmount": 507,
+              "totalKrw": 799280
+            },
+            {
+              "provider": "Hotels.com",
+              "currency": "EUR",
+              "nightlyAmount": 169,
+              "totalAmount": 507,
+              "totalKrw": 799280
+            },
+            {
+              "provider": "Orbitz.com",
+              "currency": "EUR",
+              "nightlyAmount": 169,
+              "totalAmount": 507,
+              "totalKrw": 799280
+            },
+            {
+              "provider": "Travelocity.com",
+              "currency": "EUR",
+              "nightlyAmount": 169,
+              "totalAmount": 507,
+              "totalKrw": 799280
+            },
+            {
+              "provider": "CheapTickets.com",
+              "currency": "EUR",
+              "nightlyAmount": 169,
+              "totalAmount": 507,
+              "totalKrw": 799280
+            },
+            {
+              "provider": "Booking.com",
+              "currency": "EUR",
+              "nightlyAmount": 170,
+              "totalAmount": 510,
+              "totalKrw": 804010
+            },
+            {
+              "provider": "Super.com",
+              "currency": "EUR",
+              "nightlyAmount": 181,
+              "totalAmount": 543,
+              "totalKrw": 856034
+            },
+            {
+              "provider": "Reserving",
+              "currency": "EUR",
+              "nightlyAmount": 187,
+              "totalAmount": 561,
+              "totalKrw": 884411
+            },
+            {
+              "provider": "Bluepillow.com",
+              "currency": "EUR",
+              "nightlyAmount": 188,
+              "totalAmount": 564,
+              "totalKrw": 889140
+            },
+            {
+              "provider": "Nightly price with taxes + fees",
+              "currency": "EUR",
+              "nightlyAmount": 205,
+              "totalAmount": 615,
+              "totalKrw": 969541
+            }
+          ],
+          "roomRates": [
+            {
+              "currency": "EUR",
+              "nightlyAmount": 169,
+              "totalAmount": 507,
+              "context": "Travelocity.com · Free Wi-Fi · €169 · Visit site · Classic Room, 1 King Bed",
+              "freeCancellation": false,
+              "totalKrw": 799280
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 169,
+              "totalAmount": 507,
+              "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · €169 · Visit site · Classic Room, 1 King Bed",
+              "freeCancellation": false,
+              "totalKrw": 799280
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 188,
+              "totalAmount": 564,
+              "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · €188 · Visit site · Classic Room, 1 King Bed",
+              "freeCancellation": true,
+              "totalKrw": 889140
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 200,
+              "totalAmount": 600,
+              "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · breakfast · €200 · Visit site · Visit site for more options",
+              "freeCancellation": false,
+              "totalKrw": 945894
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 169,
+              "totalAmount": 507,
+              "context": "Visit site for more options · Expedia.com · Free Wi-Fi · €169 · Visit site · Hotels.com",
+              "freeCancellation": false,
+              "totalKrw": 799280
+            },
+            {
+              "currency": "EUR",
+              "nightlyAmount": 169,
+              "totalAmount": 507,
+              "context": "Visit site · Hotels.com · Free Wi-Fi · €169 · Visit site",
+              "freeCancellation": false,
+              "totalKrw": 799280
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Expedia.com",
+            "currency": "EUR",
+            "nightlyAmount": 169,
+            "totalAmount": 507,
+            "totalKrw": 799280
+          },
+          "freeCancellation": {
+            "currency": "EUR",
+            "nightlyAmount": 188,
+            "totalAmount": 564,
+            "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · €188 · Visit site · Classic Room, 1 King Bed",
+            "freeCancellation": true,
+            "totalKrw": 889140
+          },
+          "exactCandidate": {
+            "currency": "EUR",
+            "nightlyAmount": 188,
+            "totalAmount": 564,
+            "context": "Visit site · Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · €188 · Visit site · Classic Room, 1 King Bed",
+            "freeCancellation": true,
+            "totalKrw": 889140
+          },
+          "dateConfirmed": true,
+          "candidateKind": "exact",
+          "candidateSavingsAmount": -9,
+          "candidateSavingsKrw": -14188,
+          "marriott": {
+            "status": "error",
+            "error": "Marriott가 자동 접속을 차단했습니다.",
+            "sourceUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/"
+          }
+        }
+      ]
     }
   ],
   "config": {
