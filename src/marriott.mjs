@@ -63,7 +63,8 @@ export function parseMarriottRate(text) {
     nightlyAmount: number(member[1]),
     currency: member[2].toUpperCase(),
     totalAmount: number(member[3]),
-    taxesIncluded: false,
+    taxesIncluded: null,
+    amountBasis: "unknown",
     prepaid: false
   };
 }
@@ -77,18 +78,6 @@ async function expandSelectedRoomRates(page) {
   let text = await page.locator("body").innerText({ timeout: 5000 }).catch(() => "");
   if (/Flexible Rate/i.test(text)) return text;
 
-  // Marriott의 React 카드가 일반 자동 클릭을 무시하는 경우 실제 onClick을 호출한다.
-  await button.evaluate((element) => {
-    const key = Object.keys(element).find((name) => name.startsWith("__reactProps"));
-    const onClick = key && element[key]?.onClick;
-    if (typeof onClick !== "function") return;
-    onClick({
-      preventDefault() {},
-      stopPropagation() {},
-      currentTarget: element,
-      target: element
-    });
-  });
   for (let attempt = 0; attempt < 15; attempt += 1) {
     await page.waitForTimeout(1000);
     text = await page.locator("body").innerText({ timeout: 5000 }).catch(() => "");
@@ -106,11 +95,11 @@ export async function collectMarriottRate(context, stay, fx) {
     let text = "";
     for (let attempt = 0; attempt < 65; attempt += 1) {
       text = await page.locator("body").innerText({ timeout: 5000 }).catch(() => "");
-      if (text.includes("Total Per Room") || text.includes("Access Denied")) break;
+      if (/Total Per Room|Access Denied|Flexible Rate/i.test(text) || await page.locator('button[data-testid="rate-button"]').first().isVisible().catch(() => false)) break;
       await page.waitForTimeout(1000);
     }
     if (text.includes("Access Denied")) throw new Error("Marriott가 자동 접속을 차단했습니다.");
-    text = await expandSelectedRoomRates(page);
+    if (!parseMarriottRate(text)) text = await expandSelectedRoomRates(page);
     const rate = parseMarriottRate(text);
     if (!rate) throw new Error("동일 객실의 회원 변경 가능 공식가를 찾지 못했습니다.");
     if (stay.marriott.requireFreeCancellation !== false && !rate.freeCancellation) {
@@ -122,14 +111,15 @@ export async function collectMarriottRate(context, stay, fx) {
     return {
       status: "ok",
       ...rate,
-      comparable: true,
+      comparable: false,
+      capturedAt: new Date().toISOString(),
       totalKrw: Math.round(rate.totalAmount * fx.rates[rate.currency]),
       sourceUrl,
       officialUrl,
       note: `Marriott 회원 변경 가능${rate.freeCancellation ? "·무료취소" : ""} 요금. 선불·비환불 요금 제외; 세금·요금은 호텔별 예약 기준으로 추정`
     };
   } catch (error) {
-    return { status: "error", error: error.message, sourceUrl, officialUrl };
+    return { status: /차단/.test(error.message) ? "blocked" : "error", error: error.message, sourceUrl, officialUrl, capturedAt: new Date().toISOString() };
   } finally {
     await page.close();
   }

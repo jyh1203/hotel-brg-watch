@@ -130,7 +130,7 @@ async function collectStay(browser, stay, fx) {
 }
 
 await fs.mkdir(path.dirname(historyPath), { recursive: true });
-const collectMarriott = process.env.PLAYWRIGHT_HEADFUL === "1";
+const collectMarriott = process.env.SKIP_MARRIOTT !== "1";
 const googleBrowser = await chromium.launch({ headless: true });
 const fx = await krwRates();
 const results = [];
@@ -147,11 +147,9 @@ await googleBrowser.close();
 
 if (collectMarriott) {
   const marriottBrowser = await chromium.launch({
-    headless: false,
-    args: ["--disable-blink-features=AutomationControlled"]
+    headless: process.env.PLAYWRIGHT_HEADFUL !== "1"
   });
   const marriottContext = await marriottBrowser.newContext({
-    userAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
     locale: "en-US",
     timezoneId: "America/New_York",
     viewport: { width: 1365, height: 900 }
@@ -166,6 +164,14 @@ if (collectMarriott) {
       marriott = await collectMarriottRate(marriottContext, stay, fx);
     }
     results[index].marriott = marriott;
+    if (marriott.status !== "ok" && results[index].officialReference) {
+      results[index].marriott.reference = {
+        ...results[index].officialReference,
+        sourceUrl: results[index].detailUrl,
+        capturedAt: new Date().toISOString(),
+        note: "Google에 표시된 Marriott 판매가 · 객실/취소/세금 조건 미확인"
+      };
+    }
     await new Promise((resolve) => setTimeout(resolve, 2500));
   }
   await marriottContext.close();

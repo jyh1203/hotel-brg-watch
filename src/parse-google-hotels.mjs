@@ -29,16 +29,20 @@ export function parseGoogleHotelPrices(text, stay, currency = stay.booked?.curre
     const price = amount(optionArea[i], currency);
     if (!price) continue;
     const provider = optionArea[i - 1];
-    if (/visit site|room|bed|cancellation/i.test(provider)) continue;
-    providers.push({ provider, currency, nightlyAmount: price, totalAmount: price * nights });
+    if (/visit site|room|bed|cancellation|nightly|taxes|fees/i.test(provider) || !/[a-z]{2}/i.test(provider)) continue;
+    providers.push({ provider, currency, nightlyAmount: price, totalAmount: price * nights, amountBasis: "unknown", estimatedFromNightly: true, source: "google-hotels", official: /marriott|official site/i.test(provider) });
   }
 
   const roomRates = [];
   for (let i = 0; i < roomArea.length; i += 1) {
     const price = amount(roomArea[i], currency);
     if (!price) continue;
-    const context = clean(roomArea.slice(Math.max(0, i - 3), Math.min(roomArea.length, i + 3)).join(" · "));
+    let begin = i - 1;
+    while (begin >= 0 && !/visit site/i.test(roomArea[begin]) && amount(roomArea[begin], currency) == null) begin -= 1;
+    const context = clean(roomArea.slice(begin + 1, i + 1).join(" · "));
     roomRates.push({
+      amountBasis: "unknown",
+      estimatedFromNightly: true,
       currency,
       nightlyAmount: price,
       totalAmount: price * nights,
@@ -47,7 +51,8 @@ export function parseGoogleHotelPrices(text, stay, currency = stay.booked?.curre
     });
   }
 
-  const lowestProvider = providers.sort((a, b) => a.totalAmount - b.totalAmount)[0] ?? null;
+  const officialReference = providers.filter(rate => rate.official).sort((a,b) => a.totalAmount - b.totalAmount)[0] ?? null;
+  const lowestProvider = providers.filter(rate => !rate.official).sort((a, b) => a.totalAmount - b.totalAmount)[0] ?? null;
   const freeCancellation = roomRates.filter((rate) => rate.freeCancellation).sort((a, b) => a.totalAmount - b.totalAmount)[0] ?? null;
   const exactCandidates = roomRates.filter((rate) => {
     if (stay.match.requireFreeCancellation && !rate.freeCancellation) return false;
@@ -56,6 +61,7 @@ export function parseGoogleHotelPrices(text, stay, currency = stay.booked?.curre
 
   return {
     nights,
+    officialReference,
     providers,
     roomRates,
     lowestProvider,

@@ -51,7 +51,8 @@ test("parses the member flexible rate and rejects the lower prepaid headline", (
     nightlyAmount: 134,
     currency: "EUR",
     totalAmount: 269,
-    taxesIncluded: false,
+    taxesIncluded: null,
+    amountBasis: "unknown",
     prepaid: false
   });
 });

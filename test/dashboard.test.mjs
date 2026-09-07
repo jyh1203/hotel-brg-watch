@@ -26,8 +26,8 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.equal(await page.locator("#cards .card").count(), config.stays.length);
     assert.equal(await page.locator("#cards .chart").count(), config.stays.length);
     assert.match(await page.locator("#summary").innerText(), new RegExp(`\\d/${config.stays.length}\\s*결과 표시`));
-    assert.match(await page.locator("#cards").innerText(), /(오늘 Google 예상 총액|최근 Google 예상 총액)/);
-    assert.match(await page.locator("#cards").innerText(), /Marriott 예상 총액/);
+    assert.match(await page.locator("#cards").innerText(), /(오늘 Google 표시가 합계|최근 Google 표시가 합계)/);
+    assert.match(await page.locator("#cards").innerText(), /Marriott 표시가 합계/);
     assert.equal(await page.locator(".source-links a").count(), config.stays.length * 2);
     assert.match(await page.locator("#cards").innerText(), /EUR 기준/);
     assert.match(await page.locator("#cards").innerText(), /JPY 기준/);
