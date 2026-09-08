@@ -134,11 +134,10 @@ function brgMarkup(stay, result, sourceRun, stale) {
   const saved = savedQuote(stay.id);
   const base = stay.booked.roomSubtotal;
   const currency = stay.booked.currency;
-  const limit = threshold(base, false, currency);
-  const converted = threshold(base, true, currency);
+  const limit = threshold(base, currency);
   const rates = result.roomRates?.length ? result.roomRates : result.providers ?? [];
   const rows = rates.map(rate => `<tr><td>${esc(rate.provider ?? rate.context ?? "판매가")}</td><td>${money(rate.totalAmount, rate.currency ?? currency)}</td><td>세전 금액 미확인</td><td>판정 보류${stale ? " · 과거 기록" : ""}</td></tr>`).join("");
-  const manual = assess(Number(saved.official), Number(saved.offer), { currency, exchanged: saved.exchange === "yes" });
+  const manual = assess(Number(saved.official), Number(saved.offer), { currency });
   const now = Date.now();
   const quoteAge = now - Date.parse(saved.savedAt);
   const withOffset = value => /(?:Z|[+-]\d{2}:\d{2})$/.test(value ?? "") ? Date.parse(value) : NaN;
@@ -148,14 +147,13 @@ function brgMarkup(stay, result, sourceRun, stale) {
   const windowOpen = windowKnown && bookingTime <= now && now <= bookingTime + 86400000 && now <= checkinTime - 86400000;
   const timeText = !windowKnown ? "신청 기한 미확인" : windowOpen ? "입력 시각 기준 신청 기한 내" : "신청 기한 밖 · 입력 시각 확인";
   return `<section class="brg-panel"><h3>BRG 금액·신청 기준</h3>
-    <p>기존 예약 객실료 ${money(base, currency)} 기준: 동일 통화 OTA 세전 합계 <b>${money(limit.max, currency)} 이하</b> (1% 초과 차이). 환전 필요 시 환산 세전 합계 <b>${money(converted.max, currency)} 이하</b> (2% 이상 차이).</p>
+    <p>기존 예약 객실료 ${money(base, currency)} 기준: 동일 통화 OTA 세전 합계 <b>${money(limit.max, currency)} 이하</b> (1% 초과 차이).</p>
     <p>위 기준은 예약 객실료가 세금·수수료를 모두 제외한 금액일 때 유효합니다. Google의 1박 표시가 × 숙박일수는 참고 합계이며, 최종 숙박 전체 세전 합계를 확인해야 합니다.</p>
     <details><summary>수집한 각 요금 확인 (${rates.length}개)</summary><div class="rate-scroll"><table><thead><tr><th>객실·판매처</th><th>표시가 × 숙박일수</th><th>금액 기준</th><th>BRG</th></tr></thead><tbody>${rows}</tbody></table></div><p>수집 시각 ${new Date(sourceRun.capturedAt).toLocaleString("ko-KR")} · 객실명 일치는 침대·조식·취소 조건 일치를 보장하지 않습니다.</p></details>
     <details><summary>공식 화면 금액 입력·BRG 계산</summary>
     <form class="brg-form" data-id="${esc(stay.id)}">
       <label>Marriott 숙박 전체 세전 객실료 (${currency})<input name="official" type="number" min="0.01" step="0.01" required value="${esc(saved.official ?? "")}"></label>
-      <label>OTA 숙박 전체 세전 객실료 (${currency}, 환전 시 환산액)<input name="offer" type="number" min="0.01" step="0.01" required value="${esc(saved.offer ?? "")}"></label>
-      <label>OTA 원래 통화<select name="exchange"><option value="no">동일 통화</option><option value="yes" ${saved.exchange === "yes" ? "selected" : ""}>다른 통화에서 환산</option></select></label>
+      <label>OTA 숙박 전체 세전 객실료 (${currency}, 공식가와 동일 통화)<input name="offer" type="number" min="0.01" step="0.01" required value="${esc(saved.offer ?? "")}"></label>
       <label>예약 완료 시각 (UTC 오프셋 포함)<input name="bookedAt" placeholder="2026-09-07T10:00:00+09:00" value="${esc(saved.bookedAt ?? "")}"></label>
       <label>호텔 표준 체크인 시각 (UTC 오프셋 포함)<input name="checkinAt" placeholder="2026-09-17T15:00:00+09:00" value="${esc(saved.checkinAt ?? "")}"></label>
       <button type="submit">이 브라우저에 저장하고 계산</button><output></output>
@@ -262,7 +260,7 @@ async function render() {
     return `<article class="card ${stale ? "stale" : ""}">
       <div class="card-head"><div><p>${stay.checkIn} → ${stay.checkOut}</p><h2>${esc(stay.displayName ?? stay.hotel)}</h2></div><span class="pill ${sourceResult.candidateKind === "exact" && !stale ? "match" : "review"}">${state}</span></div>
       ${currentWarning}${!currentMarriott ? `<p class="freshness">${esc(current?.marriott?.error ?? "공식가 미확인")} ${current?.marriott?.reference ? `Google의 Marriott 참고 표시가 ${money(current.marriott.reference.totalAmount, bookedCurrency)} · 조건 미확인` : "아래에 공식 화면의 세전 객실료를 입력해 비교할 수 있습니다."}</p>` : ""}
-      <div class="prices three"><div><span>내 예약 총액</span><b>${money(stay.booked.total, bookedCurrency)}</b><small>${bookedKrw == null ? "원화 환산 불가" : `${won.format(bookedKrw)} 참고`}</small><small>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}</small></div><div><span>${stale ? "최근 Google 표시가 합계" : "오늘 Google 표시가 합계"}</span><b>${money(todayAmount, bookedCurrency)}</b><small>표시가 ${money(todayRawAmount, bookedCurrency)} · 세금 포함 여부 미확인</small><small>${todayKrw == null ? "원화 환산 불가" : `${won.format(todayKrw)} 참고`} · ${delta == null ? "전일 유효 기록 없음" : `${delta > 0 ? "+" : ""}${money(delta, bookedCurrency)} vs ${dayKey(previous.run.capturedAt)}`}</small></div><div><span>${marriottStale ? "최근 Marriott 표시가 합계" : "오늘 Marriott 표시가 합계"}</span><b>${Number.isFinite(marriottAmount) ? money(marriottAmount, bookedCurrency) : "자동 조회 불가"}</b><small>${Number.isFinite(marriottRawAmount) ? `공식 표시가 ${money(marriottRawAmount, bookedCurrency)} · 세금 포함 여부 미확인` : esc(current?.marriott?.error ?? "공식가 기록 없음")}</small><small>${marriottRate?.rateName ? `${esc(marriottRate.rateName)} · ${esc(marriottRate.cancellation ?? "무료취소")}` : "선불·비환불 요금은 비교에서 제외"}</small><small>${marriottKrw == null ? "원화 환산 없음" : `${won.format(marriottKrw)} 참고`} · ${marriottRun ? new Date(marriottRun.capturedAt).toLocaleString("ko-KR") : ""}</small></div></div>
+      <div class="prices three"><div><span>내 예약 총액</span><b>${money(stay.booked.total, bookedCurrency)}</b><small>${bookedKrw == null ? "원화 환산 불가" : `${won.format(bookedKrw)} 참고`}</small><small>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}</small></div><div><span>${stale ? "최근 Google 표시가 합계" : "오늘 Google 표시가 합계"}</span><b>${money(todayAmount, bookedCurrency)}</b><small>표시가 ${money(todayRawAmount, bookedCurrency)} · 세금 포함 여부 미확인</small><small>${todayKrw == null ? "원화 환산 불가" : `${won.format(todayKrw)} 참고`} · ${delta == null ? "전일 유효 기록 없음" : `${delta > 0 ? "+" : ""}${money(delta, bookedCurrency)} vs ${dayKey(previous.run.capturedAt)}`}</small></div><div><span>${marriottStale ? "최근 Marriott 표시가 합계" : "오늘 Marriott 표시가 합계"}</span><b>${Number.isFinite(marriottAmount) ? money(marriottAmount, bookedCurrency) : "자동 조회 불가"}</b><small>${Number.isFinite(marriottRawAmount) ? `공식 표시가 ${money(marriottRawAmount, bookedCurrency)} · ${marriottRate?.amountBasis === "pre-tax" ? "세금·수수료 제외" : "세금 포함 여부 미확인"}` : esc(current?.marriott?.error ?? "공식가 기록 없음")}</small><small>${marriottRate?.rateName ? `${esc(marriottRate.rateName)} · ${esc(marriottRate.cancellation ?? "무료취소")}` : "선불·비환불 요금은 비교에서 제외"}</small><small>${marriottKrw == null ? "원화 환산 없음" : `${won.format(marriottKrw)} 참고`} · ${marriottRun ? new Date(marriottRun.capturedAt).toLocaleString("ko-KR") : ""}</small></div></div>
       ${chartMarkup(dailySeries(runs, stay), stay)}
       <p class="room"><b>${esc(stay.booked.room)}</b><br>${esc(stay.booked.cancellation)} · ${esc(stay.booked.cancellationDeadline)}${stay.booked.status ? `<br><strong class="booking-status">${esc(stay.booked.status)}</strong>` : ""}<br>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}<br>${esc(stay.booked.note)}</p>
       ${brgMarkup(stay, sourceResult, sourceRun, stale)}

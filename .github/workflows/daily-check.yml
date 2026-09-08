@@ -44,17 +44,20 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]')
       - run: npx playwright install --with-deps chromium
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]')
       - name: Collect Google Hotels and Marriott rates
         run: xvfb-run -a npm run collect:full
-        if: github.event_name != 'push'
+        continue-on-error: true
+        env:
+          MARRIOTT_ONLY: ${{ contains(github.event.head_commit.message, '[collect-marriott]') && '1' || '0' }}
+        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]')
       - name: Check parsers and BRG boundaries
         run: node --test test/config.test.mjs test/parser.test.mjs test/brg.test.mjs
       - run: npm run build
       - name: Save collected history
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]')
         run: |
           git config user.name "hotel-brg-bot"
           git config user.email "hotel-brg-bot@users.noreply.github.com"

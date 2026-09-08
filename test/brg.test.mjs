@@ -2,12 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { threshold, assess } from '../site/brg.js';
 import { parseGoogleHotelPrices } from '../src/parse-google-hotels.mjs';
-test('same currency excludes exactly 1%; FX includes exactly 2%', () => {
+test('same currency excludes exactly 1%', () => {
   assert.equal(assess(100,99).pass,false);
   assert.equal(assess(100,98.99).pass,true);
-  assert.equal(assess(100,98,{exchanged:true}).pass,true);
-  assert.equal(assess(100,98.01,{exchanged:true}).pass,false);
-  assert.equal(threshold(56760,false,'JPY').max,56192);
+  assert.equal(threshold(56760,'JPY').max,56192);
   assert.equal(threshold(269).max,266.30);
   assert.equal(assess(100,90).status,'가격 차이 충족 · 조건 확인 필요');
   assert.equal(assess(0,90).pass,undefined);

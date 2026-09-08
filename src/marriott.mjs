@@ -69,58 +69,83 @@ export function parseMarriottRate(text) {
   };
 }
 
-async function expandSelectedRoomRates(page) {
-  const button = page.locator('button[data-testid="rate-button"]').first();
-  await button.waitFor({ state: "visible", timeout: 60000 });
-  await page.waitForTimeout(1500);
-  await button.click({ force: true }).catch(() => {});
-  await page.waitForTimeout(1000);
-  let text = await page.locator("body").innerText({ timeout: 5000 }).catch(() => "");
-  if (/Flexible Rate/i.test(text)) return text;
+export function monthLabel(iso) {
+  return new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${iso}T00:00:00Z`));
+}
 
-  for (let attempt = 0; attempt < 15; attempt += 1) {
-    await page.waitForTimeout(1000);
-    text = await page.locator("body").innerText({ timeout: 5000 }).catch(() => "");
-    if (/Flexible Rate/i.test(text) || /Access Denied/i.test(text)) break;
+async function pickDate(page, iso) {
+  const month = monthLabel(iso);
+  for (let step = 0; step < 13; step += 1) {
+    const table = page.getByRole("table").filter({ hasText: month });
+    if (await table.isVisible().catch(() => false)) {
+      await table.locator("td.available:not(.off)").filter({ hasText: new RegExp(`^${Number(iso.slice(8))}$`) }).click();
+      return;
+    }
+    const before = await page.locator("th.month:visible").allTextContents();
+    await page.locator("th.next.available:visible").click();
+    await page.waitForFunction(previous => Array.from(document.querySelectorAll("th.month")).some(el => !previous.includes(el.textContent)), before);
   }
-  return text;
+  throw new Error(`달력에서 ${iso} 날짜를 찾지 못했습니다.`);
 }
 
 export async function collectMarriottRate(context, stay, fx) {
   const sourceUrl = buildMarriottAvailabilityUrl(stay);
   const officialUrl = buildMarriottRoomsUrl(stay);
   const page = await context.newPage();
+  let ratePage;
   try {
-    await page.goto(sourceUrl, { waitUntil: "domcontentloaded", timeout: 90000 });
-    let text = "";
-    for (let attempt = 0; attempt < 65; attempt += 1) {
-      text = await page.locator("body").innerText({ timeout: 5000 }).catch(() => "");
-      if (/Total Per Room|Access Denied|Flexible Rate/i.test(text) || await page.locator('button[data-testid="rate-button"]').first().isVisible().catch(() => false)) break;
-      await page.waitForTimeout(1000);
+    // Start with the public booking form, which establishes the booking session.
+    // Do not navigate straight to the legacy availability endpoint without a session.
+    await page.goto(officialUrl, { waitUntil: "domcontentloaded", timeout: 90000 });
+    const cookie = page.getByRole("button", { name: "Reject All", exact: true });
+    await cookie.waitFor({ state: "visible", timeout: 8000 }).then(() => cookie.click()).catch(() => {});
+    if (/Access Denied|verify you are human/i.test(await page.locator("body").innerText())) {
+      throw new Error("Marriott가 이 실행 환경의 접속을 차단했습니다.");
     }
-    if (text.includes("Access Denied")) throw new Error("Marriott가 자동 접속을 차단했습니다.");
-    if (!parseMarriottRate(text)) text = await expandSelectedRoomRates(page);
+    await page.locator(".fromDateSection:visible").click();
+    await pickDate(page, stay.checkIn);
+    await pickDate(page, stay.checkOut);
+    await page.getByRole("button", { name: "Done", exact: true }).click();
+    await page.getByRole("button", { name: "Select number of guests dropdown", exact: true }).click();
+    // Each hotel uses a fresh context, so the booking form starts with one adult.
+    for (let n = 1; n < stay.adults; n += 1) await page.getByRole("button", { name: "Increase number of Adults", exact: true }).click();
+    await page.getByRole("button", { name: "Done", exact: true }).click();
+    const popupPromise = context.waitForEvent("page", { timeout: 60000 });
+    await page.getByRole("button", { name: "View Rates", exact: true }).first().click();
+    ratePage = await popupPromise;
+    await ratePage.waitForLoadState("domcontentloaded");
+    // The booking form may open a temporary blank tab first. Use the resulting rate list.
+    if (!/reservation/.test(ratePage.url())) {
+      await ratePage.waitForURL(/reservation/, { timeout: 60000 }).catch(() => {});
+      const actual = context.pages().find(p => /reservation\/rateListMenu/.test(p.url()));
+      if (actual) ratePage = actual;
+    }
+    await ratePage.getByRole("heading", { name: "Select a Room and Rate", exact: true }).waitFor({ timeout: 60000 });
+    const searchText = await ratePage.getByRole("search").innerText();
+    if (!searchText.includes(`${nightsBetween(stay.checkIn, stay.checkOut)} NIGHTS`) || !searchText.includes(`${stay.adults} Guests`)) throw new Error("숙박일수 또는 인원이 요청 조건과 다릅니다.");
+    const taxToggle = ratePage.getByRole("checkbox", { name: "Show with taxes and fees", exact: true });
+    await taxToggle.uncheck();
+    const pool = stay.marriott.roomPoolCode.toLowerCase();
+    const card = ratePage.getByTestId("RateCardV2").filter({ has: ratePage.locator(`a[href*="roomPoolCode=${pool}&"]`) });
+    await card.waitFor({ state: "visible", timeout: 45000 });
+    await card.getByRole("button", { name: /View Rates/ }).click();
+    await card.getByRole("heading", { name: "Flexible Rate", exact: true }).waitFor({ timeout: 30000 });
+    const text = await card.innerText();
     const rate = parseMarriottRate(text);
-    if (!rate) throw new Error("동일 객실의 회원 변경 가능 공식가를 찾지 못했습니다.");
-    if (stay.marriott.requireFreeCancellation !== false && !rate.freeCancellation) {
-      throw new Error("동일 객실의 회원 변경 가능 요금에 무료취소 문구가 없습니다.");
-    }
-    if (rate.currency !== stay.booked.currency) {
-      throw new Error(`공식가 통화 불일치 (${rate.currency})`);
-    }
-    return {
-      status: "ok",
-      ...rate,
-      comparable: false,
-      capturedAt: new Date().toISOString(),
-      totalKrw: Math.round(rate.totalAmount * fx.rates[rate.currency]),
-      sourceUrl,
-      officialUrl,
-      note: `Marriott 회원 변경 가능${rate.freeCancellation ? "·무료취소" : ""} 요금. 선불·비환불 요금 제외; 세금·요금은 호텔별 예약 기준으로 추정`
-    };
+    if (!rate) throw new Error("선택 객실의 회원 변경 가능 요금을 읽지 못했습니다.");
+    if (!rate.freeCancellation) throw new Error("무료취소 조건을 확인하지 못했습니다.");
+    if (rate.currency !== stay.booked.currency) throw new Error(`공식가 통화 불일치 (${rate.currency})`);
+    // Room Details links carry the precise requested dates in the public booking product ID.
+    // Validate visible date controls rather than trusting an old booking session.
+    const dateLabel = iso => new Intl.DateTimeFormat("en-US", { month: "short", day: "2-digit", timeZone: "UTC" }).format(new Date(`${iso}T00:00:00Z`));
+    if (![stay.checkIn, stay.checkOut].every(iso => searchText.includes(dateLabel(iso)))) throw new Error("검색 날짜가 요청과 다릅니다.");
+    return { status: "ok", ...rate, taxesIncluded: false, amountBasis: "pre-tax", collectionMethod: "official-booking-form",
+      roomPoolCode: pool, checkIn: stay.checkIn, checkOut: stay.checkOut, adults: stay.adults,
+      comparable: false, capturedAt: new Date().toISOString(), totalKrw: Math.round(rate.totalAmount * fx.rates[rate.currency]),
+      sourceUrl, officialUrl, note: "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인." };
   } catch (error) {
-    return { status: /차단/.test(error.message) ? "blocked" : "error", error: error.message, sourceUrl, officialUrl, capturedAt: new Date().toISOString() };
+    return { status: /차단/.test(error.message) ? "blocked" : "error", error: error.message.split("\n")[0], sourceUrl, officialUrl, capturedAt: new Date().toISOString() };
   } finally {
-    await page.close();
+    await Promise.all(context.pages().map(p => p.close().catch(() => {})));
   }
 }

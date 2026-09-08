@@ -136,7 +136,9 @@ const fx = await krwRates();
 const results = [];
 for (const stay of stays) {
   console.log(`Checking ${stay.hotel}...`);
-  let result = await collectStay(googleBrowser, stay, fx);
+  let result = process.env.MARRIOTT_ONLY === "1"
+    ? { id: stay.id, hotel: stay.hotel, status: "not-collected", error: "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요." }
+    : await collectStay(googleBrowser, stay, fx);
   if (result.status === "error") {
     console.log(`Retrying ${stay.hotel} after: ${result.error.split("\n")[0]}`);
     result = await collectStay(googleBrowser, stay, fx);
@@ -149,20 +151,11 @@ if (collectMarriott) {
   const marriottBrowser = await chromium.launch({
     headless: process.env.PLAYWRIGHT_HEADFUL !== "1"
   });
-  const marriottContext = await marriottBrowser.newContext({
-    locale: "en-US",
-    timezoneId: "America/New_York",
-    viewport: { width: 1365, height: 900 }
-  });
   for (let index = 0; index < stays.length; index += 1) {
     const stay = stays[index];
     console.log(`Checking Marriott official rate for ${stay.hotel}...`);
+    const marriottContext = await marriottBrowser.newContext({ locale: "en-US", timezoneId: "America/New_York", viewport: { width: 1365, height: 900 } });
     let marriott = await collectMarriottRate(marriottContext, stay, fx);
-    if (marriott.status === "error") {
-      console.log(`Retrying Marriott for ${stay.hotel} after: ${marriott.error}`);
-      await new Promise((resolve) => setTimeout(resolve, 5000));
-      marriott = await collectMarriottRate(marriottContext, stay, fx);
-    }
     results[index].marriott = marriott;
     if (marriott.status !== "ok" && results[index].officialReference) {
       results[index].marriott.reference = {
@@ -172,14 +165,14 @@ if (collectMarriott) {
         note: "Google에 표시된 Marriott 판매가 · 객실/취소/세금 조건 미확인"
       };
     }
+    await marriottContext.close();
     await new Promise((resolve) => setTimeout(resolve, 2500));
   }
-  await marriottContext.close();
   await marriottBrowser.close();
 } else {
   for (const result of results) result.marriott = {
       status: "error",
-      error: "Marriott 공식가는 PLAYWRIGHT_HEADFUL=1 실행에서 수집됩니다."
+      error: "SKIP_MARRIOTT 설정으로 공식가 수집을 생략했습니다."
   };
 }
 
@@ -190,4 +183,4 @@ history.runs = [...history.runs, run].slice(-400);
 await fs.writeFile(historyPath, `${JSON.stringify(history, null, 2)}\n`);
 console.log(JSON.stringify(run, null, 2));
 
-if (results.every((result) => result.status === "error")) process.exitCode = 2;
+if (process.env.MARRIOTT_ONLY === "1" ? results.every(result => result.marriott?.status !== "ok") : results.every(result => result.status === "error" && result.marriott?.status !== "ok")) process.exitCode = 2;
