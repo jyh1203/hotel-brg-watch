@@ -157,6 +157,23 @@ export async function collectMarriottRate(context, stay, fx) {
       : page.locator("button.room-component__view-rates").first();
     if (await roomCta.count()) await roomCta.click({ timeout: 30000 });
     else await page.getByRole("button", { name: "View Rates", exact: true }).first().click({ timeout: 30000 });
+
+    // Some properties (confirmed on AC Hotel Carlton Madrid) reopen the date
+    // picker after a room-specific CTA. In that state the calendar's apply
+    // button changes from "Done" to "View Rates"; it is the actual submission
+    // step that carries the selected room and specific dates to rateListMenu.
+    // Other properties open the rate-list tab immediately, so this remains an
+    // optional, short-lived confirmation step.
+    const calendarViewRates = page.locator("button.applyBtn:visible").filter({ hasText: /^View Rates$/ }).first();
+    const needsDateConfirmation = await calendarViewRates
+      .waitFor({ state: "visible", timeout: 5000 })
+      .then(() => true)
+      .catch(() => false);
+    if (needsDateConfirmation) {
+      stage = "confirming specific dates";
+      await calendarViewRates.click({ timeout: 30000 });
+    }
+
     const deadline = Date.now() + 90000;
     while (Date.now() < deadline) {
       const pages = context.pages();
