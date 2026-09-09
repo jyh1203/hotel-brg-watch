@@ -129,11 +129,17 @@ export async function collectMarriottRate(context, stay, fx) {
     while (Date.now() < deadline) {
       const candidates = context.pages().filter(candidate => !existingPages.has(candidate));
       const navigated = context.pages().find(candidate => /reservation\/rateListMenu/.test(candidate.url()));
-      ratePage = candidates.find(candidate => /reservation/.test(candidate.url())) ?? navigated ?? candidates[0] ?? ratePage;
+      const popupRateList = candidates.find(candidate => /reservation\/rateListMenu/.test(candidate.url()));
+      // Marriott can open an intermediate reservation tab before navigating the
+      // final rate list. Always prefer the exact rateListMenu URL over that tab.
+      ratePage = navigated ?? popupRateList ?? candidates.find(candidate => /reservation/.test(candidate.url())) ?? candidates[0] ?? ratePage;
       if (ratePage && /reservation\/rateListMenu/.test(ratePage.url())) break;
       await page.waitForTimeout(500);
     }
-    if (!ratePage) throw new Error("예약 요금 탭이 열리지 않았습니다.");
+    if (!ratePage || !/reservation\/rateListMenu/.test(ratePage.url())) {
+      const urls = context.pages().map(candidate => candidate.url()).join(", ");
+      throw new Error(`최종 요금 탭이 열리지 않았습니다 (${urls})`);
+    }
     await ratePage.waitForLoadState("domcontentloaded", { timeout: 30000 }).catch(() => {});
     stage = "loading rate list";
     await ratePage.getByRole("heading", { name: "Select a Room and Rate", exact: true }).waitFor({ state: "visible", timeout: 60000 });
