@@ -166,16 +166,13 @@ export async function collectMarriottRate(context, stay, fx) {
       if (/reservation\/rateListMenu|reservation\/availabilitySearch/.test(ratePage.url())) break;
       await page.waitForTimeout(500);
     }
-    // The form may open the legacy availability tab first, or a bare
-    // rateListMenu URL that Akamai rejects in CI. Use Marriott's `/mi/` alias
-    // with the full booking query; it is the same public rate-list application
-    // but accepted by the edge layer and keeps the current session cookies.
-    const rateListUrl = `https://www.marriott.com/mi/reservation/rateListMenu.mi?${requestedParams.toString()}`;
-    await ratePage.goto(rateListUrl, { waitUntil: "domcontentloaded", timeout: debugRun ? 30000 : 90000 });
+    // Keep the rate-list tab opened by Marriott's own room button. Re-navigating
+    // to a hand-built /mi/ URL discards the signed booking session and can trigger
+    // Akamai Access Denied, especially for logged-in member rates.
     if (!/reservation\/rateListMenu/.test(ratePage.url())) {
       throw new Error(`요금 목록 전환 실패 (${context.pages().map(candidate => candidate.url()).join(", ")})`);
     }
-    await ratePage.waitForLoadState("domcontentloaded", { timeout: 30000 }).catch(() => {});
+    await ratePage.waitForLoadState("domcontentloaded", { timeout: debugRun ? 15000 : 30000 }).catch(() => {});
     stage = "loading rate list";
     await ratePage.getByRole("heading", { name: /Select a Room and Rate|객실.*요금/i }).waitFor({ state: "visible", timeout: debugRun ? 15000 : 60000 });
     const searchText = await ratePage.getByRole("search").innerText();
