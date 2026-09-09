@@ -73,3 +73,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 # debug marker: headless Marriott verification
+# fallback verification
