@@ -104,7 +104,13 @@ export async function collectMarriottRate(context, stay, fx) {
   try {
     // Start with the public booking form, which establishes the booking session.
     // Do not navigate straight to the legacy availability endpoint without a session.
-    await page.goto(officialUrl, { waitUntil: "domcontentloaded", timeout: 90000 });
+    // Marriott can keep background resources open long enough that
+    // DOMContentLoaded never resolves, even though the booking form is already
+    // usable. Continue as soon as the main response is committed, then wait for
+    // the actual form control needed by the collector.
+    await page.goto(officialUrl, { waitUntil: "commit", timeout: 45000 });
+    await page.locator("body").waitFor({ state: "attached", timeout: 30000 });
+    await page.locator(".fromDateSection:visible").first().waitFor({ state: "visible", timeout: 90000 });
     const cookie = page.getByRole("button", { name: "Reject All", exact: true });
     await cookie.waitFor({ state: "visible", timeout: 8000 }).then(() => cookie.click()).catch(() => {});
     if (/Access Denied|verify you are human/i.test(await page.locator("body").innerText())) {
