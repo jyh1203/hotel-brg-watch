@@ -10535,6 +10535,52 @@
           }
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-09T09:09:57Z",
+      "mode": "manual-authenticated-verification",
+      "fx": {
+        "rates": {
+          "JPY": 8.6954
+        },
+        "dates": {
+          "JPY": "2026-09-08"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "osaka-four-points-flex",
+          "hotel": "Four Points Flex by Sheraton Osaka Umeda",
+          "status": "not-collected",
+          "error": "Google Hotels 자동 수집 결과 없음. Marriott 로그인 세션으로 공식가를 확인했습니다.",
+          "marriott": {
+            "status": "ok",
+            "room": "1Bed Small Double, Guest room, 1 Twin",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before or on Sep 15, 2026",
+            "freeCancellation": true,
+            "nightlyAmount": 18525,
+            "currency": "JPY",
+            "totalAmount": 74100,
+            "taxesIncluded": false,
+            "amountBasis": "pre-tax",
+            "prepaid": false,
+            "totalKrw": 644329,
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/osauu-four-points-flex-osaka-umeda/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/osauu-four-points-flex-osaka-umeda/rooms/",
+            "collectionMethod": "authenticated-browser-verification",
+            "roomPoolCode": "sngl",
+            "checkIn": "2026-09-17",
+            "checkOut": "2026-09-21",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-09-09T09:09:57Z",
+            "note": "Marriott 로그인 후 공식 rateListMenu 화면에서 확인한 회원 변경 가능·무료취소 요금. 자동 Actions 수집값이 아닌 검증용 단건 기록."
+          }
+        }
+      ]
     }
   ],
   "config": {
