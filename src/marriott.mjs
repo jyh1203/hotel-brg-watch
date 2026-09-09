@@ -121,35 +121,21 @@ export async function collectMarriottRate(context, stay, fx) {
     for (let n = 1; n < stay.adults; n += 1) await page.getByRole("button", { name: "Increase number of Adults", exact: true }).click();
     await page.getByRole("button", { name: "Done", exact: true }).first().click();
     stage = "opening rate list";
-    const existingPages = new Set(context.pages());
-    // Allow the booking form to commit its hidden date/guest fields before
-    // submitting. This top-level action opens the current rateListMenu flow.
+    // Allow the booking form to commit its hidden date/guest fields, then open
+    // the modern rate-list route directly. This avoids both the legacy
+    // availabilitySearch redirect and popup timing differences in CI.
     await page.waitForTimeout(1000);
-    await page.getByRole("button", { name: "View Rates", exact: true }).first().click({ timeout: 30000 });
-    // Depending on Chromium/headless mode Marriott opens a new tab or navigates the
-    // current tab. Poll both cases instead of waiting forever for a popup event.
-    const deadline = Date.now() + 60000;
-    while (Date.now() < deadline) {
-      const candidates = context.pages().filter(candidate => !existingPages.has(candidate));
-      const navigated = context.pages().find(candidate => /reservation\/rateListMenu/.test(candidate.url()));
-      const popupRateList = candidates.find(candidate => /reservation\/rateListMenu/.test(candidate.url()));
-      // Marriott can open an intermediate reservation tab before navigating the
-      // final rate list. Always prefer the exact rateListMenu URL over that tab.
-      ratePage = navigated ?? popupRateList ?? candidates.find(candidate => /reservation/.test(candidate.url())) ?? candidates[0] ?? ratePage;
-      if (ratePage && /reservation\/rateListMenu/.test(ratePage.url())) break;
-      await page.waitForTimeout(500);
-    }
-    if (!ratePage || !/reservation\/rateListMenu/.test(ratePage.url())) {
-      const urls = context.pages().map(candidate => candidate.url()).join(", ");
-      throw new Error(`최종 요금 탭이 열리지 않았습니다 (${urls})`);
-    }
-    await ratePage.waitForLoadState("domcontentloaded", { timeout: 30000 }).catch(() => {});
+    ratePage = page;
+    await ratePage.goto("https://www.marriott.com/reservation/rateListMenu.mi", { waitUntil: "domcontentloaded", timeout: 90000 });
     stage = "loading rate list";
-    await ratePage.getByRole("heading", { name: "Select a Room and Rate", exact: true }).waitFor({ state: "visible", timeout: 60000 });
+    await ratePage.getByRole("heading", { name: /Select a Room and Rate|객실.*요금/i }).waitFor({ state: "visible", timeout: 60000 });
     const searchText = await ratePage.getByRole("search").innerText();
-    if (!searchText.includes(`${nightsBetween(stay.checkIn, stay.checkOut)} NIGHTS`) || !searchText.includes(`${stay.adults} Guests`)) throw new Error("숙박일수 또는 인원이 요청 조건과 다릅니다.");
-    const taxToggle = ratePage.getByRole("checkbox", { name: "Show with taxes and fees", exact: true });
-    await taxToggle.uncheck();
+    const nights = nightsBetween(stay.checkIn, stay.checkOut);
+    const nightsMatch = searchText.includes(`${nights} NIGHTS`) || searchText.includes(`${nights} 박`);
+    const guestsMatch = searchText.includes(`${stay.adults} Guests`) || searchText.includes(`투숙객 ${stay.adults}명`);
+    if (!nightsMatch || !guestsMatch) throw new Error("숙박일수 또는 인원이 요청 조건과 다릅니다.");
+    const taxToggle = ratePage.getByRole("checkbox", { name: /Show with taxes and fees|세금.*수수료/i }).first();
+    if (await taxToggle.count()) await taxToggle.uncheck();
     const roomPool = stay.marriott.roomPoolCode.toLowerCase();
     const card = ratePage.getByTestId("RateCardV2").filter({ has: ratePage.locator(`a[href*="roomPoolCode=${roomPool}&"]`) });
     stage = "selecting configured room";
