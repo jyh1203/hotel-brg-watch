@@ -58,6 +58,24 @@ async function selectDisplayCurrency(page, currency) {
   }, currency, { timeout: 15000 });
 }
 
+async function inspectGooglePage(page, stay) {
+  const title = await page.title().catch(() => "");
+  const body = await page.locator("body").innerText().catch(() => "");
+  const normalized = body.replace(/\\s+/g, " ").trim();
+  const lower = normalized.toLowerCase();
+  let state = "unknown";
+  if (/before you continue|consent|accept all|동의/.test(lower)) state = "consent";
+  else if (/unusual traffic|captcha|access denied|our systems have detected unusual/.test(lower)) state = "blocked";
+  else if (normalized.includes(stay.hotel)) state = "hotel-result";
+  else if (/no results|did not match|찾을 수 없습니다|결과가 없습니다/.test(lower)) state = "empty";
+  return {
+    state,
+    title,
+    url: page.url(),
+    bodySample: normalized.slice(0, 500)
+  };
+}
+
 async function collectStay(browser, stay, fx) {
   const context = await browser.newContext({ locale: "ko-KR", timezoneId: "Asia/Seoul" });
   const page = await context.newPage();
@@ -123,7 +141,8 @@ async function collectStay(browser, stay, fx) {
   } catch (error) {
     await fs.mkdir(artifactRoot, { recursive: true });
     await page.screenshot({ path: path.join(artifactRoot, `${stay.id}.png`), fullPage: true }).catch(() => {});
-    return { id: stay.id, status: "error", hotel: stay.hotel, searchUrl, error: error.message };
+    const diagnostics = await inspectGooglePage(page, stay);
+    return { id: stay.id, status: "error", hotel: stay.hotel, searchUrl, error: error.message, diagnostics };
   } finally {
     await context.close();
   }
