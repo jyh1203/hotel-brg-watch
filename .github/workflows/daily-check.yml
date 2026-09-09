@@ -52,7 +52,7 @@ jobs:
         env:
           MARRIOTT_ONLY: ${{ contains(github.event.head_commit.message, '[collect-marriott]') && '1' || '0' }}
           MARRIOTT_DEBUG: ${{ contains(github.event.head_commit.message, '[debug-osaka]') && '1' || '0' }}
-          STAY_IDS: ${{ contains(github.event.head_commit.message, '[debug-osaka]') && 'osaka-four-points-flex' || '' }}
+          STAY_IDS: ${{ (contains(github.event.head_commit.message, '[debug-osaka]') || contains(github.event.head_commit.message, '[fallback-check]')) && 'osaka-four-points-flex' || '' }}
         if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]')
       - name: Check parsers and BRG boundaries
         run: node --test test/config.test.mjs test/parser.test.mjs test/brg.test.mjs
