@@ -178,7 +178,13 @@ if (collectMarriott) {
     let marriott;
     const attempts = process.env.MARRIOTT_DEBUG === "1" ? 1 : 2;
     for (let attempt = 1; attempt <= attempts; attempt += 1) {
-      const marriottContext = await marriottBrowser.newContext({ locale: "en-US", timezoneId: "America/New_York", viewport: { width: 1365, height: 900 } });
+      const marriottContextOptions = {
+        locale: "en-US",
+        timezoneId: "America/New_York",
+        viewport: { width: 1365, height: 900 }
+      };
+      if (process.env.MARRIOTT_AUTH_STATE) marriottContextOptions.storageState = process.env.MARRIOTT_AUTH_STATE;
+      const marriottContext = await marriottBrowser.newContext(marriottContextOptions);
       marriott = await collectMarriottRate(marriottContext, stay, fx);
       await marriottContext.close();
       if (marriott.status === "ok" || attempt === 2) break;
