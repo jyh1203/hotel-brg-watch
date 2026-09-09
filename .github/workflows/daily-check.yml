@@ -72,3 +72,4 @@ jobs:
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+# debug marker: headless Marriott verification
