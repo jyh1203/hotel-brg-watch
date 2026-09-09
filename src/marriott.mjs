@@ -146,7 +146,16 @@ export async function collectMarriottRate(context, stay, fx) {
       }
     }
     const existingPages = new Set(context.pages());
-    await page.getByRole("button", { name: "View Rates", exact: true }).first().click({ timeout: 30000 });
+    // Room-specific CTAs submit through Marriott's current rate-list flow. The
+    // header CTA falls back to the legacy availabilitySearch endpoint for some
+    // properties, so prefer the configured room type when the room page exposes
+    // a matching CTA (for generic pools, retain the header fallback).
+    const roomType = stay.marriott.roomPoolCode.toUpperCase();
+    const roomCta = /^(SNGL|DOUB|TWIN|HOTL)$/.test(roomType)
+      ? page.locator(`button.room-component__view-rates[data-room-type-code="${roomType}"]`).first()
+      : page.locator("button.room-component__view-rates").first();
+    if (await roomCta.count()) await roomCta.click({ timeout: 30000 });
+    else await page.getByRole("button", { name: "View Rates", exact: true }).first().click({ timeout: 30000 });
     const deadline = Date.now() + 90000;
     while (Date.now() < deadline) {
       const pages = context.pages();
