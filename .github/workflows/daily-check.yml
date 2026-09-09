@@ -51,6 +51,7 @@ jobs:
         run: xvfb-run -a npm run collect:full
         env:
           MARRIOTT_ONLY: ${{ contains(github.event.head_commit.message, '[collect-marriott]') && '1' || '0' }}
+          STAY_IDS: ${{ contains(github.event.head_commit.message, '[debug-osaka]') && 'osaka-four-points-flex' || '' }}
         if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]')
       - name: Check parsers and BRG boundaries
         run: node --test test/config.test.mjs test/parser.test.mjs test/brg.test.mjs
