@@ -124,7 +124,8 @@ export async function collectMarriottRate(context, stay, fx) {
     // Allow the booking form to commit its hidden date/guest fields, then submit
     // the form itself. Direct navigation to rateListMenu.mi is rejected by
     // Marriott's edge layer in CI, while the booking-form transition carries
-    // the signed session state needed by the rate list.
+    // the signed session state needed by the rate list. Keep this transition
+    // browser-driven so cookies, hidden form fields, and anti-bot tokens agree.
     await page.waitForTimeout(1000);
     const existingPages = new Set(context.pages());
     await page.getByRole("button", { name: "View Rates", exact: true }).first().click({ timeout: 30000 });
