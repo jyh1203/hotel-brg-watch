@@ -121,12 +121,26 @@ export async function collectMarriottRate(context, stay, fx) {
     for (let n = 1; n < stay.adults; n += 1) await page.getByRole("button", { name: "Increase number of Adults", exact: true }).click();
     await page.getByRole("button", { name: "Done", exact: true }).first().click();
     stage = "opening rate list";
-    // Allow the booking form to commit its hidden date/guest fields, then open
-    // the modern rate-list route directly. This avoids both the legacy
-    // availabilitySearch redirect and popup timing differences in CI.
+    // Allow the booking form to commit its hidden date/guest fields, then submit
+    // the form itself. Direct navigation to rateListMenu.mi is rejected by
+    // Marriott's edge layer in CI, while the booking-form transition carries
+    // the signed session state needed by the rate list.
     await page.waitForTimeout(1000);
-    ratePage = page;
-    await ratePage.goto("https://www.marriott.com/reservation/rateListMenu.mi", { waitUntil: "domcontentloaded", timeout: 90000 });
+    const existingPages = new Set(context.pages());
+    await page.getByRole("button", { name: "View Rates", exact: true }).first().click({ timeout: 30000 });
+    const deadline = Date.now() + 90000;
+    while (Date.now() < deadline) {
+      const pages = context.pages();
+      ratePage = pages.find(candidate => /reservation\/rateListMenu/.test(candidate.url()))
+        ?? pages.find(candidate => !existingPages.has(candidate) && /reservation/.test(candidate.url()))
+        ?? page;
+      if (/reservation\/rateListMenu/.test(ratePage.url())) break;
+      await page.waitForTimeout(500);
+    }
+    if (!/reservation\/rateListMenu/.test(ratePage.url())) {
+      throw new Error(`요금 목록 전환 실패 (${context.pages().map(candidate => candidate.url()).join(", ")})`);
+    }
+    await ratePage.waitForLoadState("domcontentloaded", { timeout: 30000 }).catch(() => {});
     stage = "loading rate list";
     await ratePage.getByRole("heading", { name: /Select a Room and Rate|객실.*요금/i }).waitFor({ state: "visible", timeout: 60000 });
     const searchText = await ratePage.getByRole("search").innerText();
