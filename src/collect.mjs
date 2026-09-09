@@ -190,6 +190,6 @@ history.runs = [...history.runs, run].slice(-400);
 await fs.writeFile(historyPath, `${JSON.stringify(history, null, 2)}\n`);
 console.log(JSON.stringify(run, null, 2));
 
-const marriottFailed = collectMarriott && results.every(result => result.marriott?.status !== "ok");
+const marriottFailed = collectMarriott && results.every(result => result.marriott?.status !== "ok" && !result.marriott?.reference);
 const googleFailed = process.env.MARRIOTT_ONLY !== "1" && results.every(result => result.status !== "ok");
 if (marriottFailed || googleFailed) process.exitCode = 2;
