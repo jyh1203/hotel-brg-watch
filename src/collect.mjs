@@ -131,7 +131,7 @@ async function collectStay(browser, stay, fx) {
 
 await fs.mkdir(path.dirname(historyPath), { recursive: true });
 const collectMarriott = process.env.SKIP_MARRIOTT !== "1";
-const googleBrowser = process.env.MARRIOTT_ONLY === "1" ? null : await chromium.launch({ headless: true });
+const googleBrowser = process.env.MARRIOTT_ONLY === "1" ? null : await chromium.launch({\n  headless: process.env.PLAYWRIGHT_HEADFUL !== "1"\n});
 const fx = await krwRates();
 const results = [];
 for (const stay of stays) {
