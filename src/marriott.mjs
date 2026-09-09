@@ -127,6 +127,24 @@ export async function collectMarriottRate(context, stay, fx) {
     // the signed session state needed by the rate list. Keep this transition
     // browser-driven so cookies, hidden form fields, and anti-bot tokens agree.
     await page.waitForTimeout(1000);
+    // The visible date widgets update their labels immediately, but Marriott's
+    // legacy reservation form can retain a stale `fromToDate` value (usually
+    // today). Synchronize every form field from the requested booking before
+    // submitting; otherwise the form opens availabilitySearch with mismatched
+    // dates and never reaches the signed rate-list page.
+    const requestedParams = new URL(buildMarriottAvailabilityUrl(stay)).searchParams;
+    const formInputs = await page.locator("#reservationForm input[name]").all();
+    for (const input of formInputs) {
+      const name = await input.getAttribute("name");
+      const value = requestedParams.get(name);
+      if (value !== null) {
+        await input.evaluate((element, nextValue) => {
+          element.value = nextValue;
+          element.dispatchEvent(new Event("input", { bubbles: true }));
+          element.dispatchEvent(new Event("change", { bubbles: true }));
+        }, value);
+      }
+    }
     const existingPages = new Set(context.pages());
     await page.getByRole("button", { name: "View Rates", exact: true }).first().click({ timeout: 30000 });
     const deadline = Date.now() + 90000;
