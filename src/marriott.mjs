@@ -165,13 +165,12 @@ export async function collectMarriottRate(context, stay, fx) {
       if (/reservation\/rateListMenu|reservation\/availabilitySearch/.test(ratePage.url())) break;
       await page.waitForTimeout(500);
     }
-    if (!/reservation\/rateListMenu/.test(ratePage.url())) {
-      // The form may open the legacy availability tab first. A parameterized
-      // rateList URL is accepted by Marriott's edge layer (the bare endpoint
-      // is not) and preserves the same public booking session.
-      const rateListUrl = `https://www.marriott.com/reservation/rateListMenu.mi?${requestedParams.toString()}`;
-      await ratePage.goto(rateListUrl, { waitUntil: "domcontentloaded", timeout: 90000 });
-    }
+    // The form may open the legacy availability tab first, or a bare
+    // rateListMenu URL that Akamai rejects in CI. Use Marriott's `/mi/` alias
+    // with the full booking query; it is the same public rate-list application
+    // but accepted by the edge layer and keeps the current session cookies.
+    const rateListUrl = `https://www.marriott.com/mi/reservation/rateListMenu.mi?${requestedParams.toString()}`;
+    await ratePage.goto(rateListUrl, { waitUntil: "domcontentloaded", timeout: 90000 });
     if (!/reservation\/rateListMenu/.test(ratePage.url())) {
       throw new Error(`요금 목록 전환 실패 (${context.pages().map(candidate => candidate.url()).join(", ")})`);
     }
