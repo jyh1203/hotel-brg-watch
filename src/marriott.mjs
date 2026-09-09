@@ -157,6 +157,13 @@ export async function collectMarriottRate(context, stay, fx) {
       await page.waitForTimeout(500);
     }
     if (!/reservation\/rateListMenu/.test(ratePage.url())) {
+      // The form may open the legacy availability tab first. A parameterized
+      // rateList URL is accepted by Marriott's edge layer (the bare endpoint
+      // is not) and preserves the same public booking session.
+      const rateListUrl = `https://www.marriott.com/reservation/rateListMenu.mi?${requestedParams.toString()}`;
+      await ratePage.goto(rateListUrl, { waitUntil: "domcontentloaded", timeout: 90000 });
+    }
+    if (!/reservation\/rateListMenu/.test(ratePage.url())) {
       throw new Error(`요금 목록 전환 실패 (${context.pages().map(candidate => candidate.url()).join(", ")})`);
     }
     await ratePage.waitForLoadState("domcontentloaded", { timeout: 30000 }).catch(() => {});
