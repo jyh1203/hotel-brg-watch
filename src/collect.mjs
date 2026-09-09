@@ -169,6 +169,15 @@ for (const stay of stays) {
 if (googleBrowser) await googleBrowser.close();
 
 if (collectMarriott) {
+  const marriottAuthStatePath = process.env.MARRIOTT_AUTH_STATE_B64
+    ? path.join("/tmp", `marriott-auth-${process.pid}.json`)
+    : process.env.MARRIOTT_AUTH_STATE;
+  if (process.env.MARRIOTT_AUTH_STATE_B64) {
+    await fs.writeFile(
+      marriottAuthStatePath,
+      Buffer.from(process.env.MARRIOTT_AUTH_STATE_B64, "base64")
+    );
+  }
   const marriottBrowser = await chromium.launch({
     headless: process.env.PLAYWRIGHT_HEADFUL !== "1"
   });
@@ -183,7 +192,7 @@ if (collectMarriott) {
         timezoneId: "America/New_York",
         viewport: { width: 1365, height: 900 }
       };
-      if (process.env.MARRIOTT_AUTH_STATE) marriottContextOptions.storageState = process.env.MARRIOTT_AUTH_STATE;
+      if (marriottAuthStatePath) marriottContextOptions.storageState = marriottAuthStatePath;
       const marriottContext = await marriottBrowser.newContext(marriottContextOptions);
       marriott = await collectMarriottRate(marriottContext, stay, fx);
       await marriottContext.close();
