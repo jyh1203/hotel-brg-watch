@@ -1,3 +1,47 @@
+name: Daily hotel price check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 15 * * *" # 00:30 Asia/Seoul
+    - cron: "17 21 * * *" # 06:17 Asia/Seoul fallback if GitHub delays the primary run
+  push:
+    branches: [main]
+    paths:
+      - "config/stays.json"
+      - "site/data.json"
+      - "site/app.js"
+      - "site/brg.js"
+      - "src/**"
+      - "test/**"
+      - "site/index.html"
+      - "site/trip.html"
+      - "site/trip_osaka.html"
+      - "site/pyeongchang.html"
+      - "site/style.css"
+      - ".github/workflows/daily-check.yml"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: hotel-brg-watch
+  cancel-in-progress: true
+
+jobs:
+  collect-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
           cache: npm
       - run: npm ci
         if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]')
@@ -16,3 +60,15 @@
       - name: Save collected history
         if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]')
         run: |
+          git config user.name "hotel-brg-bot"
+          git config user.email "hotel-brg-bot@users.noreply.github.com"
+          git add data/history.json site/data.json
+          git diff --cached --quiet || git commit -m "data: daily hotel prices"
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
