@@ -160,7 +160,7 @@ export async function collectMarriottRate(context, stay, fx) {
       sourceUrl, officialUrl, note: "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인." };
   } catch (error) {
     const detail = stage === "loading rate list" && ratePage
-      ? ` url=${await ratePage.url().catch(() => "")} body=${(await ratePage.locator("body").innerText({ timeout: 5000 }).catch(() => "")).replace(/\s+/g, " ").slice(0, 400)}`
+      ? ` url=${ratePage.url()} body=${(await ratePage.locator("body").innerText({ timeout: 5000 }).catch(() => "")).replace(/\s+/g, " ").slice(0, 400)}`
       : "";
     return { status: /차단/.test(error.message) ? "blocked" : "error", error: `${stage}: ${error.message.split("\n")[0]}${detail}`, sourceUrl, officialUrl, capturedAt: new Date().toISOString() };
   } finally {
