@@ -83,7 +83,11 @@ async function pickDate(page, iso) {
     }
     const before = await page.locator("th.month:visible").allTextContents();
     await page.locator("th.next.available:visible").click();
-    await page.waitForFunction(previous => Array.from(document.querySelectorAll("th.month")).some(el => !previous.includes(el.textContent)), before);
+    await page.waitForFunction(
+      previous => Array.from(document.querySelectorAll("th.month")).some(el => !previous.includes(el.textContent)),
+      before,
+      { timeout: 15000 }
+    );
   }
   throw new Error(`달력에서 ${iso} 날짜를 찾지 못했습니다.`);
 }
