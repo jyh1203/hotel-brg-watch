@@ -173,8 +173,14 @@ async function render() {
   const run = runs[runs.length - 1];
   const stays = data.config?.stays ?? [];
 
+  const lastSuccessRun = [...runs].reverse().find((candidate) =>
+    candidate.results?.some((result) => result.status === "ok" || result.marriott?.status === "ok")
+  );
+  const latestFailedCount = run
+    ? (run.results ?? []).filter((result) => result.status === "error" || ["error", "blocked"].includes(result.marriott?.status)).length
+    : 0;
   document.querySelector("#updated").textContent = run
-    ? `마지막 확인 ${new Date(run.capturedAt).toLocaleString("ko-KR")}`
+    ? `마지막 시도 ${new Date(run.capturedAt).toLocaleString("ko-KR")} · ${lastSuccessRun ? `마지막 성공 ${new Date(lastSuccessRun.capturedAt).toLocaleString("ko-KR")}` : "성공 기록 없음"}${latestFailedCount ? ` · 이번 실패 ${latestFailedCount}건` : ""}`
     : "아직 수집 기록 없음";
   if (!run) {
     document.querySelector("#cards").innerHTML = '<article class="empty">아직 수집 기록이 없습니다.</article>';
