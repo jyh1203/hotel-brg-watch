@@ -74,3 +74,4 @@ jobs:
         uses: actions/deploy-pages@v4
 # debug marker: headless Marriott verification
 # fallback verification
+# headful Google fallback verification
