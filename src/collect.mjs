@@ -178,9 +178,13 @@ if (collectMarriott) {
       Buffer.from(process.env.MARRIOTT_AUTH_STATE_B64, "base64")
     );
   }
-  const marriottBrowser = await chromium.launch({
+  const marriottLaunchOptions = {
     headless: process.env.PLAYWRIGHT_HEADFUL !== "1"
-  });
+  };
+  if (process.env.MARRIOTT_BROWSER_CHANNEL) {
+    marriottLaunchOptions.channel = process.env.MARRIOTT_BROWSER_CHANNEL;
+  }
+  const marriottBrowser = await chromium.launch(marriottLaunchOptions);
   for (let index = 0; index < stays.length; index += 1) {
     const stay = stays[index];
     console.log(`Checking Marriott official rate for ${stay.hotel}...`);
