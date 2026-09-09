@@ -9,7 +9,8 @@
     "collect:full": "PLAYWRIGHT_HEADFUL=1 node src/collect.mjs",
     "build": "node src/build-dashboard.mjs",
     "dev": "node src/server.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "auth:marriott": "node scripts/save-marriott-auth.mjs"
   },
   "dependencies": {
     "playwright": "^1.55.0"
