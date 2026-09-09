@@ -89,10 +89,13 @@ async function pickDate(page, iso) {
 }
 
 export async function collectMarriottRate(context, stay, fx) {
-  const sourceUrl = buildMarriottAvailabilityUrl(stay);
   const officialUrl = buildMarriottRoomsUrl(stay);
+  // Keep the user-facing source link on the same public booking form used for
+  // collection; the legacy availabilitySearch URL is frequently blocked.
+  const sourceUrl = officialUrl;
   const page = await context.newPage();
   let ratePage;
+  let stage = "opening official room page";
   try {
     // Start with the public booking form, which establishes the booking session.
     // Do not navigate straight to the legacy availability endpoint without a session.
@@ -102,34 +105,47 @@ export async function collectMarriottRate(context, stay, fx) {
     if (/Access Denied|verify you are human/i.test(await page.locator("body").innerText())) {
       throw new Error("Marriott가 이 실행 환경의 접속을 차단했습니다.");
     }
-    await page.locator(".fromDateSection:visible").click();
+    stage = "opening date picker";
+    await page.locator(".fromDateSection:visible").first().click({ timeout: 30000 });
+    stage = "selecting dates";
     await pickDate(page, stay.checkIn);
     await pickDate(page, stay.checkOut);
-    await page.getByRole("button", { name: "Done", exact: true }).click();
+    await page.getByRole("button", { name: "Done", exact: true }).first().click();
+    stage = "setting guest count";
     await page.getByRole("button", { name: "Select number of guests dropdown", exact: true }).click();
     // Each hotel uses a fresh context, so the booking form starts with one adult.
     for (let n = 1; n < stay.adults; n += 1) await page.getByRole("button", { name: "Increase number of Adults", exact: true }).click();
-    await page.getByRole("button", { name: "Done", exact: true }).click();
-    const popupPromise = context.waitForEvent("page", { timeout: 60000 });
-    await page.getByRole("button", { name: "View Rates", exact: true }).first().click();
-    ratePage = await popupPromise;
-    await ratePage.waitForLoadState("domcontentloaded");
-    // The booking form may open a temporary blank tab first. Use the resulting rate list.
-    if (!/reservation/.test(ratePage.url())) {
-      await ratePage.waitForURL(/reservation/, { timeout: 60000 }).catch(() => {});
-      const actual = context.pages().find(p => /reservation\/rateListMenu/.test(p.url()));
-      if (actual) ratePage = actual;
+    await page.getByRole("button", { name: "Done", exact: true }).first().click();
+    stage = "opening rate list";
+    const existingPages = new Set(context.pages());
+    await page.getByRole("button", { name: "View Rates", exact: true }).first().click({ timeout: 30000 });
+    // Depending on Chromium/headless mode Marriott opens a new tab or navigates the
+    // current tab. Poll both cases instead of waiting forever for a popup event.
+    const deadline = Date.now() + 60000;
+    while (Date.now() < deadline) {
+      const candidates = context.pages().filter(candidate => !existingPages.has(candidate));
+      const navigated = context.pages().find(candidate => /reservation\/rateListMenu/.test(candidate.url()));
+      ratePage = candidates.find(candidate => /reservation/.test(candidate.url())) ?? navigated ?? candidates[0] ?? ratePage;
+      if (ratePage && /reservation\/rateListMenu/.test(ratePage.url())) break;
+      await page.waitForTimeout(500);
     }
-    await ratePage.getByRole("heading", { name: "Select a Room and Rate", exact: true }).waitFor({ timeout: 60000 });
+    if (!ratePage) throw new Error("예약 요금 탭이 열리지 않았습니다.");
+    await ratePage.waitForLoadState("domcontentloaded", { timeout: 30000 }).catch(() => {});
+    stage = "loading rate list";
+    await ratePage.getByRole("heading", { name: "Select a Room and Rate", exact: true }).waitFor({ state: "visible", timeout: 60000 });
     const searchText = await ratePage.getByRole("search").innerText();
     if (!searchText.includes(`${nightsBetween(stay.checkIn, stay.checkOut)} NIGHTS`) || !searchText.includes(`${stay.adults} Guests`)) throw new Error("숙박일수 또는 인원이 요청 조건과 다릅니다.");
     const taxToggle = ratePage.getByRole("checkbox", { name: "Show with taxes and fees", exact: true });
     await taxToggle.uncheck();
     const pool = stay.marriott.roomPoolCode.toLowerCase();
     const card = ratePage.getByTestId("RateCardV2").filter({ has: ratePage.locator(`a[href*="roomPoolCode=${pool}&"]`) });
+    stage = "selecting configured room";
     await card.waitFor({ state: "visible", timeout: 45000 });
     await card.getByRole("button", { name: /View Rates/ }).click();
-    await card.getByRole("heading", { name: "Flexible Rate", exact: true }).waitFor({ timeout: 30000 });
+    stage = "reading member rate";
+    // The rate label is rendered as a heading in some builds and a plain div in
+    // others, so match the visible text rather than depending on one tag name.
+    await card.getByText("Flexible Rate", { exact: true }).first().waitFor({ state: "visible", timeout: 30000 });
     const text = await card.innerText();
     const rate = parseMarriottRate(text);
     if (!rate) throw new Error("선택 객실의 회원 변경 가능 요금을 읽지 못했습니다.");
@@ -144,7 +160,7 @@ export async function collectMarriottRate(context, stay, fx) {
       comparable: false, capturedAt: new Date().toISOString(), totalKrw: Math.round(rate.totalAmount * fx.rates[rate.currency]),
       sourceUrl, officialUrl, note: "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인." };
   } catch (error) {
-    return { status: /차단/.test(error.message) ? "blocked" : "error", error: error.message.split("\n")[0], sourceUrl, officialUrl, capturedAt: new Date().toISOString() };
+    return { status: /차단/.test(error.message) ? "blocked" : "error", error: `${stage}: ${error.message.split("\n")[0]}`, sourceUrl, officialUrl, capturedAt: new Date().toISOString() };
   } finally {
     await Promise.all(context.pages().map(p => p.close().catch(() => {})));
   }

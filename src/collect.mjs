@@ -131,7 +131,7 @@ async function collectStay(browser, stay, fx) {
 
 await fs.mkdir(path.dirname(historyPath), { recursive: true });
 const collectMarriott = process.env.SKIP_MARRIOTT !== "1";
-const googleBrowser = await chromium.launch({ headless: true });
+const googleBrowser = process.env.MARRIOTT_ONLY === "1" ? null : await chromium.launch({ headless: true });
 const fx = await krwRates();
 const results = [];
 for (const stay of stays) {
@@ -145,7 +145,7 @@ for (const stay of stays) {
   }
   results.push(result);
 }
-await googleBrowser.close();
+if (googleBrowser) await googleBrowser.close();
 
 if (collectMarriott) {
   const marriottBrowser = await chromium.launch({
@@ -154,8 +154,15 @@ if (collectMarriott) {
   for (let index = 0; index < stays.length; index += 1) {
     const stay = stays[index];
     console.log(`Checking Marriott official rate for ${stay.hotel}...`);
-    const marriottContext = await marriottBrowser.newContext({ locale: "en-US", timezoneId: "America/New_York", viewport: { width: 1365, height: 900 } });
-    let marriott = await collectMarriottRate(marriottContext, stay, fx);
+    let marriott;
+    for (let attempt = 1; attempt <= 2; attempt += 1) {
+      const marriottContext = await marriottBrowser.newContext({ locale: "en-US", timezoneId: "America/New_York", viewport: { width: 1365, height: 900 } });
+      marriott = await collectMarriottRate(marriottContext, stay, fx);
+      await marriottContext.close();
+      if (marriott.status === "ok" || attempt === 2) break;
+      console.log(`Retrying Marriott for ${stay.hotel} after: ${marriott.error}`);
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+    }
     results[index].marriott = marriott;
     if (marriott.status !== "ok" && results[index].officialReference) {
       results[index].marriott.reference = {
@@ -165,7 +172,6 @@ if (collectMarriott) {
         note: "Google에 표시된 Marriott 판매가 · 객실/취소/세금 조건 미확인"
       };
     }
-    await marriottContext.close();
     await new Promise((resolve) => setTimeout(resolve, 2500));
   }
   await marriottBrowser.close();
@@ -183,4 +189,6 @@ history.runs = [...history.runs, run].slice(-400);
 await fs.writeFile(historyPath, `${JSON.stringify(history, null, 2)}\n`);
 console.log(JSON.stringify(run, null, 2));
 
-if (process.env.MARRIOTT_ONLY === "1" ? results.every(result => result.marriott?.status !== "ok") : results.every(result => result.status === "error" && result.marriott?.status !== "ok")) process.exitCode = 2;
+const marriottFailed = collectMarriott && results.every(result => result.marriott?.status !== "ok");
+const googleFailed = process.env.MARRIOTT_ONLY !== "1" && results.every(result => result.status !== "ok");
+if (marriottFailed || googleFailed) process.exitCode = 2;

@@ -11,6 +11,7 @@ const marriottOf = (result) => {
   const rate = result?.marriott;
   return rate?.status === "ok" &&
     rate.prepaid === false &&
+    rate.amountBasis === "pre-tax" &&
     /Member Flexible Rate/i.test(rate.rateName ?? "")
     ? rate
     : null;

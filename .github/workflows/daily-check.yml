@@ -49,7 +49,6 @@ jobs:
         if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]')
       - name: Collect Google Hotels and Marriott rates
         run: xvfb-run -a npm run collect:full
-        continue-on-error: true
         env:
           MARRIOTT_ONLY: ${{ contains(github.event.head_commit.message, '[collect-marriott]') && '1' || '0' }}
         if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]')

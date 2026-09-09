@@ -81,3 +81,34 @@ test("builds a Marriott official availability link for the booked room", () => {
   assert.equal(url.searchParams.get("roomPoolCode"), "genr");
   assert.equal(url.searchParams.get("fromDate"), "04/10/2027");
 });
+
+test("reads a real room card with an earlier promotional member rate", () => {
+  const text = `Standard King Room, Guest room, 1 King
+Room Details
+Rates from
+166EUR Avg / Night
+666 Total Per Room
+Hide Rates
+Member Rate Stay Longer on Us
+MOST POPULAR
+Save even more when you stay longer
+Free cancellation before or on Apr 02, 2027
+Member Rate
+166EUR Avg / Night
+666 Total Per Room
+Select
+Flexible Rate
+Free cancellation before or on Apr 02, 2027
+Member Rate
+190EUR Avg / Night
+760 Total Per Room
+Select
+Non-Member Rate
+195EUR Avg / Night
+780 Total Per Room
+Select`;
+  const rate = parseMarriottRate(text);
+  assert.equal(rate.room, "Standard King Room, Guest room, 1 King");
+  assert.equal(rate.totalAmount, 760);
+  assert.equal(rate.currency, "EUR");
+});
