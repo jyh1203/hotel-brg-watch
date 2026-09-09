@@ -75,3 +75,4 @@ jobs:
 # debug marker: headless Marriott verification
 # fallback verification
 # headful Google fallback verification
+# live fallback verification after headful Google fix
