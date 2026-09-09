@@ -10581,6 +10581,40 @@
           }
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-09T10:16:50.459Z",
+      "fx": {
+        "rates": {
+          "EUR": 1558.22
+        },
+        "dates": {
+          "EUR": "2026-09-08"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "hotel": "AC Hotel Carlton Madrid",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "error",
+            "error": "opening official room page: page.goto: Timeout 90000ms exceeded.",
+            "diagnostics": {
+              "state": "error",
+              "stage": "opening official room page",
+              "url": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+              "bodySample": ""
+            },
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+            "capturedAt": "2026-09-09T10:16:47.276Z"
+          }
+        }
+      ]
     }
   ],
   "config": {
