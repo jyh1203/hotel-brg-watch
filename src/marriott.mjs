@@ -122,6 +122,9 @@ export async function collectMarriottRate(context, stay, fx) {
     await page.getByRole("button", { name: "Done", exact: true }).first().click();
     stage = "opening rate list";
     const existingPages = new Set(context.pages());
+    // Allow the booking form to commit its hidden date/guest fields before
+    // submitting. This top-level action opens the current rateListMenu flow.
+    await page.waitForTimeout(1000);
     await page.getByRole("button", { name: "View Rates", exact: true }).first().click({ timeout: 30000 });
     // Depending on Chromium/headless mode Marriott opens a new tab or navigates the
     // current tab. Poll both cases instead of waiting forever for a popup event.
@@ -147,8 +150,8 @@ export async function collectMarriottRate(context, stay, fx) {
     if (!searchText.includes(`${nightsBetween(stay.checkIn, stay.checkOut)} NIGHTS`) || !searchText.includes(`${stay.adults} Guests`)) throw new Error("숙박일수 또는 인원이 요청 조건과 다릅니다.");
     const taxToggle = ratePage.getByRole("checkbox", { name: "Show with taxes and fees", exact: true });
     await taxToggle.uncheck();
-    const pool = stay.marriott.roomPoolCode.toLowerCase();
-    const card = ratePage.getByTestId("RateCardV2").filter({ has: ratePage.locator(`a[href*="roomPoolCode=${pool}&"]`) });
+    const roomPool = stay.marriott.roomPoolCode.toLowerCase();
+    const card = ratePage.getByTestId("RateCardV2").filter({ has: ratePage.locator(`a[href*="roomPoolCode=${roomPool}&"]`) });
     stage = "selecting configured room";
     await card.waitFor({ state: "visible", timeout: 45000 });
     await card.getByRole("button", { name: /View Rates/ }).click();
@@ -166,7 +169,7 @@ export async function collectMarriottRate(context, stay, fx) {
     const dateLabel = iso => new Intl.DateTimeFormat("en-US", { month: "short", day: "2-digit", timeZone: "UTC" }).format(new Date(`${iso}T00:00:00Z`));
     if (![stay.checkIn, stay.checkOut].every(iso => searchText.includes(dateLabel(iso)))) throw new Error("검색 날짜가 요청과 다릅니다.");
     return { status: "ok", ...rate, taxesIncluded: false, amountBasis: "pre-tax", collectionMethod: "official-booking-form",
-      roomPoolCode: pool, checkIn: stay.checkIn, checkOut: stay.checkOut, adults: stay.adults,
+      roomPoolCode: roomPool, checkIn: stay.checkIn, checkOut: stay.checkOut, adults: stay.adults,
       comparable: false, capturedAt: new Date().toISOString(), totalKrw: Math.round(rate.totalAmount * fx.rates[rate.currency]),
       sourceUrl, officialUrl, note: "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인." };
   } catch (error) {
