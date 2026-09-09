@@ -153,7 +153,7 @@ export async function collectMarriottRate(context, stay, fx) {
       ratePage = pages.find(candidate => /reservation\/rateListMenu/.test(candidate.url()))
         ?? pages.find(candidate => !existingPages.has(candidate) && /reservation/.test(candidate.url()))
         ?? page;
-      if (/reservation\/rateListMenu/.test(ratePage.url())) break;
+      if (/reservation\/rateListMenu|reservation\/availabilitySearch/.test(ratePage.url())) break;
       await page.waitForTimeout(500);
     }
     if (!/reservation\/rateListMenu/.test(ratePage.url())) {
