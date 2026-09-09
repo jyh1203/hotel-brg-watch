@@ -9,7 +9,11 @@ const authDir = path.join(root, ".auth");
 const authPath = path.join(authDir, "marriott.json");
 await fs.mkdir(authDir, { recursive: true });
 
-const browser = await chromium.launch({ headless: false });
+const launchOptions = { headless: false };
+if (process.env.MARRIOTT_BROWSER_CHANNEL) {
+  launchOptions.channel = process.env.MARRIOTT_BROWSER_CHANNEL;
+}
+const browser = await chromium.launch(launchOptions);
 const context = await browser.newContext({ locale: "en-US", timezoneId: "America/New_York" });
 const page = await context.newPage();
 await page.goto("https://www.marriott.com/en-us/hotels/osauu-four-points-flex-osaka-umeda/rooms/");
