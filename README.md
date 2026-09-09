@@ -45,6 +45,18 @@ npm run dev
 
 브라우저에서 <http://localhost:4173>을 엽니다.
 
+### Marriott 로그인 상태로 수집
+
+Marriott 요금 목록이 실행 환경에서 차단되면, 사용자가 관리하는 로컬 PC에서 로그인 상태를 재사용할 수 있습니다. 비밀번호를 코드나 GitHub에 저장하지 않습니다.
+
+```bash
+npm run auth:marriott
+MARRIOTT_AUTH_STATE=.auth/marriott.json npm run collect:full
+npm run build
+```
+
+`npm run auth:marriott`가 띄운 공식 Marriott 창에서 직접 로그인한 뒤 터미널에서 Enter를 누릅니다. 저장된 `.auth/marriott.json`은 `.gitignore`로 제외됩니다. 세션이 만료되면 같은 절차로 다시 저장합니다.
+
 ## 매일 자동 실행
 
 GitHub Actions가 매일 한국시간 00:30에 가격을 수집하고 `data/history.json`에 기록한 뒤 GitHub Pages를 갱신합니다. 저장소의 **Settings → Pages → Source**를 **GitHub Actions**로 설정해야 합니다.
@@ -57,7 +69,7 @@ GitHub Actions가 매일 한국시간 00:30에 가격을 수집하고 `data/hist
 4. Frankfurter API에서 EUR/JPY→KRW 환율을 받아 원화 참고값을 만듭니다. 가격 판단 기준은 예약 통화입니다.
 5. 각 호텔을 Google Hotels에서 실제 날짜와 성인 2명 조건으로 순차 검색하며, 오사카는 JPY·유럽은 EUR로 조회합니다.
 6. 헤드라인 최저가, 무료취소 요금, 객실명·침대 패턴까지 맞는 Google 요금을 분리합니다. 가격표가 비면 한 번 재시도합니다.
-7. Xvfb 가상 화면의 실제 브라우저로 Marriott 공식 예약 페이지를 열고 `View Rates`를 펼쳐 동일 객실의 회원 변경 가능·무료취소 요금만 읽습니다. 선불·비환불 요금은 제외하며, 차단 또는 품절이면 오류를 저장하고 직전 유효값을 유지합니다.
+7. Xvfb 가상 화면의 실제 브라우저로 Marriott 공식 예약 페이지를 열고 `View Rates`를 펼쳐 동일 객실의 회원 변경 가능·무료취소 요금만 읽습니다. 실행 환경에서 로그인 상태가 제공되면 `MARRIOTT_AUTH_STATE`로 재사용하며, 객실 버튼이 연 정상 `rateListMenu.mi` 탭을 그대로 사용합니다. 선불·비환불 요금은 제외하며, 차단 또는 품절이면 오류를 저장하고 직전 유효값을 유지합니다.
 8. Google 상세 가격표 링크와 Marriott 공식 예약 링크를 결과에 함께 저장합니다.
 9. 결과와 수집 시각을 `data/history.json`에 최대 400회분 저장합니다.
 10. `site/data.json`을 만들고 정적 파일을 GitHub Pages에 배포합니다.
@@ -73,4 +85,4 @@ Google이 GitHub Actions 트래픽을 차단하면 해당 호텔은 오류로 �
 - 공개된 타사 요금이어야 합니다.
 - 앱 전용·로그인 전용·비환불·패키지 요금은 기존 예약 조건과 다르면 제외됩니다.
 - Google Hotels의 최저가는 객실 조건이 생략될 수 있어 `수동 확인` 표시는 신청 근거로 사용하면 안 됩니다.
-- Marriott 수집값은 로그인하지 않은 공개 최저 일반요금이며 기본 화면상 세금·요금 제외 금액입니다. 회원가·세금 포함 최종 총액·무료취소 조건은 링크에서 재확인하세요.
+- Marriott 수집값은 공식 예약 화면에서 확인한 동일 객실·일정·인원의 요금이며, 회원 로그인 상태에서 읽은 경우 회원 요금임을 기록합니다. 세금·요금 포함 여부와 무료취소 조건은 결과 필드와 공식 링크에서 재확인하세요. 회원가·세금 포함 최종 총액·무료취소 조건은 링크에서 재확인하세요.
