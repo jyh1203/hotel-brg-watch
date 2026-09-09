@@ -94,7 +94,7 @@ async function pickDate(page, iso) {
 
 export async function collectMarriottRate(context, stay, fx) {
   const officialUrl = buildMarriottRoomsUrl(stay);
-  const debugRun = process.env.MARRIOTT_DEBUG === "1";
+  const debugRun = process.env.MARRIOTT_DEBUG === "1"; // CI marker keeps diagnostic runs short.
   // Keep the user-facing source link on the same public booking form used for
   // collection; the legacy availabilitySearch URL is frequently blocked.
   const sourceUrl = officialUrl;
