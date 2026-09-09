@@ -94,6 +94,7 @@ async function pickDate(page, iso) {
 
 export async function collectMarriottRate(context, stay, fx) {
   const officialUrl = buildMarriottRoomsUrl(stay);
+  const debugRun = process.env.MARRIOTT_DEBUG === "1";
   // Keep the user-facing source link on the same public booking form used for
   // collection; the legacy availabilitySearch URL is frequently blocked.
   const sourceUrl = officialUrl;
@@ -170,13 +171,13 @@ export async function collectMarriottRate(context, stay, fx) {
     // with the full booking query; it is the same public rate-list application
     // but accepted by the edge layer and keeps the current session cookies.
     const rateListUrl = `https://www.marriott.com/mi/reservation/rateListMenu.mi?${requestedParams.toString()}`;
-    await ratePage.goto(rateListUrl, { waitUntil: "domcontentloaded", timeout: 90000 });
+    await ratePage.goto(rateListUrl, { waitUntil: "domcontentloaded", timeout: debugRun ? 30000 : 90000 });
     if (!/reservation\/rateListMenu/.test(ratePage.url())) {
       throw new Error(`요금 목록 전환 실패 (${context.pages().map(candidate => candidate.url()).join(", ")})`);
     }
     await ratePage.waitForLoadState("domcontentloaded", { timeout: 30000 }).catch(() => {});
     stage = "loading rate list";
-    await ratePage.getByRole("heading", { name: /Select a Room and Rate|객실.*요금/i }).waitFor({ state: "visible", timeout: 60000 });
+    await ratePage.getByRole("heading", { name: /Select a Room and Rate|객실.*요금/i }).waitFor({ state: "visible", timeout: debugRun ? 15000 : 60000 });
     const searchText = await ratePage.getByRole("search").innerText();
     const nights = nightsBetween(stay.checkIn, stay.checkOut);
     const nightsMatch = searchText.includes(`${nights} NIGHTS`) || searchText.includes(`${nights} 박`);
