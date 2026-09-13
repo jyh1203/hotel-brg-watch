@@ -15264,6 +15264,153 @@
           }
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-13T23:17:06.505Z",
+      "fx": {
+        "rates": {
+          "JPY": 8.7173,
+          "EUR": 1556.56
+        },
+        "dates": {
+          "JPY": "2026-09-11",
+          "EUR": "2026-09-11"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "osaka-four-points-flex",
+          "status": "error",
+          "hotel": "Four Points Flex by Sheraton Osaka Umeda",
+          "searchUrl": "https://www.google.com/travel/search?q=Four+Points+Flex+by+Sheraton+Osaka+Umeda&adults=2&hl=en&curr=JPY&ts=CAEaPQoTEhEKCC9tLzBkcXl3OgVPc2FrYRoAEhYSEgoHCOoPEAkYERIHCOoPEAkYFRgCMgIIASoGCgQ6SlBZGgA",
+          "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByText('Four Points Flex by Sheraton Osaka Umeda', { exact: true }).first() to be visible\n",
+          "diagnostics": {
+            "state": "empty",
+            "title": "Four Points Flex by Sheraton Osaka Umeda - Google Hotel Search",
+            "url": "https://www.google.com/travel/search?q=Four%20Points%20Flex%20by%20Sheraton%20Osaka%20Umeda&adults=2&hl=en&curr=JPY&ts=CAEaPQoTEhEKCC9tLzBkcXl3OgVPc2FrYRoAEhYSEgoHCOoPEAkYERIHCOoPEAkYFRgCMgIIASoGCgQ6SlBZGgA&ved=0CAAQ5JsGahcKEwi4ueOx1uyWAxUAAAAAHQAAAAAQBQ",
+            "bodySample": "Skip to main content\nAccessibility feedback\nExplore\nFlights\nHotels\nVacation rentals\nSign in\n2\nAll filters\nPrice\nOffers\nGuest rating\nHotel class\nAmenities\nEco-certified\nSort by\nNo results\nUpdate your filters or search area to see options.\nCurrency​USD\nCalifornia, USA - From your Internet address\nLearn more\nAbout\nPrivacy\nTerms\nJoin user studies\nFeedback\nHelp Center\n\nDisplayed currencies may differ from the currencies used to book properties. Learn more\n\nUpdate list\nOff\nWalk\nDrive\nTransit\nAreas for"
+          },
+          "marriott": {
+            "status": "blocked",
+            "error": "confirming specific dates: 요금 목록 전환 실패 (https://www.marriott.com/en-us/hotels/osauu-four-points-flex-osaka-umeda/rooms/, https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=4&fromDate=09%2F17%2F2026&toDate=09%2F21%2F2026&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=OSAUU&useRewardsPoints=false&flexibleDateSearch=false&t-start=09%2F17%2F2026&t-end=09%2F21%2F2026&fromDateDefaultFormat=09%2F17%2F2026&toDateDefaultFormat=09%2F21%2F2026&fromToDate_submit=09%2F21%2F2026&fromToDate=09%2F17%2F2026&roomPoolCode=sngl)",
+            "diagnostics": {
+              "state": "blocked",
+              "stage": "confirming specific dates",
+              "url": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=4&fromDate=09%2F17%2F2026&toDate=09%2F21%2F2026&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=OSAUU&useRewardsPoints=false&flexibleDateSearch=false&t-start=09%2F17%2F2026&t-end=09%2F21%2F2026&fromDateDefaultFormat=09%2F17%2F2026&toDateDefaultFormat=09%2F21%2F2026&fromToDate_submit=09%2F21%2F2026&fromToDate=09%2F17%2F2026&roomPoolCode=sngl",
+              "bodySample": "Access Denied You don't have permission to access \"http://www.marriott.com/reservation/availabilitySearch.mi?\" on this server. Reference #18.2ba7cb17.1789341275.36205486 https://errors.edgesuite.net/18.2ba7cb17.1789341275.36205486"
+            },
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/osauu-four-points-flex-osaka-umeda/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/osauu-four-points-flex-osaka-umeda/rooms/",
+            "capturedAt": "2026-09-13T23:14:36.175Z"
+          }
+        },
+        {
+          "id": "madrid-carlton",
+          "status": "error",
+          "hotel": "AC Hotel Carlton Madrid",
+          "searchUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&curr=EUR&ts=CAEaPgoUEhIKCC9tLzA1Nl95OgZNYWRyaWQaABIWEhIKBwjrDxAEGAMSBwjrDxAEGAcYAjICCAEqBgoEOkVVUhoA",
+          "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+          "diagnostics": {
+            "state": "hotel-result",
+            "title": "AC Hotel Carlton Madrid - Google hotels",
+            "url": "https://www.google.com/travel/search?q=AC%20Hotel%20Carlton%20Madrid&adults=2&hl=en&curr=EUR&ts=CAEaIAoCGgASGBISCgcI6w8QBBgDEgcI6w8QBBgHMgIIABoAKgkKBToDRVVSGgA&ved=0CAAQ5JsGahcKEwjIiNTS1uyWAxUAAAAAHQAAAAAQAw&qs=CAEyJkNoZ0k3TFA1ejh5aXI5ektBUm9MTDJjdk1YUjRPSFpxTURBUUFR&ap=ugEGcHJpY2Vz",
+            "bodySample": "Skip to main content\nAccessibility feedback\nExplore\nFlights\nHotels\nVacation rentals\nSign in\nSkip to main content\nAll filters\nExpand\nAC Hotel Carlton Madrid · 2,155 results\nSponsored· Ikonik Gran Vía\nIkonik Gran Vía\n€164 · \n4.6\n(305)\n4-star hotel · Free cancellation\nVisit official site\nSponsored· Sixrooms.es\nCH Six Rooms\n€204 · \n4.0\n(294)\n3-star hotel · Free Wi-Fi\nVisit official site\nAC Hotel Carlton Madrid\n€145 · \n4.3\n(1.7K)\n4-star hotel · \nBreakfast ($)\nGREAT PRICE for a 4-star hotel\nView price"
+          },
+          "marriott": {
+            "status": "blocked",
+            "error": "confirming specific dates: 요금 목록 전환 실패 (https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/, https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=4&fromDate=04%2F03%2F2027&toDate=04%2F07%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=MADCA&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F03%2F2027&t-end=04%2F07%2F2027&fromDateDefaultFormat=04%2F03%2F2027&toDateDefaultFormat=04%2F07%2F2027&fromToDate_submit=04%2F07%2F2027&fromToDate=04%2F03%2F2027&roomPoolCode=doub)",
+            "diagnostics": {
+              "state": "blocked",
+              "stage": "confirming specific dates",
+              "url": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=4&fromDate=04%2F03%2F2027&toDate=04%2F07%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=MADCA&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F03%2F2027&t-end=04%2F07%2F2027&fromDateDefaultFormat=04%2F03%2F2027&toDateDefaultFormat=04%2F07%2F2027&fromToDate_submit=04%2F07%2F2027&fromToDate=04%2F03%2F2027&roomPoolCode=doub",
+              "bodySample": "Access Denied You don't have permission to access \"http://www.marriott.com/reservation/availabilitySearch.mi?\" on this server. Reference #18.590c3417.1789341311.bf25a830 https://errors.edgesuite.net/18.590c3417.1789341311.bf25a830"
+            },
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+            "capturedAt": "2026-09-13T23:15:12.483Z"
+          }
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "error",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "searchUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&curr=EUR&ts=CAEaPgoUEhIKCC9tLzAxZHp5OgZCaWxiYW8aABIWEhIKBwjrDxAEGAcSBwjrDxAEGAoYAjICCAEqBgoEOkVVUhoA",
+          "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+          "diagnostics": {
+            "state": "hotel-result",
+            "title": "Hotel Ercilla de Bilbao, Autograph Collection - Google hotels",
+            "url": "https://www.google.com/travel/search?q=Hotel%20Ercilla%20de%20Bilbao%2C%20Autograph%20Collection&adults=2&hl=en&curr=EUR&ts=CAEaIAoCGgASGBISCgcI6w8QBBgHEgcI6w8QBBgKMgIIABoAKgkKBToDRVVSGgA&ved=0CAAQ5JsGahcKEwiA2IL11uyWAxUAAAAAHQAAAAAQAw&qs=CAEyJ0Noa0lnYjZPdGZPMXg0WWJHZzB2Wnk4eE1XSjNPR1l4TUY4eUVBRQ&ap=ugEGcHJpY2Vz",
+            "bodySample": "Skip to main content\nAccessibility feedback\nExplore\nFlights\nHotels\nVacation rentals\nSign in\nSkip to main content\nAll filters (1)\nExpand\nBilbao · 4,411 results\nHotel Ercilla de Bilbao, Autograph Collection\n€137 · \n4.3\n(4.9K)\n4-star hotel · \nBreakfast ($)\nView prices\nLíbere Bilbao Ledesma\n€149 · \n4.5\n(300)\nVacation rental · \nAir conditioning\nView details\nLersundi Chic Stay\n€183 · \n4.7\n(150)\nVacation rental · \nKid-friendly\nView details\nApartamento Puerta del Camino 2\n€139 · \n4.0\n(111)\nVacation rent"
+          },
+          "marriott": {
+            "status": "blocked",
+            "error": "confirming specific dates: 요금 목록 전환 실패 (https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/, https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr)",
+            "diagnostics": {
+              "state": "blocked",
+              "stage": "confirming specific dates",
+              "url": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr",
+              "bodySample": "Access Denied You don't have permission to access \"http://www.marriott.com/reservation/availabilitySearch.mi?\" on this server. Reference #18.2ba7cb17.1789341348.36223e94 https://errors.edgesuite.net/18.2ba7cb17.1789341348.36223e94"
+            },
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+            "capturedAt": "2026-09-13T23:15:48.823Z"
+          }
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "error",
+          "hotel": "Moxy Bordeaux",
+          "searchUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&curr=EUR&ts=CAEaQAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBoAEhYSEgoHCOsPEAQYChIHCOsPEAQYDBgCMgIIASoGCgQ6RVVSGgA",
+          "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+          "diagnostics": {
+            "state": "hotel-result",
+            "title": "Moxy Bordeaux - Google hotels",
+            "url": "https://www.google.com/travel/search?q=Moxy%20Bordeaux&adults=2&hl=en&curr=EUR&ts=CAEaNgoYEhQKCC9tLzAxYjg1OghCb3JkZWF1eBoAEhoSFAoHCOsPEAQYChIHCOsPEAQYDBgCMgIIACoJCgU6A0VVUhoA&ved=0CAAQ5JsGahcKEwjIjNSX1-yWAxUAAAAAHQAAAAAQAw&qs=CAEyKENob0lsZVN4bGVIdmw3M1BBUm9OTDJjdk1URnhjR1JmZUd4elloQUI4DQ&ap=ugEGcHJpY2Vz",
+            "bodySample": "Skip to main content\nAccessibility feedback\nExplore\nFlights\nHotels\nVacation rentals\nSign in\nSkip to main content\nAll filters\nExpand\nBordeaux · 3,305 results\nSponsored· MAISON HUBERT\nMaison Hubert\n€300 · \n4.9\n(53)\nHotel · Free cancellation\nVisit official site\nSponsored· La Maison Bord'eaux Hotel\nLa Maison Bord'eaux Hotel\n€207 · \n4.5\n(354)\n4-star hotel · Free Wi-Fi\nVisit official site\nHôtel Mercure Bordeaux Château Chartrons\n€91 · \n4.2\n(2.6K)\n4-star tourist hotel · \nBreakfast ($)\nView prices\nVILLA"
+          },
+          "marriott": {
+            "status": "blocked",
+            "error": "confirming specific dates: 요금 목록 전환 실패 (https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/, https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr)",
+            "diagnostics": {
+              "state": "blocked",
+              "stage": "confirming specific dates",
+              "url": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr",
+              "bodySample": "Access Denied You don't have permission to access \"http://www.marriott.com/reservation/availabilitySearch.mi?\" on this server. Reference #18.2ba7cb17.1789341387.36235594 https://errors.edgesuite.net/18.2ba7cb17.1789341387.36235594"
+            },
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+            "capturedAt": "2026-09-13T23:16:27.726Z"
+          }
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "error",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "searchUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&curr=EUR&ts=CAEaQQoXEhUKCC9tLzAxZjYyOglCYXJjZWxvbmEaABIWEhIKBwjrDxAEGA0SBwjrDxAEGBAYAjICCAEqBgoEOkVVUhoA",
+          "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+          "diagnostics": {
+            "state": "hotel-result",
+            "title": "Four Points by Sheraton Barcelona Diagonal - Google hotels",
+            "url": "https://www.google.com/travel/search?q=Four%20Points%20by%20Sheraton%20Barcelona%20Diagonal&adults=2&hl=en&curr=EUR&ts=CAEaIAoCGgASGBISCgcI6w8QBBgNEgcI6w8QBBgQMgIIABoAKgkKBToDRVVSGgA&ved=0CAAQ5JsGahcKEwiY5vy51-yWAxUAAAAAHQAAAAAQAw&qs=CAEyJkNoZ0lpOWFKbmRHMm9JM0ZBUm9MTDJjdk1YUmtNVzB3YXpJUUFR&ap=ugEGcHJpY2Vz",
+            "bodySample": "Skip to main content\nAccessibility feedback\nExplore\nFlights\nHotels\nVacation rentals\nSign in\nSkip to main content\nAll filters\nExpand\nBarcelona · 14,781 results\nSponsored· Eurostars Grand Marina\nEurostars Grand Marina\n€211 · \n4.2\n(4.5K)\n5-star hotel · Free cancellation\nVisit official site\nSponsored· Hotel Eurostars Monumental\nHotel Eurostars Monumental\n€170 · \n4.1\n(991)\n4-star hotel · Free cancellation\nVisit official site\nFour Points by Sheraton Barcelona Diagonal\n€170 · \n4.4\n(2.6K)\n4-star hotel ·"
+          },
+          "marriott": {
+            "status": "blocked",
+            "error": "confirming specific dates: 요금 목록 전환 실패 (https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/, https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king)",
+            "diagnostics": {
+              "state": "blocked",
+              "stage": "confirming specific dates",
+              "url": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king",
+              "bodySample": "Access Denied You don't have permission to access \"http://www.marriott.com/reservation/availabilitySearch.mi?\" on this server. Reference #18.590c3417.1789341423.bf2baaad https://errors.edgesuite.net/18.590c3417.1789341423.bf2baaad"
+            },
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+            "capturedAt": "2026-09-13T23:17:03.793Z"
+          }
+        }
+      ]
     }
   ]
 }
