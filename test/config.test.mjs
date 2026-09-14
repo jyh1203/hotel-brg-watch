@@ -23,9 +23,8 @@ test("public config does not contain confirmation numbers", () => {
   assert.ok(config.stays.every((stay) => !("confirmation" in stay.booked)));
 });
 
-test("Osaka is excluded from Marriott automatic collection", () => {
-  const osaka = config.stays.find((stay) => stay.id === "osaka-four-points-flex");
-  assert.equal(osaka.marriott.autoCollect, false);
+test("Osaka is excluded from the active watch list", () => {
+  assert.equal(config.stays.some((stay) => stay.id === "osaka-four-points-flex"), false);
 });
 
 test("Barcelona uses the live Classic King room pool", () => {

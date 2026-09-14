@@ -29,8 +29,10 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.match(await page.locator("#cards").innerText(), /(오늘 Google 표시가 합계|최근 Google 표시가 합계)/);
     assert.match(await page.locator("#cards").innerText(), /Marriott 표시가 합계/);
     assert.equal(await page.locator(".source-links a").count(), config.stays.length * 2);
-    assert.match(await page.locator("#cards").innerText(), /EUR 기준/);
-    assert.match(await page.locator("#cards").innerText(), /JPY 기준/);
+    const cardsText = await page.locator("#cards").innerText();
+    for (const currency of new Set(config.stays.map((stay) => stay.booked.currency))) {
+      assert.match(cardsText, new RegExp(`${currency} 기준`));
+    }
     assert.match(await page.locator("#cards").innerText(), /확정/);
   } finally {
     await browser.close();

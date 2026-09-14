@@ -6,33 +6,6 @@
   },
   "stays": [
     {
-      "id": "osaka-four-points-flex",
-      "hotel": "Four Points Flex by Sheraton Osaka Umeda",
-      "city": { "name": "Osaka", "googleEntityId": "/m/0dqyw" },
-      "checkIn": "2026-09-17",
-      "checkOut": "2026-09-21",
-      "adults": 2,
-      "allInEstimate": { "percent": 0.10, "fixed": 0, "note": "소비세 10% 추정; 오사카 숙박세는 별도" },
-      "marriott": {
-        "propertyCode": "OSAUU",
-        "slug": "four-points-flex-osaka-umeda",
-        "roomPoolCode": "sngl",
-        "autoCollect": false
-      },
-      "booked": {
-        "currency": "JPY",
-        "roomSubtotal": 56760,
-        "taxesAndFees": 5676,
-        "total": 62436,
-        "nightly": [8800, 9240, 18920, 19800],
-        "room": "1 Bed Small Double Room / Guest Room / 1 Twin Bed",
-        "cancellation": "무료취소",
-        "cancellationDeadline": "2026-09-15 23:59 (호텔 현지시간)",
-        "note": "오사카 숙박세는 총액에 포함되지 않으며 호텔에서 별도 지불"
-      },
-      "match": { "roomPatterns": ["room, 1 twin bed|small double", "1 single bed|1 twin bed"], "requireFreeCancellation": true }
-    },
-    {
       "id": "madrid-carlton",
       "hotel": "AC Hotel Carlton Madrid",
       "city": { "name": "Madrid", "googleEntityId": "/m/056_y" },
