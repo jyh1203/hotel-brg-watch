@@ -12,6 +12,7 @@ on:
       - "site/data.json"
       - "site/app.js"
       - "site/brg.js"
+      - "site/marriott-status.js"
       - "src/**"
       - "test/**"
       - "site/index.html"

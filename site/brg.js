@@ -5,7 +5,8 @@ export function threshold(base, currency = 'EUR') {
   const max = (Math.ceil((boundary - 1e-8) / unit) - 1) * unit;
   return { boundary, max: Math.round(max / unit) * unit, percent: 1, inclusive: false };
 }
-export function assess(base, offer, { currency = 'EUR', verified = false, fresh = false } = {}) {
+export function assess(base, offer, { currency = 'EUR', offerCurrency = currency, verified = false, fresh = false } = {}) {
+  if (offerCurrency !== currency) return { status: '통화 조건 수동 확인', pass: undefined, currencyMismatch: true };
   if (![base, offer].every(n => Number.isFinite(n) && n > 0)) return { status: '금액 확인 필요' };
   const limit = threshold(base, currency);
   const pass = offer <= limit.max + 1e-8;
