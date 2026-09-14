@@ -1,67 +1,14 @@
 {
-  "capturedAt": "2026-09-13T23:17:06.505Z",
+  "capturedAt": "2026-09-14T02:02:28.556Z",
   "results": [
     {
-      "id": "osaka-four-points-flex",
-      "status": "blocked",
-      "state": "blocked",
-      "error": "confirming specific dates: 요금 목록 전환 실패 (https://www.marriott.com/en-us/hotels/osauu-four-points-flex-osaka-umeda/rooms/, https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=4&fromDate=09%2F17%2F2026&toDate=09%2F21%2F2026&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=OSAUU&useRewardsPoints=false&flexibleDateSearch=false&t-start=09%2F17%2F2026&t-end=09%2F21%2F2026&fromDateDefaultFormat=09%2F17%2F2026&toDateDefaultFormat=09%2F21%2F2026&fromToDate_submit=09%2F21%2F2026&fromToDate=09%2F17%2F2026&roomPoolCode=sngl)",
-      "capturedAt": "2026-09-13T23:14:36.175Z",
-      "sourceUrl": "https://www.marriott.com/en-us/hotels/osauu-four-points-flex-osaka-umeda/rooms/",
-      "diagnostics": {
-        "stage": "confirming specific dates",
-        "finalUrl": null,
-        "browser": null
-      }
-    },
-    {
       "id": "madrid-carlton",
-      "status": "blocked",
-      "state": "blocked",
-      "error": "confirming specific dates: 요금 목록 전환 실패 (https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/, https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=4&fromDate=04%2F03%2F2027&toDate=04%2F07%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=MADCA&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F03%2F2027&t-end=04%2F07%2F2027&fromDateDefaultFormat=04%2F03%2F2027&toDateDefaultFormat=04%2F07%2F2027&fromToDate_submit=04%2F07%2F2027&fromToDate=04%2F03%2F2027&roomPoolCode=doub)",
-      "capturedAt": "2026-09-13T23:15:12.483Z",
+      "status": "ok",
+      "state": "ok",
+      "error": null,
+      "capturedAt": "2026-09-14T02:02:25.843Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
       "diagnostics": {
-        "stage": "confirming specific dates",
-        "finalUrl": null,
-        "browser": null
-      }
-    },
-    {
-      "id": "bilbao-ercilla",
-      "status": "blocked",
-      "state": "blocked",
-      "error": "confirming specific dates: 요금 목록 전환 실패 (https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/, https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr)",
-      "capturedAt": "2026-09-13T23:15:48.823Z",
-      "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
-      "diagnostics": {
-        "stage": "confirming specific dates",
-        "finalUrl": null,
-        "browser": null
-      }
-    },
-    {
-      "id": "bordeaux-moxy",
-      "status": "blocked",
-      "state": "blocked",
-      "error": "confirming specific dates: 요금 목록 전환 실패 (https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/, https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr)",
-      "capturedAt": "2026-09-13T23:16:27.726Z",
-      "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
-      "diagnostics": {
-        "stage": "confirming specific dates",
-        "finalUrl": null,
-        "browser": null
-      }
-    },
-    {
-      "id": "barcelona-four-points",
-      "status": "blocked",
-      "state": "blocked",
-      "error": "confirming specific dates: 요금 목록 전환 실패 (https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/, https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king)",
-      "capturedAt": "2026-09-13T23:17:03.793Z",
-      "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
-      "diagnostics": {
-        "stage": "confirming specific dates",
         "finalUrl": null,
         "browser": null
       }
