@@ -85,7 +85,7 @@ function chartMarkup(series, stay) {
   const width = 340;
   const height = 130;
   const pad = { left: 12, right: 12, top: 16, bottom: 24 };
-  const booked = stay.booked.total;
+  const booked = stay.booked.roomSubtotal;
   const googleValues = series.map((point) => point.googleAmount).filter(Number.isFinite);
   const marriottValues = series.map((point) => point.marriottAmount).filter(Number.isFinite);
   const values = [...googleValues, ...marriottValues, booked];
@@ -106,14 +106,14 @@ function chartMarkup(series, stay) {
   };
   return `<div class="chart">
     <div class="chart-head"><b>일별 수집 표시가 추이</b><span>${series.length}일 기록 · ${stay.booked.currency} 기준</span></div>
-    <div class="chart-legend"><span class="booked-key">내 예약 총액</span><span class="google-key">Google 표시가 합계</span><span class="marriott-key">Marriott 표시가 합계</span></div>
+    <div class="chart-legend"><span class="booked-key">내 예약 객실료(세금 제외)</span><span class="google-key">Google 표시가 합계</span><span class="marriott-key">Marriott 공식 객실료(세금 제외)</span></div>
     <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(stay.hotel)} 일별 가격 비교 그래프">
       <line class="baseline" x1="${pad.left}" x2="${width - pad.right}" y1="${y(booked).toFixed(1)}" y2="${y(booked).toFixed(1)}"><title>예약가 ${money(booked, stay.booked.currency)}</title></line>
       ${line("googleAmount", "google")}${line("marriottAmount", "marriott")}
       <text x="${pad.left}" y="${height - 5}">${series[0].day.slice(5)}</text>
       <text x="${width - pad.right}" y="${height - 5}" text-anchor="end">${series.at(-1).day.slice(5)}</text>
     </svg>
-    <div class="chart-caption"><span>예약 기준선 ${money(booked, stay.booked.currency)}</span><span>Google ${googleValues.length ? money(Math.min(...googleValues), stay.booked.currency) : "기록 없음"} · Marriott ${marriottValues.length ? money(Math.min(...marriottValues), stay.booked.currency) : "기록 없음"}</span></div>
+    <div class="chart-caption"><span>세금 제외 예약 객실료 기준선 ${money(booked, stay.booked.currency)}</span><span>Google ${googleValues.length ? money(Math.min(...googleValues), stay.booked.currency) : "기록 없음"} · Marriott ${marriottValues.length ? money(Math.min(...marriottValues), stay.booked.currency) : "기록 없음"}</span></div>
   </div>`;
 }
 
@@ -160,8 +160,14 @@ function brgMarkup(stay, result, sourceRun, stale) {
     ["확인 시각", new Date(sourceRun.capturedAt).toLocaleString("ko-KR")]
   ].map(([label, value]) => `<li><b>${esc(label)}</b><span>${label === "증빙 URL" ? value : esc(value)}</span></li>`).join("");
   return `<section class="brg-panel"><h3>BRG 금액·신청 기준</h3>
-    <p>기존 예약 객실료 ${money(base, currency)} 기준: 동일 통화 OTA 세전 합계 <b>${money(limit.max, currency)} 이하</b> (1% 초과 차이).</p>
-    <p>위 기준은 예약 객실료가 세금·수수료를 모두 제외한 금액일 때 유효합니다. Google의 1박 표시가 × 숙박일수는 참고 합계이며, 최종 숙박 전체 세전 합계를 확인해야 합니다.</p>
+    <div class="brg-callout">
+      <span>BRG 가격 요건 충족 기준</span>
+      <b>OTA 세금·수수료 제외 총액 ${money(limit.max, currency)} 이하</b>
+      <strong>위 금액 이하이고 나머지 조건도 동일하면 BRG 신청 가능</strong>
+      <small>내 예약 총액(세금 포함)이 아니라 예약 객실료 ${money(base, currency)}(세금 제외)를 기준으로 계산</small>
+    </div>
+    <p class="brg-condition-note">동일 호텔·일정·성인 수·객실과 침대·포함 혜택·취소/환불 조건·공개 예약 가능 여부가 모두 일치해야 합니다.</p>
+    <p>Google의 1박 표시가 × 숙박일수는 참고 합계이며, 최종 숙박 전체 세전 합계를 확인해야 합니다.</p>
     <details><summary>수집한 각 요금 확인 (${rates.length}개)</summary><div class="rate-scroll"><table><thead><tr><th>객실·판매처</th><th>표시가 × 숙박일수</th><th>금액 기준</th><th>BRG</th></tr></thead><tbody>${rows}</tbody></table></div><p>수집 시각 ${new Date(sourceRun.capturedAt).toLocaleString("ko-KR")} · 객실명 일치는 침대·조식·취소 조건 일치를 보장하지 않습니다.</p></details>
     <details><summary>공식 화면 금액 입력·BRG 계산</summary>
     <form class="brg-form" data-id="${esc(stay.id)}">
@@ -221,9 +227,10 @@ async function render() {
     return Boolean(marriottOf(result)) && dayKey(run.capturedAt) === dayKey(new Date());
   }).length;
   const shownCount = displayed.filter((item) => candidateOf(item.sourceResult)).length;
-  const cheaperCount = displayed.filter((item) => {
-    const amount = localAmount(candidateOf(item.sourceResult), item.stay, item.sourceRun);
-    return item.sourceResult?.candidateKind !== "headline-review" && Number.isFinite(amount) && amount < item.stay.booked.roomSubtotal;
+  const marriottDropCount = stays.filter((stay) => {
+    const current = run.results?.find((item) => item.id === stay.id);
+    const latestRate = marriottOf(current) ?? latestMarriott(runs, stay.id)?.rate;
+    return Number.isFinite(latestRate?.totalAmount) && latestRate.totalAmount < stay.booked.roomSubtotal - 0.005;
   }).length;
   const rates = run.fx?.rates ?? (run.fx?.rate ? { EUR: run.fx.rate } : {});
   const fxText = Object.entries(rates)
@@ -233,7 +240,7 @@ async function render() {
     <div><b>${shownCount}/${stays.length}</b><span>결과 표시</span></div>
     <div><b>${todayCandidateCount}/${stays.length}</b><span>Google 오늘 가격</span></div>
     <div><b>${todayMarriottCount}/${stays.length}</b><span>Marriott 오늘 가격</span></div>
-    <div><b>${cheaperCount}곳</b><span>표시가 참고 차이 (조건 미확인)</span></div>
+    <div class="summary-drop"><b>${marriottDropCount}곳</b><span>Marriott 공식 객실료 인하</span></div>
     <div><b>${esc(fxText)}</b><span>원화는 참고 환산만</span></div>`;
 
   document.querySelector("#cards").innerHTML = displayed.map(({ stay, current, sourceResult, sourceRun, sourceIndex, stale }) => {
@@ -276,15 +283,36 @@ async function render() {
       ? Math.round(marriottAmount * marriottFx)
       : null;
     const marriottStale = (!currentMarriott && Boolean(marriottFallback)) || (marriottRun && Date.now() - Date.parse(marriottRun.capturedAt) > 86400000);
+    const marriottDifference = Number.isFinite(marriottRawAmount)
+      ? stay.booked.roomSubtotal - marriottRawAmount
+      : null;
+    const marriottDifferencePercent = Number.isFinite(marriottDifference) && stay.booked.roomSubtotal > 0
+      ? Math.abs(marriottDifference) / stay.booked.roomSubtotal * 100
+      : null;
+    const marriottPriceState = !Number.isFinite(marriottDifference)
+      ? "unknown"
+      : marriottDifference > 0.005
+        ? "lower"
+        : marriottDifference < -0.005
+          ? "higher"
+          : "same";
+    const marriottDifferenceText = marriottPriceState === "lower"
+      ? `내 예약 객실료보다 ${money(marriottDifference, bookedCurrency)} 낮음 (${marriottDifferencePercent.toFixed(1)}%)`
+      : marriottPriceState === "higher"
+        ? `내 예약 객실료보다 ${money(Math.abs(marriottDifference), bookedCurrency)} 높음 (${marriottDifferencePercent.toFixed(1)}%)`
+        : marriottPriceState === "same"
+          ? "내 예약 객실료와 동일"
+          : "내 예약 객실료와 비교 불가";
     const marriottLink = marriottRate?.sourceUrl ?? current?.marriott?.sourceUrl ??
       `https://www.marriott.com/en-us/hotels/${stay.marriott.propertyCode.toLowerCase()}-${stay.marriott.slug}/rooms/`;
     const currentWarning = stale
       ? `<p class="freshness">최신 수집값이 비어 있어 ${new Date(sourceRun.capturedAt).toLocaleString("ko-KR")}의 최근 유효 결과를 표시합니다.</p>`
       : "";
-    return `<article class="card ${stale ? "stale" : ""}">
+    return `<article class="card ${stale ? "stale" : ""} ${marriottPriceState === "lower" ? "has-rate-drop" : ""}">
       <div class="card-head"><div><p>${stay.checkIn} → ${stay.checkOut}</p><h2>${esc(stay.displayName ?? stay.hotel)}</h2></div><span class="pill ${sourceResult.candidateKind === "exact" && !stale ? "match" : "review"}">${state}</span></div>
       ${currentWarning}${attemptWarning}${!marriottRate ? `<p class="freshness">공식가 확인 대기 · 아래에 공식 화면의 세전 객실료를 입력해 비교할 수 있습니다.</p>` : ""}
-      <div class="prices three"><div><span>내 예약 총액</span><b>${money(stay.booked.total, bookedCurrency)}</b><small>${bookedKrw == null ? "원화 환산 불가" : `${won.format(bookedKrw)} 참고`}</small><small>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}</small></div><div><span>${stale ? "최근 Google 표시가 합계" : "오늘 Google 표시가 합계"}</span><b>${money(todayAmount, bookedCurrency)}</b><small>표시가 ${money(todayRawAmount, bookedCurrency)} · 세금 포함 여부 미확인</small><small>${todayKrw == null ? "원화 환산 불가" : `${won.format(todayKrw)} 참고`} · ${delta == null ? "전일 유효 기록 없음" : `${delta > 0 ? "+" : ""}${money(delta, bookedCurrency)} vs ${dayKey(previous.run.capturedAt)}`}</small></div><div><span>${marriottStale ? "최근 Marriott 표시가 합계" : "오늘 Marriott 표시가 합계"}</span><b>${Number.isFinite(marriottAmount) ? money(marriottAmount, bookedCurrency) : "자동 조회 불가"}</b><small>${Number.isFinite(marriottRawAmount) ? `공식 표시가 ${money(marriottRawAmount, bookedCurrency)} · ${marriottRate?.amountBasis === "pre-tax" ? "세금·수수료 제외" : "세금 포함 여부 미확인"}` : esc(current?.marriott?.error ?? "공식가 기록 없음")}</small><small>${marriottRate?.rateName ? `${esc(marriottRate.rateName)} · ${esc(marriottRate.cancellation ?? "무료취소")}` : "선불·비환불 요금은 비교에서 제외"}</small><small>${marriottKrw == null ? "원화 환산 없음" : `${won.format(marriottKrw)} 참고`} · ${marriottRun ? new Date(marriottRun.capturedAt).toLocaleString("ko-KR") : ""}</small></div></div>
+      ${marriottPriceState === "lower" ? `<div class="rate-drop-alert"><strong>↓ Marriott 공식 객실료 인하</strong><span>${esc(marriottDifferenceText)} · 동일 취소조건인지 확인 후 예약 변경 검토</span></div>` : ""}
+      <div class="prices three"><div class="booked-price"><span>내 예약 총액 <em>세금 포함</em></span><b>${money(stay.booked.total, bookedCurrency)}</b><small>${bookedKrw == null ? "원화 환산 불가" : `${won.format(bookedKrw)} 참고`}</small><small class="comparison-basis">BRG 비교 기준 객실료 <strong>${money(stay.booked.roomSubtotal, bookedCurrency)}</strong> · 세금 제외</small><small>세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}</small></div><div><span>${stale ? "최근 Google 표시가 합계" : "오늘 Google 표시가 합계"}</span><b>${money(todayAmount, bookedCurrency)}</b><small>표시가 ${money(todayRawAmount, bookedCurrency)} · 세금 포함 여부 미확인</small><small>${todayKrw == null ? "원화 환산 불가" : `${won.format(todayKrw)} 참고`} · ${delta == null ? "전일 유효 기록 없음" : `${delta > 0 ? "+" : ""}${money(delta, bookedCurrency)} vs ${dayKey(previous.run.capturedAt)}`}</small></div><div class="official-price ${marriottPriceState}"><span>${marriottStale ? "최근 Marriott 공식 객실료" : "오늘 Marriott 공식 객실료"} <em>세금 제외</em></span><b>${Number.isFinite(marriottAmount) ? money(marriottAmount, bookedCurrency) : "자동 조회 불가"}</b><strong class="marriott-delta ${marriottPriceState}">${esc(marriottDifferenceText)}</strong><small>${marriottRate?.rateName ? `${esc(marriottRate.rateName)} · ${esc(marriottRate.cancellation ?? "무료취소")}` : "선불·비환불 요금은 비교에서 제외"}</small><small>${marriottKrw == null ? "원화 환산 없음" : `${won.format(marriottKrw)} 참고`} · ${marriottRun ? new Date(marriottRun.capturedAt).toLocaleString("ko-KR") : ""}</small></div></div>
       ${chartMarkup(dailySeries(runs, stay), stay)}
       <p class="room"><b>${esc(stay.booked.room)}</b><br>${esc(stay.booked.cancellation)} · ${esc(stay.booked.cancellationDeadline)}${stay.booked.status ? `<br><strong class="booking-status">${esc(stay.booked.status)}</strong>` : ""}<br>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}<br>${esc(stay.booked.note)}</p>
       ${brgMarkup(stay, sourceResult, sourceRun, stale)}

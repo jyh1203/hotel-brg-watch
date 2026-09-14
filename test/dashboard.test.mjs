@@ -27,9 +27,18 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.equal(await page.locator("#cards .chart").count(), config.stays.length);
     assert.match(await page.locator("#summary").innerText(), new RegExp(`\\d/${config.stays.length}\\s*결과 표시`));
     assert.match(await page.locator("#cards").innerText(), /(오늘 Google 표시가 합계|최근 Google 표시가 합계)/);
-    assert.match(await page.locator("#cards").innerText(), /Marriott 표시가 합계/);
+    assert.match(await page.locator("#cards").innerText(), /Marriott 공식 객실료\(세금 제외\)/);
     assert.equal(await page.locator(".source-links a").count(), config.stays.length * 2);
     const cardsText = await page.locator("#cards").innerText();
+    assert.equal(await page.locator(".comparison-basis").count(), config.stays.length);
+    assert.equal(await page.locator(".brg-callout").count(), config.stays.length);
+    assert.ok(await page.locator(".rate-drop-alert").count() >= 1);
+    assert.match(cardsText, /내 예약 총액\s*세금 포함/);
+    assert.match(cardsText, /BRG 비교 기준 객실료.*세금 제외/);
+    assert.match(cardsText, /Marriott 공식 객실료.*세금 제외/);
+    assert.match(cardsText, /세금 제외 예약 객실료 기준선/);
+    assert.match(cardsText, /BRG 신청 가능/);
+    assert.match(await page.locator("#summary").innerText(), /Marriott 공식 객실료 인하/);
     for (const currency of new Set(config.stays.map((stay) => stay.booked.currency))) {
       assert.match(cardsText, new RegExp(`${currency} 기준`));
     }
