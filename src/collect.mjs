@@ -5,6 +5,8 @@ import { chromium } from "playwright";
 import { buildGoogleHotelsUrl, buildPriceDetailUrl } from "./google-hotels-url.mjs";
 import { parseGoogleHotelPrices } from "./parse-google-hotels.mjs";
 import { collectMarriottRate } from "./marriott.mjs";
+import { launchMarriottSession } from "./marriott-browser.mjs";
+import { sanitizeDiagnosticUrl } from "./marriott-artifacts.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const config = JSON.parse(await fs.readFile(path.join(root, "config/stays.json"), "utf8"));
@@ -14,7 +16,13 @@ const stays = requestedIds.size
   : config.stays;
 if (!stays.length) throw new Error("STAY_IDS와 일치하는 호텔이 없습니다.");
 const historyPath = path.join(root, "data/history.json");
+const marriottStatusPath = path.join(root, "data/marriott-status.json");
 const artifactRoot = path.join(root, "artifacts", new Date().toISOString().slice(0, 10));
+
+function marriottArtifactDir(stayId, attempt) {
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+  return path.join(root, "artifacts", "marriott", timestamp, stayId);
+}
 
 async function krwRates() {
   const currencies = [...new Set(stays.map((stay) => stay.booked.currency))];
@@ -178,28 +186,37 @@ if (collectMarriott) {
       Buffer.from(process.env.MARRIOTT_AUTH_STATE_B64, "base64")
     );
   }
-  const marriottLaunchOptions = {
-    headless: process.env.PLAYWRIGHT_HEADFUL !== "1"
+  const marriottEnv = {
+    ...process.env,
+    ...(marriottAuthStatePath ? { MARRIOTT_AUTH_STATE: marriottAuthStatePath } : {})
   };
-  if (process.env.MARRIOTT_BROWSER_CHANNEL) {
-    marriottLaunchOptions.channel = process.env.MARRIOTT_BROWSER_CHANNEL;
-  }
-  const marriottBrowser = await chromium.launch(marriottLaunchOptions);
   for (let index = 0; index < stays.length; index += 1) {
     const stay = stays[index];
     console.log(`Checking Marriott official rate for ${stay.hotel}...`);
     let marriott;
     const attempts = process.env.MARRIOTT_DEBUG === "1" ? 1 : 2;
     for (let attempt = 1; attempt <= attempts; attempt += 1) {
-      const marriottContextOptions = {
-        locale: "en-US",
-        timezoneId: "America/New_York",
-        viewport: { width: 1365, height: 900 }
-      };
-      if (marriottAuthStatePath) marriottContextOptions.storageState = marriottAuthStatePath;
-      const marriottContext = await marriottBrowser.newContext(marriottContextOptions);
-      marriott = await collectMarriottRate(marriottContext, stay, fx);
-      await marriottContext.close();
+      let session;
+      try {
+        session = await launchMarriottSession({ env: marriottEnv, cwd: root });
+        console.log(`Marriott browser attempt ${attempt}/${attempts}: ${JSON.stringify(session.diagnostics)}`);
+        if (session.authImport.imported) {
+          console.log(`Imported ${session.authImport.count} login cookies into the dedicated Marriott profile.`);
+        }
+        marriott = await collectMarriottRate(session.context, stay, fx, {
+          browser: session.diagnostics,
+          artifactDir: marriottArtifactDir(stay.id, attempt)
+        });
+      } catch (error) {
+        marriott = {
+          status: "error",
+          error: `launching Marriott browser: ${error.message.split("\n")[0]}`,
+          diagnostics: { state: /profile/i.test(error.message) ? "profile-locked" : "browser-launch-failed", stage: "launching Marriott browser" },
+          capturedAt: new Date().toISOString()
+        };
+      } finally {
+        await session?.close().catch(() => {});
+      }
       if (marriott.status === "ok" || attempt === 2) break;
       console.log(`Retrying Marriott for ${stay.hotel} after: ${marriott.error}`);
       await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -215,7 +232,7 @@ if (collectMarriott) {
     }
     await new Promise((resolve) => setTimeout(resolve, 2500));
   }
-  await marriottBrowser.close();
+  if (process.env.MARRIOTT_AUTH_STATE_B64) await fs.unlink(marriottAuthStatePath).catch(() => {});
 } else {
   for (const result of results) result.marriott = {
       status: "error",
@@ -225,11 +242,58 @@ if (collectMarriott) {
 
 let history = { schemaVersion: 1, runs: [] };
 try { history = JSON.parse(await fs.readFile(historyPath, "utf8")); } catch {}
-const run = { capturedAt: new Date().toISOString(), fx, results };
-history.runs = [...history.runs, run].slice(-400);
-await fs.writeFile(historyPath, `${JSON.stringify(history, null, 2)}\n`);
-console.log(JSON.stringify(run, null, 2));
+const statusRun = {
+  capturedAt: new Date().toISOString(),
+  results: results.map((result) => {
+    const marriott = result.marriott ?? {};
+    const diagnostics = marriott.diagnostics ?? {};
+    return {
+      id: result.id,
+      status: marriott.status ?? "error",
+      state: marriott.status === "ok" ? "ok" : diagnostics.state ?? "dom-not-ready",
+      error: marriott.status === "ok" ? null : marriott.error,
+      capturedAt: marriott.capturedAt,
+      sourceUrl: marriott.sourceUrl ? sanitizeDiagnosticUrl(marriott.sourceUrl) : null,
+      diagnostics: {
+        stage: diagnostics.stage,
+        responseStatus: diagnostics.responseStatus,
+        finalUrl: diagnostics.finalUrl ? sanitizeDiagnosticUrl(diagnostics.finalUrl) : null,
+        title: diagnostics.title,
+        bodyLength: diagnostics.bodyLength,
+        selectors: diagnostics.selectors,
+        browser: diagnostics.browser ? {
+          platform: diagnostics.browser.platform,
+          headless: diagnostics.browser.headless,
+          channel: diagnostics.browser.channel,
+          executable: diagnostics.browser.executable,
+          persistent: diagnostics.browser.persistent,
+          browserVersion: diagnostics.browser.browserVersion,
+          authMethod: diagnostics.browser.authMethod
+        } : null
+      }
+    };
+  })
+};
+await fs.writeFile(marriottStatusPath, `${JSON.stringify(statusRun, null, 2)}\n`);
+const persistedResults = results.map((result) => {
+  const marriott = result.marriott?.status === "ok" ? result.marriott : null;
+  if (result.status !== "ok" && !marriott) return null;
+  return { ...result, ...(marriott ? { marriott } : { marriott: undefined }) };
+}).filter(Boolean);
+const run = { capturedAt: new Date().toISOString(), fx, results: persistedResults };
+if (persistedResults.length) {
+  history.runs = [...history.runs, run].slice(-400);
+  await fs.writeFile(historyPath, `${JSON.stringify(history, null, 2)}\n`);
+  console.log(`Saved ${persistedResults.length} successful result(s) to history.`);
+} else {
+  console.log("No successful rate was collected; history.json was left unchanged.");
+}
+console.log(JSON.stringify({ ...run, attempts: results }, null, 2));
 
 const marriottFailed = collectMarriott && results.every(result => result.marriott?.status !== "ok" && !result.marriott?.reference);
 const googleFailed = process.env.MARRIOTT_ONLY !== "1" && results.every(result => result.status !== "ok");
 if (marriottFailed || googleFailed) process.exitCode = 2;
+// A Playwright CDP transport keeps Node's event loop alive. All files and logs
+// are complete here, so terminate only this collector process and leave the
+// user's external dedicated Chrome running.
+if (process.env.MARRIOTT_CDP_URL) process.exit(process.exitCode ?? 0);

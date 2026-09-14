@@ -9,6 +9,14 @@ test('same currency excludes exactly 1%', () => {
   assert.equal(threshold(269).max,266.30);
   assert.equal(assess(100,90).status,'가격 차이 충족 · 조건 확인 필요');
   assert.equal(assess(0,90).pass,undefined);
+  assert.deepEqual(assess(100,90,{currency:'EUR',offerCurrency:'USD'}), {
+    status:'통화 조건 수동 확인', pass:undefined, currencyMismatch:true
+  });
+});
+
+test('FX values do not change BRG eligibility', () => {
+  assert.equal(assess(100,98,{currency:'EUR'}).pass,true);
+  assert.equal(assess(100,98,{currency:'EUR',verified:false,fresh:false}).pass,true);
 });
 test('keeps adjacent room conditions separate and recognizes official reference', () => {
   const stay={checkIn:'2027-04-10',checkOut:'2027-04-12',match:{roomPatterns:['queen'],requireFreeCancellation:true}};

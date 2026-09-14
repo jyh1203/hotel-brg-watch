@@ -1,6 +1,7 @@
 node_modules/
 artifacts/
 .auth/
+.auth/marriott-profile/
 marriott-auth*.json
 .DS_Store
 *.log

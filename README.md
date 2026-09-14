@@ -38,7 +38,7 @@ npx playwright install chromium
 npm test
 npm run collect
 # Marriott 공식가까지 수집하려면 Linux에서:
-xvfb-run -a npm run collect:full
+MARRIOTT_BROWSER_CHANNEL=chrome xvfb-run -a npm run collect:full
 npm run build
 npm run dev
 ```
@@ -56,6 +56,24 @@ npm run build
 ```
 
 `npm run auth:marriott`가 띄운 공식 Marriott 창에서 직접 로그인한 뒤 터미널에서 Enter를 누릅니다. 저장된 `.auth/marriott.json`은 `.gitignore`로 제외됩니다. 세션이 만료되면 같은 절차로 다시 저장합니다.
+
+storage state만으로 로그인이 유지되지 않으면 일반 Chrome 프로필 대신 Marriott 전용 프로필을 사용합니다. 동일 프로필을 사용하는 Chrome 창은 동시에 하나만 열어야 합니다.
+
+이미 로그인된 별도 Chrome에 연결해야 하면 `MARRIOTT_CDP_URL`에 그 전용 Chrome의 CDP WebSocket 주소를 지정할 수 있습니다. 일반 사용자의 기본 Chrome 프로필에는 연결하지 않습니다.
+
+Windows Chrome과 NAT 방식 WSL을 함께 쓸 때는 Windows Node로 `scripts/cdp-tcp-forward.cjs`를 실행해 WSL 가상 어댑터 주소에만 전달 포트를 열 수 있습니다. 전달 대상은 로컬 전용 `127.0.0.1` Chrome 디버깅 포트이며, 공용 네트워크 주소에는 바인딩하지 않습니다.
+
+```bash
+MARRIOTT_BROWSER_CHANNEL=chrome \
+MARRIOTT_USER_DATA_DIR=.auth/marriott-profile \
+xvfb-run -a npm run auth:marriott
+
+MARRIOTT_BROWSER_CHANNEL=chrome \
+MARRIOTT_USER_DATA_DIR=.auth/marriott-profile \
+xvfb-run -a npm run collect:full
+```
+
+`collect:full`은 Node 래퍼가 headful 모드를 설정하므로 Windows와 Linux에서 같은 npm 명령을 사용합니다. 화면이 없는 Linux/WSL 세션만 `xvfb-run -a`를 앞에 붙입니다. 실행 로그에는 사용한 channel 또는 executable, headful/headless, OS, persistent profile 여부가 기록됩니다. 수집이 차단되거나 실패하면 실패 요금은 `data/history.json`에 추가하지 않으며, 직전 성공값을 유지합니다.
 
 ## 매일 자동 실행
 

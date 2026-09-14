@@ -1,0 +1,17 @@
+{
+  "capturedAt": "2026-09-13T11:34:53.958Z",
+  "results": [
+    {
+      "id": "madrid-carlton",
+      "status": "ok",
+      "state": "ok",
+      "error": null,
+      "capturedAt": "2026-09-13T11:34:51.304Z",
+      "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+      "diagnostics": {
+        "finalUrl": null,
+        "browser": null
+      }
+    }
+  ]
+}
