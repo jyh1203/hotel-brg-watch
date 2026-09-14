@@ -22,3 +22,13 @@ test("booking baselines have internally consistent nightly totals", () => {
 test("public config does not contain confirmation numbers", () => {
   assert.ok(config.stays.every((stay) => !("confirmation" in stay.booked)));
 });
+
+test("Osaka is excluded from Marriott automatic collection", () => {
+  const osaka = config.stays.find((stay) => stay.id === "osaka-four-points-flex");
+  assert.equal(osaka.marriott.autoCollect, false);
+});
+
+test("Barcelona uses the live Classic King room pool", () => {
+  const barcelona = config.stays.find((stay) => stay.id === "barcelona-four-points");
+  assert.equal(barcelona.marriott.roomPoolCode, "d000000002");
+});

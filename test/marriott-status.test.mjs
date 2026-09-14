@@ -17,6 +17,7 @@ test("keeps the last successful Marriott rate when a later attempt fails", () =>
   assert.equal(latest.stale, true);
   assert.equal(marriottStatusLabel("session-expired"), "로그인 세션 갱신 필요");
   assert.equal(marriottStatusLabel("blocked"), "공식 사이트 접근 제한");
+  assert.equal(marriottStatusLabel("excluded"), "자동조회 대상 제외");
 });
 
 test("diagnostics drop headers and request bodies and redact sensitive URLs", () => {
@@ -59,4 +60,6 @@ test("collect:full uses a cross-platform Node wrapper and keeps the Madrid secon
   const source = fs.readFileSync(new URL("../src/marriott.mjs", import.meta.url), "utf8");
   assert.match(source, /calendarViewRates/);
   assert.match(source, /confirming specific dates/);
+  assert.match(source, /stay\.match\?\.roomPatterns/);
+  assert.match(source, /actualRoomPool/);
 });

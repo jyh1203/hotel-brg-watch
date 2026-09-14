@@ -16,7 +16,8 @@
       "marriott": {
         "propertyCode": "OSAUU",
         "slug": "four-points-flex-osaka-umeda",
-        "roomPoolCode": "sngl"
+        "roomPoolCode": "sngl",
+        "autoCollect": false
       },
       "booked": {
         "currency": "JPY",
@@ -122,7 +123,7 @@
       "marriott": {
         "propertyCode": "BCNFP",
         "slug": "four-points-barcelona-diagonal",
-        "roomPoolCode": "king"
+        "roomPoolCode": "d000000002"
       },
       "booked": {
         "currency": "EUR",

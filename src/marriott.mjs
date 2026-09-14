@@ -70,6 +70,18 @@ export function parseMarriottRate(text) {
   };
 }
 
+export function parseMarriottCancellationPolicy(text) {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  const sentence = normalized.match(
+    /You may cancel your reservation for no charge before\s+(.+?\d{4})(?:\s*\([^)]*\))?\./i
+  );
+  if (!sentence) return null;
+  return {
+    freeCancellation: true,
+    cancellation: `Free cancellation before ${sentence[1].trim()}`
+  };
+}
+
 export function monthLabel(iso) {
   return new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${iso}T00:00:00Z`));
 }
@@ -360,18 +372,43 @@ export async function collectMarriottRate(context, stay, fx, options = {}) {
     if (!nightsMatch || !guestsMatch) throw new Error("숙박일수 또는 인원이 요청 조건과 다릅니다.");
     const taxToggle = ratePage.getByRole("checkbox", { name: /Show with taxes and fees|세금.*수수료/i }).first();
     if (await taxToggle.count()) await taxToggle.uncheck();
-    const roomPool = stay.marriott.roomPoolCode.toLowerCase();
-    const card = ratePage.getByTestId("RateCardV2").filter({ has: ratePage.locator(`a[href*="roomPoolCode=${roomPool}&"]`) });
+    const configuredRoomPool = stay.marriott.roomPoolCode.toLowerCase();
+    const cards = ratePage.getByTestId("RateCardV2");
+    let card = cards
+      .filter({ has: ratePage.locator(`a[href*="roomPoolCode=${configuredRoomPool}"]`) })
+      .first();
+    if (!await card.count()) {
+      card = cards;
+      for (const pattern of stay.match?.roomPatterns ?? []) {
+        card = card.filter({ hasText: new RegExp(pattern, "i") });
+      }
+      card = card.first();
+    }
     stage = "selecting configured room";
     await card.waitFor({ state: "visible", timeout: 45000 });
+    const roomDetailsHref = await card.locator('a[href*="roomPoolCode="]').first().getAttribute("href");
+    const actualRoomPool = roomDetailsHref
+      ? new URL(roomDetailsHref, ratePage.url()).searchParams.get("roomPoolCode")?.toLowerCase() ?? configuredRoomPool
+      : configuredRoomPool;
     await card.getByRole("button", { name: /View Rates/ }).click();
     stage = "reading member rate";
     // The rate label is rendered as a heading in some builds and a plain div in
     // others, so match the visible text rather than depending on one tag name.
     await card.getByText("Flexible Rate", { exact: true }).first().waitFor({ state: "visible", timeout: 30000 });
     const text = await card.innerText();
-    const rate = parseMarriottRate(text);
+    let rate = parseMarriottRate(text);
     if (!rate) throw new Error("선택 객실의 회원 변경 가능 요금을 읽지 못했습니다.");
+    if (!rate.freeCancellation) {
+      const detailsLink = card.locator('a[data-testid="rate-modal"][aria-label^="Rate Details"]:visible').first();
+      await detailsLink.waitFor({ state: "visible", timeout: 10000 });
+      await clickWithRealPointer(ratePage, detailsLink);
+      const detailsPanel = ratePage.locator('#rateDetailsContent:visible').filter({ hasText: "Member Flexible Rate" }).first();
+      await detailsPanel.waitFor({ state: "visible", timeout: 15000 });
+      const policy = parseMarriottCancellationPolicy(await detailsPanel.innerText());
+      if (policy) rate = { ...rate, ...policy };
+      const modal = ratePage.locator('[aria-describedby="rateDetailsContent"]:visible').first();
+      await modal.getByTestId("close-button").click().catch(() => {});
+    }
     if (!rate.freeCancellation) throw new Error("무료취소 조건을 확인하지 못했습니다.");
     if (rate.currency !== stay.booked.currency) throw new Error(`공식가 통화 불일치 (${rate.currency})`);
     // Room Details links carry the precise requested dates in the public booking product ID.
@@ -383,7 +420,7 @@ export async function collectMarriottRate(context, stay, fx, options = {}) {
       .slice(-20) ?? [];
     await recorder?.discardTrace();
     return { status: "ok", ...rate, taxesIncluded: false, amountBasis: "pre-tax", collectionMethod: "official-booking-form",
-      roomPoolCode: roomPool, checkIn: stay.checkIn, checkOut: stay.checkOut, adults: stay.adults,
+      roomPoolCode: actualRoomPool, checkIn: stay.checkIn, checkOut: stay.checkOut, adults: stay.adults,
       comparable: false, capturedAt: new Date().toISOString(), totalKrw: Math.round(rate.totalAmount * fx.rates[rate.currency]),
       browser: browserDiagnostics, networkMetadata, sourceUrl, officialUrl, note: "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인." };
   } catch (error) {
@@ -399,8 +436,9 @@ export async function collectMarriottRate(context, stay, fx, options = {}) {
       detectedState: snapshot.state,
       authMethod: browserDiagnostics.authMethod
     });
+    const { bodyText: _bodyText, ...safeSnapshot } = snapshot;
     const diagnostics = {
-      ...snapshot,
+      ...safeSnapshot,
       state: blocked ? "blocked" : state,
       stage,
       url: ratePage?.url() || page.url(),

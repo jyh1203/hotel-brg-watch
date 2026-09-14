@@ -1,13 +1,13 @@
 {
-  "capturedAt": "2026-09-14T02:02:28.556Z",
+  "capturedAt": "2026-09-14T02:43:01.005Z",
   "results": [
     {
-      "id": "madrid-carlton",
+      "id": "barcelona-four-points",
       "status": "ok",
       "state": "ok",
       "error": null,
-      "capturedAt": "2026-09-14T02:02:25.843Z",
-      "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+      "capturedAt": "2026-09-14T02:42:55.499Z",
+      "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
       "diagnostics": {
         "finalUrl": null,
         "browser": null

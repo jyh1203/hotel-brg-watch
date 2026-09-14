@@ -192,6 +192,15 @@ if (collectMarriott) {
   };
   for (let index = 0; index < stays.length; index += 1) {
     const stay = stays[index];
+    if (stay.marriott?.autoCollect === false) {
+      results[index].marriott = {
+        status: "excluded",
+        error: "설정에서 Marriott 자동조회 대상에서 제외했습니다.",
+        diagnostics: { state: "excluded", stage: "checking collection policy" },
+        capturedAt: new Date().toISOString()
+      };
+      continue;
+    }
     console.log(`Checking Marriott official rate for ${stay.hotel}...`);
     let marriott;
     const attempts = process.env.MARRIOTT_DEBUG === "1" ? 1 : 2;

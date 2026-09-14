@@ -13,7 +13,8 @@ export const marriottStatusLabels = {
   "rate-card-unavailable": "대상 객실 요금 카드 없음",
   "rate-parse-failed": "공식 요금 해석 실패",
   "profile-locked": "Marriott 전용 프로필 사용 중",
-  "browser-launch-failed": "정식 브라우저 실행 실패"
+  "browser-launch-failed": "정식 브라우저 실행 실패",
+  excluded: "자동조회 대상 제외"
 };
 
 export function marriottStatusLabel(state) {

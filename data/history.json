@@ -15530,6 +15530,201 @@
           }
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-14T02:17:10.162Z",
+      "fx": {
+        "rates": {
+          "EUR": 1556.56
+        },
+        "dates": {
+          "EUR": "2026-09-11"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "bilbao-ercilla",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Stylish, Guest room, 1 Double",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before or on Apr 06, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 162,
+            "currency": "EUR",
+            "totalAmount": 486,
+            "taxesIncluded": false,
+            "amountBasis": "pre-tax",
+            "prepaid": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "genr",
+            "checkIn": "2027-04-07",
+            "checkOut": "2027-04-10",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-09-14T02:17:07.447Z",
+            "totalKrw": 756488,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "152.0.7977.84"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+            "note": "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인."
+          }
+        }
+      ]
+    },
+    {
+      "capturedAt": "2026-09-14T02:23:54.449Z",
+      "fx": {
+        "rates": {
+          "EUR": 1556.56
+        },
+        "dates": {
+          "EUR": "2026-09-11"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "bordeaux-moxy",
+          "hotel": "Moxy Bordeaux",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Moxy Sleeper, Guest room, 1 Queen",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before or on Apr 09, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 134,
+            "currency": "EUR",
+            "totalAmount": 269,
+            "taxesIncluded": false,
+            "amountBasis": "pre-tax",
+            "prepaid": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "genr",
+            "checkIn": "2027-04-10",
+            "checkOut": "2027-04-12",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-09-14T02:18:59.278Z",
+            "totalKrw": 418715,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "152.0.7977.84"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+            "note": "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인."
+          }
+        }
+      ]
+    },
+    {
+      "capturedAt": "2026-09-14T02:43:01.008Z",
+      "fx": {
+        "rates": {
+          "EUR": 1556.56
+        },
+        "dates": {
+          "EUR": "2026-09-11"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "barcelona-four-points",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Classic, Guest room, 1 King Super",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before 11:59 PM local hotel time on April 11, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 185,
+            "currency": "EUR",
+            "totalAmount": 555,
+            "taxesIncluded": false,
+            "amountBasis": "pre-tax",
+            "prepaid": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "d000000002",
+            "checkIn": "2027-04-13",
+            "checkOut": "2027-04-16",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-09-14T02:42:55.499Z",
+            "totalKrw": 863891,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "152.0.7977.84"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 500,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              },
+              {
+                "method": "POST",
+                "resourceType": "fetch",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/query/PhoenixBookDTTGetRateDetails"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+            "note": "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인."
+          }
+        }
+      ]
     }
   ]
 }

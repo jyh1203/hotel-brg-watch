@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { parseGoogleHotelPrices, nightsBetween } from "../src/parse-google-hotels.mjs";
 import { buildGoogleHotelsUrl } from "../src/google-hotels-url.mjs";
-import { buildMarriottAvailabilityUrl, parseMarriottRate } from "../src/marriott.mjs";
+import { buildMarriottAvailabilityUrl, parseMarriottCancellationPolicy, parseMarriottRate } from "../src/marriott.mjs";
 
 const stay = {
   hotel: "Moxy Bordeaux", city: { name: "Bordeaux", googleEntityId: "/m/01b85" },
@@ -63,6 +63,23 @@ test("parses a member flexible rate even when the rate card omits cancellation p
   assert.equal(parsed.totalAmount, 370);
   assert.equal(parsed.freeCancellation, false);
   assert.equal(parsed.prepaid, false);
+});
+
+test("parses free-cancellation terms from the Marriott rate-details modal", () => {
+  const text = `Rate Details
+Member Flexible Rate
+Holding Your Reservation
+We will need a credit card number to reserve your room.
+Cancelling Your Reservation
+You may cancel your reservation for no charge before 11:59 PM local hotel time on April 11, 2027 (2 day[s] before arrival). Please note that we will assess a fee after this deadline.`;
+  assert.deepEqual(parseMarriottCancellationPolicy(text), {
+    freeCancellation: true,
+    cancellation: "Free cancellation before 11:59 PM local hotel time on April 11, 2027"
+  });
+});
+
+test("does not infer free cancellation from a flexible-rate label alone", () => {
+  assert.equal(parseMarriottCancellationPolicy("Rate Details Member Flexible Rate Commissionable Rate"), null);
 });
 
 test("does not treat a prepaid-only Marriott rate as comparable", () => {
