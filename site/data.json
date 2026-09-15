@@ -16783,6 +16783,543 @@
           "candidateSavingsKrw": -18820
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-15T23:39:02.297Z",
+      "fx": {
+        "rates": {
+          "EUR": 1568.32
+        },
+        "dates": {
+          "EUR": "2026-09-15"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "status": "ok",
+          "hotel": "AC Hotel Carlton Madrid",
+          "detailUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGAMSBwjrDxAEGAcyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwiA97yy3_GWAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJN0xQNXo4eWlyOXpLQVJvTEwyY3ZNWFI0T0hacU1EQVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1150520,
+          "bookedAmount": 733.6,
+          "bookedRoomSubtotal": 666.9,
+          "bookedCurrency": "EUR",
+          "nights": 4,
+          "officialReference": null,
+          "providers": [],
+          "roomRates": [
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 176,
+              "totalAmount": 704,
+              "context": "Booking.com · €176",
+              "freeCancellation": false,
+              "totalKrw": 1104097
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 176,
+              "totalAmount": 704,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Customer support: 24/7 Phone · Email · Facebook · X (Twitter) · Book now to enjoy various great deals · Standard Queen Room, Guest room, 1 Queen · 1 queen bed · Free cancellation until Apr 2 · €176",
+              "freeCancellation": true,
+              "totalKrw": 1104097
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 176,
+              "totalAmount": 704,
+              "context": "Standard Twin Room · 1 single bed · €176",
+              "freeCancellation": false,
+              "totalKrw": 1104097
+            }
+          ],
+          "lowestProvider": null,
+          "freeCancellation": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 176,
+            "totalAmount": 704,
+            "context": "Read Real Guest Reviews · 24/7 Customer service · Customer support: 24/7 Phone · Email · Facebook · X (Twitter) · Book now to enjoy various great deals · Standard Queen Room, Guest room, 1 Queen · 1 queen bed · Free cancellation until Apr 2 · €176",
+            "freeCancellation": true,
+            "totalKrw": 1104097
+          },
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsAmount": -37.10000000000002,
+          "candidateSavingsKrw": -58185
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "ok",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "detailUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGAcSBwjrDxAEGAoyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwjYq4u13_GWAxUAAAAAHQAAAAAQBw&qs=MidDaGtJZ2I2T3RmTzF4NFliR2cwdlp5OHhNV0ozT0dZeE1GOHlFQUU&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 763772,
+          "bookedAmount": 487,
+          "bookedRoomSubtotal": 487,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "officialReference": null,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "currency": "EUR",
+              "nightlyAmount": 129,
+              "totalAmount": 387,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 606940
+            },
+            {
+              "provider": "Bluepillow.com",
+              "currency": "EUR",
+              "nightlyAmount": 138,
+              "totalAmount": 414,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 649284
+            }
+          ],
+          "roomRates": [
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 129,
+              "totalAmount": 387,
+              "context": "Booking.com · €129",
+              "freeCancellation": false,
+              "totalKrw": 606940
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 129,
+              "totalAmount": 387,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Guest Room with Twin beds · 1 double bed · €129",
+              "freeCancellation": false,
+              "totalKrw": 606940
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 143,
+              "totalAmount": 429,
+              "context": "Guest Room with Twin beds · 1 double bed · Free cancellation until Apr 6 · €143",
+              "freeCancellation": true,
+              "totalKrw": 672809
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 201,
+              "totalAmount": 603,
+              "context": "Vintage Guest room with Twin Beds · 1 double bed · 3 guests · €201",
+              "freeCancellation": false,
+              "totalKrw": 945697
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "currency": "EUR",
+            "nightlyAmount": 129,
+            "totalAmount": 387,
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "source": "google-hotels",
+            "official": false,
+            "totalKrw": 606940
+          },
+          "freeCancellation": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 143,
+            "totalAmount": 429,
+            "context": "Guest Room with Twin beds · 1 double bed · Free cancellation until Apr 6 · €143",
+            "freeCancellation": true,
+            "totalKrw": 672809
+          },
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsAmount": 58,
+          "candidateSavingsKrw": 90963
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&curr=EUR&ts=CAEaNAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBIaEhQKBwjrDxAEGAoSBwjrDxAEGAwYAjICEAAqBwoFOgNVU0Q&ved=2ahUKEwiBooa33_GWAxXJdX8AHUQVF50QrsMEegQIAxAs&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 437248,
+          "bookedAmount": 278.8,
+          "bookedRoomSubtotal": 269,
+          "bookedCurrency": "EUR",
+          "nights": 2,
+          "officialReference": null,
+          "providers": [
+            {
+              "provider": "Super.com",
+              "currency": "EUR",
+              "nightlyAmount": 96,
+              "totalAmount": 192,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 301117
+            },
+            {
+              "provider": "Booking.com",
+              "currency": "EUR",
+              "nightlyAmount": 108,
+              "totalAmount": 216,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 338757
+            },
+            {
+              "provider": "Vio.com",
+              "currency": "EUR",
+              "nightlyAmount": 113,
+              "totalAmount": 226,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 354440
+            },
+            {
+              "provider": "Bluepillow.com",
+              "currency": "EUR",
+              "nightlyAmount": 113,
+              "totalAmount": 226,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 354440
+            },
+            {
+              "provider": "Etrip.net",
+              "currency": "EUR",
+              "nightlyAmount": 113,
+              "totalAmount": 226,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 354440
+            },
+            {
+              "provider": "dealbase.com",
+              "currency": "EUR",
+              "nightlyAmount": 113,
+              "totalAmount": 226,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 354440
+            }
+          ],
+          "roomRates": [
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 108,
+              "totalAmount": 216,
+              "context": "Booking.com · €108",
+              "freeCancellation": false,
+              "totalKrw": 338757
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 108,
+              "totalAmount": 216,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · €108",
+              "freeCancellation": false,
+              "totalKrw": 338757
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 126,
+              "totalAmount": 252,
+              "context": "Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €126",
+              "freeCancellation": true,
+              "totalKrw": 395217
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 192,
+              "totalAmount": 384,
+              "context": "Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View · 1 double bed · 4 guests · €192",
+              "freeCancellation": false,
+              "totalKrw": 602235
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Super.com",
+            "currency": "EUR",
+            "nightlyAmount": 96,
+            "totalAmount": 192,
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "source": "google-hotels",
+            "official": false,
+            "totalKrw": 301117
+          },
+          "freeCancellation": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 126,
+            "totalAmount": 252,
+            "context": "Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €126",
+            "freeCancellation": true,
+            "totalKrw": 395217
+          },
+          "exactCandidate": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 126,
+            "totalAmount": 252,
+            "context": "Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €126",
+            "freeCancellation": true,
+            "totalKrw": 395217
+          },
+          "dateConfirmed": true,
+          "candidateKind": "exact",
+          "candidateSavingsAmount": 17,
+          "candidateSavingsKrw": 26661
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "ok",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGA0SBwjrDxAEGBAyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwiA5ffK3_GWAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJaTlhSm5kRzJvSTNGQVJvTEwyY3ZNWFJrTVcwd2F6SVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1044407,
+          "bookedAmount": 665.94,
+          "bookedRoomSubtotal": 555,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "officialReference": null,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "currency": "EUR",
+              "nightlyAmount": 170,
+              "totalAmount": 510,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 799843
+            },
+            {
+              "provider": "Expedia.com",
+              "currency": "EUR",
+              "nightlyAmount": 170,
+              "totalAmount": 510,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 799843
+            },
+            {
+              "provider": "Hotels.com",
+              "currency": "EUR",
+              "nightlyAmount": 170,
+              "totalAmount": 510,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 799843
+            },
+            {
+              "provider": "CHECK24.es",
+              "currency": "EUR",
+              "nightlyAmount": 189,
+              "totalAmount": 567,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 889237
+            },
+            {
+              "provider": "Orbitz.com",
+              "currency": "EUR",
+              "nightlyAmount": 170,
+              "totalAmount": 510,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 799843
+            },
+            {
+              "provider": "Travelocity.com",
+              "currency": "EUR",
+              "nightlyAmount": 170,
+              "totalAmount": 510,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 799843
+            },
+            {
+              "provider": "Bluepillow.com",
+              "currency": "EUR",
+              "nightlyAmount": 190,
+              "totalAmount": 570,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 893942
+            },
+            {
+              "provider": "Reserving",
+              "currency": "EUR",
+              "nightlyAmount": 187,
+              "totalAmount": 561,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 879828
+            },
+            {
+              "provider": "CheapTickets.com",
+              "currency": "EUR",
+              "nightlyAmount": 170,
+              "totalAmount": 510,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 799843
+            }
+          ],
+          "roomRates": [
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 170,
+              "totalAmount": 510,
+              "context": "Expedia.com · €170",
+              "freeCancellation": false,
+              "totalKrw": 799843
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 170,
+              "totalAmount": 510,
+              "context": "Earn rewards on this stay · Save with free membership · Classic Room, 1 King Bed · 1 king bed · €170",
+              "freeCancellation": false,
+              "totalKrw": 799843
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 189,
+              "totalAmount": 567,
+              "context": "Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · €189",
+              "freeCancellation": true,
+              "totalKrw": 889237
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 201,
+              "totalAmount": 603,
+              "context": "Classic Room, 1 King Bed · 1 king bed · breakfast · €201",
+              "freeCancellation": false,
+              "totalKrw": 945697
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 170,
+              "totalAmount": 510,
+              "context": "Hotels.com · Free Wi-Fi · €170",
+              "freeCancellation": false,
+              "totalKrw": 799843
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "currency": "EUR",
+            "nightlyAmount": 170,
+            "totalAmount": 510,
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "source": "google-hotels",
+            "official": false,
+            "totalKrw": 799843
+          },
+          "freeCancellation": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 189,
+            "totalAmount": 567,
+            "context": "Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · €189",
+            "freeCancellation": true,
+            "totalKrw": 889237
+          },
+          "exactCandidate": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 189,
+            "totalAmount": 567,
+            "context": "Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · €189",
+            "freeCancellation": true,
+            "totalKrw": 889237
+          },
+          "dateConfirmed": true,
+          "candidateKind": "exact",
+          "candidateSavingsAmount": -12,
+          "candidateSavingsKrw": -18820
+        }
+      ]
     }
   ],
   "config": {
@@ -16969,14 +17506,14 @@
     ]
   },
   "collectorStatus": {
-    "capturedAt": "2026-09-15T19:14:59.881Z",
+    "capturedAt": "2026-09-15T23:39:02.296Z",
     "results": [
       {
         "id": "madrid-carlton",
         "status": "error",
         "state": "rate-list-transition-failed",
         "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-09-15T19:10:23.492Z",
+        "capturedAt": "2026-09-15T23:34:40.494Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
@@ -17008,7 +17545,7 @@
         "status": "error",
         "state": "rate-list-transition-failed",
         "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-09-15T19:11:53.202Z",
+        "capturedAt": "2026-09-15T23:36:07.478Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
@@ -17040,7 +17577,7 @@
         "status": "error",
         "state": "rate-list-transition-failed",
         "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-09-15T19:13:25.997Z",
+        "capturedAt": "2026-09-15T23:37:33.920Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
@@ -17072,7 +17609,7 @@
         "status": "error",
         "state": "rate-list-transition-failed",
         "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-09-15T19:14:57.188Z",
+        "capturedAt": "2026-09-15T23:38:59.640Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
