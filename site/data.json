@@ -16448,14 +16448,14 @@
     ]
   },
   "collectorStatus": {
-    "capturedAt": "2026-09-14T19:59:18.591Z",
+    "capturedAt": "2026-09-15T00:02:29.858Z",
     "results": [
       {
         "id": "madrid-carlton",
         "status": "error",
         "state": "rate-list-transition-failed",
         "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-09-14T19:55:54.914Z",
+        "capturedAt": "2026-09-14T23:57:56.327Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
@@ -16484,21 +16484,21 @@
       },
       {
         "id": "bilbao-ercilla",
-        "status": "blocked",
-        "state": "blocked",
-        "error": "opening rate list: 요금 전환 상태: blocked",
-        "capturedAt": "2026-09-14T19:56:37.389Z",
+        "status": "error",
+        "state": "rate-list-transition-failed",
+        "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
+        "capturedAt": "2026-09-14T23:59:27.467Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
         "diagnostics": {
-          "stage": "opening rate list",
+          "stage": "confirming specific dates",
           "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027",
-          "title": "Access Denied",
-          "bodyLength": 230,
+          "finalUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+          "title": "Boutique Rooms & Suites | Hotel Ercilla de Bilbao, Autograph Collection",
+          "bodyLength": 3321,
           "selectors": {
-            "dateInput": false,
-            "viewRates": false,
-            "roomCards": false,
+            "dateInput": true,
+            "viewRates": true,
+            "roomCards": true,
             "rateCards": false,
             "login": false,
             "cookieConsent": false
@@ -16519,7 +16519,7 @@
         "status": "error",
         "state": "rate-list-transition-failed",
         "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-09-14T19:58:09.079Z",
+        "capturedAt": "2026-09-15T00:00:58.373Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
@@ -16548,21 +16548,21 @@
       },
       {
         "id": "barcelona-four-points",
-        "status": "blocked",
-        "state": "blocked",
-        "error": "opening rate list: 요금 전환 상태: blocked",
-        "capturedAt": "2026-09-14T19:59:15.435Z",
+        "status": "error",
+        "state": "rate-list-transition-failed",
+        "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
+        "capturedAt": "2026-09-15T00:02:27.183Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
         "diagnostics": {
-          "stage": "opening rate list",
+          "stage": "confirming specific dates",
           "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027",
-          "title": "Access Denied",
-          "bodyLength": 230,
+          "finalUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+          "title": "Rooms | Four Points Barcelona Diagonal",
+          "bodyLength": 3529,
           "selectors": {
-            "dateInput": false,
-            "viewRates": false,
-            "roomCards": false,
+            "dateInput": true,
+            "viewRates": true,
+            "roomCards": true,
             "rateCards": false,
             "login": false,
             "cookieConsent": false
