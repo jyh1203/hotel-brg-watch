@@ -16,6 +16,11 @@ test("Osaka itinerary follows the confirmed day order and travel details", () =>
   assert.match(html, /텐진바시스지 상점가/);
   assert.match(html, /나카자키초 골목/);
   assert.match(html, /우메다 스카이빌딩 공중정원/);
+  assert.match(html, /OWL LIQUOR/);
+  assert.match(html, /킹그램 리커 난바점/);
+  assert.match(html, /頃末商店 위스키숍/);
+  assert.match(html, /리커마운틴 우메다점/);
+  assert.doesNotMatch(html, /야마자키 증류소|LIQUOR MUSEUM|킹그램 리커 니시텐마점/);
   assert.doesNotMatch(html, /요코오 다다노리|국립국제미술관|미술관/);
   assert.match(html, /인천 중구 공항문화로 127 \(운서동 2955-74\)/);
 });
@@ -30,6 +35,7 @@ test("Osaka itinerary retains the original confirmed transport, food, and lodgin
     "스테이크랜드 고베관",
     "고베 니시무라 커피 나카야마테 본점",
     "난킨마치 산책·간식",
+    "도톤보리 돈키호테",
     "551 간사이공항점",
     "인스파이어 체크인",
   ]) {
