@@ -43,7 +43,12 @@ test("Osaka itinerary keeps private confirmation numbers out of the public page"
 });
 
 test("Osaka itinerary uses verified airport guidance", () => {
-  assert.match(html, /06:15부터 주차하는 일정이 아니라 터미널 도착 목표/);
+  assert.match(html, /06:30 공식 발렛 예약/);
+  assert.match(html, /단기주차장 B1 A구역 15번/);
+  assert.match(html, /단기주차장 B3 A구역 공식 인도장/);
+  assert.match(html, /신한 Marriott Bonvoy 카드로 발렛 서비스 요금 무료/);
+  assert.match(html, /전기차는 저공해 1종으로 50% 자동감면 대상/);
+  assert.doesNotMatch(html, /장기주차 차량 회수|장기주차 위치 기록/);
   assert.match(html, /551 간사이공항점은 공식상 T1 2층 국내선 플로어/);
   assert.doesNotMatch(html, /551 간사이공항점은 공식상 T1 4층/);
 });
