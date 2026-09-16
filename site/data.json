@@ -17320,6 +17320,219 @@
           "candidateSavingsKrw": -18820
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-16T01:06:39.087Z",
+      "fx": {
+        "rates": {
+          "EUR": 1568.32
+        },
+        "dates": {
+          "EUR": "2026-09-15"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "hotel": "AC Hotel Carlton Madrid",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Standard King Room, Guest room, 1 King",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before or on Apr 02, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 190,
+            "currency": "EUR",
+            "totalAmount": 760,
+            "taxesIncluded": false,
+            "amountBasis": "pre-tax",
+            "prepaid": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "doub",
+            "checkIn": "2027-04-03",
+            "checkOut": "2027-04-07",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-09-16T01:02:11.831Z",
+            "totalKrw": 1191923,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "152.0.7977.84"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+            "note": "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인."
+          }
+        },
+        {
+          "id": "bilbao-ercilla",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Stylish, Guest room, 1 Double",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before or on Apr 06, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 152,
+            "currency": "EUR",
+            "totalAmount": 457,
+            "taxesIncluded": false,
+            "amountBasis": "pre-tax",
+            "prepaid": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "genr",
+            "checkIn": "2027-04-07",
+            "checkOut": "2027-04-10",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-09-16T01:03:39.528Z",
+            "totalKrw": 716722,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "152.0.7977.84"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+            "note": "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인."
+          }
+        },
+        {
+          "id": "bordeaux-moxy",
+          "hotel": "Moxy Bordeaux",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Moxy Sleeper, Guest room, 1 Queen",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before or on Apr 09, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 134,
+            "currency": "EUR",
+            "totalAmount": 269,
+            "taxesIncluded": false,
+            "amountBasis": "pre-tax",
+            "prepaid": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "genr",
+            "checkIn": "2027-04-10",
+            "checkOut": "2027-04-12",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-09-16T01:05:07.591Z",
+            "totalKrw": 421878,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "152.0.7977.84"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+            "note": "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인."
+          }
+        },
+        {
+          "id": "barcelona-four-points",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Classic, Guest room, 1 King Super",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before 11:59 PM local hotel time on April 11, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 185,
+            "currency": "EUR",
+            "totalAmount": 555,
+            "taxesIncluded": false,
+            "amountBasis": "pre-tax",
+            "prepaid": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "d000000002",
+            "checkIn": "2027-04-13",
+            "checkOut": "2027-04-16",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-09-16T01:06:36.357Z",
+            "totalKrw": 870418,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "152.0.7977.84"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              },
+              {
+                "method": "POST",
+                "resourceType": "fetch",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/query/PhoenixBookDTTGetRateDetails"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+            "note": "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인."
+          }
+        }
+      ]
     }
   ],
   "config": {
@@ -17506,134 +17719,54 @@
     ]
   },
   "collectorStatus": {
-    "capturedAt": "2026-09-15T23:39:02.296Z",
+    "capturedAt": "2026-09-16T01:06:39.085Z",
     "results": [
       {
         "id": "madrid-carlton",
-        "status": "error",
-        "state": "rate-list-transition-failed",
-        "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-09-15T23:34:40.494Z",
+        "status": "ok",
+        "state": "ok",
+        "error": null,
+        "capturedAt": "2026-09-16T01:02:11.831Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
         "diagnostics": {
-          "stage": "confirming specific dates",
-          "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
-          "title": "Rooms | AC Hotel Carlton Madrid",
-          "bodyLength": 3407,
-          "selectors": {
-            "dateInput": true,
-            "viewRates": true,
-            "roomCards": true,
-            "rateCards": false,
-            "login": false,
-            "cookieConsent": false
-          },
-          "browser": {
-            "platform": "linux-x64",
-            "headless": false,
-            "channel": null,
-            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-            "persistent": false,
-            "browserVersion": "151.0.7922.34",
-            "authMethod": "none"
-          }
+          "finalUrl": null,
+          "browser": null
         }
       },
       {
         "id": "bilbao-ercilla",
-        "status": "error",
-        "state": "rate-list-transition-failed",
-        "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-09-15T23:36:07.478Z",
+        "status": "ok",
+        "state": "ok",
+        "error": null,
+        "capturedAt": "2026-09-16T01:03:39.528Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
         "diagnostics": {
-          "stage": "confirming specific dates",
-          "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
-          "title": "Boutique Rooms & Suites | Hotel Ercilla de Bilbao, Autograph Collection",
-          "bodyLength": 3321,
-          "selectors": {
-            "dateInput": true,
-            "viewRates": true,
-            "roomCards": true,
-            "rateCards": false,
-            "login": false,
-            "cookieConsent": false
-          },
-          "browser": {
-            "platform": "linux-x64",
-            "headless": false,
-            "channel": null,
-            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-            "persistent": false,
-            "browserVersion": "151.0.7922.34",
-            "authMethod": "none"
-          }
+          "finalUrl": null,
+          "browser": null
         }
       },
       {
         "id": "bordeaux-moxy",
-        "status": "error",
-        "state": "rate-list-transition-failed",
-        "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-09-15T23:37:33.920Z",
+        "status": "ok",
+        "state": "ok",
+        "error": null,
+        "capturedAt": "2026-09-16T01:05:07.591Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
         "diagnostics": {
-          "stage": "confirming specific dates",
-          "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
-          "title": "Rooms | Moxy Bordeaux",
-          "bodyLength": 5212,
-          "selectors": {
-            "dateInput": true,
-            "viewRates": true,
-            "roomCards": true,
-            "rateCards": false,
-            "login": false,
-            "cookieConsent": false
-          },
-          "browser": {
-            "platform": "linux-x64",
-            "headless": false,
-            "channel": null,
-            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-            "persistent": false,
-            "browserVersion": "151.0.7922.34",
-            "authMethod": "none"
-          }
+          "finalUrl": null,
+          "browser": null
         }
       },
       {
         "id": "barcelona-four-points",
-        "status": "error",
-        "state": "rate-list-transition-failed",
-        "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-09-15T23:38:59.640Z",
+        "status": "ok",
+        "state": "ok",
+        "error": null,
+        "capturedAt": "2026-09-16T01:06:36.357Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
         "diagnostics": {
-          "stage": "confirming specific dates",
-          "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
-          "title": "Rooms | Four Points Barcelona Diagonal",
-          "bodyLength": 3529,
-          "selectors": {
-            "dateInput": true,
-            "viewRates": true,
-            "roomCards": true,
-            "rateCards": false,
-            "login": false,
-            "cookieConsent": false
-          },
-          "browser": {
-            "platform": "linux-x64",
-            "headless": false,
-            "channel": null,
-            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-            "persistent": false,
-            "browserVersion": "151.0.7922.34",
-            "authMethod": "none"
-          }
+          "finalUrl": null,
+          "browser": null
         }
       }
     ]
