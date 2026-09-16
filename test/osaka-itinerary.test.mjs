@@ -58,3 +58,22 @@ test("Osaka itinerary uses verified airport guidance", () => {
   assert.match(html, /551 간사이공항점은 공식상 T1 2층 국내선 플로어/);
   assert.doesNotMatch(html, /551 간사이공항점은 공식상 T1 4층/);
 });
+
+test("Osaka itinerary provides inline Google Maps links including separate option links", () => {
+  for (const expected of [
+    "1안 OWL 지도",
+    "2안 킹그램 지도",
+    "1안 타츠스시 지도",
+    "2안 하나마루켄 지도",
+    "1안 스테이크랜드 지도",
+    "2안 하나호우비 지도",
+    "숙소 지도",
+    "USJ 지도",
+    "행사장 지도",
+    "인스파이어 지도",
+  ]) {
+    assert.match(html, new RegExp(expected));
+  }
+  const googleMapLinks = html.match(/https:\/\/www\.google\.com\/maps\/search\/\?api=1&amp;query=/g) ?? [];
+  assert.ok(googleMapLinks.length >= 25, `expected at least 25 Google Maps links, got ${googleMapLinks.length}`);
+});
