@@ -59,6 +59,18 @@ test("Osaka itinerary uses verified airport guidance", () => {
   assert.doesNotMatch(html, /551 간사이공항점은 공식상 T1 4층/);
 });
 
+test("Osaka itinerary records the KIX baggage-claim cash withdrawal stop", () => {
+  assert.match(html, /수하물 수취장 ATM에서 엔화 인출/);
+  assert.match(html, /4번·5번 수하물 벨트 사이 1대/);
+  assert.match(html, /6번 수하물 벨트 옆 1대/);
+  assert.match(html, /핫핑크색 ATM 2대/);
+  assert.match(html, /kansai-airport\.or\.jp\/ko\/service\/money_insurance\/atm/);
+  assert.ok(
+    html.indexOf("입국심사·수하물 수령") < html.indexOf("수하물 수취장 ATM에서 엔화 인출") &&
+      html.indexOf("수하물 수취장 ATM에서 엔화 인출") < html.indexOf("간사이공항 → 호텔 한큐 레스파이어 오사카"),
+  );
+});
+
 test("Osaka itinerary provides inline Google Maps links including separate option links", () => {
   for (const expected of [
     "1안 OWL 지도",
