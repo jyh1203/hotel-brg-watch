@@ -17,7 +17,6 @@ test("Osaka itinerary follows the confirmed day order and travel details", () =>
   assert.match(html, /나카자키초 골목/);
   assert.match(html, /우메다 스카이빌딩 공중정원/);
   assert.match(html, /OWL LIQUOR/);
-  assert.match(html, /킹그램 리커 난바점/);
   assert.match(html, /頃末商店 위스키숍/);
   assert.match(html, /리커마운틴 우메다점/);
   assert.doesNotMatch(html, /야마자키 증류소|LIQUOR MUSEUM|킹그램 리커 니시텐마점/);
@@ -25,17 +24,17 @@ test("Osaka itinerary follows the confirmed day order and travel details", () =>
   assert.match(html, /인천 중구 공항문화로 127 \(운서동 2955-74\)/);
 });
 
-test("Osaka itinerary retains the original confirmed transport, food, and lodging plan", () => {
+test("Osaka itinerary retains confirmed transport and lodging while recording the actual day-one stops", () => {
   for (const expected of [
     "ZE611 인천 T1 → 간사이 T1",
     "ZE614 간사이 T1 → 인천 T1",
-    "킷사 선샤인",
-    "타츠스시 마구로 잇테츠 센니치마에점",
-    "하나마루켄 라멘",
+    "타치스시 마구로 잇테츠 센니치마에점",
+    "하나마루켄 난바 호젠지점",
+    "MONDIAL KAFFEE 328 NY3",
+    "오렌지스트리트 · 스투시 오사카",
     "스테이크랜드 고베관",
     "고베 니시무라 커피 나카야마테 본점",
     "난킨마치 산책·간식",
-    "도톤보리 돈키호테",
     "551 간사이공항점",
     "인스파이어 체크인",
   ]) {
@@ -74,15 +73,19 @@ test("Osaka itinerary records the KIX baggage-claim cash withdrawal stop", () =>
 test("Osaka itinerary records the completed day-one route without publishing expense details", () => {
   for (const expected of [
     "DAY 1 완료",
-    "실제로 다녀온 코스",
+    "실제 방문 순서대로 정리한 DAY 1 기록",
     "타치스시 마구로 잇테츠 센니치마에점",
-    "신사이바시 PARCO 키디랜드",
-    "MONDIAL KAFFEE 328",
+    "신사이바시 PARCO 굿즈숍",
+    "디즈니 스토어·지브리·캡콤",
+    "MONDIAL KAFFEE 328 NY3",
+    "モンディアルカフェ 328 NY3",
+    "立ち寿司 まぐろ一徹 千日前",
     "스프링뱅크",
-    "스투시",
+    "오렌지스트리트 · 스투시",
     "Supreme·BAPE·Carhartt 구경",
     "산리오 팝업",
     "신사이바시 아케이드 갓챠·피규어숍",
+    "갓챠를 6회",
     "숙소 근처 패밀리마트",
   ]) {
     assert.match(html, new RegExp(expected));
@@ -91,12 +94,15 @@ test("Osaka itinerary records the completed day-one route without publishing exp
   assert.match(html, /상세 결제내역을 포함하지 않습니다/);
 });
 
-test("Osaka itinerary provides inline Google Maps links including separate option links", () => {
+test("Osaka itinerary provides inline Google Maps links for actual and planned stops", () => {
   for (const expected of [
-    "1안 OWL 지도",
-    "2안 킹그램 지도",
-    "1안 타츠스시 지도",
-    "2안 하나마루켄 지도",
+    "OWL 지도",
+    "타치스시 지도",
+    "하나마루켄 지도",
+    "PARCO 지도",
+    "카페 지도",
+    "스투시 지도",
+    "패밀리마트 지도",
     "1안 스테이크랜드 지도",
     "2안 하나호우비 지도",
     "숙소 지도",
