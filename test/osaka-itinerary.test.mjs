@@ -71,6 +71,26 @@ test("Osaka itinerary records the KIX baggage-claim cash withdrawal stop", () =>
   );
 });
 
+test("Osaka itinerary records the completed day-one route without publishing expense details", () => {
+  for (const expected of [
+    "DAY 1 완료",
+    "실제로 다녀온 코스",
+    "타치스시 마구로 잇테츠 센니치마에점",
+    "신사이바시 PARCO 키디랜드",
+    "MONDIAL KAFFEE 328",
+    "스프링뱅크",
+    "스투시",
+    "Supreme·BAPE·Carhartt 구경",
+    "산리오 팝업",
+    "신사이바시 아케이드 갓챠·피규어숍",
+    "숙소 근처 패밀리마트",
+  ]) {
+    assert.match(html, new RegExp(expected));
+  }
+  assert.doesNotMatch(html, /428\.04|53,512|85,741|46,661|34,748|7,899|60,525/);
+  assert.match(html, /상세 결제내역을 포함하지 않습니다/);
+});
+
 test("Osaka itinerary provides inline Google Maps links including separate option links", () => {
   for (const expected of [
     "1안 OWL 지도",
