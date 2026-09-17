@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 
 const html = fs.readFileSync(new URL("../site/trip_osaka.html", import.meta.url), "utf8");
+const expenseHtml = fs.readFileSync(new URL("../site/trip_osaka_expenses.html", import.meta.url), "utf8");
 
 test("Osaka itinerary follows the confirmed day order and travel details", () => {
   const anchors = ["d17", "d18", "d19", "d20", "d21"];
@@ -91,7 +92,7 @@ test("Osaka itinerary records the completed day-one route without publishing exp
     assert.match(html, new RegExp(expected));
   }
   assert.doesNotMatch(html, /428\.04|53,512|85,741|46,661|34,748|7,899|60,525/);
-  assert.match(html, /상세 결제내역을 포함하지 않습니다/);
+  assert.match(html, /오사카 여행 가계부/);
 });
 
 test("Osaka itinerary provides inline Google Maps links for actual and planned stops", () => {
@@ -114,4 +115,22 @@ test("Osaka itinerary provides inline Google Maps links for actual and planned s
   }
   const googleMapLinks = html.match(/https:\/\/www\.google\.com\/maps\/search\/\?api=1&amp;query=/g) ?? [];
   assert.ok(googleMapLinks.length >= 25, `expected at least 25 Google Maps links, got ${googleMapLinks.length}`);
+});
+
+test("Osaka expense page publishes the reconciled day-one ledger without private identifiers", () => {
+  assert.match(html, /href="trip_osaka_expenses\.html">오사카 여행 가계부/);
+  for (const expected of [
+    "DAY 1 알리페이 승인",
+    "₩241,376",
+    "¥8,414",
+    "¥12,414",
+    "¥313",
+    "¥7,899",
+    "갓챠 ¥400 × 6회",
+    "여행 중 임시 공개",
+    "2026-09-22 로컬 전환 예정",
+  ]) {
+    assert.match(expenseHtml, new RegExp(expected));
+  }
+  assert.doesNotMatch(expenseHtml, /72412419|카드번호|예약번호/);
 });
