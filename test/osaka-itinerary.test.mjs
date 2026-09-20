@@ -138,15 +138,14 @@ test("Osaka itinerary provides inline Google Maps links for actual and planned s
   assert.ok(googleMapLinks.length >= 29, `expected at least 29 Google Maps links, got ${googleMapLinks.length}`);
 });
 
-test("Osaka expense page publishes the day-one through day-four ledger without private identifiers", () => {
+test("Osaka expense page publishes the day-one through day-five ledger without private identifiers", () => {
   assert.match(html, /href="trip_osaka_expenses\.html">오사카 여행 가계부/);
   for (const expected of [
     "전체 원화 정산",
     "₩241,376",
-    "¥8,414",
-    "¥12,414",
-    "¥313",
-    "¥7,899",
+    "¥50,313",
+    "¥38,638",
+    "¥11,575",
     "갓챠 ¥400 × 6회",
     "이스타항공 왕복 항공권",
     "₩488,400",
@@ -157,19 +156,23 @@ test("Osaka expense page publishes the day-one through day-four ledger without p
     "¥17,989",
     "DAY 4 거래 내역",
     "₩350,458",
-    "¥48,730",
+    "¥51,430",
     "트레블월렛 엔화 충전",
     "₩435,990",
     "¥50,000",
     "¥1 = ₩8.7198",
     "현재 전체 지출",
-    "₩2,124,330",
+    "₩2,607,488",
+    "₩746,867",
     "₩880,741",
     "₩100,852",
     "₩158,858",
-    "₩434,954",
+    "₩458,498",
+    "₩261,672",
     "₩596,259",
-    "금액을 입력하지 않은 USJ 공식 입장권과 DAY 5 지출",
+    "USJ 공식 입장권 2매",
+    "¥19,800",
+    "₩197,942",
     "₩25,675",
     "₩8,545",
     "₩7,041",
@@ -178,12 +181,16 @@ test("Osaka expense page publishes the day-one through day-four ledger without p
     "₩11,959",
     "메종키츠네 카페·몽벨·빔즈 구경",
     "요도바시 6층 갓챠숍",
-    "매트 주술회전 피규어 ¥2,200 포함",
-    "결제수단 미기록",
+    "돈키호테 우메다점 · 매트 주술회전 피규어",
+    "감자튀김",
+    "조니워커 킹조지 500ml",
+    "Npay ₩240,000 \\+ 대한항공씨앤디서비스 신한카드 ₩21,672",
+    "미확인 차이</span><strong>¥100",
     "여행 중 임시 공개",
     "2026-09-22 로컬 전환 예정",
   ]) {
     assert.match(expenseHtml, new RegExp(expected));
   }
+  assert.doesNotMatch(expenseHtml, /결제수단 미기록/);
   assert.doesNotMatch(expenseHtml, /72412419|카드번호|예약번호/);
 });
