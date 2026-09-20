@@ -11,21 +11,23 @@ test("Osaka itinerary follows the confirmed day order and travel details", () =>
   assert.ok(positions.every((position) => position >= 0));
   assert.deepEqual([...positions].sort((a, b) => a - b), positions);
   assert.match(html, /T1 1층 5번 승차장/);
-  assert.match(html, /고베 누노비키 허브원/);
-  assert.match(html, /메리켄파크·고베 포트타워/);
-  assert.match(html, /오사카성 YATAI 페스티벌/);
-  assert.match(html, /텐진바시스지 상점가/);
-  assert.match(html, /나카자키초 골목/);
-  assert.match(html, /우메다 스카이빌딩 공중정원/);
+  assert.match(html, /DAY 2 완료/);
+  assert.match(html, /DAY 3 완료/);
+  assert.match(html, /DAY 4 완료/);
+  assert.match(html, /마리오카트: 쿠파의 도전장/);
+  assert.match(html, /카자미도리노야카타/);
+  assert.match(html, /메리켄파크 불꽃축제/);
+  assert.match(html, /오사카성 앞 YATAI/);
+  assert.match(html, /LUCUA 1100 칼디 커피팜/);
   assert.match(html, /OWL LIQUOR/);
-  assert.match(html, /頃末商店 위스키숍/);
-  assert.match(html, /리커마운틴 우메다점/);
+  assert.doesNotMatch(html, /고베 누노비키 허브원|頃末商店 위스키숍|리커마운틴 우메다점/);
+  assert.doesNotMatch(html, /텐진바시스지 상점가|나카자키초 골목|우메다 스카이빌딩 공중정원/);
   assert.doesNotMatch(html, /야마자키 증류소|LIQUOR MUSEUM|킹그램 리커 니시텐마점/);
   assert.doesNotMatch(html, /요코오 다다노리|국립국제미술관|미술관/);
   assert.match(html, /인천 중구 공항문화로 127 \(운서동 2955-74\)/);
 });
 
-test("Osaka itinerary retains confirmed transport and lodging while recording the actual day-one stops", () => {
+test("Osaka itinerary retains confirmed transport and lodging while recording the actual completed stops", () => {
   for (const expected of [
     "ZE611 인천 T1 → 간사이 T1",
     "ZE614 간사이 T1 → 인천 T1",
@@ -35,7 +37,11 @@ test("Osaka itinerary retains confirmed transport and lodging while recording th
     "오렌지스트리트 · 스투시 오사카",
     "스테이크랜드 고베관",
     "고베 니시무라 커피 나카야마테 본점",
-    "난킨마치 산책·간식",
+    "이쿠타신사",
+    "하버랜드 모자이크몰 갓덴스시",
+    "이치란 라멘 우메다점",
+    "Standard Products 우메다점",
+    "LINKS UMEDA GU",
     "551 간사이공항점",
     "인스파이어 체크인",
   ]) {
@@ -104,11 +110,18 @@ test("Osaka itinerary provides inline Google Maps links for actual and planned s
     "카페 지도",
     "스투시 지도",
     "패밀리마트 지도",
-    "1안 스테이크랜드 지도",
-    "2안 하나호우비 지도",
+    "스테이크랜드 지도",
+    "이쿠타신사 지도",
+    "스쿨버스커피 지도",
+    "갓덴스시 지도",
+    "이치란 지도",
+    "돈키호테 지도",
+    "GU 지도",
+    "칼디 지도",
+    "카마타케 지도",
     "숙소 지도",
     "USJ 지도",
-    "행사장 지도",
+    "YATAI 행사장 지도",
     "인스파이어 지도",
   ]) {
     assert.match(html, new RegExp(expected));
@@ -117,16 +130,28 @@ test("Osaka itinerary provides inline Google Maps links for actual and planned s
   assert.ok(googleMapLinks.length >= 25, `expected at least 25 Google Maps links, got ${googleMapLinks.length}`);
 });
 
-test("Osaka expense page publishes the reconciled day-one ledger without private identifiers", () => {
+test("Osaka expense page publishes the day-one through day-four ledger without private identifiers", () => {
   assert.match(html, /href="trip_osaka_expenses\.html">오사카 여행 가계부/);
   for (const expected of [
-    "DAY 1 알리페이 승인",
+    "DAY 1 원화 승인",
     "₩241,376",
     "¥8,414",
     "¥12,414",
     "¥313",
     "¥7,899",
     "갓챠 ¥400 × 6회",
+    "이스타항공 왕복 항공권",
+    "₩488,400",
+    "최초 ₩450,000 \\+ 출발일 하루 당김 추가금 ₩38,400",
+    "DAY 2 거래 내역",
+    "¥11,416",
+    "DAY 3 거래 내역",
+    "¥17,989",
+    "DAY 4 거래 내역",
+    "₩350,458",
+    "¥48,730",
+    "매트 주술회전 피규어 ¥2,200 포함",
+    "결제수단 미기록",
     "여행 중 임시 공개",
     "2026-09-22 로컬 전환 예정",
   ]) {
