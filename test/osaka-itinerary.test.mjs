@@ -42,6 +42,10 @@ test("Osaka itinerary retains confirmed transport and lodging while recording th
     "이치란 라멘 우메다점",
     "Standard Products 우메다점",
     "LINKS UMEDA GU",
+    "메종키츠네 카페",
+    "몽벨",
+    "빔즈",
+    "요도바시 6층 갓챠숍",
     "551 간사이공항점",
     "인스파이어 체크인",
   ]) {
@@ -119,6 +123,10 @@ test("Osaka itinerary provides inline Google Maps links for actual and planned s
     "GU 지도",
     "칼디 지도",
     "카마타케 지도",
+    "메종키츠네 카페 지도",
+    "몽벨 지도",
+    "빔즈 지도",
+    "요도바시 지도",
     "숙소 지도",
     "USJ 지도",
     "YATAI 행사장 지도",
@@ -127,13 +135,13 @@ test("Osaka itinerary provides inline Google Maps links for actual and planned s
     assert.match(html, new RegExp(expected));
   }
   const googleMapLinks = html.match(/https:\/\/www\.google\.com\/maps\/search\/\?api=1&amp;query=/g) ?? [];
-  assert.ok(googleMapLinks.length >= 25, `expected at least 25 Google Maps links, got ${googleMapLinks.length}`);
+  assert.ok(googleMapLinks.length >= 29, `expected at least 29 Google Maps links, got ${googleMapLinks.length}`);
 });
 
 test("Osaka expense page publishes the day-one through day-four ledger without private identifiers", () => {
   assert.match(html, /href="trip_osaka_expenses\.html">오사카 여행 가계부/);
   for (const expected of [
-    "DAY 1 원화 승인",
+    "전체 원화 정산",
     "₩241,376",
     "¥8,414",
     "¥12,414",
@@ -150,6 +158,19 @@ test("Osaka expense page publishes the day-one through day-four ledger without p
     "DAY 4 거래 내역",
     "₩350,458",
     "¥48,730",
+    "트레블월렛 엔화 충전",
+    "₩435,990",
+    "¥50,000",
+    "¥1 = ₩8.7198",
+    "현재 전체 지출",
+    "₩1,556,053",
+    "₩314,745",
+    "₩99,545",
+    "₩157,884",
+    "₩434,954",
+    "호텔 US\\$428.04, 금액을 입력하지 않은 USJ 공식 입장권",
+    "메종키츠네 카페·몽벨·빔즈 구경",
+    "요도바시 6층 갓챠숍",
     "매트 주술회전 피규어 ¥2,200 포함",
     "결제수단 미기록",
     "여행 중 임시 공개",
