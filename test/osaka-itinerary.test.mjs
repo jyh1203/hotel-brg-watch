@@ -21,7 +21,7 @@ test("Osaka itinerary follows the confirmed day order and travel details", () =>
   assert.match(html, /LUCUA 1100 칼디 커피팜/);
   assert.match(html, /OWL LIQUOR/);
   assert.doesNotMatch(html, /고베 누노비키 허브원|頃末商店 위스키숍|리커마운틴 우메다점/);
-  assert.doesNotMatch(html, /텐진바시스지 상점가|나카자키초 골목|우메다 스카이빌딩 공중정원/);
+  assert.doesNotMatch(html, /텐진바시스지 상점가|우메다 스카이빌딩 공중정원/);
   assert.doesNotMatch(html, /야마자키 증류소|LIQUOR MUSEUM|킹그램 리커 니시텐마점/);
   assert.doesNotMatch(html, /요코오 다다노리|국립국제미술관|미술관/);
   assert.match(html, /인천 중구 공항문화로 127 \(운서동 2955-74\)/);
@@ -46,7 +46,12 @@ test("Osaka itinerary retains confirmed transport and lodging while recording th
     "몽벨",
     "빔즈",
     "요도바시 6층 갓챠숍",
-    "551 간사이공항점",
+    "호텔 1층 야오이 처마 식당",
+    "유니클로",
+    "나카자키초 살롱 데 아만토",
+    "나카자키초 골목·빈티지숍 구경",
+    "공항 리무진버스 → 간사이공항 T1",
+    "MENSHO 라멘 정식",
     "인스파이어 체크인",
   ]) {
     assert.match(html, new RegExp(expected));
@@ -65,7 +70,6 @@ test("Osaka itinerary uses verified airport guidance", () => {
   assert.match(html, /신한 Marriott Bonvoy 카드로 발렛 서비스 요금 무료/);
   assert.match(html, /전기차는 저공해 1종으로 50% 자동감면 대상/);
   assert.doesNotMatch(html, /장기주차 차량 회수|장기주차 위치 기록/);
-  assert.match(html, /551 간사이공항점은 공식상 T1 2층 국내선 플로어/);
   assert.doesNotMatch(html, /551 간사이공항점은 공식상 T1 4층/);
 });
 
@@ -162,13 +166,13 @@ test("Osaka expense page publishes the day-one through day-five ledger without p
     "¥50,000",
     "¥1 = ₩8.7198",
     "현재 전체 지출",
-    "₩2,607,488",
+    "₩3,062,682",
     "₩746,867",
     "₩880,741",
     "₩100,852",
     "₩158,858",
     "₩458,498",
-    "₩261,672",
+    "₩716,866",
     "₩596,259",
     "USJ 공식 입장권 2매",
     "¥19,800",
@@ -184,10 +188,21 @@ test("Osaka expense page publishes the day-one through day-five ledger without p
     "돈키호테 우메다점 · 매트 주술회전 피규어",
     "감자튀김",
     "조니워커 킹조지 500ml",
+    "호텔 1층 야오이 처마 식당 · 아점",
+    "₩17,141",
+    "유니클로 · 바람막이",
+    "₩36,114",
+    "나카자키초 살롱 데 아만토",
+    "₩8,058",
+    "MAC 립스틱 \\+ 하쿠슈 비터스윗 2병",
+    "¥41,600",
+    "₩371,381",
+    "₩169,841 \\+ ₩201,540",
+    "신한 후불 하이패스카드",
+    "₩22,500",
     "Npay ₩240,000 \\+ 대한항공씨앤디서비스 신한카드 ₩21,672",
     "미확인 차이</span><strong>¥100",
-    "여행 중 임시 공개",
-    "2026-09-22 로컬 전환 예정",
+    "여행 정산본 · 외부 공유 주의",
   ]) {
     assert.match(expenseHtml, new RegExp(expected));
   }
