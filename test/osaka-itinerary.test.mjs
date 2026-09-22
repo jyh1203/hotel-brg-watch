@@ -4,6 +4,9 @@ import fs from "node:fs";
 
 const html = fs.readFileSync(new URL("../site/trip_osaka.html", import.meta.url), "utf8");
 const expenseHtml = fs.readFileSync(new URL("../site/trip_osaka_expenses.html", import.meta.url), "utf8");
+const productDataMatch = expenseHtml.match(/<script id="product-price-data" type="application\/json">([\s\S]*?)<\/script>/);
+assert.ok(productDataMatch, "embedded product price data should exist");
+const productData = JSON.parse(productDataMatch[1]);
 
 test("Osaka itinerary follows the confirmed day order and travel details", () => {
   const anchors = ["d17", "d18", "d19", "d20", "d21"];
@@ -180,7 +183,9 @@ test("Osaka expense page publishes the day-one through day-five ledger without p
     "₩25,675",
     "₩8,545",
     "₩7,041",
-    "니시무라 커피 나카야마테 본점 · 커피 2잔, 오렌지 타르트</td><td>Npay",
+    "니시무라 커피 나카야마테 본점",
+    "케이크 세트 · ¥1,400 × 1",
+    "커피 · ¥780 × 1",
     "₩19,796",
     "₩11,959",
     "메종키츠네 카페·몽벨·빔즈 구경",
@@ -190,7 +195,8 @@ test("Osaka expense page publishes the day-one through day-five ledger without p
     "조니워커 킹조지 500ml",
     "호텔 1층 야오이 처마 식당 · 아점",
     "₩17,141",
-    "유니클로 · 바람막이",
+    "UNIQLO",
+    "포켓터블 UV PROTECTION 파카 · 올리브",
     "₩36,114",
     "나카자키초 살롱 데 아만토",
     "₩8,058",
@@ -203,9 +209,41 @@ test("Osaka expense page publishes the day-one through day-five ledger without p
     "Npay ₩240,000 \\+ 대한항공씨앤디서비스 신한카드 ₩21,672",
     "미확인 차이</span><strong>¥100",
     "여행 정산본 · 외부 공유 주의",
+    "공용 지출",
+    "₩2,300,382",
+    "이든 용돈",
+    "₩161,386",
+    "내 용돈",
+    "₩600,914",
+    "예산 미입력 · 잔액 산정 불가",
+    "일본 여행 상품 가격 기록",
+    "영수증 대조 결과",
   ]) {
     assert.match(expenseHtml, new RegExp(expected));
   }
   assert.doesNotMatch(expenseHtml, /결제수단 미기록/);
   assert.doesNotMatch(expenseHtml, /72412419|카드번호|예약번호/);
+});
+
+test("Osaka receipt details preserve parent totals and validate item sums", () => {
+  const records = productData.records;
+  const totalFor = (store) => records
+    .filter((record) => record.store === store)
+    .reduce((sum, record) => sum + record.prices["2026"] * record.quantity, 0);
+
+  assert.equal(totalFor("Sanrio"), 5170);
+  assert.equal(totalFor("가텐스시"), 5279);
+  assert.equal(totalFor("이치란"), 3290);
+  assert.equal(totalFor("KALDI COFFEE FARM 루쿠아 이레점"), 2553);
+  assert.notEqual(totalFor("KALDI COFFEE FARM 루쿠아 이레점"), 2213);
+  assert.equal(totalFor("KIX 면세점"), 38000);
+  assert.match(expenseHtml, /KALDI는 영수증 총액 ¥2,213 대비 제공 상세합계 ¥2,553/);
+  assert.match(expenseHtml, /기존 결제건 ¥2,850과 ¥50 차이/);
+  assert.match(expenseHtml, /MATCHED · 11/);
+  assert.match(expenseHtml, /PARTIAL · 5/);
+  assert.match(expenseHtml, /NEW · 1/);
+  assert.match(expenseHtml, /DUPLICATE · 0/);
+  assert.match(expenseHtml, /UNCERTAIN · 1/);
+  assert.doesNotMatch(expenseHtml, /소시지류|생맥주 ¥638|음료류 ¥1,056|츄러스 ¥495|사이드류 ¥880|감자류 ¥1,980/);
+  assert.equal((expenseHtml.match(/현재 전체 지출<\/span><strong>₩3,062,682/g) ?? []).length, 1);
 });
