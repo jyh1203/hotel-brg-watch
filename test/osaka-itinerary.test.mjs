@@ -210,9 +210,9 @@ test("Osaka expense page publishes the day-one through day-five ledger without p
     "미확인 차이</span><strong>¥100",
     "여행 정산본 · 외부 공유 주의",
     "공용 지출",
-    "₩2,300,382",
+    "₩2,318,133",
     "이든 용돈",
-    "₩161,386",
+    "¥16,150 / ₩143,635",
     "내 용돈",
     "₩600,914",
     "예산 미입력 · 잔액 산정 불가",
@@ -233,17 +233,29 @@ test("Osaka receipt details preserve parent totals and validate item sums", () =
 
   assert.equal(totalFor("Sanrio"), 5170);
   assert.equal(totalFor("가텐스시"), 5279);
-  assert.equal(totalFor("이치란"), 3290);
-  assert.equal(totalFor("KALDI COFFEE FARM 루쿠아 이레점"), 2553);
-  assert.notEqual(totalFor("KALDI COFFEE FARM 루쿠아 이레점"), 2213);
+  assert.equal(totalFor("이치란 라멘 우메다점"), 3290);
+  assert.equal(totalFor("KALDI COFFEE FARM 루쿠아 이레점"), 2213);
   assert.equal(totalFor("KIX 면세점"), 38000);
-  assert.match(expenseHtml, /KALDI는 영수증 총액 ¥2,213 대비 제공 상세합계 ¥2,553/);
-  assert.match(expenseHtml, /기존 결제건 ¥2,850과 ¥50 차이/);
-  assert.match(expenseHtml, /MATCHED · 11/);
-  assert.match(expenseHtml, /PARTIAL · 5/);
-  assert.match(expenseHtml, /NEW · 1/);
+  assert.equal(totalFor("baseyard tokyo · LUCUA 도쿄하비"), 3080);
+  assert.equal(totalFor("Standard Products 우메다점"), 1650);
+  assert.match(expenseHtml, /상품 소계\(세전\) ¥2,012 \+ 소비세 10% ¥201/);
+  assert.match(expenseHtml, /루피 정식 · 세금 포함 ¥2,850/);
+  assert.match(expenseHtml, /MATCHED · 16/);
+  assert.match(expenseHtml, /PARTIAL · 0/);
+  assert.match(expenseHtml, /NEW · 0/);
   assert.match(expenseHtml, /DUPLICATE · 0/);
-  assert.match(expenseHtml, /UNCERTAIN · 1/);
+  assert.match(expenseHtml, /UNCERTAIN · 0/);
   assert.doesNotMatch(expenseHtml, /소시지류|생맥주 ¥638|음료류 ¥1,056|츄러스 ¥495|사이드류 ¥880|감자류 ¥1,980/);
+  assert.doesNotMatch(expenseHtml, /주먹밥①|주먹밥②|천연수 600ml|치킨류|과자·간식류|매장 미확정/);
   assert.equal((expenseHtml.match(/현재 전체 지출<\/span><strong>₩3,062,682/g) ?? []).length, 1);
+});
+
+test("Osaka allowance ownership changes preserve the trip total", () => {
+  const edenWon = [27877, 19184, 19796, 34748, 20928, 6714, 11510, 2878];
+  assert.equal(edenWon.reduce((sum, value) => sum + value, 0), 143635);
+  assert.equal(3080 + 2200 + 2200 + 3850 + 2400 + 770 + 1320 + 330, 16150);
+  assert.equal(2318133 + 143635 + 600914, 3062682);
+  assert.match(expenseHtml, /MAC 립스틱 배분액 ₩32,139은 공용/);
+  assert.match(expenseHtml, /Standard Products 전체 결제 ₩58,510 중 ₩14,388만 이든 용돈/);
+  assert.doesNotMatch(expenseHtml, /MAC 립스틱 · ¥3,600 × 1 · 이든 용돈/);
 });
