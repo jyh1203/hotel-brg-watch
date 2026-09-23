@@ -210,11 +210,11 @@ test("Osaka expense page publishes the day-one through day-five ledger without p
     "미확인 차이</span><strong>¥100",
     "여행 정산본 · 외부 공유 주의",
     "공용 지출",
-    "₩2,318,133",
+    "₩2,285,994",
     "이든 용돈",
-    "¥16,150 / ₩143,635",
+    "₩143,635",
     "내 용돈",
-    "₩600,914",
+    "₩633,053",
     "예산 미입력 · 잔액 산정 불가",
     "일본 여행 상품 가격 기록",
     "영수증 대조 결과",
@@ -253,9 +253,12 @@ test("Osaka receipt details preserve parent totals and validate item sums", () =
 test("Osaka allowance ownership changes preserve the trip total", () => {
   const edenWon = [27877, 19184, 19796, 34748, 20928, 6714, 11510, 2878];
   assert.equal(edenWon.reduce((sum, value) => sum + value, 0), 143635);
-  assert.equal(3080 + 2200 + 2200 + 3850 + 2400 + 770 + 1320 + 330, 16150);
-  assert.equal(2318133 + 143635 + 600914, 3062682);
-  assert.match(expenseHtml, /MAC 립스틱 배분액 ₩32,139은 공용/);
+  assert.equal(2285994 + 143635 + 633053, 3062682);
+  assert.match(expenseHtml, /MAC 립스틱 배분액 ₩32,139 \+ 하쿠슈 배분액 ₩339,242 = 내 용돈 ₩371,381/);
   assert.match(expenseHtml, /Standard Products 전체 결제 ₩58,510 중 ₩14,388만 이든 용돈/);
   assert.doesNotMatch(expenseHtml, /MAC 립스틱 · ¥3,600 × 1 · 이든 용돈/);
+  assert.match(expenseHtml, /<h3>이든 용돈 · ₩143,635<\/h3>/);
+  const edenSection = expenseHtml.match(/<h3>이든 용돈 · ₩143,635<\/h3>([\s\S]*?)<h3>내 용돈/)?.[1] ?? "";
+  assert.doesNotMatch(edenSection, /¥|엔화/);
+  assert.match(expenseHtml, /<td>KIX 면세점<\/td><td>MAC 립스틱<\/td>[\s\S]*?₩32,139/);
 });
