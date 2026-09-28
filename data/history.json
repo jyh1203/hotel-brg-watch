@@ -32234,6 +32234,572 @@
           }
         }
       ]
+    },
+    {
+      "capturedAt": "2026-09-28T21:24:24.831Z",
+      "fx": {
+        "rates": {
+          "EUR": 1545.05
+        },
+        "dates": {
+          "EUR": "2026-09-28"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "status": "ok",
+          "hotel": "AC Hotel Carlton Madrid",
+          "detailUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGAMSBwjrDxAEGAcyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwigo7PMmZKXAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJN0xQNXo4eWlyOXpLQVJvTEwyY3ZNWFI0T0hacU1EQVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1133449,
+          "bookedAmount": 733.6,
+          "bookedRoomSubtotal": 666.9,
+          "bookedCurrency": "EUR",
+          "nights": 4,
+          "officialReference": null,
+          "providers": [],
+          "roomRates": [
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 176,
+              "totalAmount": 704,
+              "context": "Booking.com · €176",
+              "freeCancellation": false,
+              "totalKrw": 1087715
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 176,
+              "totalAmount": 704,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Customer support: 24/7 Phone · Email · Facebook · X (Twitter) · Book now to enjoy various great deals · Standard Queen Room, Guest room, 1 Queen · 1 queen bed · Free cancellation until Apr 2 · €176",
+              "freeCancellation": true,
+              "totalKrw": 1087715
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 176,
+              "totalAmount": 704,
+              "context": "Standard Twin Room · 1 single bed · €176",
+              "freeCancellation": false,
+              "totalKrw": 1087715
+            }
+          ],
+          "lowestProvider": null,
+          "freeCancellation": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 176,
+            "totalAmount": 704,
+            "context": "Read Real Guest Reviews · 24/7 Customer service · Customer support: 24/7 Phone · Email · Facebook · X (Twitter) · Book now to enjoy various great deals · Standard Queen Room, Guest room, 1 Queen · 1 queen bed · Free cancellation until Apr 2 · €176",
+            "freeCancellation": true,
+            "totalKrw": 1087715
+          },
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsAmount": -37.10000000000002,
+          "candidateSavingsKrw": -57321
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "ok",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "detailUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGAcSBwjrDxAEGAoyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwiwzODPmZKXAxUAAAAAHQAAAAAQBw&qs=MidDaGtJZ2I2T3RmTzF4NFliR2cwdlp5OHhNV0ozT0dZeE1GOHlFQUU&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 752439,
+          "bookedAmount": 487,
+          "bookedRoomSubtotal": 487,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "officialReference": null,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "currency": "EUR",
+              "nightlyAmount": 135,
+              "totalAmount": 405,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 625745
+            },
+            {
+              "provider": "Expedia.com",
+              "currency": "EUR",
+              "nightlyAmount": 136,
+              "totalAmount": 408,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 630380
+            },
+            {
+              "provider": "Orbitz.com",
+              "currency": "EUR",
+              "nightlyAmount": 136,
+              "totalAmount": 408,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 630380
+            },
+            {
+              "provider": "Travelocity.com",
+              "currency": "EUR",
+              "nightlyAmount": 136,
+              "totalAmount": 408,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 630380
+            },
+            {
+              "provider": "CheapTickets.com",
+              "currency": "EUR",
+              "nightlyAmount": 136,
+              "totalAmount": 408,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 630380
+            }
+          ],
+          "roomRates": [
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 136,
+              "totalAmount": 408,
+              "context": "Expedia.com · €136",
+              "freeCancellation": false,
+              "totalKrw": 630380
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 136,
+              "totalAmount": 408,
+              "context": "Earn rewards on this stay · Save with free membership · Room, 1 Double Bed · 1 double bed · €136",
+              "freeCancellation": false,
+              "totalKrw": 630380
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 151,
+              "totalAmount": 453,
+              "context": "Room, 1 Double Bed · 1 double bed · Free cancellation until Apr 6 · €151",
+              "freeCancellation": true,
+              "totalKrw": 699908
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 185,
+              "totalAmount": 555,
+              "context": "Room, 1 Double Bed · 1 double bed · Free cancellation until Apr 6 · breakfast · €185",
+              "freeCancellation": true,
+              "totalKrw": 857503
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 135,
+              "totalAmount": 405,
+              "context": "Booking.com · Free Wi-Fi · €135",
+              "freeCancellation": false,
+              "totalKrw": 625745
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 136,
+              "totalAmount": 408,
+              "context": "Travelocity.com · Free Wi-Fi · €136",
+              "freeCancellation": false,
+              "totalKrw": 630380
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "currency": "EUR",
+            "nightlyAmount": 135,
+            "totalAmount": 405,
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "source": "google-hotels",
+            "official": false,
+            "totalKrw": 625745
+          },
+          "freeCancellation": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 151,
+            "totalAmount": 453,
+            "context": "Room, 1 Double Bed · 1 double bed · Free cancellation until Apr 6 · €151",
+            "freeCancellation": true,
+            "totalKrw": 699908
+          },
+          "exactCandidate": null,
+          "dateConfirmed": true,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsAmount": 34,
+          "candidateSavingsKrw": 52532
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&curr=EUR&ts=CAEaNAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBIaEhQKBwjrDxAEGAoSBwjrDxAEGAwYAjICEAAqBwoFOgNVU0Q&ved=2ahUKEwjrqtjSmZKXAxWEscUCHfF6FcAQrsMEegQIAxAs&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 430760,
+          "bookedAmount": 278.8,
+          "bookedRoomSubtotal": 269,
+          "bookedCurrency": "EUR",
+          "nights": 2,
+          "officialReference": null,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "currency": "EUR",
+              "nightlyAmount": 108,
+              "totalAmount": 216,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 333731
+            }
+          ],
+          "roomRates": [
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 108,
+              "totalAmount": 216,
+              "context": "Booking.com · €108",
+              "freeCancellation": false,
+              "totalKrw": 333731
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 108,
+              "totalAmount": 216,
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · €108",
+              "freeCancellation": false,
+              "totalKrw": 333731
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 126,
+              "totalAmount": 252,
+              "context": "Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €126",
+              "freeCancellation": true,
+              "totalKrw": 389353
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 108,
+              "totalAmount": 216,
+              "context": "Moxy Sleeper Room with Queen bed · 1 queen bed · €108",
+              "freeCancellation": false,
+              "totalKrw": 333731
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "currency": "EUR",
+            "nightlyAmount": 108,
+            "totalAmount": 216,
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "source": "google-hotels",
+            "official": false,
+            "totalKrw": 333731
+          },
+          "freeCancellation": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 126,
+            "totalAmount": 252,
+            "context": "Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €126",
+            "freeCancellation": true,
+            "totalKrw": 389353
+          },
+          "exactCandidate": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 126,
+            "totalAmount": 252,
+            "context": "Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €126",
+            "freeCancellation": true,
+            "totalKrw": 389353
+          },
+          "dateConfirmed": true,
+          "candidateKind": "exact",
+          "candidateSavingsAmount": 17,
+          "candidateSavingsKrw": 26266
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "ok",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGA0SBwjrDxAEGBAyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwjQkenWmZKXAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJaTlhSm5kRzJvSTNGQVJvTEwyY3ZNWFJrTVcwd2F6SVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1028911,
+          "bookedAmount": 665.94,
+          "bookedRoomSubtotal": 555,
+          "bookedCurrency": "EUR",
+          "nights": 3,
+          "officialReference": null,
+          "providers": [
+            {
+              "provider": "Sercotel Rosellón",
+              "currency": "EUR",
+              "nightlyAmount": 186,
+              "totalAmount": 558,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 862138
+            },
+            {
+              "provider": "B Hotel",
+              "currency": "EUR",
+              "nightlyAmount": 154,
+              "totalAmount": 462,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 713813
+            },
+            {
+              "provider": "ibis Styles Barcelona Centre",
+              "currency": "EUR",
+              "nightlyAmount": 133,
+              "totalAmount": 399,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 616475
+            },
+            {
+              "provider": "W Barcelona",
+              "currency": "EUR",
+              "nightlyAmount": 451,
+              "totalAmount": 1353,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 2090453
+            },
+            {
+              "provider": "Hotel NH Barcelona Les Corts",
+              "currency": "EUR",
+              "nightlyAmount": 144,
+              "totalAmount": 432,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 667462
+            },
+            {
+              "provider": "ibis Styles Barcelona City Bogatell",
+              "currency": "EUR",
+              "nightlyAmount": 147,
+              "totalAmount": 441,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 681367
+            },
+            {
+              "provider": "AC Hotel Diagonal L´Illa",
+              "currency": "EUR",
+              "nightlyAmount": 179,
+              "totalAmount": 537,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 829692
+            },
+            {
+              "provider": "Hotel Indigo Barcelona Plaza Espana, an IHG Hotel",
+              "currency": "EUR",
+              "nightlyAmount": 266,
+              "totalAmount": 798,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 1232950
+            },
+            {
+              "provider": "Hotel Catalonia Port",
+              "currency": "EUR",
+              "nightlyAmount": 211,
+              "totalAmount": 633,
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "source": "google-hotels",
+              "official": false,
+              "totalKrw": 978017
+            }
+          ],
+          "roomRates": [
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 186,
+              "totalAmount": 558,
+              "context": "Sponsored·Similar hotels · Sercotel Rosellón · €186",
+              "freeCancellation": false,
+              "totalKrw": 862138
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 154,
+              "totalAmount": 462,
+              "context": "Expedia.com · 4.2/5 · (4.2K) · · 4-star hotel · Visit Expedia.com · B Hotel · €154",
+              "freeCancellation": false,
+              "totalKrw": 713813
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 133,
+              "totalAmount": 399,
+              "context": "Booking.com · 4.5/5 · (1.7K) · · 3-star hotel · Visit Booking.com · ibis Styles Barcelona Centre · €133",
+              "freeCancellation": false,
+              "totalKrw": 616475
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 451,
+              "totalAmount": 1353,
+              "context": "Expedia.com · 4.5/5 · (2.0K) · · 2-star hotel · Visit Expedia.com · W Barcelona · €451",
+              "freeCancellation": false,
+              "totalKrw": 2090453
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 144,
+              "totalAmount": 432,
+              "context": "Hotels.com · 4.4/5 · (19.0K) · · 5-star hotel · Spa · Pool · Visit Hotels.com · Hotel NH Barcelona Les Corts · €144",
+              "freeCancellation": false,
+              "totalKrw": 667462
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 147,
+              "totalAmount": 441,
+              "context": "NH Barcelona Les Corts · 4.1/5 · (1.6K) · · 3-star hotel · Free cancellation · Pet-friendly · Visit official site · ibis Styles Barcelona City Bogatell · €147",
+              "freeCancellation": true,
+              "totalKrw": 681367
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 179,
+              "totalAmount": 537,
+              "context": "Travelocity.com · 4.4/5 · (4.3K) · · 2-star hotel · Pool · Pet-friendly · Visit Travelocity.com · AC Hotel Diagonal L´Illa · €179",
+              "freeCancellation": false,
+              "totalKrw": 829692
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 266,
+              "totalAmount": 798,
+              "context": "Travelocity.com · 4.3/5 · (928) · · 4-star hotel · Fitness center · Free Wi-Fi · Visit Travelocity.com · Hotel Indigo Barcelona Plaza Espana, an IHG Hotel · €266",
+              "freeCancellation": false,
+              "totalKrw": 1232950
+            },
+            {
+              "amountBasis": "unknown",
+              "estimatedFromNightly": true,
+              "currency": "EUR",
+              "nightlyAmount": 211,
+              "totalAmount": 633,
+              "context": "Travelocity.com · 4.3/5 · (3.2K) · · 4-star hotel · Pet-friendly · Parking · Visit Travelocity.com · Hotel Catalonia Port · €211",
+              "freeCancellation": false,
+              "totalKrw": 978017
+            }
+          ],
+          "lowestProvider": {
+            "provider": "ibis Styles Barcelona Centre",
+            "currency": "EUR",
+            "nightlyAmount": 133,
+            "totalAmount": 399,
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "source": "google-hotels",
+            "official": false,
+            "totalKrw": 616475
+          },
+          "freeCancellation": {
+            "amountBasis": "unknown",
+            "estimatedFromNightly": true,
+            "currency": "EUR",
+            "nightlyAmount": 147,
+            "totalAmount": 441,
+            "context": "NH Barcelona Les Corts · 4.1/5 · (1.6K) · · 3-star hotel · Free cancellation · Pet-friendly · Visit official site · ibis Styles Barcelona City Bogatell · €147",
+            "freeCancellation": true,
+            "totalKrw": 681367
+          },
+          "exactCandidate": null,
+          "dateConfirmed": false,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsAmount": 114,
+          "candidateSavingsKrw": 176136
+        }
+      ]
     }
   ]
 }
