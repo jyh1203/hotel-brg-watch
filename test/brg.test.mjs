@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { threshold, assess } from '../site/brg.js';
+import { threshold, assess, auditGoogleOffer, candidateEvidence } from '../site/brg.js';
 import { parseGoogleHotelPrices } from '../src/parse-google-hotels.mjs';
 test('same currency excludes exactly 1%', () => {
   assert.equal(assess(100,99).pass,false);
@@ -26,4 +26,30 @@ test('keeps adjacent room conditions separate and recognizes official reference'
   assert.equal(parsed.officialReference.totalAmount,240);
   assert.equal(parsed.lowestProvider.provider,'Booking.com');
   assert.equal(parsed.providers.length,2);
+});
+
+test('audits a lower Google amount separately from actual BRG comparability', () => {
+  const stay={
+    checkIn:'2027-04-10',checkOut:'2027-04-12',
+    booked:{currency:'EUR',roomSubtotal:269,cancellationDeadline:'2027-04-09 23:59'},
+    match:{roomPatterns:['moxy sleeper'],bedPatterns:['queen'],excludedPatterns:['twin|single'],requireFreeCancellation:true}
+  };
+  const candidate={currency:'EUR',totalAmount:252,amountBasis:'unknown',context:'Moxy Sleeper Room with 2 Twin/Single Bed(s) · Free cancellation until Apr 9',freeCancellation:true};
+  const audit=auditGoogleOffer({stay,result:{dateConfirmed:true,nights:2},candidate,official:{currency:'EUR',totalAmount:269,amountBasis:'pre-tax'},stale:false});
+  assert.equal(audit.lowerThanOfficial,true);
+  assert.equal(audit.pass,true);
+  assert.equal(audit.verified,false);
+  assert.deepEqual(audit.evidence.excludedMatches,['twin|single']);
+  assert.equal(audit.status,'Google 저가 발견 · BRG 조건 확인 필요');
+});
+
+test('accepts only a matching room, bed and cancellation deadline', () => {
+  const stay={
+    checkIn:'2027-04-13',checkOut:'2027-04-16',
+    booked:{cancellationDeadline:'2027-04-11 23:59'},
+    match:{roomPatterns:['classic'],bedPatterns:['king'],excludedPatterns:['queen|twin'],requireFreeCancellation:true}
+  };
+  assert.equal(candidateEvidence(stay,{context:'Classic Room · 1 king bed · Free cancellation until Apr 11',freeCancellation:true}).roomMatched,true);
+  assert.equal(candidateEvidence(stay,{context:'Classic Room · 1 queen bed · Free cancellation until Apr 11',freeCancellation:true}).roomMatched,false);
+  assert.equal(candidateEvidence(stay,{context:'Classic Room · 1 king bed · Free cancellation until Apr 10',freeCancellation:true}).cancellationMatched,false);
 });

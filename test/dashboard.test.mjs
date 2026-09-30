@@ -5,6 +5,7 @@ import { chromium } from "playwright";
 import fs from "node:fs";
 
 const config = JSON.parse(fs.readFileSync(new URL("../config/stays.json", import.meta.url), "utf8"));
+const dashboardData = JSON.parse(fs.readFileSync(new URL("../site/data.json", import.meta.url), "utf8"));
 
 test("dashboard renders every configured stay with currency charts", async () => {
   const server = spawn(process.execPath, ["src/server.mjs"], { stdio: "ignore" });
@@ -43,6 +44,46 @@ test("dashboard renders every configured stay with currency charts", async () =>
       assert.match(cardsText, new RegExp(`${currency} 기준`));
     }
     assert.match(await page.locator("#cards").innerText(), /확정/);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
+
+    const madrid = config.stays.find((stay) => stay.id === "madrid-carlton");
+    const capturedAt = new Date().toISOString();
+    const synthetic = structuredClone(dashboardData);
+    synthetic.runs.push({
+      capturedAt,
+      fx: { rates: { EUR: 1539.06 } },
+      results: [{
+        id: madrid.id,
+        status: "ok",
+        hotel: madrid.hotel,
+        checkIn: madrid.checkIn,
+        checkOut: madrid.checkOut,
+        adults: madrid.adults,
+        nights: 4,
+        dateConfirmed: true,
+        candidateKind: "exact",
+        exactCandidate: {
+          currency: "EUR", totalAmount: 640, nightlyAmount: 160, amountBasis: "pre-tax",
+          context: "Standard King Room · 1 king bed · Free cancellation until Apr 2",
+          freeCancellation: true, cancellationDeadline: "2027-04-02", provider: "Booking.com",
+          publicRate: true, availabilityVerified: false, estimatedFromNightly: true
+        },
+        marriott: {
+          status: "ok", rateName: "Member Flexible Rate", currency: "EUR", totalAmount: 760,
+          amountBasis: "pre-tax", prepaid: false, cancellation: "Free cancellation before or on Apr 02, 2027",
+          sourceUrl: "https://www.marriott.com/", capturedAt
+        }
+      }]
+    });
+    await page.route("**/data.json*", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(synthetic) }));
+    await page.reload({ waitUntil: "networkidle" });
+    assert.equal(await page.locator(".google-opportunity").count(), 1);
+    assert.equal(await page.locator(".google-opportunity.price-pass").count(), 1);
+    assert.match(await page.locator(".google-opportunity").innerText(), /Google 검증 후보가 Marriott 공식 현행가보다 낮습니다/);
+    assert.match(await page.locator(".google-opportunity").innerText(), /내 예약 BRG 가격 상한 .* 이하 · 가격 차이 충족/);
+    assert.match(await page.locator(".google-opportunity").innerText(), /결제 직전 실제 예약 가능/);
+    await page.setViewportSize({ width: 390, height: 844 });
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
   } finally {
     await browser.close();
     server.kill("SIGTERM");

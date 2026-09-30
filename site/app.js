@@ -1,4 +1,4 @@
-import { assess, threshold, policyUrl } from "./brg.js";
+import { assess, auditGoogleOffer, threshold, policyUrl } from "./brg.js";
 import { latestSuccessfulMarriott, marriottStatusLabel } from "./marriott-status.js";
 const won = new Intl.NumberFormat("ko-KR", { style: "currency", currency: "KRW", maximumFractionDigits: 0 });
 const money = (amount, currency) => new Intl.NumberFormat("ko-KR", {
@@ -124,11 +124,31 @@ function candidateState(result, stale) {
   return "헤드라인가·수동 확인";
 }
 
+function googleOpportunityMarkup(audit, candidate, official, currency) {
+  if (!audit?.lowerThanOfficial) return "";
+  const blockerLabels = audit.blockers.slice(0, 5).map((blocker) => `<span>${esc(blocker.label)}</span>`).join("");
+  const more = audit.blockers.length > 5 ? `<span>+${audit.blockers.length - 5}개</span>` : "";
+  const priceText = audit.pass
+    ? `내 예약 BRG 가격 상한 ${money(audit.max, currency)} 이하 · 가격 차이 충족`
+    : `내 예약 BRG 가격 상한 ${money(audit.max, currency)} 초과 · 신청 가격 기준 미달`;
+  const conflictText = audit.evidence.excludedMatches.length
+    ? `<p class="google-conflict">객실 충돌 감지: ${esc(audit.evidence.excludedMatches.join(", "))}</p>`
+    : "";
+  return `<section class="google-opportunity ${audit.pass ? "price-pass" : "price-fail"}" aria-label="Google 저가 정밀 판정">
+    <div class="google-opportunity-head"><div><span class="google-kicker">GOOGLE LOWER RATE</span><h3>Google 검증 후보가 Marriott 공식 현행가보다 낮습니다</h3></div><strong>-${money(audit.officialDifference, currency)} <small>${audit.officialDifferencePercent.toFixed(1)}%</small></strong></div>
+    <div class="google-rate-flow"><b>${money(official.totalAmount, currency)}<small>Marriott 공식 세전</small></b><i>→</i><b>${money(candidate.totalAmount, currency)}<small>Google ${candidate.estimatedFromNightly ? "1박 표시가 합계" : "총액"}</small></b></div>
+    <p class="google-price-verdict ${audit.pass ? "pass" : "fail"}">${esc(priceText)}</p>
+    <p class="google-audit-status">${esc(audit.status)}</p>${conflictText}
+    ${audit.blockers.length ? `<div class="google-blockers"><b>미확인·불일치</b>${blockerLabels}${more}</div>` : `<p class="google-verified">가격·조건 자동검증 완료</p>`}
+    <small>Google 표시가가 낮다는 사실과 BRG 적격은 다릅니다. 아래 조건과 결제 직전 총액이 모두 확인돼야 신청 후보입니다.</small>
+  </section>`;
+}
+
 
 function savedQuote(id) {
   try { return JSON.parse(localStorage.getItem(`brg:${id}`)) ?? {}; } catch { return {}; }
 }
-function brgMarkup(stay, result, sourceRun, stale) {
+function brgMarkup(stay, result, sourceRun, stale, googleAudit = null) {
   const saved = savedQuote(stay.id);
   const base = stay.booked.roomSubtotal;
   const currency = stay.booked.currency;
@@ -145,17 +165,22 @@ function brgMarkup(stay, result, sourceRun, stale) {
   const windowOpen = windowKnown && bookingTime <= now && now <= bookingTime + 86400000 && now <= checkinTime - 86400000;
   const timeText = !windowKnown ? "신청 기한 미확인" : windowOpen ? "입력 시각 기준 신청 기한 내" : "신청 기한 밖 · 입력 시각 확인";
   const evidenceUrl = result.detailUrl ?? result.searchUrl ?? "#";
+  const check = (key, yes, no = "확인 필요") => {
+    const item = googleAudit?.checks.find((candidate) => candidate.key === key);
+    return item?.ok === true ? yes : no;
+  };
   const eligibility = [
     ["동일 호텔", stay.hotel ? "대상 호텔 고정" : "확인 필요"],
-    ["동일 체크인·체크아웃", `${stay.checkIn} → ${stay.checkOut} · 원문 확인 필요`],
-    ["동일 숙박일수", `${Math.round((Date.parse(stay.checkOut) - Date.parse(stay.checkIn)) / 86400000)}박 · 원문 확인 필요`],
-    ["동일 투숙 인원", `성인 ${stay.adults}명 · 원문 확인 필요`],
-    ["동일 객실 및 침대", result.candidateKind === "exact" ? "텍스트 후보 일치 · 수동 확인" : "확인 필요"],
+    ["동일 체크인·체크아웃", check("dates", `${stay.checkIn} → ${stay.checkOut} · 수집 화면 확인`, `${stay.checkIn} → ${stay.checkOut} · 화면 날짜 재확인 필요`)],
+    ["동일 숙박일수", check("nights", `${Math.round((Date.parse(stay.checkOut) - Date.parse(stay.checkIn)) / 86400000)}박 일치`, "숙박일수 확인 필요")],
+    ["동일 투숙 인원", check("occupancy", `성인 ${stay.adults}명 조회 일치`, `성인 ${stay.adults}명 · 원문 확인 필요`)],
+    ["동일 객실 및 침대", check("room", "객실명·침대 패턴 일치", googleAudit?.evidence.excludedMatches.length ? `불일치 패턴 감지: ${googleAudit.evidence.excludedMatches.join(", ")}` : "확인 필요")],
     ["동일 포함 혜택", "확인 필요"],
-    ["동일 취소·환불 조건", result.exactCandidate?.freeCancellation ? "무료취소 문구 후보 · 수동 확인" : "확인 필요"],
-    ["누구나 예약 가능한 공개 요금", "로그인·쿠폰·특수자격 여부 확인 필요"],
-    ["실제 예약 가능 여부", "결제 직전 화면 확인 필요"],
-    ["공식가 대비 가격 차이", Number.isFinite(manual.difference) ? `${money(manual.difference, currency)} · 조건 확인 전 판정 보류` : "공식 세전 금액 입력 필요"],
+    ["동일 취소·환불 조건", check("cancellation", `무료취소 기한 ${googleAudit?.evidence.offeredDeadline ?? "일치"}`, "무료취소 기한 불일치 또는 미확인")],
+    ["세금·수수료 기준", check("basis", "세금·수수료 제외 총액 확인", "Google 금액의 세전/세후 기준 미확인")],
+    ["누구나 예약 가능한 공개 요금", check("public", "공개 요금 확인", "로그인·쿠폰·앱·특수자격 여부 확인 필요")],
+    ["실제 예약 가능 여부", check("available", "결제 직전 예약 가능 확인", "결제 직전 화면 확인 필요")],
+    ["내 예약 대비 가격 차이", googleAudit?.pass ? `${money(googleAudit.difference, currency)} 낮음 · 1% 초과` : Number.isFinite(googleAudit?.difference) ? `${money(Math.abs(googleAudit.difference), currency)} ${googleAudit.difference >= 0 ? "낮지만 1% 이하" : "높음"}` : Number.isFinite(manual.difference) ? `${money(manual.difference, currency)} · 조건 확인 전 판정 보류` : "비교 금액 확인 필요"],
     ["증빙 URL", evidenceUrl === "#" ? "없음" : `<a href="${esc(evidenceUrl)}" target="_blank" rel="noreferrer">원문 열기</a>`],
     ["확인 시각", new Date(sourceRun.capturedAt).toLocaleString("ko-KR")]
   ].map(([label, value]) => `<li><b>${esc(label)}</b><span>${label === "증빙 URL" ? value : esc(value)}</span></li>`).join("");
@@ -227,6 +252,18 @@ async function render() {
     return Boolean(marriottOf(result)) && dayKey(run.capturedAt) === dayKey(new Date());
   }).length;
   const shownCount = displayed.filter((item) => candidateOf(item.sourceResult)).length;
+  const googleAudits = displayed.map((item) => {
+    const official = marriottOf(item.current) ?? latestMarriott(runs, item.stay.id)?.rate;
+    return auditGoogleOffer({
+      stay: item.stay,
+      result: item.sourceResult,
+      candidate: candidateOf(item.sourceResult),
+      official,
+      stale: item.stale
+    });
+  });
+  const googleLowerCount = googleAudits.filter((audit) => audit.lowerThanOfficial).length;
+  const googlePricePassCount = googleAudits.filter((audit) => audit.lowerThanOfficial && audit.pass).length;
   const marriottDropCount = stays.filter((stay) => {
     const current = run.results?.find((item) => item.id === stay.id);
     const latestRate = marriottOf(current) ?? latestMarriott(runs, stay.id)?.rate;
@@ -240,6 +277,8 @@ async function render() {
     <div><b>${shownCount}/${stays.length}</b><span>결과 표시</span></div>
     <div><b>${todayCandidateCount}/${stays.length}</b><span>Google 오늘 가격</span></div>
     <div><b>${todayMarriottCount}/${stays.length}</b><span>Marriott 오늘 가격</span></div>
+    <div class="summary-google"><b>${googleLowerCount}곳</b><span>Google가 공식 현행가보다 낮음</span></div>
+    <div class="summary-opportunity"><b>${googlePricePassCount}곳</b><span>내 예약 대비 가격차 충족</span></div>
     <div class="summary-drop"><b>${marriottDropCount}곳</b><span>Marriott 공식 객실료 인하</span></div>
     <div><b>${esc(fxText)}</b><span>원화는 참고 환산만</span></div>`;
 
@@ -308,14 +347,16 @@ async function render() {
     const currentWarning = stale
       ? `<p class="freshness">최신 수집값이 비어 있어 ${new Date(sourceRun.capturedAt).toLocaleString("ko-KR")}의 최근 유효 결과를 표시합니다.</p>`
       : "";
-    return `<article class="card ${stale ? "stale" : ""} ${marriottPriceState === "lower" ? "has-rate-drop" : ""}">
+    const googleAudit = auditGoogleOffer({ stay, result: sourceResult, candidate: today, official: marriottRate, stale });
+    return `<article class="card ${stale ? "stale" : ""} ${marriottPriceState === "lower" ? "has-rate-drop" : ""} ${googleAudit.lowerThanOfficial ? "has-google-opportunity" : ""}">
       <div class="card-head"><div><p>${stay.checkIn} → ${stay.checkOut}</p><h2>${esc(stay.displayName ?? stay.hotel)}</h2></div><span class="pill ${sourceResult.candidateKind === "exact" && !stale ? "match" : "review"}">${state}</span></div>
       ${currentWarning}${attemptWarning}${!marriottRate ? `<p class="freshness">공식가 확인 대기 · 아래에 공식 화면의 세전 객실료를 입력해 비교할 수 있습니다.</p>` : ""}
       ${marriottPriceState === "lower" ? `<div class="rate-drop-alert"><strong>↓ Marriott 공식 객실료 인하</strong><span>${esc(marriottDifferenceText)} · 동일 취소조건인지 확인 후 예약 변경 검토</span></div>` : ""}
+      ${googleOpportunityMarkup(googleAudit, today, marriottRate, bookedCurrency)}
       <div class="prices three"><div class="booked-price"><span>내 예약 총액 <em>세금 포함</em></span><b>${money(stay.booked.total, bookedCurrency)}</b><small>${bookedKrw == null ? "원화 환산 불가" : `${won.format(bookedKrw)} 참고`}</small><small class="comparison-basis">BRG 비교 기준 객실료 <strong>${money(stay.booked.roomSubtotal, bookedCurrency)}</strong> · 세금 제외</small><small>세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}</small></div><div><span>${stale ? "최근 Google 표시가 합계" : "오늘 Google 표시가 합계"}</span><b>${money(todayAmount, bookedCurrency)}</b><small>표시가 ${money(todayRawAmount, bookedCurrency)} · 세금 포함 여부 미확인</small><small>${todayKrw == null ? "원화 환산 불가" : `${won.format(todayKrw)} 참고`} · ${delta == null ? "전일 유효 기록 없음" : `${delta > 0 ? "+" : ""}${money(delta, bookedCurrency)} vs ${dayKey(previous.run.capturedAt)}`}</small></div><div class="official-price ${marriottPriceState}"><span>${marriottStale ? "최근 Marriott 공식 객실료" : "오늘 Marriott 공식 객실료"} <em>세금 제외</em></span><b>${Number.isFinite(marriottAmount) ? money(marriottAmount, bookedCurrency) : "자동 조회 불가"}</b><strong class="marriott-delta ${marriottPriceState}">${esc(marriottDifferenceText)}</strong><small>${marriottRate?.rateName ? `${esc(marriottRate.rateName)} · ${esc(marriottRate.cancellation ?? "무료취소")}` : "선불·비환불 요금은 비교에서 제외"}</small><small>${marriottKrw == null ? "원화 환산 없음" : `${won.format(marriottKrw)} 참고`} · ${marriottRun ? new Date(marriottRun.capturedAt).toLocaleString("ko-KR") : ""}</small></div></div>
       ${chartMarkup(dailySeries(runs, stay), stay)}
       <p class="room"><b>${esc(stay.booked.room)}</b><br>${esc(stay.booked.cancellation)} · ${esc(stay.booked.cancellationDeadline)}${stay.booked.status ? `<br><strong class="booking-status">${esc(stay.booked.status)}</strong>` : ""}<br>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}<br>${esc(stay.booked.note)}</p>
-      ${brgMarkup(stay, sourceResult, sourceRun, stale)}
+      ${brgMarkup(stay, sourceResult, sourceRun, stale, googleAudit)}
       <div class="source-links"><a href="${esc(sourceResult.detailUrl ?? current?.searchUrl ?? "#")}" target="_blank" rel="noreferrer">Google 후보 출처·조건 확인 →</a><a href="${esc(marriottLink)}" target="_blank" rel="noreferrer">Marriott 공식가·객실 확인 →</a></div>
     </article>`;
   }).join("");

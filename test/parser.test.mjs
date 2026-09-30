@@ -25,6 +25,8 @@ test("separates headline, free-cancel and exact candidates", () => {
   assert.equal(parsed.freeCancellation.totalAmount, 280);
   assert.equal(parsed.exactCandidate.totalAmount, 280);
   assert.equal(parsed.exactCandidate.currency, "EUR");
+  assert.equal(parsed.exactCandidate.provider, "Booking.com");
+  assert.equal(parsed.exactCandidate.publicRate, true);
 });
 
 test("parses Japanese-yen prices in the booked currency", () => {
@@ -39,6 +41,24 @@ test("parses Japanese-yen prices in the booked currency", () => {
   const parsed = parseGoogleHotelPrices(text, osaka, "JPY");
   assert.equal(parsed.lowestProvider.totalAmount, 56000);
   assert.equal(parsed.exactCandidate.totalAmount, 60000);
+});
+
+test("rejects a lower candidate when its bed conflicts with the booked room", () => {
+  const strictStay = {
+    ...stay,
+    booked: { cancellationDeadline: "2027-04-09 23:59" },
+    match: { roomPatterns: ["moxy sleeper"], bedPatterns: ["queen"], excludedPatterns: ["twin|single"], requireFreeCancellation: true }
+  };
+  const text = `Apr 10 – Apr 12\nSponsored·Featured options\nMoxy Sleeper Room with 2 Twin/Single Bed(s)\nFree cancellation until Apr 9\n€126\nVisit site\nAll options\nBooking.com\n€108\nTrack this hotel`;
+  const parsed = parseGoogleHotelPrices(text, strictStay, "EUR");
+  assert.equal(parsed.exactCandidate, null);
+  assert.deepEqual(parsed.freeCancellation.matchEvidence.excludedMatches, ["twin|single"]);
+  assert.equal(parsed.dateConfirmed, true);
+});
+
+test("does not guess the tax basis without explicit evidence", () => {
+  const text = `Apr 10 – Apr 12\nSponsored·Featured options\nMoxy Sleeper Room\n1 double bed · Free cancellation until Apr 9\n€140\nVisit site\nAll options\nBooking.com\n€123\nTrack this hotel`;
+  assert.equal(parseGoogleHotelPrices(text, stay, "EUR").freeCancellation.amountBasis, "unknown");
 });
 
 test("parses the member flexible rate and rejects the lower prepaid headline", () => {
