@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-09-29T01:06:49.557Z",
+  "capturedAt": "2026-09-30T01:06:38.526Z",
   "results": [
     {
       "id": "madrid-carlton",
       "status": "ok",
       "state": "ok",
       "error": null,
-      "capturedAt": "2026-09-29T01:02:09.697Z",
+      "capturedAt": "2026-09-30T01:02:00.109Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
       "diagnostics": {
         "finalUrl": null,
@@ -18,7 +18,7 @@
       "status": "ok",
       "state": "ok",
       "error": null,
-      "capturedAt": "2026-09-29T01:03:38.835Z",
+      "capturedAt": "2026-09-30T01:03:25.307Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
       "diagnostics": {
         "finalUrl": null,
@@ -30,7 +30,7 @@
       "status": "ok",
       "state": "ok",
       "error": null,
-      "capturedAt": "2026-09-29T01:05:10.877Z",
+      "capturedAt": "2026-09-30T01:05:00.064Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
       "diagnostics": {
         "finalUrl": null,
@@ -42,7 +42,7 @@
       "status": "ok",
       "state": "ok",
       "error": null,
-      "capturedAt": "2026-09-29T01:06:46.856Z",
+      "capturedAt": "2026-09-30T01:06:32.770Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
       "diagnostics": {
         "finalUrl": null,
