@@ -54,7 +54,11 @@ export function candidateEvidence(stay, candidate) {
 
 export function auditGoogleOffer({ stay, result, candidate, official, stale = false }) {
   const currency = stay.booked.currency;
-  const candidateAmount = candidate?.totalAmount;
+  const candidateAmount = candidate?.preTaxVerified === true && Number.isFinite(candidate?.preTaxAmount)
+    ? candidate.preTaxAmount
+    : candidate?.amountBasis === 'pre-tax'
+      ? candidate?.totalAmount
+      : null;
   const officialAmount = official?.totalAmount;
   const sameCurrency = candidate?.currency === currency && (!official?.currency || official.currency === currency);
   const evidence = candidateEvidence(stay, candidate);
@@ -77,7 +81,7 @@ export function auditGoogleOffer({ stay, result, candidate, official, stale = fa
     { key: 'occupancy', label: '동일 투숙 인원', ok: occupancyMatched },
     { key: 'room', label: '동일 객실·침대', ok: evidence.roomMatched },
     { key: 'cancellation', label: '동일 무료취소 기한', ok: evidence.cancellationMatched },
-    { key: 'basis', label: '세금·수수료 제외 총액', ok: candidate?.amountBasis === 'pre-tax' },
+    { key: 'basis', label: '세금·수수료 제외 총액', ok: candidate?.amountBasis === 'pre-tax' || candidate?.preTaxVerified === true },
     { key: 'provider', label: '판매처 확인', ok: Boolean(candidate?.provider) && candidate?.official !== true },
     { key: 'public', label: '회원·앱 전용이 아닌 공개 요금', ok: candidate?.publicRate === true },
     { key: 'available', label: '결제 직전 실제 예약 가능', ok: candidate?.availabilityVerified === true }
@@ -89,10 +93,12 @@ export function auditGoogleOffer({ stay, result, candidate, official, stale = fa
   const officialDifference = lowerThanOfficial ? officialAmount - candidateAmount : null;
   const officialDifferencePercent = lowerThanOfficial && officialAmount > 0 ? officialDifference / officialAmount * 100 : null;
   const blockers = checks.filter((check) => check.ok !== true);
-  let status = 'Google 가격 확인 필요';
+  let status = candidate?.amountBasis === 'tax-included' && !candidate?.preTaxVerified
+    ? 'Google 세금 포함 총액 확인 · 세전 금액 확인 필요'
+    : 'Google 가격 확인 필요';
   if (lowerThanOfficial && price.pass && verified) status = 'BRG 가격·조건 검증 완료 · Marriott 심사 필요';
   else if (lowerThanOfficial && price.pass) status = 'Google 저가 발견 · BRG 조건 확인 필요';
   else if (lowerThanOfficial) status = '공식 현행가보다 낮지만 내 예약 BRG 가격 기준 미달';
   else if (Number.isFinite(candidateAmount) && Number.isFinite(officialAmount)) status = 'Google 검증 후보가 공식 현행가보다 낮지 않음';
-  return { ...price, evidence, checks, blockers, verified, lowerThanOfficial, officialDifference, officialDifferencePercent, status };
+  return { ...price, comparisonAmount: candidateAmount, evidence, checks, blockers, verified, lowerThanOfficial, officialDifference, officialDifferencePercent, status };
 }

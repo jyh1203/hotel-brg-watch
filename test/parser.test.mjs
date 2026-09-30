@@ -61,6 +61,21 @@ test("does not guess the tax basis without explicit evidence", () => {
   assert.equal(parseGoogleHotelPrices(text, stay, "EUR").freeCancellation.amountBasis, "unknown");
 });
 
+test("stores Google Stay total as a tax-included full-stay amount", () => {
+  const text = `Apr 10 – Apr 12\nSponsored·Featured options\nMoxy Sleeper Room\n1 double bed · Free cancellation until Apr 9\n€288\nVisit site\nAll options\nBooking.com\n€252\nTrack this hotel`;
+  const parsed = parseGoogleHotelPrices(text, stay, "EUR", {
+    mode: "stay-total",
+    amountBasis: "tax-included",
+    taxEvidence: "Google Hotels Stay total · Price for 2 nights with taxes + fees"
+  });
+  assert.equal(parsed.freeCancellation.totalAmount, 288);
+  assert.equal(parsed.freeCancellation.nightlyAmount, 144);
+  assert.equal(parsed.freeCancellation.estimatedFromNightly, false);
+  assert.equal(parsed.freeCancellation.amountBasis, "tax-included");
+  assert.equal(parsed.lowestProvider.totalAmount, 252);
+  assert.equal(parsed.taxEvidence, "Google Hotels Stay total · Price for 2 nights with taxes + fees");
+});
+
 test("parses the member flexible rate and rejects the lower prepaid headline", () => {
   const text = `Currently Selected Room\nMoxy Sleeper, Guest room, 1 Queen\nRoom Details\nRates from\n114EUR Avg / Night\n229 Total Per Room\nHide Rates\nFlexible Rate\nMOST POPULAR\nFree cancellation before or on Apr 09, 2027\nMember Rate\n134EUR Avg / Night\n269 Total Per Room\nSelect\nNon-Member Rate\n139EUR Avg / Night\n278 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\nMember Rate\n114EUR Avg / Night\n229 Total Per Room`;
   assert.deepEqual(parseMarriottRate(text), {

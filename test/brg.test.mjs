@@ -34,13 +34,32 @@ test('audits a lower Google amount separately from actual BRG comparability', ()
     booked:{currency:'EUR',roomSubtotal:269,cancellationDeadline:'2027-04-09 23:59'},
     match:{roomPatterns:['moxy sleeper'],bedPatterns:['queen'],excludedPatterns:['twin|single'],requireFreeCancellation:true}
   };
-  const candidate={currency:'EUR',totalAmount:252,amountBasis:'unknown',context:'Moxy Sleeper Room with 2 Twin/Single Bed(s) · Free cancellation until Apr 9',freeCancellation:true};
+  const candidate={currency:'EUR',totalAmount:252,amountBasis:'pre-tax',context:'Moxy Sleeper Room with 2 Twin/Single Bed(s) · Free cancellation until Apr 9',freeCancellation:true};
   const audit=auditGoogleOffer({stay,result:{dateConfirmed:true,nights:2},candidate,official:{currency:'EUR',totalAmount:269,amountBasis:'pre-tax'},stale:false});
   assert.equal(audit.lowerThanOfficial,true);
   assert.equal(audit.pass,true);
   assert.equal(audit.verified,false);
   assert.deepEqual(audit.evidence.excludedMatches,['twin|single']);
   assert.equal(audit.status,'Google 저가 발견 · BRG 조건 확인 필요');
+});
+
+test('does not compare a Google tax-included total until pre-tax is verified', () => {
+  const stay={
+    checkIn:'2027-04-10',checkOut:'2027-04-12',adults:2,
+    booked:{currency:'EUR',roomSubtotal:269,cancellationDeadline:'2027-04-09 23:59'},
+    match:{roomPatterns:['moxy sleeper'],bedPatterns:['queen'],requireFreeCancellation:true}
+  };
+  const result={checkIn:stay.checkIn,checkOut:stay.checkOut,dateConfirmed:true,nights:2,adults:2};
+  const base={currency:'EUR',totalAmount:250,amountBasis:'tax-included',context:'Moxy Sleeper Room · 1 queen bed · Free cancellation until Apr 9',freeCancellation:true,cancellationDeadline:'2027-04-09',provider:'Booking.com',publicRate:true,availabilityVerified:true};
+  const pending=auditGoogleOffer({stay,result,candidate:base,official:{currency:'EUR',totalAmount:269},stale:false});
+  assert.equal(pending.comparisonAmount,null);
+  assert.equal(pending.lowerThanOfficial,false);
+  assert.equal(pending.status,'Google 세금 포함 총액 확인 · 세전 금액 확인 필요');
+  assert.equal(pending.checks.find((check) => check.key === 'basis').ok,false);
+  const verified=auditGoogleOffer({stay,result,candidate:{...base,preTaxAmount:230,preTaxVerified:true},official:{currency:'EUR',totalAmount:269},stale:false});
+  assert.equal(verified.comparisonAmount,230);
+  assert.equal(verified.lowerThanOfficial,true);
+  assert.equal(verified.checks.find((check) => check.key === 'basis').ok,true);
 });
 
 test('accepts only a matching room, bed and cancellation deadline', () => {

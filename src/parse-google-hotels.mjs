@@ -69,7 +69,7 @@ function dateRangeConfirmed(text, stay) {
   return normalized.includes(label(stay.checkIn).toLowerCase()) && normalized.includes(label(stay.checkOut).toLowerCase());
 }
 
-export function parseGoogleHotelPrices(text, stay, currency = stay.booked?.currency ?? "KRW") {
+export function parseGoogleHotelPrices(text, stay, currency = stay.booked?.currency ?? "KRW", display = {}) {
   const lines = text.split(/\r?\n/).map(clean).filter(Boolean);
   const nights = nightsBetween(stay.checkIn, stay.checkOut);
   const start = lines.findIndex((line) => /Sponsored.*Featured options/i.test(line));
@@ -77,7 +77,11 @@ export function parseGoogleHotelPrices(text, stay, currency = stay.booked?.curre
   const allEnd = lines.findIndex((line, index) => index > allStart && /^Track this hotel$/i.test(line));
   const roomArea = lines.slice(Math.max(0, start + 1), allStart > 0 ? allStart : lines.length);
   const optionArea = lines.slice(allStart + 1, allEnd > allStart ? allEnd : lines.length);
-  const amountBasis = explicitAmountBasis(text);
+  const displayMode = display.mode ?? "nightly";
+  const amountBasis = display.amountBasis ?? explicitAmountBasis(text);
+  const amountFields = (price) => displayMode === "stay-total"
+    ? { nightlyAmount: price / nights, totalAmount: price, estimatedFromNightly: false }
+    : { nightlyAmount: price, totalAmount: price * nights, estimatedFromNightly: true };
 
   const providers = [];
   for (let i = 1; i < optionArea.length; i += 1) {
@@ -85,7 +89,7 @@ export function parseGoogleHotelPrices(text, stay, currency = stay.booked?.curre
     if (!price) continue;
     const provider = optionArea[i - 1];
     if (/visit site|room|bed|cancellation|nightly|taxes|fees/i.test(provider) || !/[a-z]{2}/i.test(provider)) continue;
-    providers.push({ provider, currency, nightlyAmount: price, totalAmount: price * nights, amountBasis, estimatedFromNightly: true, source: "google-hotels", official: /marriott|official site/i.test(provider), publicRate: !/member|mobile|app|sign[ -]?in|loyalty/i.test(provider), availabilityVerified: false });
+    providers.push({ provider, currency, ...amountFields(price), amountBasis, displayMode, source: "google-hotels", official: /marriott|official site/i.test(provider), publicRate: !/member|mobile|app|sign[ -]?in|loyalty/i.test(provider), availabilityVerified: false });
   }
 
   const roomRates = [];
@@ -99,17 +103,16 @@ export function parseGoogleHotelPrices(text, stay, currency = stay.booked?.curre
     const evidence = matchEvidence(context, freeCancellation, stay);
     roomRates.push({
       amountBasis,
-      estimatedFromNightly: true,
+      ...amountFields(price),
       currency,
-      nightlyAmount: price,
-      totalAmount: price * nights,
       context,
       freeCancellation,
       cancellationDeadline: evidence.offeredDeadline,
       matchEvidence: evidence,
       provider: null,
       publicRate: null,
-      availabilityVerified: false
+      availabilityVerified: false,
+      displayMode
     });
   }
   let activeProvider = null;
@@ -140,6 +143,9 @@ export function parseGoogleHotelPrices(text, stay, currency = stay.booked?.curre
     lowestProvider,
     freeCancellation,
     exactCandidate: exactCandidates[0] ?? null,
+    displayMode,
+    amountBasis,
+    taxEvidence: display.taxEvidence ?? null,
     dateConfirmed: dateRangeConfirmed(text, stay)
   };
 }

@@ -66,6 +66,27 @@ async function selectDisplayCurrency(page, currency) {
   }, currency, { timeout: 15000 });
 }
 
+async function selectTaxIncludedStayTotal(page, nights) {
+  const priceButton = page.locator('button[aria-label^="Price displayed"]:visible').first();
+  await priceButton.waitFor({ timeout: 30000 });
+  await priceButton.click();
+  const dialog = page.locator('[role="dialog"]:visible').filter({ hasText: /Price displayed/ }).last();
+  await dialog.waitFor({ timeout: 10000 });
+  const option = dialog.getByRole("radio").filter({ hasText: /^Stay total/ }).first();
+  await option.click();
+  await dialog.getByRole("button", { name: "Done" }).click();
+  await page.waitForFunction(() => {
+    const button = [...document.querySelectorAll('button[aria-label^="Price displayed"]')]
+      .find((element) => element.getBoundingClientRect().width > 0);
+    return /Stay total/i.test(`${button?.getAttribute("aria-label")} ${button?.textContent}`);
+  }, null, { timeout: 10000 });
+  return {
+    mode: "stay-total",
+    amountBasis: "tax-included",
+    taxEvidence: `Google Hotels Stay total · Price for ${nights} night${nights === 1 ? "" : "s"} with taxes + fees`
+  };
+}
+
 async function inspectGooglePage(page, stay) {
   const title = await page.title().catch(() => "");
   const body = await page.locator("body").innerText().catch(() => "");
@@ -108,6 +129,7 @@ async function collectStay(browser, stay, fx) {
     await page.goto(detailUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
     await page.getByText("Prices", { exact: true }).first().waitFor({ timeout: 30000 });
     await selectDisplayCurrency(page, currency);
+    const display = await selectTaxIncludedStayTotal(page, Math.round((Date.parse(stay.checkOut) - Date.parse(stay.checkIn)) / 86400000));
     await page.waitForFunction((targetCurrency) => {
       const patterns = {
         KRW: /(?:₩|KRW\s?)[\d,]+/i,
@@ -121,7 +143,7 @@ async function collectStay(browser, stay, fx) {
       return start >= 0 && patterns[targetCurrency].test(roomPrices);
     }, currency, { timeout: 30000 });
     const text = await page.locator("body").innerText();
-    const prices = parseGoogleHotelPrices(text, stay, currency);
+    const prices = parseGoogleHotelPrices(text, stay, currency, display);
     const bookedKrw = Math.round(stay.booked.total * fx.rates[stay.booked.currency]);
     const displayedCandidate = prices.exactCandidate ?? prices.freeCancellation ?? prices.lowestProvider;
     if (!displayedCandidate) throw new Error("가격 후보를 찾지 못했습니다.");
