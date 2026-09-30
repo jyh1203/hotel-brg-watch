@@ -37,7 +37,7 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.match(cardsText, /내 예약 총액\s*세금 포함/);
     assert.match(cardsText, /BRG 비교 기준 객실료.*세금 제외/);
     assert.match(cardsText, /Marriott 공식 객실료.*세금 제외/);
-    assert.match(cardsText, /Google은 세금 포함 추이, 예약·Marriott는 세금 제외 비교선/);
+    assert.match(cardsText, /최신 Google은 세금 포함 · 과거 기록은 금액 기준 혼합/);
     assert.match(cardsText, /(참고 추정 세전|세전 금액 확인 필요)/);
     assert.equal(await page.locator('input[name="googleTotal"]').count(), config.stays.length);
     assert.equal(await page.locator('input[name="googleTaxes"]').count(), config.stays.length);

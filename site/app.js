@@ -117,14 +117,14 @@ function chartMarkup(series, stay) {
   };
   return `<div class="chart">
     <div class="chart-head"><b>일별 수집 가격 추이 · 세금 기준 구분</b><span>${series.length}일 기록 · ${stay.booked.currency} 기준</span></div>
-    <div class="chart-legend"><span class="booked-key">내 예약 객실료(세금 제외)</span><span class="google-key">Google 세금 포함 총액</span><span class="marriott-key">Marriott 공식 객실료(세금 제외)</span></div>
+    <div class="chart-legend"><span class="booked-key">내 예약 객실료(세금 제외)</span><span class="google-key">Google 표시 총액(최신: 세금 포함)</span><span class="marriott-key">Marriott 공식 객실료(세금 제외)</span></div>
     <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(stay.hotel)} 일별 가격 비교 그래프">
       <line class="baseline" x1="${pad.left}" x2="${width - pad.right}" y1="${y(booked).toFixed(1)}" y2="${y(booked).toFixed(1)}"><title>예약가 ${money(booked, stay.booked.currency)}</title></line>
       ${line("googleAmount", "google")}${line("marriottAmount", "marriott")}
       <text x="${pad.left}" y="${height - 5}">${series[0].day.slice(5)}</text>
       <text x="${width - pad.right}" y="${height - 5}" text-anchor="end">${series.at(-1).day.slice(5)}</text>
     </svg>
-    <div class="chart-caption"><span>Google은 세금 포함 추이, 예약·Marriott는 세금 제외 비교선</span><span>Google ${googleValues.length ? money(Math.min(...googleValues), stay.booked.currency) : "기록 없음"} · Marriott ${marriottValues.length ? money(Math.min(...marriottValues), stay.booked.currency) : "기록 없음"}</span></div>
+    <div class="chart-caption"><span>최신 Google은 세금 포함 · 과거 기록은 금액 기준 혼합</span><span>Google ${googleValues.length ? money(Math.min(...googleValues), stay.booked.currency) : "기록 없음"} · Marriott ${marriottValues.length ? money(Math.min(...marriottValues), stay.booked.currency) : "기록 없음"}</span></div>
   </div>`;
 }
 
