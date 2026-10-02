@@ -26,12 +26,30 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.equal(await page.locator("#cards .card").count(), config.stays.length);
     assert.equal(await page.locator("#cards .chart").count(), config.stays.length);
     assert.match(await page.locator("#summary").innerText(), new RegExp(`\\d/${config.stays.length}\\s*결과 표시`));
-    assert.match(await page.locator("#cards").innerText(), /(오늘 Google 표시가 합계|최근 Google 표시가 합계)/);
+    assert.match(await page.locator("#cards").innerText(), /(오늘 Google 요금|최근 Google 요금)/);
     assert.match(await page.locator("#cards").innerText(), /Marriott 표시가 합계/);
     assert.equal(await page.locator(".source-links a").count(), config.stays.length * 2);
     assert.match(await page.locator("#cards").innerText(), /EUR 기준/);
     assert.match(await page.locator("#cards").innerText(), /JPY 기준/);
     assert.match(await page.locator("#cards").innerText(), /확정/);
+    assert.match(await page.locator("#cards").innerText(), /숙박 객실료/);
+    assert.match(await page.locator("#cards").innerText(), /수수료·현지요금/);
+    assert.match(await page.locator("#cards").innerText(), /최종 결제액/);
+    assert.equal(await page.locator(".claim-decision.no").count(), config.stays.length);
+
+    const viewportWidths = [1180, 390];
+    for (const width of viewportWidths) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.reload({ waitUntil: "networkidle" });
+      const overflow = await page.evaluate(() => ({
+        document: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        totals: [...document.querySelectorAll(".price-total")].map((element) =>
+          element.scrollWidth - element.clientWidth
+        )
+      }));
+      assert.ok(overflow.document <= 1, `${width}px 화면에 가로 오버플로가 있습니다: ${overflow.document}px`);
+      assert.ok(overflow.totals.every((value) => value <= 1), `${width}px 요금 합계 텍스트가 카드 밖으로 넘칩니다.`);
+    }
   } finally {
     await browser.close();
     server.kill("SIGTERM");

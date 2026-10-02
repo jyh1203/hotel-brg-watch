@@ -9374,6 +9374,8 @@
         "booked": {
           "currency": "JPY",
           "roomSubtotal": 56760,
+          "taxes": 5676,
+          "fees": 0,
           "taxesAndFees": 5676,
           "total": 62436,
           "nightly": [
@@ -9386,6 +9388,10 @@
           "cancellation": "무료취소",
           "cancellationDeadline": "2026-09-15 23:59 (호텔 현지시간)",
           "note": "오사카 숙박세는 총액에 포함되지 않으며 호텔에서 별도 지불"
+        },
+        "brg": {
+          "claimWindow": "expired",
+          "note": "숙박 종료 및 예약 후 24시간 접수기한 경과"
         },
         "match": {
           "roomPatterns": [
@@ -9418,6 +9424,8 @@
         "booked": {
           "currency": "EUR",
           "roomSubtotal": 666.9,
+          "taxes": 66.69,
+          "fees": 0,
           "taxesAndFees": 66.69,
           "total": 733.6,
           "nightly": [
@@ -9430,6 +9438,10 @@
           "cancellation": "무료취소",
           "cancellationDeadline": "2027-04-02 23:59 (호텔 현지시간)",
           "note": "표시 객실료는 VAT 별도이며 세금·요금은 객실료의 10%"
+        },
+        "brg": {
+          "claimWindow": "expired",
+          "note": "2026-08-16 예약 기준 24시간 접수기한 경과"
         },
         "match": {
           "roomPatterns": [
@@ -9462,6 +9474,8 @@
         "booked": {
           "currency": "EUR",
           "roomSubtotal": 487,
+          "taxes": 0,
+          "fees": 0,
           "taxesAndFees": 0,
           "total": 487,
           "nightly": [
@@ -9474,6 +9488,10 @@
           "cancellationDeadline": "2027-04-06 23:59 (호텔 현지시간)",
           "status": "확정",
           "note": "변경 예약 기준: Marriott 화면에는 별도 세금 항목 없이 총액 €487로 표시"
+        },
+        "brg": {
+          "claimWindow": "expired",
+          "note": "2026-08-16 예약 기준 24시간 접수기한 경과"
         },
         "match": {
           "roomPatterns": [
@@ -9506,6 +9524,8 @@
         "booked": {
           "currency": "EUR",
           "roomSubtotal": 269,
+          "taxes": 9.8,
+          "fees": 0,
           "taxesAndFees": 9.8,
           "total": 278.8,
           "nightly": [
@@ -9517,6 +9537,10 @@
           "cancellationDeadline": "2027-04-09 23:59 (호텔 현지시간)",
           "status": "확정",
           "note": "BRG 거절 후 기존 예약 확정. 비교 시 객실료 €269와 세금 포함 총액 €278.80을 구분"
+        },
+        "brg": {
+          "claimWindow": "expired",
+          "note": "2026-08-16 예약 기준 24시간 접수기한 경과"
         },
         "match": {
           "roomPatterns": [
@@ -9549,6 +9573,8 @@
         "booked": {
           "currency": "EUR",
           "roomSubtotal": 555,
+          "taxes": 55.5,
+          "fees": 55.44,
           "taxesAndFees": 110.94,
           "total": 665.94,
           "nightly": [
@@ -9560,6 +9586,10 @@
           "cancellation": "무료취소",
           "cancellationDeadline": "2027-04-11 23:59 (호텔 현지시간)",
           "note": "체크인 시 예약에 사용한 동일 신용카드 실물 제시 필요"
+        },
+        "brg": {
+          "claimWindow": "expired",
+          "note": "2026-08-16 예약 기준 24시간 접수기한 경과"
         },
         "match": {
           "roomPatterns": [
