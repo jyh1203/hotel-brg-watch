@@ -16,6 +16,7 @@ on:
       - "src/**"
       - "test/**"
       - "site/index.html"
+      - "site/card-guide.html"
       - "site/trip.html"
       - "site/trip_osaka.html"
       - "site/pyeongchang.html"
