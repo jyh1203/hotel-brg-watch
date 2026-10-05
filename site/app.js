@@ -1,4 +1,4 @@
-import { assess, auditGoogleOffer, threshold, policyUrl } from "./brg.js";
+import { assess, auditGoogleOffer, threshold } from "./brg.js";
 import { latestSuccessfulMarriott, marriottStatusLabel } from "./marriott-status.js";
 const won = new Intl.NumberFormat("ko-KR", { style: "currency", currency: "KRW", maximumFractionDigits: 0 });
 const money = (amount, currency) => new Intl.NumberFormat("ko-KR", {
@@ -228,16 +228,19 @@ function brgMarkup(stay, result, sourceRun, stale, googleAudit = null) {
     ["증빙 URL", evidenceUrl === "#" ? "없음" : `<a href="${esc(evidenceUrl)}" target="_blank" rel="noreferrer">원문 열기</a>`],
     ["확인 시각", new Date(sourceRun.capturedAt).toLocaleString("ko-KR")]
   ].map(([label, value]) => `<li><b>${esc(label)}</b><span>${label === "증빙 URL" ? value : esc(value)}</span></li>`).join("");
-  return `<section class="brg-panel"><h3>BRG 금액·신청 기준</h3>
-    <div class="brg-callout">
-      <span>BRG 가격 요건 충족 기준</span>
-      <b>OTA 세금·수수료 제외 총액 ${money(limit.max, currency)} 이하</b>
-      <strong>위 금액 이하이고 나머지 조건도 동일하면 BRG 신청 가능</strong>
-      <small>내 예약 총액(세금 포함)이 아니라 예약 객실료 ${money(base, currency)}(세금 제외)를 기준으로 계산</small>
+  const thresholdState = googleAudit?.pass && googleAudit?.verified
+    ? { label: "신청 후보", css: "ready" }
+    : googleAudit?.pass
+      ? { label: "가격 충족 · 조건 확인", css: "review" }
+      : Number.isFinite(googleAudit?.comparisonAmount)
+        ? { label: "가격 기준 미달", css: "failed" }
+        : { label: "세전가 확인 필요", css: "pending" };
+  return `<section class="brg-panel" aria-label="${esc(stay.displayName ?? stay.hotel)} BRG 판정">
+    <div class="brg-threshold">
+      <div><span>BRG 신청 상한 <em>세전</em></span><b>${money(limit.max, currency)}</b><small>내 예약 세전 객실료 ${money(base, currency)} 기준</small></div>
+      <strong class="threshold-state ${thresholdState.css}">${thresholdState.label}</strong>
     </div>
-    <p class="brg-condition-note">동일 호텔·일정·성인 수·객실과 침대·포함 혜택·취소/환불 조건·공개 예약 가능 여부가 모두 일치해야 합니다.</p>
-    <p>Google 자동수집은 ‘Stay total’을 선택해 세금·수수료 포함 숙박 전체 총액을 저장합니다. 세전 금액은 판매처 결제 직전 세금 내역과 검산된 경우에만 BRG 판정에 사용합니다.</p>
-    <details><summary>수집한 각 요금 확인 (${rates.length}개)</summary><div class="rate-scroll"><table><thead><tr><th>객실·판매처</th><th>Google 표시 금액</th><th>금액 기준</th><th>BRG</th></tr></thead><tbody>${rows}</tbody></table></div><p>수집 시각 ${new Date(sourceRun.capturedAt).toLocaleString("ko-KR")} · 객실명 일치는 침대·조식·취소 조건 일치를 보장하지 않습니다.</p></details>
+    <details><summary>수집 요금 ${rates.length}개 보기</summary><div class="rate-scroll"><table><thead><tr><th>객실·판매처</th><th>Google 표시 금액</th><th>금액 기준</th><th>BRG</th></tr></thead><tbody>${rows}</tbody></table></div><p class="detail-note">${new Date(sourceRun.capturedAt).toLocaleString("ko-KR")} 수집 · 객실명만으로 침대·혜택·취소조건 일치를 보장하지 않습니다.</p></details>
     <details><summary>공식 화면 금액 입력·BRG 계산</summary>
     <form class="brg-form" data-id="${esc(stay.id)}">
       <label>Marriott 숙박 전체 세전 객실료 (${currency})<input name="official" type="number" min="0.01" step="0.01" required value="${esc(saved.official ?? "")}"></label>
@@ -250,9 +253,8 @@ function brgMarkup(stay, result, sourceRun, stale, googleAudit = null) {
       <button type="submit">이 브라우저에 저장하고 계산</button><output></output>
     </form>
     ${saved.savedAt ? `<p><b>${esc(manual.status)}</b> · ${timeText}<br>수동 입력 ${new Date(saved.savedAt).toLocaleString("ko-KR")} ${quoteAge > 86400000 ? "· 24시간 지난 입력: 재확인 필요" : "· 실시간 예약 가능 여부 재확인 필요"}</p>${manual.pass ? `<p>승인 시 OTA 세전 객실료 기준 예상: ${money(verifiedOffer * (stay.marriott.designHotels ? 0.8 : 0.75), currency)} (${stay.marriott.designHotels ? 20 : 25}% 할인) 또는 OTA 세전 객실료 ${money(verifiedOffer, currency)} + 5,000포인트. 세금·수수료 별도.</p>` : ""}` : ""}
-    <p>공식 예약의 동일 조건 최저 공개 요금(회원가 포함)을 입력하세요. 수동 입력은 메리어트 자동 수집값과 별도로 이 브라우저에만 보관됩니다.</p></details>
-    <details><summary>BRG 적격 조건별 확인</summary><ul class="eligibility">${eligibility}</ul></details>
-    <p>객실·세전 금액·취소조건이 모두 확인되기 전에는 판정을 보류합니다. 서로 다른 통화는 자동 환산 판정하지 않습니다. Bonvoy 회원 예약 후 24시간 이내이면서 표준 체크인 최소 24시간 전 신청해야 합니다. 최종 승인 여부는 Marriott의 실시간 검증으로 결정됩니다. <a href="${policyUrl}" target="_blank" rel="noreferrer">공식 규칙</a></p>
+    <p class="detail-note">동일 조건 최저 공개 요금을 입력하세요. 값은 이 브라우저에만 저장됩니다.</p></details>
+    <details><summary>조건별 판정 확인</summary><ul class="eligibility">${eligibility}</ul></details>
   </section>`;
 }
 
@@ -335,7 +337,7 @@ async function render() {
     <div class="summary-google"><b>${googleLowerCount}곳</b><span>Google가 공식 현행가보다 낮음</span></div>
     <div class="summary-opportunity"><b>${googlePricePassCount}곳</b><span>내 예약 대비 가격차 충족</span></div>
     <div class="summary-drop"><b>${marriottDropCount}곳</b><span>Marriott 공식 객실료 인하</span></div>
-    <div><b>${esc(fxText)}</b><span>원화는 참고 환산만</span></div>`;
+    <div class="summary-fx"><b>${esc(fxText)}</b><span>원화는 참고 환산만</span></div>`;
 
   document.querySelector("#cards").innerHTML = displayed.map(({ stay, current, sourceResult, sourceRun, sourceIndex, stale }) => {
     const attempt = collectorStatus?.results?.find((item) => item.id === stay.id);

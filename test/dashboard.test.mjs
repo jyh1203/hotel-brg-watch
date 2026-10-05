@@ -32,7 +32,13 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.equal(await page.locator(".source-links a").count(), config.stays.length * 2);
     const cardsText = await page.locator("#cards").innerText();
     assert.equal(await page.locator(".comparison-basis").count(), config.stays.length);
-    assert.equal(await page.locator(".brg-callout").count(), config.stays.length);
+    assert.equal(await page.locator("#brg-guide").count(), 1);
+    assert.equal(await page.locator("#brg-guide .info-trigger").count(), 1);
+    assert.equal(await page.locator("#brg-guide [role=tooltip]").count(), 1);
+    await page.locator("#brg-guide .info-trigger").focus();
+    assert.equal(await page.locator("#brg-guide [role=tooltip]").isVisible(), true);
+    assert.equal(await page.locator(".brg-threshold").count(), config.stays.length);
+    assert.equal(await page.locator(".brg-callout").count(), 0);
     assert.ok(await page.locator(".rate-drop-alert").count() >= 1);
     assert.match(cardsText, /내 예약 총액\s*세금 포함/);
     assert.match(cardsText, /BRG 비교 기준 객실료.*세금 제외/);
@@ -43,7 +49,8 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.equal(await page.locator('input[name="googleTaxes"]').count(), config.stays.length);
     assert.match(await page.locator("#summary").innerText(), /Google 세전 금액 확인/);
     assert.match(await page.locator("#summary").innerText(), new RegExp(`0/${config.stays.length}\\s*Google 세전 금액 확인`));
-    assert.match(cardsText, /BRG 신청 가능/);
+    assert.match(await page.locator("#brg-guide").innerText(), /OTA 세전 총액.*1% 초과 낮아야/);
+    assert.match(cardsText, /BRG 신청 상한/);
     assert.match(await page.locator("#summary").innerText(), /Marriott 공식 객실료 인하/);
     for (const currency of new Set(config.stays.map((stay) => stay.booked.currency))) {
       assert.match(cardsText, new RegExp(`${currency} 기준`));
@@ -89,6 +96,10 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.match(await page.locator(".google-opportunity").innerText(), /결제 직전 실제 예약 가능/);
     await page.setViewportSize({ width: 390, height: 844 });
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
+    await page.locator("#brg-guide").scrollIntoViewIfNeeded();
+    await page.locator("#brg-guide .info-trigger").focus();
+    const tooltipBox = await page.locator("#brg-guide [role=tooltip]").boundingBox();
+    assert.ok(tooltipBox && tooltipBox.x >= 0 && tooltipBox.x + tooltipBox.width <= 390);
   } finally {
     await browser.close();
     server.kill("SIGTERM");
