@@ -47388,6 +47388,216 @@
           "candidateSavingsKrw": -189731
         }
       ]
+    },
+    {
+      "capturedAt": "2026-10-06T20:34:33.451Z",
+      "fx": {
+        "rates": {
+          "EUR": 1600
+        },
+        "dates": {},
+        "source": "frankfurter.app+fallback",
+        "errors": {
+          "EUR": "The operation was aborted due to timeout"
+        }
+      },
+      "results": [
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&curr=EUR&ts=CAEaNAoWEhQKCC9tLzAxYjg1OghCb3JkZWF1eBIaEhQKBwjrDxAEGAoSBwjrDxAEGAwYAjICEAAqBwoFOgNVU0Q&ved=2ahUKEwiTq4ejnaaXAxVlBPkAHahtPS4QrsMEegQIAxAs&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFCOA0&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 446080,
+          "bookedAmount": 278.8,
+          "bookedRoomSubtotal": 269,
+          "bookedCurrency": "EUR",
+          "checkIn": "2027-04-10",
+          "checkOut": "2027-04-12",
+          "adults": 2,
+          "nights": 2,
+          "officialReference": null,
+          "providers": [
+            {
+              "provider": "Booking.com",
+              "currency": "EUR",
+              "nightlyAmount": 123.5,
+              "totalAmount": 247,
+              "estimatedFromNightly": false,
+              "amountBasis": "tax-included",
+              "displayMode": "stay-total",
+              "source": "google-hotels",
+              "official": false,
+              "publicRate": true,
+              "availabilityVerified": false,
+              "totalKrw": 395200
+            }
+          ],
+          "roomRates": [
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 123.5,
+              "totalAmount": 247,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Booking.com · €247",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "moxy sleeper"
+                ],
+                "missingBedPatterns": [
+                  "queen"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 395200
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 123.5,
+              "totalAmount": 247,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Read Real Guest Reviews · 24/7 Customer service · Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · €247",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [
+                  "queen"
+                ],
+                "excludedMatches": [
+                  "twin|single"
+                ],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 395200
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 144,
+              "totalAmount": 288,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €288",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-09",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [
+                  "queen"
+                ],
+                "excludedMatches": [
+                  "twin|single"
+                ],
+                "offeredDeadline": "2027-04-09",
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 460800
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 216.5,
+              "totalAmount": 433,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Moxy Harbor Sleeper Rooftoop Terrace Room with Harbor View · 1 double bed · 4 guests · €433",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "moxy sleeper"
+                ],
+                "missingBedPatterns": [
+                  "queen"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 692800
+            }
+          ],
+          "lowestProvider": {
+            "provider": "Booking.com",
+            "currency": "EUR",
+            "nightlyAmount": 123.5,
+            "totalAmount": 247,
+            "estimatedFromNightly": false,
+            "amountBasis": "tax-included",
+            "displayMode": "stay-total",
+            "source": "google-hotels",
+            "official": false,
+            "publicRate": true,
+            "availabilityVerified": false,
+            "totalKrw": 395200
+          },
+          "freeCancellation": {
+            "amountBasis": "tax-included",
+            "nightlyAmount": 144,
+            "totalAmount": 288,
+            "estimatedFromNightly": false,
+            "currency": "EUR",
+            "context": "Moxy Sleeper Room with 2 Twin/Single Bed(s) · 1 double bed · Free cancellation until Apr 9 · €288",
+            "freeCancellation": true,
+            "cancellationDeadline": "2027-04-09",
+            "matchEvidence": {
+              "roomMatched": false,
+              "cancellationMatched": true,
+              "missingRoomPatterns": [],
+              "missingBedPatterns": [
+                "queen"
+              ],
+              "excludedMatches": [
+                "twin|single"
+              ],
+              "offeredDeadline": "2027-04-09",
+              "expectedDeadline": "2027-04-09"
+            },
+            "provider": "Booking.com",
+            "publicRate": true,
+            "availabilityVerified": false,
+            "displayMode": "stay-total",
+            "totalKrw": 460800
+          },
+          "exactCandidate": null,
+          "displayMode": "stay-total",
+          "amountBasis": "tax-included",
+          "taxEvidence": "Google Hotels Stay total · Price for 2 nights with taxes + fees",
+          "dateConfirmed": false,
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsAmount": -19,
+          "candidateSavingsKrw": -30400
+        }
+      ]
     }
   ],
   "config": {
@@ -47595,14 +47805,14 @@
     ]
   },
   "collectorStatus": {
-    "capturedAt": "2026-10-06T01:52:34.554Z",
+    "capturedAt": "2026-10-06T20:34:33.451Z",
     "results": [
       {
         "id": "madrid-carlton",
         "status": "error",
         "state": "rate-list-transition-failed",
         "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-10-06T01:48:04.570Z",
+        "capturedAt": "2026-10-06T20:30:19.687Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
@@ -47634,7 +47844,7 @@
         "status": "error",
         "state": "rate-list-transition-failed",
         "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-10-06T01:49:32.978Z",
+        "capturedAt": "2026-10-06T20:31:44.681Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
@@ -47666,7 +47876,7 @@
         "status": "error",
         "state": "rate-list-transition-failed",
         "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-10-06T01:51:04.069Z",
+        "capturedAt": "2026-10-06T20:33:09.882Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
@@ -47698,7 +47908,7 @@
         "status": "error",
         "state": "rate-list-transition-failed",
         "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-        "capturedAt": "2026-10-06T01:52:31.870Z",
+        "capturedAt": "2026-10-06T20:34:30.808Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
