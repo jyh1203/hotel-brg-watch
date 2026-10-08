@@ -19,6 +19,7 @@ on:
       - "site/card-guide.html"
       - "site/trip.html"
       - "site/trip_osaka.html"
+      - "site/trip_gunsan.html"
       - "site/pyeongchang.html"
       - "site/style.css"
       - ".github/workflows/daily-check.yml"
