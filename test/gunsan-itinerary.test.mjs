@@ -43,6 +43,15 @@ test("Gunsan itinerary publishes actionable Naver map links and official sources
   assert.match(html, /gunsan\.go\.kr\/tour\/m2101\/view\/5235377/);
 });
 
+test("Gunsan itinerary uses the confirmed lodging hours and parking plan", () => {
+  assert.match(html, /체크인 10\/9 18:00, 체크아웃 10\/10 13:00/);
+  assert.match(html, /정식 체크인은 18:00부터/);
+  assert.match(html, /제1주차장\(경포1길 35\)/);
+  assert.match(html, /제5주차장\(진포로 224\)/);
+  assert.match(html, /동양어묵: 건물 옆 주차공간/);
+  assert.match(html, /숙소·짬뽕거리·근대문화거리: 숙소에 사전 주차 후 도보/);
+});
+
 test("Gunsan itinerary includes daily cafe anchors and every supplied food alternative", () => {
   assert.match(html, /DAY 1 카페·필수 디저트/);
   assert.match(html, /DAY 2 카페·브런치/);
@@ -77,6 +86,7 @@ test("Gunsan itinerary keeps the three famous jjambbong shops outside the festiv
 
 test("Gunsan itinerary keeps private values out and is linked from the BRG dashboard", () => {
   assert.doesNotMatch(html, /예약번호\s*[:：]\s*[A-Z0-9-]+|확인번호\s*[:：]\s*[A-Z0-9-]+|차량번호\s*[:：]\s*\S+|카드번호\s*[:：]\s*\S+/);
+  assert.doesNotMatch(html, /26100610014089YE1|0504-4081-7281/);
   assert.match(html, /공개 페이지에는 숙소 예약번호·차량번호·자택 상세 주소를 포함하지 않습니다/);
   assert.match(index, /href="trip_gunsan\.html">군산 일정표/);
 });
