@@ -22,11 +22,15 @@ test("Gunsan itinerary follows the required day order and anchors", () => {
     "신흥동 일본식가옥",
     "젤라또 노베오",
     "음미당",
+    "오산상회",
+    "카페 틈",
   ]) assert.match(html, new RegExp(expected));
   const dayOneHtml = html.slice(dayOne, dayTwo);
   const dayOneTimeline = dayOneHtml.slice(dayOneHtml.indexOf('<div class="timeline">'));
   assert.ok(dayOneTimeline.indexOf("경암동 철길마을") < dayOneTimeline.indexOf("동양어묵"));
   assert.ok(dayOneTimeline.indexOf("동양어묵") < dayOneTimeline.indexOf("군산짬뽕페스티벌 1차"));
+  assert.ok(dayOneTimeline.indexOf("경암동 철길마을") < dayOneTimeline.indexOf("오산상회"));
+  assert.ok(dayOneTimeline.indexOf("오산상회") < dayOneTimeline.indexOf("동양어묵"));
 });
 
 test("Gunsan itinerary corrects the fish-cake stop and excludes the mistaken hotteok stop", () => {
@@ -55,6 +59,10 @@ test("Gunsan itinerary uses the confirmed lodging hours and parking plan", () =>
 test("Gunsan itinerary includes daily cafe anchors and every supplied food alternative", () => {
   assert.match(html, /DAY 1 카페·필수 디저트/);
   assert.match(html, /DAY 2 카페·브런치/);
+  assert.match(html, /오산상회[^]*DAY 1 카페/);
+  assert.match(html, /카페 틈 \(TEUM\)[^]*DAY 2 카페/);
+  assert.match(html, /구암3\.1로 71-7 \(중동 265-15\)/);
+  assert.match(html, /구영6길 125-1 \(영화동 11-9\)/);
   for (const expected of [
     "시골식당",
     "엄마밥상",
