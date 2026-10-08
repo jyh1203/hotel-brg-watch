@@ -65,6 +65,16 @@ test("Gunsan itinerary includes daily cafe anchors and every supplied food alter
   ]) assert.match(html, new RegExp(expected));
 });
 
+test("Gunsan itinerary keeps the three famous jjambbong shops outside the festival booths", () => {
+  assert.match(html, /축제 밖 군산 3대 짬뽕/);
+  assert.match(html, /축제 참가 부스로 전제하지 않고 별도 매장 방문 후보/);
+  for (const expected of ["지린성", "복성루", "빈해원"]) {
+    assert.match(html, new RegExp(expected));
+  }
+  assert.match(html, /한글날인 10월 9일은 제외/);
+  assert.match(html, /10월 10일 오전 후보/);
+});
+
 test("Gunsan itinerary keeps private values out and is linked from the BRG dashboard", () => {
   assert.doesNotMatch(html, /예약번호\s*[:：]\s*[A-Z0-9-]+|확인번호\s*[:：]\s*[A-Z0-9-]+|차량번호\s*[:：]\s*\S+|카드번호\s*[:：]\s*\S+/);
   assert.match(html, /공개 페이지에는 숙소 예약번호·차량번호·자택 상세 주소를 포함하지 않습니다/);
