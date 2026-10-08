@@ -20,6 +20,8 @@ test("Gunsan itinerary follows the required day order and anchors", () => {
     "군산근대역사박물관",
     "초원사진관",
     "신흥동 일본식가옥",
+    "젤라또 노베오",
+    "음미당",
   ]) assert.match(html, new RegExp(expected));
   const dayOneHtml = html.slice(dayOne, dayTwo);
   const dayOneTimeline = dayOneHtml.slice(dayOneHtml.indexOf('<div class="timeline">'));
@@ -36,9 +38,31 @@ test("Gunsan itinerary corrects the fish-cake stop and excludes the mistaken hot
 
 test("Gunsan itinerary publishes actionable Naver map links and official sources", () => {
   const mapLinks = html.match(/https:\/\/map\.naver\.com\/p\/search\//g) ?? [];
-  assert.ok(mapLinks.length >= 10, `expected at least 10 Naver map links, got ${mapLinks.length}`);
+  assert.ok(mapLinks.length >= 25, `expected at least 25 Naver map links, got ${mapLinks.length}`);
   assert.match(html, /https:\/\/jjambbong\.kr/);
   assert.match(html, /gunsan\.go\.kr\/tour\/m2101\/view\/5235377/);
+});
+
+test("Gunsan itinerary includes daily cafe anchors and every supplied food alternative", () => {
+  assert.match(html, /DAY 1 카페·필수 디저트/);
+  assert.match(html, /DAY 2 카페·브런치/);
+  for (const expected of [
+    "시골식당",
+    "엄마밥상",
+    "명궁칼국수",
+    "황해짬뽕집",
+    "유락",
+    "큰집 평양온반",
+    "훈이네",
+    "고향옛칼국수",
+    "연화구",
+    "파라디소90",
+    "압강옥",
+    "월명동휘겔리",
+    "럭키크라운",
+    "빵굽는오남매",
+    "홍윤베이커리",
+  ]) assert.match(html, new RegExp(expected));
 });
 
 test("Gunsan itinerary keeps private values out and is linked from the BRG dashboard", () => {
