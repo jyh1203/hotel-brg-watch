@@ -31,6 +31,9 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.match(await page.locator("#cards").innerText(), /Marriott 공식 객실료\(세금 제외\)/);
     assert.equal(await page.locator(".source-links a").count(), config.stays.length * 2);
     const cardsText = await page.locator("#cards").innerText();
+    assert.match(cardsText, /Google · 마지막 시도/);
+    assert.match(cardsText, /Marriott · 마지막 시도/);
+    assert.match(cardsText, /검색조건 미검증/);
     assert.equal(await page.locator(".comparison-basis").count(), config.stays.length);
     assert.equal(await page.locator("#brg-guide").count(), 1);
     assert.equal(await page.locator("#brg-guide .info-trigger").count(), 1);

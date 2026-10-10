@@ -1,5 +1,6 @@
 import { assess, auditGoogleOffer, threshold } from "./brg.js";
 import { latestSuccessfulMarriott, marriottStatusLabel } from "./marriott-status.js";
+import { sourceState } from './collection-state.js';
 const won = new Intl.NumberFormat("ko-KR", { style: "currency", currency: "KRW", maximumFractionDigits: 0 });
 const money = (amount, currency) => new Intl.NumberFormat("ko-KR", {
   style: "currency", currency, maximumFractionDigits: currency === "JPY" ? 0 : 2
@@ -129,6 +130,7 @@ function chartMarkup(series, stay) {
 }
 
 function candidateState(result, stale) {
+  if (result.dateConfirmed !== true || result.occupancyConfirmed !== true) return '검색조건 미검증 · 참고 가격';
   if (stale) return "최근 유효 결과";
   if (result.candidateKind === "exact") return "객실명 일치 · 조건 확인 필요";
   if (result.candidateKind === "free-cancel-review") return "무료취소·객실조건 확인";
@@ -270,7 +272,7 @@ async function render() {
   const lastSuccessRun = [...runs].reverse().find((candidate) =>
     candidate.results?.some((result) => result.status === "ok" || result.marriott?.status === "ok")
   );
-  const latestFailedCount = collectorStatus?.results?.filter((result) => result.status !== "ok").length ?? 0;
+  const latestFailedCount = [collectorStatus, data.googleStatus].reduce((count, status) => count + (status?.results?.filter(result => result.status !== 'ok' && result.status !== 'excluded' && result.status !== 'not-collected').length ?? 0), 0);
   const lastAttemptAt = [collectorStatus?.capturedAt, run?.capturedAt]
     .filter(Boolean)
     .sort((a, b) => Date.parse(b) - Date.parse(a))[0];
@@ -296,7 +298,7 @@ async function render() {
     };
   });
   const todayCandidateCount = displayed.filter((item) => (
-    candidateOf(item.sourceResult) && dayKey(item.sourceRun.capturedAt) === dayKey(new Date())
+    candidateOf(item.sourceResult) && item.sourceResult.dateConfirmed === true && item.sourceResult.occupancyConfirmed === true && dayKey(item.sourceRun.capturedAt) === dayKey(new Date())
   )).length;
   const todayMarriottCount = stays.filter((stay) => {
     const result = run.results?.find((item) => item.id === stay.id);
@@ -331,7 +333,7 @@ async function render() {
     .join(" · ") || "환율 없음";
   document.querySelector("#summary").innerHTML = `
     <div><b>${shownCount}/${stays.length}</b><span>결과 표시</span></div>
-    <div><b>${todayCandidateCount}/${stays.length}</b><span>Google 오늘 가격</span></div>
+    <div><b>${todayCandidateCount}/${stays.length}</b><span>Google 오늘 조건 검증 가격</span></div>
     <div><b>${todayMarriottCount}/${stays.length}</b><span>Marriott 오늘 가격</span></div>
     <div class="summary-pretax"><b>${googlePreTaxVerifiedCount}/${stays.length}</b><span>Google 세전 금액 확인</span></div>
     <div class="summary-google"><b>${googleLowerCount}곳</b><span>Google가 공식 현행가보다 낮음</span></div>
@@ -340,6 +342,11 @@ async function render() {
     <div class="summary-fx"><b>${esc(fxText)}</b><span>원화는 참고 환산만</span></div>`;
 
   document.querySelector("#cards").innerHTML = displayed.map(({ stay, current, sourceResult, sourceRun, sourceIndex, stale }) => {
+    const sourceWarnings = [['google', data.googleStatus, 'Google'], ['marriott', collectorStatus, 'Marriott']].map(([source, attempts, label]) => {
+      const state = sourceState(runs, attempts, stay.id, source);
+      const time = at => at ? new Date(at).toLocaleString('ko-KR') : '기록 없음';
+      return `<p class="freshness">${label} · 마지막 시도 ${time(state.attemptedAt)} · 마지막 가격 수집 ${time(state.successAt)}${state.stale ? ' · 24시간 경과/성공 없음' : ''}${source === 'google' && !state.verified ? ' · 검색조건 미검증' : ''}${state.failed ? ` · 수집 실패: ${esc(state.error ?? '원인 미상')}` : ''}</p>`;
+    }).join('');
     const attempt = collectorStatus?.results?.find((item) => item.id === stay.id);
     const attemptWarning = attempt?.status && attempt.status !== "ok"
       ? `<p class="freshness">${esc(marriottStatusLabel(attempt.state))}${attempt.capturedAt ? ` · ${new Date(attempt.capturedAt).toLocaleString("ko-KR")}` : ""}</p>`
@@ -347,7 +354,7 @@ async function render() {
     if (!sourceResult) {
       const googleLink = current?.searchUrl ?? `https://www.google.com/travel/search?q=${encodeURIComponent(stay.hotel)}`;
       const marriottLink = `https://www.marriott.com/en-us/hotels/${stay.marriott.propertyCode.toLowerCase()}-${stay.marriott.slug}/rooms/`;
-      return `<article class="card error">
+      return `<article class="card error">${sourceWarnings}
         <div class="card-head"><div><p>${stay.checkIn} → ${stay.checkOut}</p><h2>${esc(stay.displayName ?? stay.hotel)}</h2></div><span class="pill failed">수집 오류</span></div>
         ${attemptWarning}<p>${esc(current?.error ?? "표시할 가격 후보를 찾지 못했습니다.")}</p>
         ${chartMarkup([], stay)}
@@ -415,6 +422,7 @@ async function render() {
         : `<small class="google-pretax pending">세전 금액 확인 필요 · BRG 판정 보류</small>`;
     return `<article class="card ${stale ? "stale" : ""} ${marriottPriceState === "lower" ? "has-rate-drop" : ""} ${googleAudit.lowerThanOfficial ? "has-google-opportunity" : ""}">
       <div class="card-head"><div><p>${stay.checkIn} → ${stay.checkOut}</p><h2>${esc(stay.displayName ?? stay.hotel)}</h2></div><span class="pill ${sourceResult.candidateKind === "exact" && !stale ? "match" : "review"}">${state}</span></div>
+      ${sourceWarnings}
       ${currentWarning}${attemptWarning}${!marriottRate ? `<p class="freshness">공식가 확인 대기 · 아래에 공식 화면의 세전 객실료를 입력해 비교할 수 있습니다.</p>` : ""}
       ${marriottPriceState === "lower" ? `<div class="rate-drop-alert"><strong>↓ Marriott 공식 객실료 인하</strong><span>${esc(marriottDifferenceText)} · 동일 취소조건인지 확인 후 예약 변경 검토</span></div>` : ""}
       ${googleOpportunityMarkup(googleAudit, auditedToday, marriottRate, bookedCurrency)}

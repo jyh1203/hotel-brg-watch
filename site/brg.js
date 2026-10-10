@@ -63,10 +63,8 @@ export function auditGoogleOffer({ stay, result, candidate, official, stale = fa
   const sameCurrency = candidate?.currency === currency && (!official?.currency || official.currency === currency);
   const evidence = candidateEvidence(stay, candidate);
   const nights = Math.round((Date.parse(stay.checkOut) - Date.parse(stay.checkIn)) / 86400000);
-  const datesMatched = result?.checkIn && result?.checkOut
-    ? result.checkIn === stay.checkIn && result.checkOut === stay.checkOut
-    : result?.dateConfirmed === true;
-  const occupancyMatched = Number.isFinite(result?.adults) ? result.adults === stay.adults : false;
+  const datesMatched = result?.dateConfirmed === true && result?.searchEvidence?.checkIn === stay.checkIn && result?.searchEvidence?.checkOut === stay.checkOut;
+  const occupancyMatched = result?.occupancyConfirmed === true && result?.searchEvidence?.adults === stay.adults && result?.searchEvidence?.children === 0;
   const price = assess(stay.booked.roomSubtotal, candidateAmount, {
     currency,
     offerCurrency: candidate?.currency,
@@ -79,6 +77,7 @@ export function auditGoogleOffer({ stay, result, candidate, official, stale = fa
     { key: 'dates', label: '동일 체크인·체크아웃', ok: datesMatched },
     { key: 'nights', label: '동일 숙박일수', ok: result?.nights === nights },
     { key: 'occupancy', label: '동일 투숙 인원', ok: occupancyMatched },
+    { key: 'rooms', label: '동일 객실 수', ok: result?.roomCountConfirmed === true && result?.searchEvidence?.rooms === 1 },
     { key: 'room', label: '동일 객실·침대', ok: evidence.roomMatched },
     { key: 'cancellation', label: '동일 무료취소 기한', ok: evidence.cancellationMatched },
     { key: 'basis', label: '세금·수수료 제외 총액', ok: candidate?.amountBasis === 'pre-tax' || candidate?.preTaxVerified === true },

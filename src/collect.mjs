@@ -7,6 +7,7 @@ import { parseGoogleHotelPrices } from "./parse-google-hotels.mjs";
 import { collectMarriottRate } from "./marriott.mjs";
 import { launchMarriottSession } from "./marriott-browser.mjs";
 import { sanitizeDiagnosticUrl } from "./marriott-artifacts.mjs";
+import { readGoogleSearchEvidence, validateSearchEvidence } from './google-search-evidence.mjs';
 
 const root = path.resolve(import.meta.dirname, "..");
 const config = JSON.parse(await fs.readFile(path.join(root, "config/stays.json"), "utf8"));
@@ -17,6 +18,7 @@ const stays = requestedIds.size
 if (!stays.length) throw new Error("STAY_IDS와 일치하는 호텔이 없습니다.");
 const historyPath = path.join(root, "data/history.json");
 const marriottStatusPath = path.join(root, "data/marriott-status.json");
+const googleStatusPath = path.join(root, "data/google-status.json");
 const artifactRoot = path.join(root, "artifacts", new Date().toISOString().slice(0, 10));
 
 function marriottArtifactDir(stayId, attempt) {
@@ -128,6 +130,9 @@ async function collectStay(browser, stay, fx) {
     const detailUrl = buildPriceDetailUrl(searchUrl, href ?? page.url());
     await page.goto(detailUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
     await page.getByText("Prices", { exact: true }).first().waitFor({ timeout: 30000 });
+    const searchEvidence = await readGoogleSearchEvidence(page);
+    const conditionChecks = validateSearchEvidence(searchEvidence, stay);
+    if (!conditionChecks.dateConfirmed || !conditionChecks.occupancyConfirmed) throw new Error('Google 검색조건 미확인/불일치: 날짜·연도·성인·아동 수를 확인하지 못했습니다.');
     await selectDisplayCurrency(page, currency);
     const display = await selectTaxIncludedStayTotal(page, Math.round((Date.parse(stay.checkOut) - Date.parse(stay.checkIn)) / 86400000));
     await page.waitForFunction((targetCurrency) => {
@@ -162,19 +167,23 @@ async function collectStay(browser, stay, fx) {
       checkOut: stay.checkOut,
       adults: stay.adults,
       ...prices,
+      ...conditionChecks,
+      searchEvidence,
+      capturedAt: new Date().toISOString(),
       providers: prices.providers.map(addKrwReference),
       roomRates: prices.roomRates.map(addKrwReference),
       lowestProvider: addKrwReference(prices.lowestProvider),
       freeCancellation: addKrwReference(prices.freeCancellation),
       exactCandidate: addKrwReference(prices.exactCandidate),
       candidateKind: prices.exactCandidate ? "exact" : prices.freeCancellation ? "free-cancel-review" : "headline-review",
-      candidateSavingsAmount: candidate ? stay.booked.roomSubtotal - candidate.totalAmount : null,
-      candidateSavingsKrw: candidate ? Math.round((stay.booked.roomSubtotal - candidate.totalAmount) * fx.rates[currency]) : null
+      candidateSavingsAmount: candidate?.amountBasis === 'pre-tax' ? stay.booked.roomSubtotal - candidate.totalAmount : null,
+      candidateSavingsKrw: candidate?.amountBasis === 'pre-tax' ? Math.round((stay.booked.roomSubtotal - candidate.totalAmount) * fx.rates[currency]) : null
     };
   } catch (error) {
     await fs.mkdir(artifactRoot, { recursive: true });
     await page.screenshot({ path: path.join(artifactRoot, `${stay.id}.png`), fullPage: true }).catch(() => {});
     const diagnostics = await inspectGooglePage(page, stay);
+    if (/검색조건/.test(error.message)) diagnostics.state = 'search-conditions-unverified';
     return { id: stay.id, status: "error", hotel: stay.hotel, searchUrl, error: error.message, diagnostics };
   } finally {
     await context.close();
@@ -308,7 +317,22 @@ const statusRun = {
     };
   })
 };
-await fs.writeFile(marriottStatusPath, `${JSON.stringify(statusRun, null, 2)}\n`);
+async function saveAttempts(file, next) {
+  let previous = { results: [] };
+  try { previous = JSON.parse(await fs.readFile(file, 'utf8')); } catch {}
+  const ids = new Set(next.results.map(x => x.id));
+  next.results = [...(previous.results ?? []).filter(x => !ids.has(x.id)), ...next.results];
+  await fs.writeFile(file, `${JSON.stringify(next, null, 2)}\n`);
+}
+if (collectMarriott) await saveAttempts(marriottStatusPath, statusRun);
+if (process.env.MARRIOTT_ONLY !== '1') await saveAttempts(googleStatusPath, {
+  capturedAt: runTimestamp(),
+  results: results.map(result => ({ id: result.id, status: result.status,
+    capturedAt: runTimestamp(), error: result.error ?? null,
+    state: result.status === 'ok' ? 'ok' : result.diagnostics?.state ?? 'error',
+    dateConfirmed: result.dateConfirmed === true, occupancyConfirmed: result.occupancyConfirmed === true }))
+});
+function runTimestamp() { return new Date().toISOString(); }
 const persistedResults = results.map((result) => {
   const marriott = result.marriott?.status === "ok" ? result.marriott : null;
   if (result.status !== "ok" && !marriott) return null;
@@ -324,8 +348,8 @@ if (persistedResults.length) {
 }
 console.log(JSON.stringify({ ...run, attempts: results }, null, 2));
 
-const marriottFailed = collectMarriott && results.every(result => result.marriott?.status !== "ok" && !result.marriott?.reference);
-const googleFailed = process.env.MARRIOTT_ONLY !== "1" && results.every(result => result.status !== "ok");
+const marriottFailed = collectMarriott && results.some(result => result.marriott?.status !== "ok" && result.marriott?.status !== 'excluded');
+const googleFailed = process.env.MARRIOTT_ONLY !== "1" && results.some(result => result.status !== "ok");
 if (marriottFailed || googleFailed) process.exitCode = 2;
 // A Playwright CDP transport keeps Node's event loop alive. All files and logs
 // are complete here, so terminate only this collector process and leave the
