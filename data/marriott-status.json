@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-10-11T00:22:43.402Z",
+  "capturedAt": "2026-10-11T19:45:23.624Z",
   "results": [
     {
       "id": "madrid-carlton",
       "status": "error",
       "state": "rate-list-transition-failed",
       "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-      "capturedAt": "2026-10-11T00:18:22.499Z",
+      "capturedAt": "2026-10-11T19:40:55.379Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -38,7 +38,7 @@
       "status": "error",
       "state": "rate-list-transition-failed",
       "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-      "capturedAt": "2026-10-11T00:19:48.429Z",
+      "capturedAt": "2026-10-11T19:42:23.149Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -70,7 +70,7 @@
       "status": "error",
       "state": "rate-list-transition-failed",
       "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-      "capturedAt": "2026-10-11T00:21:16.769Z",
+      "capturedAt": "2026-10-11T19:43:52.284Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -102,14 +102,14 @@
       "status": "error",
       "state": "rate-list-transition-failed",
       "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-      "capturedAt": "2026-10-11T00:22:40.744Z",
+      "capturedAt": "2026-10-11T19:45:20.930Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
         "responseStatus": null,
         "finalUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
         "title": "Rooms | Four Points Barcelona Diagonal",
-        "bodyLength": 3529,
+        "bodyLength": 3524,
         "selectors": {
           "dateInput": true,
           "viewRates": true,
