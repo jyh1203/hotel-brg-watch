@@ -1,45 +1,48 @@
 {
-  "capturedAt": "2026-10-11T04:22:33.039Z",
+  "capturedAt": "2026-10-11T04:33:00.970Z",
   "results": [
     {
       "id": "madrid-carlton",
       "state": "direct-attempted",
       "providers": [
         {
-          "provider": "Expedia",
+          "provider": "Agoda",
+          "capturedAt": "2026-10-11T04:21:56.409Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "capturedAt": "2026-10-11T04:22:12.218Z",
-          "status": "error",
-          "state": "blocked",
-          "checkoutObservation": {
-            "state": "checkout-total-observed",
-            "currency": "EUR",
-            "totalAmount": 858,
-            "amountBasis": "tax-included",
-            "sourceOrigin": "https://www.expedia.co.kr",
-            "checkIn": "2027-04-03",
-            "checkOut": "2027-04-07",
-            "roomContext": "Standard Room, 1 King Bed",
-            "adults": 2,
-            "children": 0,
-            "rooms": 1,
-            "cancellationText": "Fully refundable before Fri, Apr 2, 2027",
-            "paymentTiming": "property",
-            "roomAmount": null,
-            "preTaxVerified": false,
-            "availabilityVerified": false,
-            "publicRateVerified": false,
-            "discovery": "hotel-search-ui",
-            "capturedAt": "2026-10-11T04:20:31.470Z",
-            "paymentEvidence": "property-payment-preview-ui"
-          }
+          "state": "room-or-cancellation-unverified",
+          "status": "pending",
+          "sourceOrigin": "https://www.agoda.com"
         },
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-11T04:21:34.220Z",
+          "capturedAt": "2026-10-11T04:28:20.627Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "status": "error",
-          "state": "search-timeout",
+          "status": "pending",
+          "state": "checkout-total-observed",
+          "sourceOrigin": "https://secure.booking.com",
+          "checkoutObservation": {
+            "state": "checkout-total-observed",
+            "currency": "EUR",
+            "roomAmount": 702,
+            "taxesAndFees": 70.2,
+            "totalAmount": 772.2,
+            "amountBasis": "tax-included",
+            "totalBasis": "explicit-room-plus-excluded-charges",
+            "preTaxVerified": true,
+            "availabilityVerified": false,
+            "publicRateVerified": false,
+            "sourceOrigin": "https://secure.booking.com",
+            "checkIn": "2027-04-03",
+            "checkOut": "2027-04-07",
+            "roomContext": "Standard King Room x 1",
+            "adults": 2,
+            "children": null,
+            "rooms": 1,
+            "cancellationText": "일정이 바뀌어도 OK! 2027년 4월 3일 전까지 무료 취소가 가능하니, 지금 저렴한 요금으로 예약해 두세요.",
+            "paymentTiming": "unverified",
+            "discovery": "user-opened-checkout",
+            "capturedAt": "2026-10-11T04:28:20.627Z"
+          },
           "lastSuccessful": {
             "provider": "Booking.com",
             "capturedAt": "2026-10-11T02:29:08.469Z",
@@ -80,12 +83,33 @@
           }
         },
         {
-          "provider": "Agoda",
-          "capturedAt": "2026-10-11T04:21:56.409Z",
+          "provider": "Expedia",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "state": "room-or-cancellation-unverified",
-          "status": "pending",
-          "sourceOrigin": "https://www.agoda.com"
+          "capturedAt": "2026-10-11T04:33:00.970Z",
+          "status": "error",
+          "state": "date-unavailable",
+          "checkoutObservation": {
+            "state": "checkout-total-observed",
+            "currency": "EUR",
+            "totalAmount": 858,
+            "amountBasis": "tax-included",
+            "sourceOrigin": "https://www.expedia.co.kr",
+            "checkIn": "2027-04-03",
+            "checkOut": "2027-04-07",
+            "roomContext": "Standard Room, 1 King Bed",
+            "adults": 2,
+            "children": 0,
+            "rooms": 1,
+            "cancellationText": "Fully refundable before Fri, Apr 2, 2027",
+            "paymentTiming": "property",
+            "roomAmount": null,
+            "preTaxVerified": false,
+            "availabilityVerified": false,
+            "publicRateVerified": false,
+            "discovery": "hotel-search-ui",
+            "capturedAt": "2026-10-11T04:20:31.470Z",
+            "paymentEvidence": "property-payment-preview-ui"
+          }
         }
       ]
     }
