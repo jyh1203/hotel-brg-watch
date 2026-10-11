@@ -1,6 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { threshold, assess, auditGoogleOffer, candidateEvidence } from '../site/brg.js';
+import { threshold, assess, auditGoogleOffer, candidateEvidence, verifiedPreTaxAmount } from '../site/brg.js';
+test('only evidenced exact pretax full stay amounts enter comparisons', () => {
+  assert.equal(verifiedPreTaxAmount({currency:'EUR',totalAmount:772,amountBasis:'tax-included'},'EUR'),null);
+  assert.equal(verifiedPreTaxAmount({currency:'EUR',totalAmount:772,preTaxAmount:700,preTaxVerified:true},'EUR'),700);
+  assert.equal(verifiedPreTaxAmount({currency:'EUR',totalAmount:700,amountBasis:'pre-tax'},'EUR'),700);
+  assert.equal(verifiedPreTaxAmount({currency:'EUR',totalAmount:700,amountBasis:'pre-tax',estimatedFromNightly:true},'EUR'),null);
+  assert.equal(verifiedPreTaxAmount({currency:'USD',totalAmount:700,amountBasis:'pre-tax'},'EUR'),null);
+  assert.equal(verifiedPreTaxAmount({currency:'EUR',totalAmount:772,preTaxAmount:800,preTaxVerified:true},'EUR'),null);
+});
 import { parseGoogleHotelPrices } from '../src/parse-google-hotels.mjs';
 test('same currency excludes exactly 1%', () => {
   assert.equal(assess(100,99).pass,false);

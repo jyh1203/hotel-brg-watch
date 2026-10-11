@@ -43,11 +43,13 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.equal(await page.locator(".brg-threshold").count(), config.stays.length);
     assert.equal(await page.locator(".brg-callout").count(), 0);
     assert.ok(await page.locator(".rate-drop-alert").count() >= 1);
-    assert.match(cardsText, /내 예약 총액\s*세금 포함/);
+    assert.match(cardsText, /내 예약 객실료\s*세금 제외/);
+    assert.match(cardsText, /Google 확인 객실료\s*세금 제외/);
+    assert.match(cardsText, /세전 확인 필요/);
     assert.match(cardsText, /BRG 비교 기준 객실료.*세금 제외/);
     assert.match(cardsText, /Marriott 공식 객실료.*세금 제외/);
-    assert.match(cardsText, /최신 Google은 세금 포함 · 과거 기록은 금액 기준 혼합/);
-    assert.match(cardsText, /(참고 추정 세전|세전 금액 확인 필요)/);
+    assert.match(cardsText, /그래프는 모두 세금 제외 · Google 확인 세전 기록만 표시/);
+    assert.doesNotMatch(cardsText, /참고 추정 세전/);
     assert.equal(await page.locator('input[name="googleTotal"]').count(), config.stays.length);
     assert.equal(await page.locator('input[name="googleTaxes"]').count(), config.stays.length);
     assert.match(await page.locator("#summary").innerText(), /Google 세전 금액 확인/);
@@ -81,7 +83,7 @@ test("dashboard renders every configured stay with currency charts", async () =>
           currency: "EUR", totalAmount: 640, nightlyAmount: 160, amountBasis: "pre-tax",
           context: "Standard King Room · 1 king bed · Free cancellation until Apr 2",
           freeCancellation: true, cancellationDeadline: "2027-04-02", provider: "Booking.com",
-          publicRate: true, availabilityVerified: false, estimatedFromNightly: true
+          publicRate: true, availabilityVerified: false, estimatedFromNightly: false
         },
         marriott: {
           status: "ok", rateName: "Member Flexible Rate", currency: "EUR", totalAmount: 760,
@@ -92,6 +94,7 @@ test("dashboard renders every configured stay with currency charts", async () =>
     });
     await page.route("**/data.json*", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(synthetic) }));
     await page.reload({ waitUntil: "networkidle" });
+    assert.match(await page.locator('.google-price').first().innerText(), /Google 확인 객실료\s*세금 제외\s*€640/);
     assert.equal(await page.locator(".google-opportunity").count(), 1);
     assert.equal(await page.locator(".google-opportunity.price-pass").count(), 1);
     assert.match(await page.locator(".google-opportunity").innerText(), /Google 검증 후보가 Marriott 공식 현행가보다 낮습니다/);

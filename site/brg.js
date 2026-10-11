@@ -52,13 +52,15 @@ export function candidateEvidence(stay, candidate) {
   };
 }
 
+export function verifiedPreTaxAmount(candidate, currency) {
+  if (!candidate || candidate.currency !== currency || candidate.estimatedFromNightly === true) return null;
+  if (candidate.preTaxVerified === true && Number.isFinite(candidate.preTaxAmount) && candidate.preTaxAmount > 0 && candidate.preTaxAmount <= candidate.totalAmount) return candidate.preTaxAmount;
+  return candidate.amountBasis === 'pre-tax' && Number.isFinite(candidate.totalAmount) && candidate.totalAmount > 0 ? candidate.totalAmount : null;
+}
+
 export function auditGoogleOffer({ stay, result, candidate, official, stale = false }) {
   const currency = stay.booked.currency;
-  const candidateAmount = candidate?.preTaxVerified === true && Number.isFinite(candidate?.preTaxAmount)
-    ? candidate.preTaxAmount
-    : candidate?.amountBasis === 'pre-tax'
-      ? candidate?.totalAmount
-      : null;
+  const candidateAmount = verifiedPreTaxAmount(candidate, currency);
   const officialAmount = official?.totalAmount;
   const sameCurrency = candidate?.currency === currency && (!official?.currency || official.currency === currency);
   const evidence = candidateEvidence(stay, candidate);
@@ -80,7 +82,7 @@ export function auditGoogleOffer({ stay, result, candidate, official, stale = fa
     { key: 'rooms', label: '동일 객실 수', ok: result?.roomCountConfirmed === true && result?.searchEvidence?.rooms === 1 },
     { key: 'room', label: '동일 객실·침대', ok: evidence.roomMatched },
     { key: 'cancellation', label: '동일 무료취소 기한', ok: evidence.cancellationMatched },
-    { key: 'basis', label: '세금·수수료 제외 총액', ok: candidate?.amountBasis === 'pre-tax' || candidate?.preTaxVerified === true },
+    { key: 'basis', label: '세금·수수료 제외 총액', ok: Number.isFinite(candidateAmount) },
     { key: 'provider', label: '판매처 확인', ok: Boolean(candidate?.provider) && candidate?.official !== true },
     { key: 'public', label: '회원·앱 전용이 아닌 공개 요금', ok: candidate?.publicRate === true },
     { key: 'available', label: '결제 직전 실제 예약 가능', ok: candidate?.availabilityVerified === true }
