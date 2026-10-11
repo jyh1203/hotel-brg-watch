@@ -44,7 +44,7 @@ test('hotel, dates, occupancy, selected room, public rate and total must be inde
  assert.equal(validateOtaSnapshot({...snapshot,hotel:stay.hotel+' by Marriott'},stay,'Booking.com').status,'ok');
  const localized={...stay,ota:{hotelAliases:{'Booking.com':['AC 호텔 칼튼 마드리드, 메리어트 라이프스타일 호텔']}}};
  assert.equal(validateOtaSnapshot({...snapshot,hotel:'AC 호텔 칼튼 마드리드, 메리어트 라이프스타일 호텔'},localized,'Booking.com').status,'ok');
- for(const patch of [{hotel:'Other Hotel'},{dates:[]},{adults:1},{children:1},{rooms:2},{room:'Twin room'},{freeCancellation:false},{publicRate:false},{priceLines:['Total €220']},{selectedOffer:false}]){
+ for(const patch of [{hotel:'Other Hotel'},{dates:[]},{dates:[stay.checkIn,stay.checkOut,'2027-04-10']},{adults:1},{children:1},{rooms:2},{room:'Twin room'},{freeCancellation:false},{publicRate:false},{priceLines:['Total €220']},{selectedOffer:false}]){
   const result=validateOtaSnapshot({...snapshot,...patch},stay,'Booking.com');assert.notEqual(result.status,'ok');assert.equal(result.roomAmount,undefined);
  }
  assert.equal(validateOtaSnapshot(snapshot,stay,'Booking.com').availabilityVerified,false);

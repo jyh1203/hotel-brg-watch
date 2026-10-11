@@ -1,4 +1,7 @@
 import {reviewProviders, providerName, candidateEvidence, roomOnlyFromBreakdown} from '../site/brg.js';
+import {setBookingSearch,setAgodaSearch,openExpediaObservedSearch,parseOccupancy} from './ota-search.mjs';
+import {readSelectedBookingOffer} from './ota-booking.mjs';
+import {otaScope} from './ota-status.mjs';
 
 const domains = { 'Booking.com': ['booking.com'], Agoda: ['agoda.com'], Expedia: ['expedia.com','expedia.co.kr','expedia.co.uk','expedia.fr','expedia.es','expedia.de','expedia.ca'] };
 export function belongsToProvider(value, provider) {
@@ -44,7 +47,7 @@ export function parseOtaPriceDetails(lines, provider, currency) {
     const property=/property|hotel|현장|호텔/i.test(item.label);
     if(property&&!outside&&!inside)return null;
     charges.push({kind:/gratuity|tip|팁/i.test(item.label)?'gratuity':/tax|세금/i.test(item.label)?'tax':'fee',amount:item.amount,currency,
-      includedInDisplayedTotal:outside?false:true,paidAt:property?'property':'online'});
+      includedInDisplayedTotal:outside?false:true,paidAt:property?'property':/online|온라인/i.test(item.label)?'online':'unspecified'});
   }
   // A room subtotal plus an explicit tax/fee line must reconcile exactly.
   // No tax-rate inference and no assumption that absent charges mean zero.
@@ -65,8 +68,8 @@ export function validateOtaSnapshot(snapshot, stay, provider) {
   const hotel=normalize(snapshot.hotel);
   const expected=[stay.hotel,...(stay.ota?.hotelAliases?.[provider]??[])].map(normalize);
   if(!hotel||!expected.includes(hotel))return {state:'hotel-unverified',status:'pending'};
-  const dates= snapshot.dates??[];
-  if(!dates.includes(stay.checkIn)||!dates.includes(stay.checkOut)||snapshot.adults!==stay.adults||snapshot.children!==0||snapshot.rooms!==1)
+  const dates=[...new Set(snapshot.dates??[])].sort();
+  if(dates.length!==2||dates[0]!==stay.checkIn||dates[1]!==stay.checkOut||snapshot.adults!==stay.adults||snapshot.children!==0||snapshot.rooms!==1)
     return {state:'search-conditions-unverified',status:'pending'};
   const evidence=candidateEvidence(stay,{context:snapshot.room??'',freeCancellation:snapshot.freeCancellation===true,cancellationDeadline:snapshot.cancellationDeadline});
   if(!evidence.roomMatched||!evidence.cancellationMatched)return {state:'room-or-cancellation-unverified',status:'pending'};
@@ -77,7 +80,8 @@ export function validateOtaSnapshot(snapshot, stay, provider) {
   if(snapshot.selectedOffer!==true)return {state:'selected-offer-unverified',status:'pending'};
   return {status:'ok',state:'room-price-verified',currency:stay.booked.currency,...price,
     roomContext:snapshot.room,cancellationDeadline:snapshot.cancellationDeadline,
-    publicRate:true,availabilityVerified:false};
+    publicRate:true,availabilityVerified:false,priceBasis:snapshot.priceBasis??'scoped-price-details',
+    searchEvidence:{checkIn:dates[0],checkOut:dates[1],adults:snapshot.adults,children:snapshot.children,rooms:snapshot.rooms}};
 }
 
 export async function readGoogleOtaLinks(page) {
@@ -112,9 +116,7 @@ export async function readOtaSnapshot(page, provider) {
     return {text,hotel:firstText('h1'),dates,occupancy,room,priceLines:panel.split('\n'),selectedOffer:Boolean(selected)&&/price|total|요금|총액/i.test(selected)};
   });
   snapshot.url=page.url();
-  snapshot.adults=Number(snapshot.occupancy.match(/(\d+)\s*(?:adults|성인)/i)?.[1]??NaN);
-  snapshot.children=Number(snapshot.occupancy.match(/(\d+)\s*(?:children|아동)/i)?.[1]??NaN);
-  snapshot.rooms=Number(snapshot.occupancy.match(/(\d+)\s*(?:rooms?|객실)/i)?.[1]??NaN);
+  Object.assign(snapshot,parseOccupancy(snapshot.occupancy));
   snapshot.freeCancellation=/free cancellation|무료\s*취소/i.test(snapshot.room);
   snapshot.cancellationDeadline=snapshot.room.match(/(?:until|before|기한)\s*(20\d{2}-\d{2}-\d{2})/i)?.[1]??null;
   // Explicit public-rate evidence only; absence of a member badge is not proof.
@@ -122,15 +124,16 @@ export async function readOtaSnapshot(page, provider) {
   return snapshot;
 }
 
-export async function collectOtaChecks(context, googlePage, stay, otaContext = context) {
+export async function collectOtaChecks(context, googlePage, stay, otaContext = context, {providers=reviewProviders}={}) {
   let links=[];try{links=await readGoogleOtaLinks(googlePage);}catch{}
   const attempts=[];
-  for(const provider of reviewProviders){
+  for(const provider of reviewProviders.filter(x=>providers.includes(x))){
     const configured=stay.ota?.urls?.[provider];
     const link=links.find(x=>x.provider===provider) ?? (belongsToProvider(configured,provider)?{provider,href:configured}:null);
-    const base={provider,capturedAt:new Date().toISOString()};
+    const base={provider,capturedAt:new Date().toISOString(),scope:otaScope(stay)};
     if(!link){attempts.push({...base,status:'pending',state:'link-unavailable'});continue;}
     const page=await otaContext.newPage();
+    let stage='navigation';
     try{
       await page.goto(link.href,{waitUntil:'domcontentloaded',timeout:20000});
       await page.locator('body').waitFor({timeout:5000});
@@ -148,9 +151,36 @@ export async function collectOtaChecks(context, googlePage, stay, otaContext = c
         snapshot.text=`${await page.title()}\n${snapshot.text}`;
         outcome=validateOtaSnapshot(snapshot,stay,provider);
       }
+      if(provider==='Booking.com'&&outcome.state==='search-conditions-unverified') {
+        stage='search';
+        const search=await setBookingSearch(page,stay);
+        if(search.state==='search-set') {
+          stage='room-selection';
+          const offer=await readSelectedBookingOffer(page,stay,search);
+          outcome=offer.snapshot?validateOtaSnapshot(offer.snapshot,stay,provider):{status:'pending',state:offer.state};
+        } else outcome={status:'pending',state:search.state};
+      }
+      if(provider==='Agoda'&&outcome.state==='search-conditions-unverified') {
+        stage='search';
+        const search=await setAgodaSearch(page,stay);
+        if(search.state==='search-set'){
+          stage='room-selection';
+          await page.getByRole('heading',{name:'Select your room',exact:true}).scrollIntoViewIfNeeded({timeout:8000});
+          snapshot=await readOtaSnapshot(page,provider);
+          Object.assign(snapshot,search);
+          outcome=validateOtaSnapshot(snapshot,stay,provider);
+        }else outcome={status:'pending',state:search.state};
+      }
+      if(provider==='Expedia'&&outcome.state==='search-conditions-unverified') {
+        stage='search';
+        const search=await openExpediaObservedSearch(page,stay);
+        if(search.state==='blocked')outcome={status:'error',state:'blocked'};
+        else if(search.state==='search-opened-unverified')outcome=validateOtaSnapshot(await readOtaSnapshot(page,provider),stay,provider);
+        else outcome={status:'pending',state:search.state};
+      }
       // No raw text, redirect query, cookies or personal checkout fields persist.
       attempts.push({...base,...outcome,sourceOrigin:belongsToProvider(page.url(),provider)?new URL(page.url()).origin:null});
-    }catch(error){attempts.push({...base,status:'error',state:error.name==='TimeoutError'?'navigation-timeout':'navigation-failed'});}
+    }catch(error){attempts.push({...base,status:'error',state:`${stage}-${error.name==='TimeoutError'?'timeout':'failed'}`});}
     finally{await page.close().catch(()=>{});}
   }
   return attempts;
@@ -162,14 +192,14 @@ export async function readDedicatedOtaTabs(browser, stay) {
   const attempts=[];
   for(const provider of reviewProviders){
     const pages=browser.contexts().flatMap(c=>c.pages()).filter(p=>belongsToProvider(p.url(),provider));
-    let best={provider,capturedAt:new Date().toISOString(),status:'pending',state:'tab-unavailable'};
+    let best={provider,capturedAt:new Date().toISOString(),scope:otaScope(stay),status:'pending',state:'tab-unavailable'};
     for(const page of pages){
       try{
         const snapshot=await readOtaSnapshot(page,provider);
         snapshot.text=`${await page.title()}\n${snapshot.text}`;
         const outcome=validateOtaSnapshot(snapshot,stay,provider);
         if(outcome.state==='hotel-unverified')continue;
-        best={provider,capturedAt:new Date().toISOString(),...outcome,sourceOrigin:new URL(page.url()).origin};
+        best={provider,capturedAt:new Date().toISOString(),scope:otaScope(stay),...outcome,sourceOrigin:new URL(page.url()).origin};
         if(outcome.status==='ok')break;
       }catch{best={provider,capturedAt:new Date().toISOString(),status:'error',state:'tab-read-failed'};}
     }

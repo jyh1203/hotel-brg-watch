@@ -9,6 +9,7 @@ import { launchMarriottSession } from "./marriott-browser.mjs";
 import { sanitizeDiagnosticUrl } from "./marriott-artifacts.mjs";
 import { readGoogleSearchEvidence, validateSearchEvidence } from './google-search-evidence.mjs';
 import { collectOtaChecks } from './ota.mjs';
+import {mergeOtaAttempts} from './ota-status.mjs';
 
 const root = path.resolve(import.meta.dirname, "..");
 const config = JSON.parse(await fs.readFile(path.join(root, "config/stays.json"), "utf8"));
@@ -26,7 +27,8 @@ let otaBrowser = null;
 let otaContext = null;
 if (process.env.OTA_CDP_URL && process.env.SKIP_OTA !== '1' && process.env.MARRIOTT_ONLY !== '1') {
   try {
-    otaBrowser = await chromium.connectOverCDP(process.env.OTA_CDP_URL, {timeout:15000});
+    otaBrowser = await chromium.connectOverCDP(process.env.OTA_CDP_URL, {timeout:15000,noDefaults:true});
+    // Owned tabs only; each offer must independently prove guest-public access.
     otaContext = otaBrowser.contexts()[0] ?? null;
     console.log(`OTA browser: dedicated Chrome CDP · ${otaBrowser.version()}`);
   } catch { console.log('OTA dedicated Chrome connection failed; using isolated Google context instead.'); }
@@ -333,8 +335,11 @@ const statusRun = {
 async function saveAttempts(file, next) {
   let previous = { results: [] };
   try { previous = JSON.parse(await fs.readFile(file, 'utf8')); } catch {}
-  const ids = new Set(next.results.map(x => x.id));
-  next.results = [...(previous.results ?? []).filter(x => !ids.has(x.id)), ...next.results];
+  if(file===otaStatusPath)next=mergeOtaAttempts(previous,next);
+  else {
+    const ids = new Set(next.results.map(x => x.id));
+    next.results = [...(previous.results ?? []).filter(x => !ids.has(x.id)), ...next.results];
+  }
   await fs.writeFile(file, `${JSON.stringify(next, null, 2)}\n`);
 }
 if (collectMarriott) await saveAttempts(marriottStatusPath, statusRun);

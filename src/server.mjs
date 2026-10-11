@@ -12,4 +12,4 @@ http.createServer((request, response) => {
     if (error) return response.writeHead(404).end("Not found");
     response.writeHead(200, { "Content-Type": types[path.extname(file)] ?? "application/octet-stream" }).end(data);
   });
-}).listen(4173, () => console.log("http://localhost:4173"));
+}).listen(Number(process.env.PORT ?? 4173), () => console.log(`http://localhost:${process.env.PORT ?? 4173}`));

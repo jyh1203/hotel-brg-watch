@@ -58754,34 +58754,73 @@
     ]
   },
   "otaStatus": {
-    "capturedAt": "2026-10-11T01:58:31.456Z",
+    "capturedAt": "2026-10-11T02:47:46.908Z",
     "results": [
       {
         "id": "madrid-carlton",
+        "state": "direct-attempted",
         "providers": [
           {
             "provider": "Booking.com",
-            "capturedAt": "2026-10-11T01:57:57.476Z",
-            "state": "search-conditions-unverified",
-            "status": "pending",
-            "sourceOrigin": "https://www.booking.com"
+            "capturedAt": "2026-10-11T02:46:57.655Z",
+            "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+            "status": "error",
+            "state": "search-timeout",
+            "lastSuccessful": {
+              "provider": "Booking.com",
+              "capturedAt": "2026-10-11T02:29:08.469Z",
+              "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+              "status": "ok",
+              "state": "room-price-verified",
+              "currency": "EUR",
+              "priceBreakdown": {
+                "currency": "EUR",
+                "displayedTotal": 702,
+                "verified": true,
+                "nonRoomChargesComplete": true,
+                "charges": [
+                  {
+                    "kind": "tax",
+                    "amount": 70.2,
+                    "currency": "EUR",
+                    "includedInDisplayedTotal": false,
+                    "paidAt": "unspecified"
+                  }
+                ]
+              },
+              "roomAmount": 702,
+              "knownPayableTotal": 772.2,
+              "roomContext": "Standard King Room",
+              "cancellationDeadline": "2027-04-02",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "priceBasis": "explicit-room-subtotal",
+              "searchEvidence": {
+                "checkIn": "2027-04-03",
+                "checkOut": "2027-04-07",
+                "adults": 2,
+                "children": 0,
+                "rooms": 1
+              },
+              "sourceOrigin": "https://www.booking.com"
+            }
           },
           {
             "provider": "Agoda",
-            "capturedAt": "2026-10-11T01:58:06.522Z",
-            "state": "search-conditions-unverified",
-            "status": "pending",
-            "sourceOrigin": "https://www.agoda.com"
+            "capturedAt": "2026-10-11T02:47:20.921Z",
+            "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+            "status": "error",
+            "state": "search-timeout"
           },
           {
             "provider": "Expedia",
-            "capturedAt": "2026-10-11T01:58:22.195Z",
-            "state": "search-conditions-unverified",
-            "status": "pending",
+            "capturedAt": "2026-10-11T02:47:46.038Z",
+            "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+            "state": "blocked",
+            "status": "error",
             "sourceOrigin": "https://www.expedia.com"
           }
-        ],
-        "state": "attempted"
+        ]
       }
     ]
   }

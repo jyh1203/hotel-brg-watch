@@ -8,12 +8,12 @@ const config = JSON.parse(fs.readFileSync(new URL("../config/stays.json", import
 const dashboardData = JSON.parse(fs.readFileSync(new URL("../site/data.json", import.meta.url), "utf8"));
 
 test("dashboard renders every configured stay with currency charts", async () => {
-  const server = spawn(process.execPath, ["src/server.mjs"], { stdio: "ignore" });
+  const server = spawn(process.execPath, ["src/server.mjs"], { stdio: "ignore", env: { ...process.env, PORT: "4174" } });
   const browser = await chromium.launch({ headless: true });
   try {
     let response;
     for (let attempt = 0; attempt < 20; attempt += 1) {
-      response = await fetch("http://127.0.0.1:4173/").catch(() => null);
+      response = await fetch("http://127.0.0.1:4174/").catch(() => null);
       if (response?.ok) break;
       await new Promise((resolve) => setTimeout(resolve, 100));
     }
@@ -22,7 +22,7 @@ test("dashboard renders every configured stay with currency charts", async () =>
     const page = await browser.newPage();
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
-    await page.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
+    await page.goto("http://127.0.0.1:4174/", { waitUntil: "networkidle" });
     assert.deepEqual(errors, []);
     assert.equal(await page.locator("#cards .card").count(), config.stays.length);
     assert.equal(await page.locator("#cards .chart").count(), config.stays.length);
@@ -51,8 +51,8 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.match(cardsText, /Marriott 공식 객실료.*세금 제외/);
     assert.match(cardsText, /그래프는 모두 세금 제외 · Google 확인 세전 기록만 표시/);
     assert.doesNotMatch(cardsText, /참고 추정 세전/);
-    assert.equal(await page.locator('input[name="googleTotal"]').count(), config.stays.length);
-    assert.equal(await page.locator('input[name="googleTaxes"]').count(), config.stays.length);
+    assert.equal(await page.locator('.brg-form, input[name="official"], input[name="googleTotal"]').count(), 0);
+    assert.equal(await page.locator('input[name="googleTaxes"]').count(), 0);
     assert.match(await page.locator("#summary").innerText(), /Google 세전 금액 확인/);
     assert.match(await page.locator("#summary").innerText(), new RegExp(`0/${config.stays.length}\\s*Google 세전 금액 확인`));
     assert.match(await page.locator("#brg-guide").innerText(), /OTA 세전 총액.*1% 초과 낮아야/);
@@ -116,34 +116,14 @@ test("dashboard renders every configured stay with currency charts", async () =>
     const candidate = synthetic.runs.at(-1).results[0].exactCandidate;
     Object.assign(candidate, { totalAmount: 226, nightlyAmount: 56.5, amountBasis: "tax-included" });
     await page.reload({ waitUntil: "networkidle" });
-    const form = page.locator('.brg-form[data-id="madrid-carlton"]');
-    const openForm = () => form.evaluate((element) => { element.closest("details").open = true; });
-    await openForm();
-    await form.locator('[name="official"]').fill("760");
-    await form.locator('[name="googleTotal"]').fill("226");
-    await form.locator('[name="googleTaxes"]').fill("20");
-    await form.locator('[name="propertyCharges"]').fill("6");
-    await form.locator('[name="propertyIncluded"]').selectOption("yes");
-    await form.locator('button[type="submit"]').click();
-    await page.waitForFunction(() => document.querySelector('.google-price')?.innerText.includes('€200'));
-    assert.match(await page.locator('.google-price').first().innerText(), /€200/);
-
-    Object.assign(candidate, { totalAmount: 220, nightlyAmount: 55 });
+    // Old browser-local manual quotes must never become collected evidence.
+    await page.evaluate(() => localStorage.setItem('brg:madrid-carlton', JSON.stringify({official:'760',googleTotal:'226',googleTaxes:'20',propertyCharges:'6',propertyIncluded:'yes',offer:'200',savedAt:new Date().toISOString()})));
     await page.reload({ waitUntil: "networkidle" });
-    await openForm();
-    await form.locator('[name="googleTotal"]').fill("220");
-    await form.locator('[name="propertyIncluded"]').selectOption("no");
-    await form.locator('button[type="submit"]').click();
-    await page.waitForFunction(() => document.querySelector('.google-price')?.innerText.includes('€200'));
-    assert.match(await page.locator('.google-price').first().innerText(), /€200/);
-    assert.doesNotMatch(await page.locator('.google-price').first().innerText(), /€194/);
-    await openForm();
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
-    await form.locator('[name="propertyIncluded"]').selectOption("unknown");
-    await form.locator('button[type="submit"]').click();
-    await page.waitForFunction(() => document.querySelector('.google-price')?.innerText.includes('세전 확인 필요'));
+    assert.equal(await page.locator('.brg-form').count(), 0);
     assert.match(await page.locator('.google-price').first().innerText(), /세전 확인 필요/);
     assert.equal(await page.locator(".google-opportunity").count(), 0);
+    assert.doesNotMatch(await page.locator('#cards').innerText(), /공식 화면 금액 입력|저장하고 계산/);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
   } finally {
     await browser.close();
     server.kill("SIGTERM");
