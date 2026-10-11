@@ -1,3 +1,4 @@
+import {freshObservation,reviewBrg} from './brg-readiness.js';
 import {providerName,reviewProviders,verifiedPreTaxAmount,roomOnlyFromBreakdown,candidateEvidence} from './brg.js';
 export const stayScope=s=>JSON.stringify([s.checkIn,s.checkOut,s.adults,s.booked.currency,s.booked.room,s.booked.cancellationDeadline]);
 const sellerName=value=>providerName(value)||String(value??'').trim().slice(0,80);
@@ -32,15 +33,21 @@ export function hotelView(data,stay,now=Date.now()){
  const sellers=names.map(name=>{
   const attempt=attempts.find(x=>x.provider===name&&x.scope===stayScope(stay));
   const observation=attempt?.checkoutObservation;
-  const direct=observation??(attempt?.status==='ok'?attempt:attempt?.lastSuccessful);
+  const direct=[observation,attempt?.status==='ok'?attempt:null,attempt?.lastSuccessful].filter(x=>x&&displayPrice(x,currency)).sort((a,b)=>(Date.parse(b.capturedAt)||0)-(Date.parse(a.capturedAt)||0))[0];
   const rate=direct??google?.rates.filter(x=>sellerName(x.provider)===name&&displayPrice(x,currency)).sort((a,b)=>Number(candidateEvidence(stay,b).roomMatched&&candidateEvidence(stay,b).cancellationMatched)-Number(candidateEvidence(stay,a).roomMatched&&candidateEvidence(stay,a).cancellationMatched)||(verifiedPreTaxAmount(a,currency)==null)-(verifiedPreTaxAmount(b,currency)==null)||a.totalAmount-b.totalAmount)[0];
   const checkedAt=direct?(direct.capturedAt??attempt?.capturedAt):google?.checkedAt;
   const price=displayPrice(rate,currency);
   const lower=price?.basis==='pre-tax'?price.amount<stay.booked.roomSubtotal-0.005:price?.basis==='tax-included'?price.amount<stay.booked.total-0.005:false;
-  return {name,price,checkedAt,rate,attempt,lower,old:Boolean(price)&&(!checkedAt||now-Date.parse(checkedAt)>86400000||attempt?.status==='error'||(!direct&&googleFailed)),source:direct?'판매처 화면':'Google 표시가'};
+  return {name,price,checkedAt,rate,attempt,lower,old:Boolean(price)&&(!freshObservation(checkedAt,now)||attempt?.status==='error'||(!direct&&googleFailed)),source:direct?'판매처 화면':'Google 표시가'};
  });
  const officialAttempt=data.collectorStatus?.results?.find(x=>x.id===stay.id);
- const officialOld=Boolean(official)&&(!official.checkedAt||now-Date.parse(official.checkedAt)>86400000||(officialAttempt&&officialAttempt.status!=='ok'&&officialAttempt.status!=='not-collected'));
+ const officialOld=Boolean(official)&&(!freshObservation(official.checkedAt,now)||(officialAttempt&&officialAttempt.status!=='ok'&&officialAttempt.status!=='not-collected'));
  const difference=official?Math.round((stay.booked.roomSubtotal-official.rate.totalAmount)*100)/100:null;
- return {stay,currency,official,officialOld,difference,officialLower:difference>0.005,sellers,cheaper:sellers.some(x=>x.lower),google};
+ for(const seller of sellers){
+  seller.brg=reviewBrg({stay,...seller,official,officialOld,result:seller.source==='Google 표시가'?google?.result:undefined,now});
+  const evidence=seller.rate?.searchEvidence??(seller.source==='Google 표시가'?google?.result.searchEvidence:seller.rate);
+  const scopeConfirmed=evidence?.checkIn===stay.checkIn&&evidence?.checkOut===stay.checkOut&&evidence?.adults===stay.adults&&evidence?.children===(stay.children??0);
+  seller.lower=Boolean(seller.lower&&!seller.old&&!seller.brg.wrongRoom&&scopeConfirmed);
+ }
+ return {stay,currency,official,officialOld,difference,officialLower:!officialOld&&difference>0.005,sellers,cheaper:sellers.some(x=>x.lower&&!x.old&&!x.brg.wrongRoom),brgCandidates:sellers.filter(x=>x.brg.verified).length,google};
 }

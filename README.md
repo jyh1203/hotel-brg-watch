@@ -162,3 +162,34 @@ Google이 GitHub Actions 트래픽을 차단하면 해당 호텔은 오류로 �
 기본 화면은 내 예약·메리어트·확인된 판매처 가격과 두 가지 알림(예약보다 낮은 공식가/더 낮은 타사 요금)만 표시합니다. 세전 객실료가 확인되면 세전 금액을, 없으면 관측된 세후 총액을 그대로 보여주며 명시된 세금·기타요금만 따로 붙입니다. VAT·환율로 세전가나 세후 총액을 임의 추정하지 않습니다. 세금 기준을 모르는 값은 ‘표시가’로 구분합니다. 과거 성공 관측값은 ‘최근 확인·재조회 필요’로 표시하고 원래 확인 시각을 접힌 상세에 보존합니다.
 
 그래프·다단계 판정·수동 금액 입력·BRG 계산 폼은 기본 화면에서 제거했습니다. 객실/취소조건, 가격 기록과 판매처별 확인 시각, 여행·카드 가이드, 공식 BRG 기준은 접어서 유지합니다. ‘메리어트 가격 확인’과 메리어트 공식 페이지에서 연결한 BRG 신청 사이트 링크는 사용자가 직접 여는 링크이며 신청 API/자동 제출은 없습니다. 가격 알림은 BRG 승인 판정이 아닙니다. 가격 이력과 수집 데이터는 변경하지 않습니다.
+
+## BRG accuracy (2026-10-11)
+
+The public UI separates a low-price observation from BRG review readiness. It
+preserves older observations but excludes expired, invalid/future timestamps,
+failed refreshes, unverified search scope and explicitly wrong rooms from current
+low-price alerts. Newer successful direct prices take precedence over older
+checkout observations. No historical prices are rewritten.
+
+`site/brg-readiness.js` uses the current official pretax full-stay rate for discovery
+(not the old reservation price). Same-currency differences must exceed 1%; FX is
+not automatically adjudicated. A candidate needs positive offer-scoped evidence
+for hotel, dates/occupancy/rooms, room/bed, exact cancellation policy (time, timezone
+and penalties), inclusions, payment/refund terms, restrictions and availability on
+both sites. Unknown means pending, not matched. Date-only cancellation is still
+useful to select offers for inspection, but does not prove a matching policy.
+
+Collectors do **not yet provide all these facts**. In particular current checkout
+observations and official snapshots must not be represented as fully eligible.
+Future verified evidence fields are `hotelMatched`, `cancellationPolicyMatched`,
+`inclusionsMatched`, `paymentPolicyMatched`, `restrictionsChecked`, and
+`availabilityVerified`; official evidence also needs `lowestPublicRateVerified`
+and `comparable`. Do not populate these from configuration or absence of warnings.
+
+Claim timing is separate from the local 24-hour observation freshness limit.
+`booked.reservedAt` and `standardCheckInAt` must be explicit timezone-bearing ISO
+instants. Missing timestamps keep the claim window unknown. Reservation evidence
+also requires direct booking, Bonvoy association and lowest applicable public rate;
+no reservation number or guest details are needed or published. The official
+policy and Marriott's final independent verification remain authoritative:
+https://www.marriott.com/online-hotel-booking.mi

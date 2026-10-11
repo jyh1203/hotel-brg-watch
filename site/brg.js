@@ -38,12 +38,14 @@ export function candidateEvidence(stay, candidate) {
   const excludedMatches = excludedPatterns.filter((pattern) => matches(context, pattern));
   const expectedDeadline = deadlineDate(stay?.booked?.cancellationDeadline, stay?.checkIn?.slice(0, 4));
   const offeredDeadline = candidate?.cancellationDeadline ?? deadlineDate(context, stay?.checkIn?.slice(0, 4));
+  const preciseCancellation = candidate?.cancellationPolicyMatched === true;
   const cancellationMatched = stay?.match?.requireFreeCancellation
     ? candidate?.freeCancellation === true && (!expectedDeadline || (Boolean(offeredDeadline) && offeredDeadline === expectedDeadline))
     : true;
   return {
-    roomMatched: missingRoomPatterns.length === 0 && missingBedPatterns.length === 0 && excludedMatches.length === 0,
+    roomMatched: roomPatterns.length > 0 && bedPatterns.length > 0 && missingRoomPatterns.length === 0 && missingBedPatterns.length === 0 && excludedMatches.length === 0,
     cancellationMatched,
+    cancellationPolicyMatched: preciseCancellation && cancellationMatched,
     expectedDeadline,
     offeredDeadline,
     missingRoomPatterns,
@@ -96,6 +98,11 @@ export function auditGoogleOffer({ stay, result, candidate, official, stale = fa
     fresh: !stale
   });
   const checks = [
+    { key: 'hotel', label: '동일 호텔 확인', ok: candidate?.hotelMatched === true },
+    { key: 'inclusions', label: '동일 포함 혜택', ok: candidate?.inclusionsMatched === true },
+    { key: 'payment', label: '동일 결제·환불 조건', ok: candidate?.paymentPolicyMatched === true },
+    { key: 'restrictions', label: '쿠폰·요금 제한 확인', ok: candidate?.restrictionsChecked === true },
+    { key: 'official', label: '공식 동일조건 최저 공개 요금 확인', ok: official?.lowestPublicRateVerified === true && official?.comparable === true },
     { key: 'fresh', label: '24시간 이내 최신 수집', ok: !stale },
     { key: 'currency', label: '동일 통화', ok: sameCurrency },
     { key: 'dates', label: '동일 체크인·체크아웃', ok: datesMatched },
@@ -103,7 +110,7 @@ export function auditGoogleOffer({ stay, result, candidate, official, stale = fa
     { key: 'occupancy', label: '동일 투숙 인원', ok: occupancyMatched },
     { key: 'rooms', label: '동일 객실 수', ok: result?.roomCountConfirmed === true && result?.searchEvidence?.rooms === 1 },
     { key: 'room', label: '동일 객실·침대', ok: evidence.roomMatched },
-    { key: 'cancellation', label: '동일 무료취소 기한', ok: evidence.cancellationMatched },
+    { key: 'cancellation', label: '동일 무료취소 기한', ok: evidence.cancellationPolicyMatched },
     { key: 'basis', label: '세금·수수료 제외 총액', ok: Number.isFinite(candidateAmount) },
     { key: 'provider', label: '판매처 확인', ok: Boolean(candidate?.provider) && candidate?.official !== true },
     { key: 'public', label: '회원·앱 전용이 아닌 공개 요금', ok: candidate?.publicRate === true },

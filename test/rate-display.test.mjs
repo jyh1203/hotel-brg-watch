@@ -14,3 +14,19 @@ test('direct checkout wins over Google, stays scoped, and remains visibly old on
  data.otaStatus.results[0].providers[0].scope='old dates';assert.equal(hotelView(data,stay).sellers.find(x=>x.name==='Expedia').price.amount,600);
  data.runs[0].results[0].marriott.checkIn='2027-04-02';assert.equal(hotelView(data,stay).official,undefined);
 });
+test('expired or failed official observations remain visible but never count as a current rate drop',()=>{
+ const now=Date.parse('2026-10-11T12:00:00Z');
+ const m={status:'ok',prepaid:false,currency:'EUR',totalAmount:600,amountBasis:'pre-tax',checkIn:stay.checkIn,checkOut:stay.checkOut,adults:2};
+ for(const capturedAt of ['2026-10-09T12:00:00Z','invalid','2026-10-12T12:00:00Z']){
+  const view=hotelView({runs:[{capturedAt,results:[{id:stay.id,marriott:m}]}]},stay,now);
+  assert.equal(view.official.rate.totalAmount,600);assert.equal(view.officialLower,false);assert.equal(view.officialOld,true);
+ }
+});
+test('newer successful source beats older checkout; unknown search conditions never raise low-price alert',()=>{
+ const now=Date.parse('2026-10-11T12:00:00Z'),capturedAt='2026-10-11T11:00:00Z';
+ const rate={currency:'EUR',totalAmount:600,amountBasis:'tax-included'};
+ const data={runs:[{capturedAt,results:[{id:stay.id,status:'ok',providers:[{provider:'Expedia',...rate}]}]}]};
+ assert.equal(hotelView(data,stay,now).cheaper,false);
+ data.otaStatus={results:[{id:stay.id,providers:[{provider:'Expedia',scope:stayScope(stay),status:'ok',capturedAt,...rate,checkoutObservation:{...rate,totalAmount:858,capturedAt:'2026-10-11T10:00:00Z'}}]}]};
+ assert.equal(hotelView(data,stay,now).sellers.find(s=>s.name==='Expedia').price.amount,600);
+});

@@ -11,7 +11,8 @@ on:
       - "config/stays.json"
       - "site/data.json"
       - "site/app.js"
-      - "site/brg.js"
+      - "site/*.js"
+      - "site/*.css"
       - "site/marriott-status.js"
       - "src/**"
       - "test/**"
@@ -60,7 +61,7 @@ jobs:
           STAY_IDS: ${{ (contains(github.event.head_commit.message, '[debug-osaka]') || contains(github.event.head_commit.message, '[fallback-check]')) && 'osaka-four-points-flex' || '' }}
         if: github.event_name != 'push' || contains(github.event.head_commit.message, '[collect-marriott]') || contains(github.event.head_commit.message, '[fallback-check]')
       - name: Check parsers and BRG boundaries
-        run: node --test test/config.test.mjs test/parser.test.mjs test/brg.test.mjs
+        run: node --test test/config.test.mjs test/parser.test.mjs test/brg.test.mjs test/brg-readiness.test.mjs test/rate-display.test.mjs
       - name: Report collection failure separately from deployment
         if: steps.collection.outcome == 'failure'
         run: |
