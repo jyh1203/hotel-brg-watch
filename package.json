@@ -10,7 +10,8 @@
     "build": "node src/build-dashboard.mjs",
     "dev": "node src/server.mjs",
     "test": "node --test",
-    "auth:marriott": "node scripts/save-marriott-auth.mjs"
+    "auth:marriott": "node scripts/save-marriott-auth.mjs",
+    "collect:expedia": "node scripts/search-expedia-checkout.mjs"
   },
   "dependencies": {
     "playwright": "^1.55.0"

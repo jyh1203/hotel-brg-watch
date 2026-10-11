@@ -1,13 +1,42 @@
 {
-  "capturedAt": "2026-10-11T02:58:55.308Z",
+  "capturedAt": "2026-10-11T04:22:33.039Z",
   "results": [
     {
       "id": "madrid-carlton",
       "state": "direct-attempted",
       "providers": [
         {
+          "provider": "Expedia",
+          "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+          "capturedAt": "2026-10-11T04:22:12.218Z",
+          "status": "error",
+          "state": "blocked",
+          "checkoutObservation": {
+            "state": "checkout-total-observed",
+            "currency": "EUR",
+            "totalAmount": 858,
+            "amountBasis": "tax-included",
+            "sourceOrigin": "https://www.expedia.co.kr",
+            "checkIn": "2027-04-03",
+            "checkOut": "2027-04-07",
+            "roomContext": "Standard Room, 1 King Bed",
+            "adults": 2,
+            "children": 0,
+            "rooms": 1,
+            "cancellationText": "Fully refundable before Fri, Apr 2, 2027",
+            "paymentTiming": "property",
+            "roomAmount": null,
+            "preTaxVerified": false,
+            "availabilityVerified": false,
+            "publicRateVerified": false,
+            "discovery": "hotel-search-ui",
+            "capturedAt": "2026-10-11T04:20:31.470Z",
+            "paymentEvidence": "property-payment-preview-ui"
+          }
+        },
+        {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-11T02:46:57.655Z",
+          "capturedAt": "2026-10-11T04:21:34.220Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "status": "error",
           "state": "search-timeout",
@@ -52,38 +81,11 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-11T02:47:20.921Z",
+          "capturedAt": "2026-10-11T04:21:56.409Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "status": "error",
-          "state": "search-timeout"
-        },
-        {
-          "provider": "Expedia",
-          "capturedAt": "2026-10-11T02:58:55.308Z",
-          "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "state": "checkout-total-observed",
+          "state": "room-or-cancellation-unverified",
           "status": "pending",
-          "sourceOrigin": "https://www.expedia.co.kr",
-          "checkoutObservation": {
-            "state": "checkout-total-observed",
-            "currency": "EUR",
-            "totalAmount": 858,
-            "amountBasis": "tax-included",
-            "sourceOrigin": "https://www.expedia.co.kr",
-            "checkIn": "2027-04-03",
-            "checkOut": "2027-04-07",
-            "roomContext": "스탠다드룸, 킹사이즈침대 1개",
-            "adults": 2,
-            "children": null,
-            "rooms": 1,
-            "cancellationText": "Fully refundable before Fri, Apr 2, 2027",
-            "paymentTiming": "property",
-            "roomAmount": null,
-            "preTaxVerified": false,
-            "availabilityVerified": false,
-            "publicRateVerified": false,
-            "capturedAt": "2026-10-11T02:58:55.308Z"
-          }
+          "sourceOrigin": "https://www.agoda.com"
         }
       ]
     }

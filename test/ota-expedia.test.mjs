@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseExpediaCheckoutObservation,readExpediaCheckoutObservation} from '../src/ota-expedia.mjs';
+import {parseExpediaCheckoutObservation,readExpediaCheckoutObservation,expediaPreviewAction} from '../src/ota-expedia.mjs';
 import {mergeOtaAttempts,otaScope} from '../src/ota-status.mjs';
 import {chromium} from 'playwright';
 const stay={hotel:'AC Hotel Carlton Madrid',checkIn:'2027-04-03',checkOut:'2027-04-07',adults:2,booked:{currency:'EUR',room:'Standard King',cancellationDeadline:'2027-04-02'},ota:{hotelAliases:{Expedia:['AC 호텔 칼튼 마드리드 바이 메리어트']}}};
@@ -30,5 +30,21 @@ test('checkout DOM reader only returns safe rate fields and ignores guest/paymen
   await page.goto(snapshot.url);const result=await readExpediaCheckoutObservation(page,stay);
   assert.equal(result.totalAmount,858);assert.equal(result.adults,2);assert.equal(result.rooms,1);
   assert.doesNotMatch(JSON.stringify(result),/private guest|private card|tripId/);
+ }finally{await browser.close();}
+});
+
+test('Expedia preview actions scope room and payment choices and never invoke final booking',async()=>{
+ const browser=await chromium.launch();const page=await browser.newPage();
+ try{
+  await page.setContent(`<button onclick="window.bad=true">Save</button><button data-stid="submit-hotel-reserve" onclick="window.bad=true">Complete booking</button><div data-stid="property-offer-4"><h3>Standard Room, 1 King Bed</h3><label><input type="radio" name="policy">Fully refundable Reserve now, pay later</label><label><input type="radio" name="extras">No extras + ₩0</label><button data-stid="submit-hotel-reserve" onclick="window.preview=true">Select</button><p>You will not be charged yet</p></div><div role="dialog"><h2>Your payment options</h2><p>Pay the property directly in their preferred currency (EUR)</p><p>You will not be charged until your stay</p><button data-stid="submit-hotel-reserve" onclick="window.payment=true">Pay at property</button><button data-stid="submit-hotel-reserve" onclick="window.bad=true">Pay now</button></div>`);
+  assert.equal(await page.evaluate(expediaPreviewAction,'room-preview'),false);
+  assert.equal(await page.evaluate(expediaPreviewAction,'options'),true);
+  assert.equal(await page.evaluate(expediaPreviewAction,'room-preview'),true);
+  assert.equal(await page.evaluate(expediaPreviewAction,'property-payment'),true);
+  assert.deepEqual(await page.evaluate(()=>[Boolean(window.preview),Boolean(window.payment),Boolean(window.bad)]),[true,true,false]);
+  await page.locator('h3').evaluate(n=>n.innerText='Standard Plus Room, 1 King Bed');
+  assert.equal(await page.evaluate(expediaPreviewAction,'options'),false);
+  await page.locator('[role="dialog"] p').last().evaluate(n=>n.innerText='Payment will be charged immediately');
+  assert.equal(await page.evaluate(expediaPreviewAction,'property-payment'),false);
  }finally{await browser.close();}
 });

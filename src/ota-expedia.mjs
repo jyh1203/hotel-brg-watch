@@ -40,3 +40,30 @@ export async function readExpediaCheckoutObservation(page,stay) {
  const snapshot=await page.evaluate(expediaCheckoutSnapshot);
  return snapshot?parseExpediaCheckoutObservation(snapshot,stay):null;
 }
+
+// Only offer-option selection and the uncommitted preview transitions are allowed.
+// No final checkout controls, guest inputs or payment fields are accessed.
+export function expediaPreviewAction(action) {
+ const visible=n=>Boolean(n?.getBoundingClientRect().width);
+ if(action==='property-payment') {
+  const dialog=[...document.querySelectorAll('[role="dialog"]')].find(n=>visible(n)&&/Your payment options/.test(n.innerText));
+  if(!dialog||!/You will not be charged until your stay/.test(dialog.innerText)||!dialog.innerText.includes('preferred currency (EUR)'))return false;
+  const buttons=[...dialog.querySelectorAll('[data-stid="submit-hotel-reserve"]')].filter(n=>visible(n)&&n.innerText.trim()==='Pay at property');
+  if(buttons.length!==1)return false;
+  buttons[0].click();return true;
+ }
+ const headings=[...document.querySelectorAll('h2,h3,h4')].filter(n=>visible(n)&&n.innerText.trim()==='Standard Room, 1 King Bed');
+ if(headings.length!==1)return false;
+ let card=headings[0];
+ while(card&&!/You will not be charged yet/.test(card.innerText))card=card.parentElement;
+ if(!card||!/^property-offer-\d+$/.test(card.getAttribute('data-stid')??''))return false;
+ const labels=[...card.querySelectorAll('label')];
+ const policy=labels.filter(n=>/Reserve now, pay later/.test(n.innerText)&&/Fully refundable/.test(n.innerText));
+ const extras=labels.filter(n=>/^No extras/.test(n.innerText.trim()));
+ if(policy.length!==1||extras.length!==1)return false;
+ if(action==='options'){policy[0].click();extras[0].click();return true;}
+ if(action!=='room-preview'||!policy[0].querySelector('input[type="radio"]')?.checked||!extras[0].querySelector('input[type="radio"]')?.checked)return false;
+ const buttons=[...card.querySelectorAll('[data-stid="submit-hotel-reserve"]')].filter(n=>visible(n)&&/^Select(?:\s+Select)?$/.test(n.innerText.trim()));
+ if(buttons.length!==1)return false;
+ buttons[0].scrollIntoView({block:'center'});buttons[0].click();return true;
+}
