@@ -8,6 +8,7 @@ import { collectMarriottRate } from "./marriott.mjs";
 import { launchMarriottSession } from "./marriott-browser.mjs";
 import { sanitizeDiagnosticUrl } from "./marriott-artifacts.mjs";
 import { readGoogleSearchEvidence, validateSearchEvidence } from './google-search-evidence.mjs';
+import { collectOtaChecks } from './ota.mjs';
 
 const root = path.resolve(import.meta.dirname, "..");
 const config = JSON.parse(await fs.readFile(path.join(root, "config/stays.json"), "utf8"));
@@ -19,7 +20,17 @@ if (!stays.length) throw new Error("STAY_IDS와 일치하는 호텔이 없습니
 const historyPath = path.join(root, "data/history.json");
 const marriottStatusPath = path.join(root, "data/marriott-status.json");
 const googleStatusPath = path.join(root, "data/google-status.json");
+const otaStatusPath = path.join(root, "data/ota-status.json");
 const artifactRoot = path.join(root, "artifacts", new Date().toISOString().slice(0, 10));
+let otaBrowser = null;
+let otaContext = null;
+if (process.env.OTA_CDP_URL && process.env.SKIP_OTA !== '1' && process.env.MARRIOTT_ONLY !== '1') {
+  try {
+    otaBrowser = await chromium.connectOverCDP(process.env.OTA_CDP_URL, {timeout:15000});
+    otaContext = otaBrowser.contexts()[0] ?? null;
+    console.log(`OTA browser: dedicated Chrome CDP · ${otaBrowser.version()}`);
+  } catch { console.log('OTA dedicated Chrome connection failed; using isolated Google context instead.'); }
+}
 
 function marriottArtifactDir(stayId, attempt) {
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
@@ -153,6 +164,7 @@ async function collectStay(browser, stay, fx) {
     const displayedCandidate = prices.exactCandidate ?? prices.freeCancellation ?? prices.lowestProvider;
     if (!displayedCandidate) throw new Error("가격 후보를 찾지 못했습니다.");
     const candidate = prices.exactCandidate ?? prices.freeCancellation;
+    const otaChecks = process.env.SKIP_OTA === '1' ? [] : await collectOtaChecks(context, page, stay, otaContext ?? context);
     const addKrwReference = (rate) => rate ? { ...rate, totalKrw: Math.round(rate.totalAmount * fx.rates[currency]) } : rate;
     return {
       id: stay.id,
@@ -169,6 +181,7 @@ async function collectStay(browser, stay, fx) {
       ...prices,
       ...conditionChecks,
       searchEvidence,
+      otaChecks,
       capturedAt: new Date().toISOString(),
       providers: prices.providers.map(addKrwReference),
       roomRates: prices.roomRates.map(addKrwReference),
@@ -325,6 +338,10 @@ async function saveAttempts(file, next) {
   await fs.writeFile(file, `${JSON.stringify(next, null, 2)}\n`);
 }
 if (collectMarriott) await saveAttempts(marriottStatusPath, statusRun);
+if (process.env.MARRIOTT_ONLY !== '1' && process.env.SKIP_OTA !== '1') await saveAttempts(otaStatusPath, {
+  capturedAt: runTimestamp(), results: results.map(result => ({id:result.id, providers:result.otaChecks ?? [],
+    state:result.status === 'ok' ? 'attempted' : 'google-unavailable'}))
+});
 if (process.env.MARRIOTT_ONLY !== '1') await saveAttempts(googleStatusPath, {
   capturedAt: runTimestamp(),
   results: results.map(result => ({ id: result.id, status: result.status,
@@ -354,4 +371,4 @@ if (marriottFailed || googleFailed) process.exitCode = 2;
 // A Playwright CDP transport keeps Node's event loop alive. All files and logs
 // are complete here, so terminate only this collector process and leave the
 // user's external dedicated Chrome running.
-if (process.env.MARRIOTT_CDP_URL) process.exit(process.exitCode ?? 0);
+if (process.env.MARRIOTT_CDP_URL || otaBrowser) process.exit(process.exitCode ?? 0);

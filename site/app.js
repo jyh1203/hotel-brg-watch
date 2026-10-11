@@ -176,7 +176,7 @@ function savedQuote(id) {
   try { return JSON.parse(localStorage.getItem(`brg:${id}`)) ?? {}; } catch { return {}; }
 }
 
-function otaReviewMarkup(stay, result, official, stale, officialStale) {
+function otaReviewMarkup(stay, result, official, stale, officialStale, attempts = []) {
   const rates = [...(result.providers ?? []), ...(result.roomRates ?? []), candidateOf(result)].filter(Boolean);
   const rows = reviewProviders.map(provider => {
     const matches = rates.filter(rate => providerName(rate.provider) === provider && rate.currency === stay.booked.currency &&
@@ -190,9 +190,17 @@ function otaReviewMarkup(stay, result, official, stale, officialStale) {
       screen.priority ? `총액도 객실료보다 낮음 · 우선 확인${screen.bookedPriceMargin ? ' · 내 예약 대비 1% 초과 차이' : ''}` :
       '세전·동일 객실·취소조건 확인 필요';
     const basis = rate?.amountBasis === 'tax-included' ? '세금·수수료 포함 표시 총액' : rate?.amountBasis === 'pre-tax' ? '세금 제외 객실료' : '금액 기준 미확인';
-    return `<li class="${screen.priority ? 'ota-priority' : ''}"><b>${provider}</b><span>${rate ? `${money(rate.totalAmount, rate.currency)} · ${basis}` : '가격 미확인'}</span><small>${esc(status)}${rate ? ` · ${esc(caution)}` : ''}</small></li>`;
+    const direct = attempts.find(x=>x.provider===provider);
+    const labels = {'blocked':'사람 확인/접근 차단','link-unavailable':'실제 연결 링크 미확인','unexpected-destination':'판매처 연결 목적지 불일치','hotel-unverified':'호텔 확인 실패',
+      'search-conditions-unverified':'날짜·인원·객실 수 미확인','room-or-cancellation-unverified':'선택 객실·취소기한 미확인','public-rate-unverified':'공개 요금 미확인',
+      'price-breakdown-unverified':'세금·수수료 상세 미확인','selected-offer-unverified':'선택 요금 미확인','navigation-timeout':'연결 시간 초과','navigation-failed':'연결 실패','empty-page':'빈 화면',
+      'tab-unavailable':'전용 Chrome 판매처 탭 미확인','tab-read-failed':'전용 Chrome 화면 읽기 실패'};
+    const freshDirect = direct && Date.now()-Date.parse(direct.capturedAt)<=86400000;
+    const directText = direct?.status==='ok' && freshDirect ? `판매처 확인 객실료 ${money(direct.roomAmount,stay.booked.currency)} · 세금 제외 · 예약 가능 여부 최종 확인 필요` :
+      direct ? `판매처 직접 확인: ${labels[direct.state]??'확인 보류'}${freshDirect?'':' · 24시간 경과'}` : '판매처 직접 확인: 아직 조회하지 않음';
+    return `<li class="${screen.priority ? 'ota-priority' : ''}"><b>${provider}</b><span>${rate ? `${money(rate.totalAmount, rate.currency)} · ${basis}` : '가격 미확인'}</span><small>${esc(status)}${rate ? ` · ${esc(caution)}` : ''}</small><small class="ota-direct">${esc(directText)}</small></li>`;
   }).join('');
-  return `<section class="ota-review" aria-label="주요 OTA 우선 확인"><h3>Booking.com · Agoda · Expedia</h3><p>Google에서 관측한 숙박 전체 표시가입니다. 세금·수수료 포함 총액도 객실료보다 낮으면 우선 확인 대상으로 표시합니다.</p><ul>${rows}</ul><small>우선 확인은 BRG 승인 확률이나 확정 판정이 아닙니다. 현장세금 포함 여부, 동일 객실·침대·조식·취소기한, 공개 요금과 실제 예약 가능 여부를 판매처에서 확인해야 합니다. 결제화면 자동 수집은 아직 지원하지 않습니다.</small></section>`;
+  return `<section class="ota-review" aria-label="주요 OTA 우선 확인"><h3>Booking.com · Agoda · Expedia</h3><p>Google에서 관측한 숙박 전체 표시가입니다. 세금·수수료 포함 총액도 객실료보다 낮으면 우선 확인 대상으로 표시합니다.</p><ul>${rows}</ul><small>우선 확인은 BRG 승인 확률이나 확정 판정이 아닙니다. 판매처 가격 상세는 읽기 전용으로 확인하며 예약·결제는 진행하지 않습니다. 차단·미확인 결과는 세전가로 확정하지 않습니다.</small></section>`;
 }
 function brgMarkup(stay, result, sourceRun, stale, googleAudit = null) {
   const saved = savedQuote(stay.id);
@@ -440,7 +448,7 @@ async function render() {
       ${currentWarning}${attemptWarning}${!marriottRate ? `<p class="freshness">공식가 확인 대기 · 아래에 공식 화면의 세전 객실료를 입력해 비교할 수 있습니다.</p>` : ""}
       ${marriottPriceState === "lower" ? `<div class="rate-drop-alert"><strong>↓ Marriott 공식 객실료 인하</strong><span>${esc(marriottDifferenceText)} · 동일 취소조건인지 확인 후 예약 변경 검토</span></div>` : ""}
       ${googleOpportunityMarkup(googleAudit, auditedToday, marriottRate, bookedCurrency)}
-      ${otaReviewMarkup(stay, sourceResult, marriottRate, stale, marriottStale)}
+      ${otaReviewMarkup(stay, sourceResult, marriottRate, stale, marriottStale, data.otaStatus?.results?.find(x=>x.id===stay.id)?.providers ?? sourceResult.otaChecks ?? [])}
       <div class="prices three"><div class="booked-price"><span>내 예약 객실료 <em>세금 제외</em></span><b>${money(stay.booked.roomSubtotal, bookedCurrency)}</b><small class="comparison-basis">BRG 비교 기준 객실료 · 세금 제외</small><small>참고: 내 예약 총액 ${money(stay.booked.total, bookedCurrency)} · 세금 포함</small><small>세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}</small></div><div class="google-price"><span>Google 확인 객실료 <em>세금 제외</em></span><b>${Number.isFinite(googlePreTax) ? money(googlePreTax, bookedCurrency) : '세전 확인 필요'}</b>${googlePreTaxLine}<small>참고: ${stale ? '최근' : '오늘'} Google 세금 포함 전체 총액 ${money(todayAmount, bookedCurrency)} · ${googleIsTaxIncluded ? 'Stay total' : '기존 금액 기준 재확인 필요'}</small></div><div class="official-price ${marriottPriceState}"><span>${marriottStale ? "최근 Marriott 공식 객실료" : "오늘 Marriott 공식 객실료"} <em>세금 제외</em></span><b>${Number.isFinite(marriottAmount) ? money(marriottAmount, bookedCurrency) : "자동 조회 불가"}</b><strong class="marriott-delta ${marriottPriceState}">${esc(marriottDifferenceText)}</strong><small>${marriottRate?.rateName ? `${esc(marriottRate.rateName)} · ${esc(marriottRate.cancellation ?? "무료취소")}` : "선불·비환불 요금은 비교에서 제외"}</small><small>${marriottKrw == null ? "원화 환산 없음" : `${won.format(marriottKrw)} 참고`} · ${marriottRun ? new Date(marriottRun.capturedAt).toLocaleString("ko-KR") : ""}</small></div></div>
       ${chartMarkup(dailySeries(runs, stay), stay)}
       <p class="room"><b>${esc(stay.booked.room)}</b><br>${esc(stay.booked.cancellation)} · ${esc(stay.booked.cancellationDeadline)}${stay.booked.status ? `<br><strong class="booking-status">${esc(stay.booked.status)}</strong>` : ""}<br>객실료 ${money(stay.booked.roomSubtotal, bookedCurrency)} + 세금·요금 ${money(stay.booked.taxesAndFees, bookedCurrency)}<br>${esc(stay.booked.note)}</p>

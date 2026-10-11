@@ -1,0 +1,32 @@
+{
+  "capturedAt": "2026-10-11T01:58:31.456Z",
+  "results": [
+    {
+      "id": "madrid-carlton",
+      "providers": [
+        {
+          "provider": "Booking.com",
+          "capturedAt": "2026-10-11T01:57:57.476Z",
+          "state": "search-conditions-unverified",
+          "status": "pending",
+          "sourceOrigin": "https://www.booking.com"
+        },
+        {
+          "provider": "Agoda",
+          "capturedAt": "2026-10-11T01:58:06.522Z",
+          "state": "search-conditions-unverified",
+          "status": "pending",
+          "sourceOrigin": "https://www.agoda.com"
+        },
+        {
+          "provider": "Expedia",
+          "capturedAt": "2026-10-11T01:58:22.195Z",
+          "state": "search-conditions-unverified",
+          "status": "pending",
+          "sourceOrigin": "https://www.expedia.com"
+        }
+      ],
+      "state": "attempted"
+    }
+  ]
+}

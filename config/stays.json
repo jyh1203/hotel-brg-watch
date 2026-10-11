@@ -8,6 +8,18 @@
     {
       "id": "madrid-carlton",
       "hotel": "AC Hotel Carlton Madrid",
+      "ota": {
+        "urls": {
+          "Booking.com": "https://www.booking.com/hotel/es/carlton.en-gb.html",
+          "Agoda": "https://www.agoda.com/en-gb/ac-hotel-carlton-madrid_4/hotel/madrid-es.html",
+          "Expedia": "https://www.expedia.com/Madrid-Hotels-AC-Hotel-Carlton-Madrid-By-Marriott.h3691.Hotel-Information"
+        },
+        "hotelAliases": {
+          "Booking.com": ["AC 호텔 칼튼 마드리드, 메리어트 라이프스타일 호텔"],
+          "Agoda": ["AC Hotel Carlton Madrid"],
+          "Expedia": ["AC Hotel Carlton Madrid by Marriott"]
+        }
+      },
       "city": { "name": "Madrid", "googleEntityId": "/m/056_y" },
       "checkIn": "2027-04-03",
       "checkOut": "2027-04-07",

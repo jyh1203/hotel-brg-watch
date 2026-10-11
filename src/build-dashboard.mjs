@@ -7,6 +7,8 @@ const config = JSON.parse(await fs.readFile(path.join(root, "config/stays.json")
 let collectorStatus = null;
 try { collectorStatus = JSON.parse(await fs.readFile(path.join(root, "data/marriott-status.json"), "utf8")); } catch {}
 let googleStatus = null;
+let otaStatus = null;
+try { otaStatus = JSON.parse(await fs.readFile(path.join(root, "data/ota-status.json"), "utf8")); } catch {}
 try { googleStatus = JSON.parse(await fs.readFile(path.join(root, "data/google-status.json"), "utf8")); } catch {}
-await fs.writeFile(path.join(root, "site/data.json"), `${JSON.stringify({ ...history, config, collectorStatus, googleStatus }, null, 2)}\n`);
+await fs.writeFile(path.join(root, "site/data.json"), `${JSON.stringify({ ...history, config, collectorStatus, googleStatus, otaStatus }, null, 2)}\n`);
 console.log(`Built dashboard data with ${history.runs.length} run(s).`);

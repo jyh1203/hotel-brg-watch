@@ -35,6 +35,7 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.match(cardsText, /Marriott · 마지막 시도/);
     assert.match(cardsText, /마지막 가격 수집/);
     assert.equal(await page.locator(".comparison-basis").count(), config.stays.length);
+    assert.equal(await page.locator('.ota-direct').count(), config.stays.length * 3);
     assert.equal(await page.locator("#brg-guide").count(), 1);
     assert.equal(await page.locator("#brg-guide .info-trigger").count(), 1);
     assert.equal(await page.locator("#brg-guide [role=tooltip]").count(), 1);
