@@ -54,8 +54,30 @@ export function candidateEvidence(stay, candidate) {
 
 export function verifiedPreTaxAmount(candidate, currency) {
   if (!candidate || candidate.currency !== currency || candidate.estimatedFromNightly === true) return null;
+  if (candidate.priceBreakdown) return roomOnlyFromBreakdown(candidate.priceBreakdown, currency)?.roomAmount ?? null;
   if (candidate.preTaxVerified === true && Number.isFinite(candidate.preTaxAmount) && candidate.preTaxAmount > 0 && candidate.preTaxAmount <= candidate.totalAmount) return candidate.preTaxAmount;
   return candidate.amountBasis === 'pre-tax' && Number.isFinite(candidate.totalAmount) && candidate.totalAmount > 0 ? candidate.totalAmount : null;
+}
+
+// Marriott BRG excludes taxes, gratuities and room-related fees, regardless
+// of where they are paid. Deduct only charges already inside displayedTotal.
+export function roomOnlyFromBreakdown(breakdown, currency) {
+  if (!breakdown || breakdown.currency !== currency || breakdown.verified !== true || breakdown.nonRoomChargesComplete !== true || !Array.isArray(breakdown.charges)) return null;
+  const total = breakdown.displayedTotal;
+  if (!Number.isFinite(total) || total <= 0) return null;
+  const scale = currency === 'JPY' ? 1 : 100;
+  let included = 0, excluded = 0;
+  for (const charge of breakdown.charges) {
+    if (!['tax', 'fee', 'gratuity'].includes(charge.kind) || !Number.isFinite(charge.amount) || charge.amount < 0 || (charge.currency && charge.currency !== currency)) return null;
+    if (charge.amount === 0) continue;
+    if (typeof charge.includedInDisplayedTotal !== 'boolean') return null;
+    if (charge.includedInDisplayedTotal) included += Math.round(charge.amount * scale);
+    else excluded += Math.round(charge.amount * scale);
+  }
+  const room = Math.round(total * scale) - included;
+  if (room <= 0) return null;
+  return { roomAmount: room / scale, includedNonRoomCharges: included / scale,
+    excludedNonRoomCharges: excluded / scale, knownPayableTotal: (Math.round(total * scale) + excluded) / scale };
 }
 
 export function auditGoogleOffer({ stay, result, candidate, official, stale = false }) {

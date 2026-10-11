@@ -1,4 +1,4 @@
-import { assess, auditGoogleOffer, threshold, verifiedPreTaxAmount } from "./brg.js";
+import { assess, auditGoogleOffer, threshold, verifiedPreTaxAmount, roomOnlyFromBreakdown } from "./brg.js";
 import { latestSuccessfulMarriott, marriottStatusLabel } from "./marriott-status.js";
 import { sourceState } from './collection-state.js';
 const won = new Intl.NumberFormat("ko-KR", { style: "currency", currency: "KRW", maximumFractionDigits: 0 });
@@ -134,11 +134,20 @@ function candidateWithVerifiedPreTax(stay, candidate) {
   const observed = Number(candidate.totalAmount);
   const enteredTotal = enteredNumber(saved.googleTotal);
   const taxes = enteredNumber(saved.googleTaxes);
+  const propertyCharges = String(saved.propertyCharges ?? '').trim() === '' ? 0 : enteredNumber(saved.propertyCharges);
+  const propertyIncluded = saved.propertyIncluded === 'yes' ? true : saved.propertyIncluded === 'no' ? false : null;
   const tolerance = stay.booked.currency === "JPY" ? 1 : 0.01;
   const reconciles = Number.isFinite(observed) && Number.isFinite(enteredTotal) && Number.isFinite(taxes) &&
     Math.abs(observed - enteredTotal) <= tolerance && taxes >= 0 && taxes < enteredTotal;
-  return reconciles
-    ? { ...candidate, preTaxAmount: enteredTotal - taxes, preTaxVerified: true, preTaxEvidence: "Google/OTA 결제단계 세금·수수료 입력 검산" }
+  const priceBreakdown = { currency: stay.booked.currency, displayedTotal: enteredTotal, verified: true,
+    nonRoomChargesComplete: true, charges: [
+      {kind:'tax', amount:taxes, includedInDisplayedTotal:true, paidAt:'online'},
+      {kind:'tax', amount:propertyCharges, includedInDisplayedTotal:propertyIncluded, paidAt:'property'}
+    ] };
+  const roomOnly = reconciles ? roomOnlyFromBreakdown(priceBreakdown, stay.booked.currency) : null;
+  return roomOnly
+    ? { ...candidate, priceBreakdown, preTaxAmount: roomOnly.roomAmount, preTaxVerified: true,
+      preTaxEvidence: '순수 객실료 · 현장세금도 제외 · 총액 포함 여부 검산' }
     : candidate;
 }
 
@@ -187,12 +196,13 @@ function brgMarkup(stay, result, sourceRun, stale, googleAudit = null) {
   const enteredTaxes = enteredNumber(saved.googleTaxes);
   const tolerance = currency === "JPY" ? 1 : 0.01;
   const googleTotalMatches = Number.isFinite(observedTotal) && Number.isFinite(enteredTotal) && Math.abs(observedTotal - enteredTotal) <= tolerance;
-  const taxBreakdownValid = googleTotalMatches && Number.isFinite(enteredTaxes) && enteredTaxes >= 0 && enteredTaxes < enteredTotal;
+  const checkedBreakdown = roomOnlyFromBreakdown(verifiedCandidate?.priceBreakdown, currency);
+  const taxBreakdownValid = googleTotalMatches && Boolean(checkedBreakdown);
   const taxCheckText = taxBreakdownValid
-    ? `검산 완료: ${money(enteredTotal, currency)} - 세금·수수료 ${money(enteredTaxes, currency)} = 세전 ${money(enteredTotal - enteredTaxes, currency)}`
+    ? `검산 완료: ${money(enteredTotal, currency)} - 총액에 포함된 세금·수수료 ${money(checkedBreakdown.includedNonRoomCharges, currency)} = 순수 객실료 ${money(checkedBreakdown.roomAmount, currency)}. 총액 밖 별도 비용 ${money(checkedBreakdown.excludedNonRoomCharges, currency)}는 비교에서 제외하며 다시 차감하지 않습니다.`
     : Number.isFinite(enteredTotal) && Number.isFinite(observedTotal) && !googleTotalMatches
       ? `입력한 전체 총액이 현재 Google 수집값 ${money(observedTotal, currency)}과 다릅니다. 최신 결제 화면 기준으로 다시 입력하세요.`
-      : "Google은 세금 포함 총액만 제공합니다. 판매처 결제 직전 화면의 세금·수수료를 입력해야 세전 금액이 확정됩니다.";
+      : "판매처의 총액 포함 세금·수수료와 현장 납부 비용을 구분하세요. 현장 비용의 총액 포함 여부가 미확인이면 순수 객실료 비교를 보류합니다.";
   const now = Date.now();
   const quoteAge = now - Date.parse(saved.savedAt);
   const withOffset = value => /(?:Z|[+-]\d{2}:\d{2})$/.test(value ?? "") ? Date.parse(value) : NaN;
@@ -238,7 +248,9 @@ function brgMarkup(stay, result, sourceRun, stale, googleAudit = null) {
     <form class="brg-form" data-id="${esc(stay.id)}">
       <label>Marriott 숙박 전체 세전 객실료 (${currency})<input name="official" type="number" min="0.01" step="0.01" required value="${esc(saved.official ?? "")}"></label>
       <label>Google 세금 포함 숙박 전체 총액 (${currency})<input name="googleTotal" type="number" min="0.01" step="0.01" value="${esc(saved.googleTotal ?? (Number.isFinite(observedTotal) ? observedTotal : ""))}"></label>
-      <label>Google 판매처 결제단계 세금·수수료 (${currency})<input name="googleTaxes" type="number" min="0" step="0.01" value="${esc(saved.googleTaxes ?? "")}"></label>
+      <label>표시 총액에 포함된 세금·수수료·팁 — 아래 현장 납부액 제외 (${currency})<input name="googleTaxes" type="number" min="0" step="0.01" value="${esc(saved.googleTaxes ?? "")}"></label>
+      <label>현장 납부 세금·수수료·팁 (${currency})<input name="propertyCharges" type="number" min="0" step="0.01" value="${esc(saved.propertyCharges ?? "")}"></label>
+      <label>현장 납부액이 위 표시 총액에 포함되어 있나요?<select name="propertyIncluded"><option value="unknown" ${!['yes','no'].includes(saved.propertyIncluded) ? 'selected' : ''}>미확인</option><option value="yes" ${saved.propertyIncluded === 'yes' ? 'selected' : ''}>총액에 포함 — 차감</option><option value="no" ${saved.propertyIncluded === 'no' ? 'selected' : ''}>총액 밖 별도 — 다시 차감하지 않음</option></select></label>
       <p class="tax-check ${taxBreakdownValid ? "confirmed" : "pending"}">${esc(taxCheckText)}</p>
       <label>OTA 숙박 전체 세전 객실료 (${currency}, 직접 확인한 경우)<input name="offer" type="number" min="0.01" step="0.01" value="${esc(saved.offer ?? "")}"></label>
       <label>예약 완료 시각 (UTC 오프셋 포함)<input name="bookedAt" placeholder="2026-09-07T10:00:00+09:00" value="${esc(saved.bookedAt ?? "")}"></label>

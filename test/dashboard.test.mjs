@@ -106,6 +106,38 @@ test("dashboard renders every configured stay with currency charts", async () =>
     await page.locator("#brg-guide .info-trigger").focus();
     const tooltipBox = await page.locator("#brg-guide [role=tooltip]").boundingBox();
     assert.ok(tooltipBox && tooltipBox.x >= 0 && tooltipBox.x + tooltipBox.width <= 390);
+
+    const candidate = synthetic.runs.at(-1).results[0].exactCandidate;
+    Object.assign(candidate, { totalAmount: 226, nightlyAmount: 56.5, amountBasis: "tax-included" });
+    await page.reload({ waitUntil: "networkidle" });
+    const form = page.locator('.brg-form[data-id="madrid-carlton"]');
+    const openForm = () => form.evaluate((element) => { element.closest("details").open = true; });
+    await openForm();
+    await form.locator('[name="official"]').fill("760");
+    await form.locator('[name="googleTotal"]').fill("226");
+    await form.locator('[name="googleTaxes"]').fill("20");
+    await form.locator('[name="propertyCharges"]').fill("6");
+    await form.locator('[name="propertyIncluded"]').selectOption("yes");
+    await form.locator('button[type="submit"]').click();
+    await page.waitForFunction(() => document.querySelector('.google-price')?.innerText.includes('€200'));
+    assert.match(await page.locator('.google-price').first().innerText(), /€200/);
+
+    Object.assign(candidate, { totalAmount: 220, nightlyAmount: 55 });
+    await page.reload({ waitUntil: "networkidle" });
+    await openForm();
+    await form.locator('[name="googleTotal"]').fill("220");
+    await form.locator('[name="propertyIncluded"]').selectOption("no");
+    await form.locator('button[type="submit"]').click();
+    await page.waitForFunction(() => document.querySelector('.google-price')?.innerText.includes('€200'));
+    assert.match(await page.locator('.google-price').first().innerText(), /€200/);
+    assert.doesNotMatch(await page.locator('.google-price').first().innerText(), /€194/);
+    await openForm();
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
+    await form.locator('[name="propertyIncluded"]').selectOption("unknown");
+    await form.locator('button[type="submit"]').click();
+    await page.waitForFunction(() => document.querySelector('.google-price')?.innerText.includes('세전 확인 필요'));
+    assert.match(await page.locator('.google-price').first().innerText(), /세전 확인 필요/);
+    assert.equal(await page.locator(".google-opportunity").count(), 0);
   } finally {
     await browser.close();
     server.kill("SIGTERM");
