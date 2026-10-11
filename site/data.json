@@ -58381,7 +58381,8 @@
               "AC Hotel Carlton Madrid"
             ],
             "Expedia": [
-              "AC Hotel Carlton Madrid by Marriott"
+              "AC Hotel Carlton Madrid by Marriott",
+              "AC 호텔 칼튼 마드리드 바이 메리어트"
             ]
           }
         },
@@ -58754,7 +58755,7 @@
     ]
   },
   "otaStatus": {
-    "capturedAt": "2026-10-11T02:47:46.908Z",
+    "capturedAt": "2026-10-11T02:58:55.308Z",
     "results": [
       {
         "id": "madrid-carlton",
@@ -58814,11 +58815,31 @@
           },
           {
             "provider": "Expedia",
-            "capturedAt": "2026-10-11T02:47:46.038Z",
+            "capturedAt": "2026-10-11T02:58:55.308Z",
             "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-            "state": "blocked",
-            "status": "error",
-            "sourceOrigin": "https://www.expedia.com"
+            "state": "checkout-total-observed",
+            "status": "pending",
+            "sourceOrigin": "https://www.expedia.co.kr",
+            "checkoutObservation": {
+              "state": "checkout-total-observed",
+              "currency": "EUR",
+              "totalAmount": 858,
+              "amountBasis": "tax-included",
+              "sourceOrigin": "https://www.expedia.co.kr",
+              "checkIn": "2027-04-03",
+              "checkOut": "2027-04-07",
+              "roomContext": "스탠다드룸, 킹사이즈침대 1개",
+              "adults": 2,
+              "children": null,
+              "rooms": 1,
+              "cancellationText": "Fully refundable before Fri, Apr 2, 2027",
+              "paymentTiming": "property",
+              "roomAmount": null,
+              "preTaxVerified": false,
+              "availabilityVerified": false,
+              "publicRateVerified": false,
+              "capturedAt": "2026-10-11T02:58:55.308Z"
+            }
           }
         ]
       }

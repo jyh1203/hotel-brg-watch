@@ -17,7 +17,7 @@
         "hotelAliases": {
           "Booking.com": ["AC 호텔 칼튼 마드리드, 메리어트 라이프스타일 호텔"],
           "Agoda": ["AC Hotel Carlton Madrid"],
-          "Expedia": ["AC Hotel Carlton Madrid by Marriott"]
+          "Expedia": ["AC Hotel Carlton Madrid by Marriott", "AC 호텔 칼튼 마드리드 바이 메리어트"]
         }
       },
       "city": { "name": "Madrid", "googleEntityId": "/m/056_y" },

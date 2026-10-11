@@ -2,6 +2,7 @@ import {reviewProviders, providerName, candidateEvidence, roomOnlyFromBreakdown}
 import {setBookingSearch,setAgodaSearch,openExpediaObservedSearch,parseOccupancy} from './ota-search.mjs';
 import {readSelectedBookingOffer} from './ota-booking.mjs';
 import {otaScope} from './ota-status.mjs';
+import {readExpediaCheckoutObservation} from './ota-expedia.mjs';
 
 const domains = { 'Booking.com': ['booking.com'], Agoda: ['agoda.com'], Expedia: ['expedia.com','expedia.co.kr','expedia.co.uk','expedia.fr','expedia.es','expedia.de','expedia.ca'] };
 export function belongsToProvider(value, provider) {
@@ -195,6 +196,10 @@ export async function readDedicatedOtaTabs(browser, stay) {
     let best={provider,capturedAt:new Date().toISOString(),scope:otaScope(stay),status:'pending',state:'tab-unavailable'};
     for(const page of pages){
       try{
+        if(provider==='Expedia'&&new URL(page.url()).pathname.startsWith('/checkout/')){
+          const observation=await readExpediaCheckoutObservation(page,stay);
+          if(observation){best={provider,capturedAt:new Date().toISOString(),scope:otaScope(stay),status:'pending',state:'checkout-total-observed',checkoutObservation:{...observation,capturedAt:new Date().toISOString()}};break;}
+        }
         const snapshot=await readOtaSnapshot(page,provider);
         snapshot.text=`${await page.title()}\n${snapshot.text}`;
         const outcome=validateOtaSnapshot(snapshot,stay,provider);

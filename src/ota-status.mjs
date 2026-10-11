@@ -9,7 +9,8 @@ export function mergeOtaAttempts(previous,next) {
   return {...result,providers:[...(prior?.providers??[]).filter(x=>!providerNames.has(x.provider)),...incoming.map(attempt=>{
    const old=prior?.providers?.find(x=>x.provider===attempt.provider&&x.scope&&x.scope===attempt.scope);
    const success=attempt.status==='ok'?attempt:old?.status==='ok'?old:old?.lastSuccessful;
-   return {...attempt,...(success?{lastSuccessful:{...success,lastSuccessful:undefined}}:{})};
+   const checkout=attempt.checkoutObservation??old?.checkoutObservation;
+   return {...attempt,...(checkout?{checkoutObservation:checkout}:{}),...(success?{lastSuccessful:{...success,lastSuccessful:undefined}}:{})};
   })]};
  })]};
 }

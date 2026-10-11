@@ -96,8 +96,10 @@ test("dashboard renders every configured stay with currency charts", async () =>
         }
       }]
     });
+    synthetic.otaStatus={results:[{id:madrid.id,providers:[{provider:'Expedia',status:'pending',state:'checkout-total-observed',capturedAt,checkoutObservation:{currency:'EUR',totalAmount:858,paymentTiming:'property',capturedAt}}]}]};
     await page.route("**/data.json*", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(synthetic) }));
     await page.reload({ waitUntil: "networkidle" });
+    assert.match(await page.locator('.ota-review').first().innerText(), /제공 결제화면 총액 €858.*세금 포함.*숙소 결제/);
     assert.match(await page.locator('.google-price').first().innerText(), /Google 확인 객실료\s*세금 제외\s*€640/);
     assert.equal(await page.locator(".google-opportunity").count(), 1);
     assert.equal(await page.locator(".google-opportunity.price-pass").count(), 1);

@@ -163,7 +163,7 @@ function otaReviewMarkup(stay, result, official, stale, officialStale, attempts 
     const basis = rate?.amountBasis === 'tax-included' ? '세금·수수료 포함 표시 총액' : rate?.amountBasis === 'pre-tax' ? '세금 제외 객실료' : '금액 기준 미확인';
     const scope=JSON.stringify([stay.checkIn,stay.checkOut,stay.adults,stay.booked.currency,stay.booked.room,stay.booked.cancellationDeadline]);
     const direct = attempts.find(x=>x.provider===provider&&(!x.scope||x.scope===scope));
-    const labels = {'blocked':'사람 확인/접근 차단','link-unavailable':'실제 연결 링크 미확인','unexpected-destination':'판매처 연결 목적지 불일치','hotel-unverified':'호텔 확인 실패',
+    const labels = {'checkout-total-observed':'결제 총액 확인 · 세전 객실료/동일조건 미검증','blocked':'사람 확인/접근 차단','link-unavailable':'실제 연결 링크 미확인','unexpected-destination':'판매처 연결 목적지 불일치','hotel-unverified':'호텔 확인 실패',
       'search-conditions-unverified':'날짜·인원·객실 수 미확인','room-or-cancellation-unverified':'선택 객실·취소기한 미확인','public-rate-unverified':'공개 요금 미확인',
       'price-breakdown-unverified':'세금·수수료 상세 미확인','selected-offer-unverified':'선택 요금 미확인','navigation-timeout':'연결 시간 초과','navigation-failed':'연결 실패','empty-page':'빈 화면',
       'tab-unavailable':'전용 Chrome 판매처 탭 미확인','tab-read-failed':'전용 Chrome 화면 읽기 실패',
@@ -172,7 +172,9 @@ function otaReviewMarkup(stay, result, official, stale, officialStale, attempts 
     const freshDirect = direct && Date.now()-Date.parse(direct.capturedAt)<=86400000;
     const directText = direct?.status==='ok' && freshDirect ? `판매처 확인 객실료 ${money(direct.roomAmount,stay.booked.currency)} · 세금 제외 · 예약 가능 여부 최종 확인 필요` :
       direct ? `판매처 직접 확인: ${labels[direct.state]??'확인 보류'}${freshDirect?'':' · 24시간 경과'}${direct.lastSuccessful?` · 직전 성공 객실료 ${money(direct.lastSuccessful.roomAmount,stay.booked.currency)} (현재 재확인 필요)`:''}` : '판매처 직접 확인: 아직 조회하지 않음';
-    return `<li class="${screen.priority ? 'ota-priority' : ''}"><b>${provider}</b><span>${rate ? `${money(rate.totalAmount, rate.currency)} · ${basis}` : '가격 미확인'}</span><small>${esc(status)}${rate ? ` · ${esc(caution)}` : ''}</small><small class="ota-direct">${esc(directText)}</small></li>`;
+    const checkout=direct?.checkoutObservation;
+    const checkoutText=checkout ? ` · 제공 결제화면 총액 ${money(checkout.totalAmount,checkout.currency)} (세금 포함${checkout.paymentTiming==='property'?' · 숙소 결제':''}) · ${new Date(checkout.capturedAt).toLocaleString('ko-KR')} 확인 · 세전 객실료/동일조건 미검증${Date.now()-Date.parse(checkout.capturedAt)>86400000?' · 재확인 필요':''}` : '';
+    return `<li class="${screen.priority ? 'ota-priority' : ''}"><b>${provider}</b><span>${rate ? `${money(rate.totalAmount, rate.currency)} · ${basis}` : '가격 미확인'}</span><small>${esc(status)}${rate ? ` · ${esc(caution)}` : ''}</small><small class="ota-direct">${esc(directText)}${esc(checkoutText)}</small></li>`;
   }).join('');
   return `<section class="ota-review" aria-label="주요 OTA 우선 확인"><h3>Booking.com · Agoda · Expedia</h3><p>Google에서 관측한 숙박 전체 표시가입니다. 세금·수수료 포함 총액도 객실료보다 낮으면 우선 확인 대상으로 표시합니다.</p><ul>${rows}</ul><small>우선 확인은 BRG 승인 확률이나 확정 판정이 아닙니다. 판매처 가격 상세는 읽기 전용으로 확인하며 예약·결제는 진행하지 않습니다. 차단·미확인 결과는 세전가로 확정하지 않습니다.</small></section>`;
 }
