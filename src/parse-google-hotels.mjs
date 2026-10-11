@@ -117,7 +117,9 @@ export function parseGoogleHotelPrices(text, stay, currency = stay.booked?.curre
   }
   let activeProvider = null;
   for (const rate of roomRates) {
-    const providerOnly = rate.context.match(/^([^·€¥₩]+?)\s*·\s*(?:€|¥|￥|₩|EUR|JPY|KRW)/i)?.[1]?.trim();
+    const head = rate.context.split(' · ')[0];
+    const knownProvider = /^(?:Booking\.com|Agoda(?:\.com)?|Expedia(?:\.[a-z.]+)?|Hotels\.com|Priceline|Marriott\.com)$/i.test(head) ? head : null;
+    const providerOnly = knownProvider ?? rate.context.match(/^([^·€¥₩]+?)\s*·\s*(?:€|¥|￥|₩|EUR|JPY|KRW)/i)?.[1]?.trim();
     if (providerOnly && !/room|bed|cancellation|breakfast|wi-?fi/i.test(providerOnly)) {
       activeProvider = providerOnly;
       rate.provider = activeProvider;

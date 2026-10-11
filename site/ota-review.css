@@ -1,0 +1,4 @@
+.ota-review{margin:16px 0;padding:14px;background:#f6f8fc;border:1px solid #cbd5e1;border-radius:14px}
+.ota-review h3{margin:0 0 8px;font-size:16px}.ota-review p,.ota-review small{font-size:12px;line-height:1.5}
+.ota-review ul{list-style:none;padding:0;margin:10px 0}.ota-review li{display:grid;gap:4px;padding:10px;border-bottom:1px solid #cbd5e1;overflow-wrap:anywhere}
+.ota-review .ota-priority{background:#fff3d0;border-radius:9px}.ota-review li span{font-size:14px}.ota-review>small{display:block}

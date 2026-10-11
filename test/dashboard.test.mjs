@@ -33,7 +33,7 @@ test("dashboard renders every configured stay with currency charts", async () =>
     const cardsText = await page.locator("#cards").innerText();
     assert.match(cardsText, /Google · 마지막 시도/);
     assert.match(cardsText, /Marriott · 마지막 시도/);
-    assert.match(cardsText, /검색조건 미검증/);
+    assert.match(cardsText, /마지막 가격 수집/);
     assert.equal(await page.locator(".comparison-basis").count(), config.stays.length);
     assert.equal(await page.locator("#brg-guide").count(), 1);
     assert.equal(await page.locator("#brg-guide .info-trigger").count(), 1);
@@ -79,6 +79,9 @@ test("dashboard renders every configured stay with currency charts", async () =>
         nights: 4,
         dateConfirmed: true,
         candidateKind: "exact",
+        occupancyConfirmed: true,
+        searchEvidence: {checkIn:madrid.checkIn,checkOut:madrid.checkOut,adults:madrid.adults,children:0},
+        providers: ['Booking.com','Agoda','Expedia'].map(provider => ({provider,currency:'EUR',totalAmount:600,amountBasis:'tax-included',estimatedFromNightly:false,publicRate:true})),
         exactCandidate: {
           currency: "EUR", totalAmount: 640, nightlyAmount: 160, amountBasis: "pre-tax",
           context: "Standard King Room · 1 king bed · Free cancellation until Apr 2",
@@ -100,6 +103,8 @@ test("dashboard renders every configured stay with currency charts", async () =>
     assert.match(await page.locator(".google-opportunity").innerText(), /Google 검증 후보가 Marriott 공식 현행가보다 낮습니다/);
     assert.match(await page.locator(".google-opportunity").innerText(), /내 예약 BRG 가격 상한 .* 이하 · 가격 차이 충족/);
     assert.match(await page.locator(".google-opportunity").innerText(), /결제 직전 실제 예약 가능/);
+    assert.equal(await page.locator('.ota-review').first().locator('.ota-priority').count(), 3);
+    assert.match(await page.locator('.ota-review').first().innerText(), /우선 확인은 BRG 승인 확률이나 확정 판정이 아닙니다/);
     await page.setViewportSize({ width: 390, height: 844 });
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
     await page.locator("#brg-guide").scrollIntoViewIfNeeded();

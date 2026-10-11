@@ -125,3 +125,32 @@ export function auditGoogleOffer({ stay, result, candidate, official, stale = fa
   else if (Number.isFinite(candidateAmount) && Number.isFinite(officialAmount)) status = 'Google 검증 후보가 공식 현행가보다 낮지 않음';
   return { ...price, comparisonAmount: candidateAmount, evidence, checks, blockers, verified, lowerThanOfficial, officialDifference, officialDifferencePercent, status };
 }
+
+export const reviewProviders = ['Booking.com', 'Agoda', 'Expedia'];
+export function providerName(value) {
+  const name = String(value ?? '').trim();
+  if (/^(?:booking(?:\.com)?|부킹닷컴)$/i.test(name)) return 'Booking.com';
+  if (/^(?:agoda(?:\.com)?|아고다)$/i.test(name)) return 'Agoda';
+  if (/^(?:expedia(?:\.(?:com|co\.kr|co\.uk|fr|es|de|ca))?|익스피디아)$/i.test(name)) return 'Expedia';
+  return null;
+}
+
+// Screening only: an all-in amount is an upper bound on room-only price,
+// not evidence of identical room, cancellation, availability or eligibility.
+export function screenAllInOffer({ stay, result, candidate, official, stale = false, officialStale = false }) {
+  const currency = stay.booked.currency;
+  const nights = Math.round((Date.parse(stay.checkOut) - Date.parse(stay.checkIn)) / 86400000);
+  const observedConditions = result?.dateConfirmed === true && result?.occupancyConfirmed === true &&
+    result?.searchEvidence?.checkIn === stay.checkIn && result?.searchEvidence?.checkOut === stay.checkOut &&
+    result?.searchEvidence?.adults === stay.adults && result?.searchEvidence?.children === 0 && result?.nights === nights;
+  const total = candidate?.totalAmount;
+  const valid = !stale && observedConditions && candidate?.currency === currency && candidate?.amountBasis === 'tax-included' &&
+    candidate?.estimatedFromNightly !== true && candidate?.official !== true && candidate?.publicRate === true &&
+    Boolean(candidate?.provider) && Number.isFinite(total) && total > 0;
+  const belowBooked = valid && total < stay.booked.roomSubtotal - 0.005;
+  const belowOfficial = valid && !officialStale && official?.currency === currency && official?.amountBasis === 'pre-tax' &&
+    Number.isFinite(official?.totalAmount) && total < official.totalAmount - 0.005;
+  return { priority: Boolean(belowBooked || belowOfficial), belowBooked: Boolean(belowBooked), belowOfficial: Boolean(belowOfficial),
+    bookedPriceMargin: Boolean(belowBooked && assess(stay.booked.roomSubtotal, total, {currency}).pass),
+    comparisonAmount: null, verified: false, eligible: false };
+}
