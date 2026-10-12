@@ -193,3 +193,8 @@ also requires direct booking, Bonvoy association and lowest applicable public ra
 no reservation number or guest details are needed or published. The official
 policy and Marriott's final independent verification remain authoritative:
 https://www.marriott.com/online-hotel-booking.mi
+
+Marriott's second room-specific calendar can hide `.drp-selected` even while the
+correct range is selected. Collection now verifies the visible highlighted start
+and end cells with each table's full month/year, excluding off-month duplicates;
+it no longer waits on that hidden summary or compares day-number substrings.

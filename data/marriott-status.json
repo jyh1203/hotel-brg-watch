@@ -1,132 +1,52 @@
 {
-  "capturedAt": "2026-10-12T00:38:23.276Z",
+  "capturedAt": "2026-10-12T01:21:21.683Z",
   "results": [
     {
       "id": "madrid-carlton",
-      "status": "error",
-      "state": "rate-list-transition-failed",
-      "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-      "capturedAt": "2026-10-12T00:33:53.121Z",
+      "status": "ok",
+      "state": "ok",
+      "error": null,
+      "capturedAt": "2026-10-12T01:18:59.235Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
       "diagnostics": {
-        "stage": "confirming specific dates",
-        "responseStatus": null,
-        "finalUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
-        "title": "Rooms | AC Hotel Carlton Madrid",
-        "bodyLength": 3407,
-        "selectors": {
-          "dateInput": true,
-          "viewRates": true,
-          "roomCards": true,
-          "rateCards": false,
-          "login": false,
-          "cookieConsent": false
-        },
-        "browser": {
-          "platform": "linux-x64",
-          "headless": false,
-          "channel": null,
-          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-          "persistent": false,
-          "browserVersion": "151.0.7922.34",
-          "authMethod": "none"
-        }
+        "finalUrl": null,
+        "browser": null
       }
     },
     {
       "id": "bilbao-ercilla",
-      "status": "error",
-      "state": "rate-list-transition-failed",
-      "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-      "capturedAt": "2026-10-12T00:35:21.788Z",
+      "status": "ok",
+      "state": "ok",
+      "error": null,
+      "capturedAt": "2026-10-12T01:19:56.934Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
       "diagnostics": {
-        "stage": "confirming specific dates",
-        "responseStatus": null,
-        "finalUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
-        "title": "Boutique Rooms & Suites | Hotel Ercilla de Bilbao, Autograph Collection",
-        "bodyLength": 3321,
-        "selectors": {
-          "dateInput": true,
-          "viewRates": true,
-          "roomCards": true,
-          "rateCards": false,
-          "login": false,
-          "cookieConsent": false
-        },
-        "browser": {
-          "platform": "linux-x64",
-          "headless": false,
-          "channel": null,
-          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-          "persistent": false,
-          "browserVersion": "151.0.7922.34",
-          "authMethod": "none"
-        }
+        "finalUrl": null,
+        "browser": null
       }
     },
     {
       "id": "bordeaux-moxy",
-      "status": "error",
-      "state": "rate-list-transition-failed",
-      "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-      "capturedAt": "2026-10-12T00:36:52.476Z",
+      "status": "ok",
+      "state": "ok",
+      "error": null,
+      "capturedAt": "2026-10-12T01:20:37.329Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
       "diagnostics": {
-        "stage": "confirming specific dates",
-        "responseStatus": null,
-        "finalUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
-        "title": "Rooms | Moxy Bordeaux",
-        "bodyLength": 5212,
-        "selectors": {
-          "dateInput": true,
-          "viewRates": true,
-          "roomCards": true,
-          "rateCards": false,
-          "login": false,
-          "cookieConsent": false
-        },
-        "browser": {
-          "platform": "linux-x64",
-          "headless": false,
-          "channel": null,
-          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-          "persistent": false,
-          "browserVersion": "151.0.7922.34",
-          "authMethod": "none"
-        }
+        "finalUrl": null,
+        "browser": null
       }
     },
     {
       "id": "barcelona-four-points",
-      "status": "error",
-      "state": "rate-list-transition-failed",
-      "error": "confirming specific dates: locator.innerText: Timeout 30000ms exceeded.",
-      "capturedAt": "2026-10-12T00:38:20.594Z",
+      "status": "ok",
+      "state": "ok",
+      "error": null,
+      "capturedAt": "2026-10-12T01:21:19.030Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
       "diagnostics": {
-        "stage": "confirming specific dates",
-        "responseStatus": null,
-        "finalUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
-        "title": "Rooms | Four Points Barcelona Diagonal",
-        "bodyLength": 3524,
-        "selectors": {
-          "dateInput": true,
-          "viewRates": true,
-          "roomCards": true,
-          "rateCards": false,
-          "login": false,
-          "cookieConsent": false
-        },
-        "browser": {
-          "platform": "linux-x64",
-          "headless": false,
-          "channel": null,
-          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-          "persistent": false,
-          "browserVersion": "151.0.7922.34",
-          "authMethod": "none"
-        }
+        "finalUrl": null,
+        "browser": null
       }
     }
   ]

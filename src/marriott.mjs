@@ -167,6 +167,28 @@ class MarriottPageStateError extends Error {
   }
 }
 
+// Read selected calendar endpoints, not a hidden summary or day-number substring.
+export function readMarriottCalendarRange() {
+  const months=['january','february','march','april','may','june','july','august','september','october','november','december'];
+  const result={};
+  for(const table of document.querySelectorAll('table')){
+    if(!table.getBoundingClientRect().width)continue;
+    const label=table.querySelector('th.month')?.textContent?.trim().toLowerCase();
+    const m=label?.match(/^([a-z]+)\s+(20\d{2})$/);if(!m)continue;
+    const month=months.indexOf(m[1])+1;if(!month)continue;
+    for(const [key,css] of [['checkIn','start-date'],['checkOut','end-date']]){
+      const cells=[...table.querySelectorAll(`td.${css}:not(.off)`)].filter(n=>n.getBoundingClientRect().width);
+      for(const cell of cells){
+        const day=Number(cell.textContent.trim());if(day<1||day>31)continue;
+        const date=`${m[2]}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+        if(result[key]&&result[key]!==date)return null;
+        result[key]=date;
+      }
+    }
+  }
+  return result.checkIn&&result.checkOut?result:null;
+}
+
 async function pickDate(page, iso) {
   const month = monthLabel(iso);
   for (let step = 0; step < 13; step += 1) {
@@ -307,10 +329,9 @@ export async function collectMarriottRate(context, stay, fx, options = {}) {
       // Re-select the requested stay before the second View Rates submission.
       await pickDate(page, stay.checkIn);
       await pickDate(page, stay.checkOut);
-      const selectedRange = await page.locator(".drp-selected:visible").innerText();
-      const expectedDays = [new Date(`${stay.checkIn}T00:00:00Z`).getUTCDate(), new Date(`${stay.checkOut}T00:00:00Z`).getUTCDate()];
-      if (!expectedDays.every((day) => selectedRange.includes(String(day)))) {
-        throw new Error(`두 번째 달력의 선택 범위가 요청과 다릅니다 (${selectedRange})`);
+      const selectedRange = await page.evaluate(readMarriottCalendarRange);
+      if (selectedRange?.checkIn !== stay.checkIn || selectedRange?.checkOut !== stay.checkOut) {
+        throw new Error(`두 번째 달력의 선택 범위가 요청과 다릅니다 (${JSON.stringify(selectedRange)})`);
       }
       await page.waitForTimeout(1000);
       await calendarViewRates.click({ timeout: 30000 });
