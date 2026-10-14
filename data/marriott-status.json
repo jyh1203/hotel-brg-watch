@@ -1,132 +1,52 @@
 {
-  "capturedAt": "2026-10-14T00:20:48.256Z",
+  "capturedAt": "2026-10-14T15:08:44.990Z",
   "results": [
     {
       "id": "madrid-carlton",
-      "status": "blocked",
-      "state": "blocked",
-      "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-14T00:19:08.829Z",
+      "status": "ok",
+      "state": "ok",
+      "error": null,
+      "capturedAt": "2026-10-14T15:03:01.296Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
       "diagnostics": {
-        "stage": "confirming specific dates",
-        "responseStatus": null,
-        "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=4&fromDate=04%2F03%2F2027&toDate=04%2F07%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=MADCA&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F03%2F2027&t-end=04%2F07%2F2027&fromDateDefaultFormat=04%2F03%2F2027&toDateDefaultFormat=04%2F07%2F2027&fromToDate_submit=04%2F07%2F2027&fromToDate=04%2F03%2F2027&roomPoolCode=doub",
-        "title": "Access Denied",
-        "bodyLength": 230,
-        "selectors": {
-          "dateInput": false,
-          "viewRates": false,
-          "roomCards": false,
-          "rateCards": false,
-          "login": false,
-          "cookieConsent": false
-        },
-        "browser": {
-          "platform": "linux-x64",
-          "headless": false,
-          "channel": null,
-          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-          "persistent": false,
-          "browserVersion": "151.0.7922.34",
-          "authMethod": "none"
-        }
+        "finalUrl": null,
+        "browser": null
       }
     },
     {
       "id": "bilbao-ercilla",
-      "status": "blocked",
-      "state": "blocked",
-      "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-14T00:19:39.748Z",
+      "status": "ok",
+      "state": "ok",
+      "error": null,
+      "capturedAt": "2026-10-14T15:04:51.161Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
       "diagnostics": {
-        "stage": "confirming specific dates",
-        "responseStatus": null,
-        "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr",
-        "title": "Access Denied",
-        "bodyLength": 230,
-        "selectors": {
-          "dateInput": false,
-          "viewRates": false,
-          "roomCards": false,
-          "rateCards": false,
-          "login": false,
-          "cookieConsent": false
-        },
-        "browser": {
-          "platform": "linux-x64",
-          "headless": false,
-          "channel": null,
-          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-          "persistent": false,
-          "browserVersion": "151.0.7922.34",
-          "authMethod": "none"
-        }
+        "finalUrl": null,
+        "browser": null
       }
     },
     {
       "id": "bordeaux-moxy",
-      "status": "blocked",
-      "state": "blocked",
-      "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-14T00:20:11.146Z",
+      "status": "ok",
+      "state": "ok",
+      "error": null,
+      "capturedAt": "2026-10-14T15:06:43.511Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
       "diagnostics": {
-        "stage": "confirming specific dates",
-        "responseStatus": null,
-        "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr",
-        "title": "Access Denied",
-        "bodyLength": 230,
-        "selectors": {
-          "dateInput": false,
-          "viewRates": false,
-          "roomCards": false,
-          "rateCards": false,
-          "login": false,
-          "cookieConsent": false
-        },
-        "browser": {
-          "platform": "linux-x64",
-          "headless": false,
-          "channel": null,
-          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-          "persistent": false,
-          "browserVersion": "151.0.7922.34",
-          "authMethod": "none"
-        }
+        "finalUrl": null,
+        "browser": null
       }
     },
     {
       "id": "barcelona-four-points",
-      "status": "blocked",
-      "state": "blocked",
-      "error": "opening rate list: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-14T00:20:45.571Z",
+      "status": "ok",
+      "state": "ok",
+      "error": null,
+      "capturedAt": "2026-10-14T15:08:40.409Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
       "diagnostics": {
-        "stage": "opening rate list",
-        "responseStatus": null,
-        "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027",
-        "title": "Access Denied",
-        "bodyLength": 230,
-        "selectors": {
-          "dateInput": false,
-          "viewRates": false,
-          "roomCards": false,
-          "rateCards": false,
-          "login": false,
-          "cookieConsent": false
-        },
-        "browser": {
-          "platform": "linux-x64",
-          "headless": false,
-          "channel": null,
-          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-          "persistent": false,
-          "browserVersion": "151.0.7922.34",
-          "authMethod": "none"
-        }
+        "finalUrl": null,
+        "browser": null
       }
     }
   ]
