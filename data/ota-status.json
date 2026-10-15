@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-10-14T23:58:43.003Z",
+  "capturedAt": "2026-10-15T19:22:18.483Z",
   "results": [
     {
       "id": "madrid-carlton",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-14T23:54:46.648Z",
+          "capturedAt": "2026-10-15T19:17:18.008Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "matching-offer-unavailable",
@@ -75,7 +75,7 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-14T23:55:00.586Z",
+          "capturedAt": "2026-10-15T19:17:31.414Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "state": "room-or-cancellation-unverified",
           "status": "pending",
@@ -83,10 +83,11 @@
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-14T23:55:11.378Z",
+          "capturedAt": "2026-10-15T19:17:47.159Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+          "state": "blocked",
           "status": "error",
-          "state": "search-timeout",
+          "sourceOrigin": "https://www.expedia.com",
           "checkoutObservation": {
             "state": "checkout-total-observed",
             "currency": "EUR",
@@ -118,7 +119,7 @@
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-14T23:55:32.031Z",
+          "capturedAt": "2026-10-15T19:18:06.593Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -126,14 +127,14 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-14T23:55:34.846Z",
+          "capturedAt": "2026-10-15T19:18:09.251Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-14T23:55:34.846Z",
+          "capturedAt": "2026-10-15T19:18:09.251Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -169,29 +170,28 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     },
     {
       "id": "barcelona-four-points",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-14T23:55:54.689Z",
+          "capturedAt": "2026-10-15T19:20:11.101Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
-          "state": "hotel-unverified",
           "status": "pending",
-          "sourceOrigin": "https://www.booking.com"
+          "state": "link-unavailable"
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-14T23:55:57.198Z",
+          "capturedAt": "2026-10-15T19:20:11.101Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-14T23:55:57.198Z",
+          "capturedAt": "2026-10-15T19:20:11.101Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
