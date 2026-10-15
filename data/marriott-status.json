@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-10-15T19:22:18.482Z",
+  "capturedAt": "2026-10-15T23:44:28.351Z",
   "results": [
     {
       "id": "madrid-carlton",
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-15T19:20:44.592Z",
+      "capturedAt": "2026-10-15T23:43:06.139Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -38,14 +38,14 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-15T19:21:14.750Z",
+      "capturedAt": "2026-10-15T23:43:30.653Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
         "responseStatus": null,
         "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr",
         "title": "Access Denied",
-        "bodyLength": 230,
+        "bodyLength": 228,
         "selectors": {
           "dateInput": false,
           "viewRates": false,
@@ -70,7 +70,7 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-15T19:21:45.638Z",
+      "capturedAt": "2026-10-15T23:43:58.237Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -102,7 +102,7 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-15T19:22:15.751Z",
+      "capturedAt": "2026-10-15T23:44:25.701Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
