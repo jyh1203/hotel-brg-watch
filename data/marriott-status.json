@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-10-17T23:10:21.667Z",
+  "capturedAt": "2026-10-18T18:20:10.325Z",
   "results": [
     {
       "id": "madrid-carlton",
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-17T23:08:42.424Z",
+      "capturedAt": "2026-10-18T18:18:33.318Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -38,7 +38,7 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-17T23:09:15.614Z",
+      "capturedAt": "2026-10-18T18:19:06.101Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -70,7 +70,7 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-17T23:09:47.914Z",
+      "capturedAt": "2026-10-18T18:19:37.716Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -102,7 +102,7 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-17T23:10:18.912Z",
+      "capturedAt": "2026-10-18T18:20:07.584Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
