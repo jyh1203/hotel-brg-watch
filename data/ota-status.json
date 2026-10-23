@@ -1,15 +1,16 @@
 {
-  "capturedAt": "2026-10-23T00:02:04.167Z",
+  "capturedAt": "2026-10-23T19:36:42.190Z",
   "results": [
     {
       "id": "madrid-carlton",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-22T23:58:55.454Z",
+          "capturedAt": "2026-10-23T19:32:07.746Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "status": "error",
-          "state": "search-timeout",
+          "status": "pending",
+          "state": "matching-offer-unavailable",
+          "sourceOrigin": "https://www.booking.com",
           "checkoutObservation": {
             "state": "checkout-total-observed",
             "currency": "EUR",
@@ -74,7 +75,7 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-22T23:59:14.751Z",
+          "capturedAt": "2026-10-23T19:32:22.599Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "state": "room-or-cancellation-unverified",
           "status": "pending",
@@ -82,7 +83,7 @@
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-22T23:59:29.046Z",
+          "capturedAt": "2026-10-23T19:32:34.919Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "state": "blocked",
           "status": "error",
@@ -118,21 +119,22 @@
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-22T23:59:45.515Z",
+          "capturedAt": "2026-10-23T19:32:53.465Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
+          "state": "hotel-unverified",
           "status": "pending",
-          "state": "link-unavailable"
+          "sourceOrigin": "https://www.booking.com"
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-22T23:59:45.515Z",
+          "capturedAt": "2026-10-23T19:32:56.789Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-22T23:59:45.516Z",
+          "capturedAt": "2026-10-23T19:32:56.789Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -146,25 +148,24 @@
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-22T23:59:55.133Z",
+          "capturedAt": "2026-10-23T19:33:08.851Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-22T23:59:55.133Z",
+          "capturedAt": "2026-10-23T19:33:08.851Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-22T23:59:55.133Z",
+          "capturedAt": "2026-10-23T19:33:08.852Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
-          "state": "hotel-unverified",
           "status": "pending",
-          "sourceOrigin": "https://www.expedia.com"
+          "state": "link-unavailable"
         }
       ],
       "state": "attempted"
@@ -196,7 +197,7 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     }
   ]
 }
