@@ -1,16 +1,15 @@
 {
-  "capturedAt": "2026-10-22T19:35:22.974Z",
+  "capturedAt": "2026-10-23T00:02:04.167Z",
   "results": [
     {
       "id": "madrid-carlton",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-21T23:59:58.504Z",
+          "capturedAt": "2026-10-22T23:58:55.454Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "status": "pending",
-          "state": "matching-offer-unavailable",
-          "sourceOrigin": "https://www.booking.com",
+          "status": "error",
+          "state": "search-timeout",
           "checkoutObservation": {
             "state": "checkout-total-observed",
             "currency": "EUR",
@@ -75,14 +74,15 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-22T00:00:12.434Z",
+          "capturedAt": "2026-10-22T23:59:14.751Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "status": "error",
-          "state": "search-timeout"
+          "state": "room-or-cancellation-unverified",
+          "status": "pending",
+          "sourceOrigin": "https://www.agoda.com"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-22T00:00:26.539Z",
+          "capturedAt": "2026-10-22T23:59:29.046Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "state": "blocked",
           "status": "error",
@@ -111,72 +111,70 @@
           }
         }
       ],
-      "state": "google-unavailable"
+      "state": "attempted"
     },
     {
       "id": "bilbao-ercilla",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-22T00:00:44.403Z",
+          "capturedAt": "2026-10-22T23:59:45.515Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
-          "state": "hotel-unverified",
           "status": "pending",
-          "sourceOrigin": "https://www.booking.com"
+          "state": "link-unavailable"
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-22T00:00:46.892Z",
+          "capturedAt": "2026-10-22T23:59:45.515Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-22T00:00:46.892Z",
+          "capturedAt": "2026-10-22T23:59:45.516Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
-          "sourceOrigin": "https://www.expedia.ca"
+          "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "google-unavailable"
+      "state": "attempted"
     },
     {
       "id": "bordeaux-moxy",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-22T00:01:37.650Z",
+          "capturedAt": "2026-10-22T23:59:55.133Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
-          "state": "hotel-unverified",
           "status": "pending",
-          "sourceOrigin": "https://www.booking.com"
+          "state": "link-unavailable"
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-22T00:01:40.597Z",
+          "capturedAt": "2026-10-22T23:59:55.133Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-22T00:01:40.597Z",
+          "capturedAt": "2026-10-22T23:59:55.133Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
-          "sourceOrigin": "https://www.expedia.ca"
+          "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "google-unavailable"
+      "state": "attempted"
     },
     {
       "id": "barcelona-four-points",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-22T19:32:43.040Z",
+          "capturedAt": "2026-10-23T00:00:05.513Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -184,14 +182,14 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-22T19:32:46.094Z",
+          "capturedAt": "2026-10-23T00:00:07.563Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-22T19:32:46.094Z",
+          "capturedAt": "2026-10-23T00:00:07.563Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
