@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-25T18:34:39.962Z",
+  "capturedAt": "2026-10-25T23:21:32.455Z",
   "results": [
     {
       "id": "madrid-carlton",
@@ -169,14 +169,14 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     },
     {
       "id": "barcelona-four-points",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-10-24T23:12:01.392Z",
+          "capturedAt": "2026-10-25T23:19:12.664Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -184,21 +184,21 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-10-24T23:12:03.726Z",
+          "capturedAt": "2026-10-25T23:19:15.874Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-10-24T23:12:03.726Z",
+          "capturedAt": "2026-10-25T23:19:15.874Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "google-unavailable"
+      "state": "attempted"
     }
   ]
 }
