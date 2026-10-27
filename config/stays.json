@@ -20,6 +20,7 @@
           "Expedia": ["AC Hotel Carlton Madrid by Marriott", "AC 호텔 칼튼 마드리드 바이 메리어트"]
         }
       },
+      "timeZone": "Europe/Madrid",
       "city": { "name": "Madrid", "googleEntityId": "/m/056_y" },
       "checkIn": "2027-04-03",
       "checkOut": "2027-04-07",
@@ -51,6 +52,7 @@
     {
       "id": "bilbao-ercilla",
       "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+      "timeZone": "Europe/Madrid",
       "city": { "name": "Bilbao", "googleEntityId": "/m/01dzy" },
       "checkIn": "2027-04-07",
       "checkOut": "2027-04-10",
@@ -83,6 +85,7 @@
     {
       "id": "bordeaux-moxy",
       "hotel": "Moxy Bordeaux",
+      "timeZone": "Europe/Paris",
       "city": { "name": "Bordeaux", "googleEntityId": "/m/01b85" },
       "checkIn": "2027-04-10",
       "checkOut": "2027-04-12",
@@ -115,6 +118,7 @@
     {
       "id": "barcelona-four-points",
       "hotel": "Four Points by Sheraton Barcelona Diagonal",
+      "timeZone": "Europe/Madrid",
       "city": { "name": "Barcelona", "googleEntityId": "/m/01f62" },
       "checkIn": "2027-04-13",
       "checkOut": "2027-04-16",

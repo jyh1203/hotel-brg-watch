@@ -9,6 +9,7 @@ test('Google amount compares with no fees, optional fees do not unlock BRG, mobi
   await page.goto('http://127.0.0.1:4176/',{waitUntil:'networkidle'});
   const card=page.locator('[data-stay-id="madrid-carlton"]').first();
   const form=card.locator('.quick-price-form');const output=form.locator('output');
+  await card.locator('.price-details>summary').click();
   const before=await card.locator('.rate-list').innerText();
   assert.equal(await form.isVisible(),false);
   await card.locator('.quick-price>summary').click();

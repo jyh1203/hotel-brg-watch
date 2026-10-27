@@ -1,6 +1,7 @@
+import {mountClaimPlan} from './claim-plan-ui.js?v=20261027-claim-v1';
 import {parsePriceInput,quickPriceComparison} from './quick-price.js';
 import {reviewProviders} from './brg.js';
-import {hotelView,validOfficial,displayPrice} from './rate-display.js?v=20261027-tax-observation';
+import {hotelView,validOfficial,displayPrice} from './rate-display.js?v=20261027-claim-v1';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=(n,c)=>new Intl.NumberFormat('ko-KR',{style:'currency',currency:c,maximumFractionDigits:c==='JPY'?0:2}).format(n);
 const time=at=>at&&!Number.isNaN(Date.parse(at))?new Date(at).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):'확인 기록 없음';
@@ -30,13 +31,15 @@ function card(view,data){
  const sellerDetails=sellers.map(s=>`<li><b>${esc(s.name)}${s.price?' · '+money(s.price.amount,currency)+' '+basis(s.price):''}</b> · ${s.price?esc(s.source)+' · '+esc(time(s.checkedAt))+' 확인'+(s.refreshFailed?' · 최근 재조회 실패 · 이전 확인값 유지':s.ageExpired?' · 24시간 경과 · 현재가 확인':''):'가격 미확인'}${s.refreshFailed?' · 이번 조회 미완료':''}${s.rate?.roomContext?`<br>${esc(s.rate.roomContext)}`:''}${s.rate?.cancellationText?`<br>${esc(s.rate.cancellationText)}`:''}${s.price?`<br>BRG: ${esc(s.brg.blockers.map(c=>c.label).join(' · ')||'자동 확인 항목 충족 · 최종 심사는 Marriott')}`:''}</li>`).join('');
  return `<article class="card ${officialLower?'has-rate-drop':''}" data-stay-id="${esc(stay.id)}">
  <div class="card-head"><div><p>${esc(stay.checkIn)} → ${esc(stay.checkOut)} · ${Math.round((Date.parse(stay.checkOut)-Date.parse(stay.checkIn))/86400000)}박 · 성인 ${stay.adults}명</p><h2>${esc(stay.displayName??stay.hotel)}</h2></div></div>
+ <div class="claim-plan"></div>
+ <details class="price-details"><summary>전체 가격·세금·공식가 인하 확인</summary>
  <p class="price-alert ${officialLower?'lower':leads.length?'review':''}">${esc(alert)}</p>
  <section class="rate-list" aria-label="호텔 요금 비교">
  ${row('내 예약',booked,currency,{css:'booked-price'})}
  ${row('메리어트',official?displayPrice(official.rate,currency):null,currency,{css:'official-price'+(officialLower?' lower':''),note:officialNote})}
  ${visibleSellers.map(s=>row(s.name,s.price,currency,{css:'seller-price'+(s.reviewLead?' lower':''),note:[s.source,`${time(s.checkedAt)} 확인`,s.refreshFailed?`${time(s.failedAt)} 재조회 실패 · 확인값 유지`:s.ageExpired?'24시간 경과 · 현재가 확인':'',s.reviewLead?`${officialOld?'지난 공식 세전가':'공식 세전가'}보다 ${money(s.screen.difference,currency)} 낮음 · ${s.screen.priceMargin?'가격 차이 검토':'1% 초과 차이 미달'} · 세금·객실 조건 확인`:s.brg.verified?s.brg.label:s.brg.wrongRoom?'객실·침대 조건 불일치':s.price.basis==='pre-tax'?'객실·취소 조건 확인':'객실·세금 조건 확인'].filter(Boolean).join(' · ')})).join('')}${visibleSellers.length?'':row('타사 요금',null,currency)}
- </section>
- <details class="quick-price"><summary>Google 총액 빠른 비교 <span>수수료 입력 없이</span></summary>
+ </section></details>
+ <details class="quick-price"><summary>직접 확인한 Google 총액 비교 <span>보조 계산</span></summary>
  <form class="quick-price-form" data-quick-stay-id="${esc(stay.id)}">
  <p>직접 확인한 <b>동일 호텔·일정·인원·객실 수의 세금 포함 숙박 전체 총액</b>을 입력하세요. 수집된 요금이나 BRG 판정은 바뀌지 않습니다.</p>
  <label>표시 통화<select name="currency">${[...new Set([currency,'EUR','USD','GBP','JPY','KRW'])].map(c=>`<option value="${c}">${c}</option>`).join('')}</select></label>
@@ -47,7 +50,7 @@ function card(view,data){
  <button type="submit">총액 비교</button>
  <output class="quick-price-result" aria-live="polite" aria-atomic="true"></output>
  </form></details>
- <div class="card-actions">${link(officialLink,'메리어트 가격 확인','primary')}${link('https://brgclaimsubmission.fornova.com/marriott','BRG 신청')}</div>
+ <div class="card-actions">${link(officialLink,'메리어트 가격 확인','primary')}</div>
  <details class="hotel-details"><summary>BRG 확인 항목·객실·가격 기록</summary>
  <p>${esc(stay.booked.room)}<br>${esc(stay.booked.cancellation)} · ${esc(stay.booked.cancellationDeadline)}</p>
  <p>메리어트 · ${esc(time(latest))}${official?.rate.rateName?' · '+esc(official.rate.rateName):''}</p>
@@ -62,8 +65,11 @@ async function render(){
  const data=await response.json();const views=(data.config?.stays??[]).map(s=>hotelView(data,s));
  const latest=[data.runs?.at(-1)?.capturedAt,data.otaStatus?.capturedAt].filter(Boolean).sort((a,b)=>Date.parse(b)-Date.parse(a))[0];
  document.querySelector('#updated').textContent=`업데이트 ${time(latest)} · 숙박 전체 요금`;
- document.querySelector('#summary').innerHTML=`<div><b>${views.filter(v=>v.officialLower).length}곳</b><span>최근 공식가가 내 예약보다 낮음</span></div><div><b>${views.filter(v=>v.reviewLeads>0).length}곳</b><span>공식 세전가보다 낮은 표시가 · 조건 확인</span></div>`;
+ const plans=new Map();
+ const updateSummary=()=>{document.querySelector('#summary').innerHTML=`<div><b>${[...plans.values()].filter(p=>p.offers.some(o=>o.worthwhile)).length}곳</b><span>BRG 조건·기존 예약 대비 절감 모두 확인</span></div><div><b>${[...plans.values()].filter(p=>p.offers.some(o=>!o.rejected&&o.review.pricePass&&!o.worthwhile)).length}곳</b><span>가격 후보 · 조건·세금 확인 중</span></div>`;};
  document.querySelector('#cards').innerHTML=views.map(v=>card(v,data)).join('')||'<article class="empty">등록된 호텔이 없습니다.</article>';
+ views.forEach(view=>mountClaimPlan(document.querySelector(`[data-stay-id="${view.stay.id}"] .claim-plan`),view,plan=>{plans.set(view.stay.id,plan);updateSummary();}));
+ updateSummary();
  document.querySelectorAll('.quick-price-form').forEach(form=>{
   const output=form.querySelector('output');
   const clear=()=>{output.textContent='';output.removeAttribute('data-status');};

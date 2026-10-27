@@ -89402,6 +89402,7 @@
             ]
           }
         },
+        "timeZone": "Europe/Madrid",
         "city": {
           "name": "Madrid",
           "googleEntityId": "/m/056_y"
@@ -89452,6 +89453,7 @@
       {
         "id": "bilbao-ercilla",
         "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+        "timeZone": "Europe/Madrid",
         "city": {
           "name": "Bilbao",
           "googleEntityId": "/m/01dzy"
@@ -89499,6 +89501,7 @@
       {
         "id": "bordeaux-moxy",
         "hotel": "Moxy Bordeaux",
+        "timeZone": "Europe/Paris",
         "city": {
           "name": "Bordeaux",
           "googleEntityId": "/m/01b85"
@@ -89547,6 +89550,7 @@
       {
         "id": "barcelona-four-points",
         "hotel": "Four Points by Sheraton Barcelona Diagonal",
+        "timeZone": "Europe/Madrid",
         "city": {
           "name": "Barcelona",
           "googleEntityId": "/m/01f62"

@@ -35,7 +35,7 @@ export function hotelView(data,stay,now=Date.now()){
  const attempts=data.otaStatus?.results?.find(x=>x.id===stay.id)?.providers??[];
  const googleAttempt=data.googleStatus?.results?.find(x=>x.id===stay.id);
  const actualProviders=[...new Set((google?.rates??[]).map(r=>sellerName(r.provider)).filter(Boolean))];
- const names=[...reviewProviders,...actualProviders.filter(x=>!reviewProviders.includes(x))];
+ const names=[...new Set([...reviewProviders,...actualProviders,...attempts.filter(x=>x.scope===stayScope(stay)).map(x=>x.provider)])];
  const sellers=names.map(name=>{
   const attempt=attempts.find(x=>x.provider===name&&x.scope===stayScope(stay));
   const observation=attempt?.checkoutObservation;
