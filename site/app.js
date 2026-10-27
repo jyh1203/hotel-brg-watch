@@ -1,3 +1,4 @@
+import {parsePriceInput,quickPriceComparison} from './quick-price.js';
 import {reviewProviders} from './brg.js';
 import {hotelView,validOfficial,displayPrice} from './rate-display.js';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -34,6 +35,17 @@ function card(view,data){
  ${row('메리어트',official?displayPrice(official.rate,currency):null,currency,{css:'official-price'+(officialLower?' lower':''),note:officialNote})}
  ${visibleSellers.map(s=>row(s.name,s.price,currency,{css:'seller-price'+(s.lower?' lower':''),note:[s.source==='Google 표시가'?'Google 표시가':'',s.brg.label].filter(Boolean).join(' · ')})).join('')}${visibleSellers.length?'':row('타사 요금',null,currency)}
  </section>
+ <details class="quick-price"><summary>Google 총액 빠른 비교 <span>수수료 입력 없이</span></summary>
+ <form class="quick-price-form" data-quick-stay-id="${esc(stay.id)}">
+ <p>직접 확인한 <b>동일 호텔·일정·인원·객실 수의 세금 포함 숙박 전체 총액</b>을 입력하세요. 수집된 요금이나 BRG 판정은 바뀌지 않습니다.</p>
+ <label>표시 통화<select name="currency">${[...new Set([currency,'EUR','USD','GBP','JPY','KRW'])].map(c=>`<option value="${c}">${c}</option>`).join('')}</select></label>
+ <label>Google 숙박 전체 총액<input name="total" type="text" inputmode="decimal" autocomplete="off" required placeholder="총액만 입력"></label>
+ <details class="optional-fees"><summary>세전 참고 계산 · 세금·수수료를 아는 경우만</summary>
+ <label>위 총액에 이미 포함된 세금·수수료<input name="fees" type="text" inputmode="decimal" autocomplete="off" placeholder="모르면 비워 두세요"></label>
+ <p>별도 현장 납부액은 빼지 마세요. 빈칸을 0원으로 가정하지 않습니다.</p></details>
+ <button type="submit">총액 비교</button>
+ <output class="quick-price-result" aria-live="polite" aria-atomic="true"></output>
+ </form></details>
  <div class="card-actions">${link(officialLink,'메리어트 가격 확인','primary')}${link('https://brgclaimsubmission.fornova.com/marriott','BRG 신청')}</div>
  <details class="hotel-details"><summary>BRG 확인 항목·객실·가격 기록</summary>
  <p>${esc(stay.booked.room)}<br>${esc(stay.booked.cancellation)} · ${esc(stay.booked.cancellationDeadline)}</p>
@@ -51,5 +63,25 @@ async function render(){
  document.querySelector('#updated').textContent=`업데이트 ${time(latest)} · 숙박 전체 요금`;
  document.querySelector('#summary').innerHTML=`<div><b>${views.filter(v=>v.officialLower).length}곳</b><span>최근 공식가가 내 예약보다 낮음</span></div><div><b>${views.filter(v=>v.cheaper).length}곳</b><span>저가 발견 · BRG 적격 미확정</span></div>`;
  document.querySelector('#cards').innerHTML=views.map(v=>card(v,data)).join('')||'<article class="empty">등록된 호텔이 없습니다.</article>';
+ document.querySelectorAll('.quick-price-form').forEach(form=>{
+  const output=form.querySelector('output');
+  const clear=()=>{output.textContent='';output.removeAttribute('data-status');};
+  form.addEventListener('input',clear);form.addEventListener('change',clear);
+  form.addEventListener('submit',event=>{
+   event.preventDefault();
+   const stay=data.config.stays.find(s=>s.id===form.dataset.quickStayId);
+   const currency=form.elements.currency.value;
+   const result=quickPriceComparison({stay,currency,total:parsePriceInput(form.elements.total.value,currency),includedFees:parsePriceInput(form.elements.fees.value,currency)});
+   output.dataset.status=result.error?'error':'reference';
+   if(result.error){output.textContent=result.error;return;}
+   const lines=[`Google 입력 총액 ${money(result.total,currency)} · 세금 포함`];
+   if(result.bookedTotal!==null)lines.push(`내 예약 총액 ${money(result.bookedTotal,currency)} · 세금 포함`);
+   if(result.difference!==null)lines.push(result.difference>0?`예약보다 ${money(result.difference,currency)} 낮음 · 총액 참고 비교`:result.difference<0?`예약보다 ${money(-result.difference,currency)} 높음 · 총액 참고 비교`:'예약과 같은 총액');
+   if(result.averageNight!==null)lines.push(`${result.nights}박 · 1박 평균 ${money(result.averageNight,currency)} (단순 평균)`);
+   lines.push(result.referenceRoomAmount===null?'세전 객실료 미확인 · 수수료 없이 총액만 비교':`입력액 기준 세전 참고 객실료 ${money(result.referenceRoomAmount,currency)}`);
+   lines.push('추가 현장 납부액·객실·취소조건은 별도 확인. BRG 적격 판정이나 저장된 가격에는 반영하지 않습니다.');
+   output.textContent=lines.join('\n');
+  });
+ });
 }
 render().catch(error=>{document.querySelector('#updated').textContent='가격 표시 오류';document.querySelector('#cards').innerHTML=`<article class="empty">${esc(error.message)}</article>`;console.error(error);});

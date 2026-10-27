@@ -7,14 +7,14 @@ test('simple hotel dashboard prioritizes prices, all-in fallback, taxes, actions
   for(let i=0;i<30;i++){if((await fetch('http://127.0.0.1:4174/').catch(()=>null))?.ok)break;await new Promise(r=>setTimeout(r,100));}
   const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4174/',{waitUntil:'networkidle'});
   assert.equal(await page.locator('.card').count(),fixture.config.stays.length);assert.equal(await page.locator('#summary>div').count(),2);
-  assert.equal(await page.locator('details[open]').count(),0);assert.equal(await page.locator('.chart,.brg-threshold,.google-opportunity,.brg-form,input,select').count(),0);
+  assert.equal(await page.locator('details[open]').count(),0);assert.equal(await page.locator('.chart,.brg-threshold,.google-opportunity,.brg-form').count(),0);
   const madrid=page.locator('[data-stay-id="madrid-carlton"]');const booking=madrid.locator('.seller-price').filter({hasText:'Booking.com'});const expedia=madrid.locator('.seller-price').filter({hasText:'Expedia'});
   assert.match(await booking.innerText(),/€702.*세전.*세금·기타요금 €70\.2.*총액 €772\.2/s);
   assert.match(await expedia.innerText(),/€858.*세후/s);assert.doesNotMatch(await expedia.innerText(),/세전 확인 필요|비교.*보류|세금·기타요금/);
   assert.match(await madrid.locator('.official-price').innerText(),/€760/);assert.doesNotMatch(await madrid.locator('.official-price').innerText(),/€836/);
   assert.equal(await page.getByRole('link',{name:'BRG 신청 ↗',exact:true}).count(),fixture.config.stays.length);
   assert.equal(await madrid.locator('.hotel-details p').first().isVisible(),false);
-  await madrid.locator('summary').click();assert.equal(await madrid.locator('.hotel-details p').first().isVisible(),true);await madrid.locator('summary').click();
+  await madrid.locator('.hotel-details>summary').click();assert.equal(await madrid.locator('.hotel-details p').first().isVisible(),true);await madrid.locator('.hotel-details>summary').click();
   for(const width of [1440,390]){await page.setViewportSize({width,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);}
   const synthetic=structuredClone(fixture),stay=synthetic.config.stays[0],capturedAt=new Date().toISOString();
   synthetic.runs.push({capturedAt,results:[{id:stay.id,status:'error',marriott:{status:'ok',prepaid:false,currency:'EUR',totalAmount:640,amountBasis:'pre-tax',checkIn:stay.checkIn,checkOut:stay.checkOut,adults:stay.adults,capturedAt}}]});

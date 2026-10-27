@@ -198,3 +198,13 @@ Marriott's second room-specific calendar can hide `.drp-selected` even while the
 correct range is selected. Collection now verifies the visible highlighted start
 and end cells with each table's full month/year, excluding off-month duplicates;
 it no longer waits on that hidden summary or compares day-number substrings.
+
+### Google 총액 빠른 비교
+
+각 호텔의 **Google 총액 빠른 비교**에서 같은 일정·인원·객실 수로 확인한 Google 세금 포함 숙박 전체 총액만 입력하면 예약의 세금 포함 총액과 차이를 볼 수 있습니다. 세금·수수료 입력은 필수가 아닙니다. 빈칸은 0원이 아니라 미확인으로 유지합니다.
+
+- 표시 통화가 예약 원통화와 다르면 환산하거나 비교하지 않습니다.
+- 선택 항목에 표시 총액에 **이미 포함된** 세금·수수료를 입력하면 세전 참고 객실료를 계산합니다. 별도 현장 납부액은 빼지 않습니다.
+- 사용자 입력은 메모리에서만 계산하며 새로고침 시 사라집니다. 수집 데이터·저가 알림·BRG 적격 판정에 입력값을 사용하지 않습니다.
+- 총액이 낮더라도 같은 객실·침대·혜택·취소조건·공개 예약 가능 여부 및 BRG 신청 기한을 확인해야 합니다. 현장 추가 납부액은 별도 확인합니다.
+- 회귀 검증: `node --test --test-concurrency=1`. UI 테스트는 로컬 Chromium에서 데스크톱·모바일 입력과 원본 가격 보존을 확인합니다.
