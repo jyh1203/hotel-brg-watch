@@ -47,7 +47,7 @@ export function hotelView(data,stay,now=Date.now()){
   const checkedAt=useDirect?directAt:google?.checkedAt;
   const price=displayPrice(rate,currency);
   const selectedAttempt=useDirect?attempt:googleAttempt;
-  const failed=Boolean(selectedAttempt&&selectedAttempt.status!=='ok'&&selectedAttempt.status!=='not-collected'&&
+  const failed=Boolean(selectedAttempt&&selectedAttempt.status==='error'&&
     (Date.parse(selectedAttempt.capturedAt)||0)>=(Date.parse(checkedAt)||0));
   const ageExpired=Boolean(price)&&!freshObservation(checkedAt,now);
   return {name,price,checkedAt,rate,attempt,lower:false,ageExpired,refreshFailed:failed,failedAt:failed?selectedAttempt.capturedAt:null,old:Boolean(price)&&(ageExpired||failed),source:useDirect?'판매처 화면':'Google 표시가'};

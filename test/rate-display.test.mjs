@@ -64,3 +64,10 @@ test('known wrong room and unknown occupancy cannot become review leads',()=>{
 test('above current official but below original booking is not a BRG low-price lead',()=>{
  const v=hotelView(snapshot({amount:700}),scopedStay,Date.parse('2026-10-27T02:00:00Z'));assert.equal(v.reviewLeads,0);assert.equal(v.cheaper,false);
 });
+
+test('observed pretax checkout pending offer checks is not a failed refresh',()=>{
+ const d=snapshot();const observation={capturedAt:'2026-10-27T01:40:00Z',currency:'EUR',totalAmount:287.8,roomAmount:252.72,taxesAndFees:35.08,preTaxVerified:true,amountBasis:'tax-included'};
+ d.otaStatus={results:[{id:stay.id,providers:[{provider:'Booking.com',scope:stayScope(stay),status:'pending',state:'tax-breakdown-observed',capturedAt:observation.capturedAt,checkoutObservation:observation}]}]};
+ const s=hotelView(d,scopedStay,Date.parse('2026-10-27T02:00:00Z')).sellers[0];
+ assert.equal(s.price.amount,252.72);assert.equal(s.price.taxes,35.08);assert.equal(s.source,'판매처 화면');assert.equal(s.refreshFailed,false);assert.equal(s.old,false);assert.equal(s.brg.verified,false);
+});

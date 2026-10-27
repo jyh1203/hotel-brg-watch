@@ -12,6 +12,10 @@ test('simple hotel dashboard prioritizes prices, all-in fallback, taxes, actions
   assert.match(await booking.innerText(),/Google 표시가.*€772.*세금 미확인/s);
   assert.match(await expedia.innerText(),/Google 표시가.*€774.*세금 미확인/s);assert.doesNotMatch(await expedia.innerText(),/세전 확인 필요|비교.*보류|세금·기타요금/);
   assert.match(await madrid.locator('.official-price').innerText(),/€760/);assert.doesNotMatch(await madrid.locator('.official-price').innerText(),/€836/);
+  const bordeaux=page.locator('article[data-stay-id="bordeaux-moxy"]');
+  const hotels=bordeaux.locator('.seller-price').filter({hasText:'Hotels.com'});
+  assert.match(await hotels.innerText(),/판매처 화면.*€252\.72.*세전.*€35\.08.*€287\.80/s);
+  assert.doesNotMatch(await hotels.innerText(),/재조회 실패/);
   assert.equal(await page.getByRole('link',{name:'BRG 신청 ↗',exact:true}).count(),fixture.config.stays.length);
   assert.equal(await madrid.locator('.hotel-details p').first().isVisible(),false);
   await madrid.locator('.hotel-details>summary').click();assert.equal(await madrid.locator('.hotel-details p').first().isVisible(),true);await madrid.locator('.hotel-details>summary').click();

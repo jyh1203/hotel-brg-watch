@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-27T00:31:27.972Z",
+  "capturedAt": "2026-10-27T02:00:03.664Z",
   "results": [
     {
       "id": "madrid-carlton",
@@ -144,35 +144,6 @@
       "state": "google-unavailable"
     },
     {
-      "id": "bordeaux-moxy",
-      "providers": [
-        {
-          "provider": "Booking.com",
-          "capturedAt": "2026-10-26T20:39:34.536Z",
-          "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
-          "state": "hotel-unverified",
-          "status": "pending",
-          "sourceOrigin": "https://www.booking.com"
-        },
-        {
-          "provider": "Agoda",
-          "capturedAt": "2026-10-26T20:39:36.425Z",
-          "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
-          "status": "pending",
-          "state": "link-unavailable"
-        },
-        {
-          "provider": "Expedia",
-          "capturedAt": "2026-10-26T20:39:36.425Z",
-          "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
-          "state": "hotel-unverified",
-          "status": "pending",
-          "sourceOrigin": "https://www.expedia.com"
-        }
-      ],
-      "state": "google-unavailable"
-    },
-    {
       "id": "barcelona-four-points",
       "providers": [
         {
@@ -200,6 +171,96 @@
         }
       ],
       "state": "google-unavailable"
+    },
+    {
+      "id": "bordeaux-moxy",
+      "state": "manual-checkout-observed",
+      "providers": [
+        {
+          "provider": "Booking.com",
+          "capturedAt": "2026-10-26T20:39:34.536Z",
+          "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
+          "state": "hotel-unverified",
+          "status": "pending",
+          "sourceOrigin": "https://www.booking.com"
+        },
+        {
+          "provider": "Agoda",
+          "capturedAt": "2026-10-26T20:39:36.425Z",
+          "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
+          "status": "pending",
+          "state": "link-unavailable"
+        },
+        {
+          "provider": "Expedia",
+          "capturedAt": "2026-10-26T20:39:36.425Z",
+          "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
+          "state": "hotel-unverified",
+          "status": "pending",
+          "sourceOrigin": "https://www.expedia.com"
+        },
+        {
+          "provider": "Hotels.com",
+          "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
+          "capturedAt": "2026-10-27T02:00:03.664Z",
+          "status": "pending",
+          "state": "tax-breakdown-observed",
+          "checkoutObservation": {
+            "capturedAt": "2026-10-27T02:00:03.664Z",
+            "sourceOrigin": "https://kr.hotels.com",
+            "currency": "EUR",
+            "totalAmount": 287.8,
+            "roomAmount": 252.72,
+            "preTaxAmount": 252.72,
+            "taxesAndFees": 35.08,
+            "knownPayableTotal": 287.8,
+            "priceBreakdown": {
+              "currency": "EUR",
+              "displayedTotal": 287.8,
+              "verified": true,
+              "nonRoomChargesComplete": true,
+              "charges": [
+                {
+                  "label": "세금",
+                  "kind": "tax",
+                  "amount": 25.28,
+                  "currency": "EUR",
+                  "includedInDisplayedTotal": true
+                },
+                {
+                  "label": "현지세",
+                  "kind": "tax",
+                  "amount": 9.8,
+                  "currency": "EUR",
+                  "includedInDisplayedTotal": true
+                }
+              ]
+            },
+            "amountBasis": "tax-included",
+            "preTaxVerified": true,
+            "checkIn": "2027-04-10",
+            "checkOut": "2027-04-12",
+            "adults": 2,
+            "children": null,
+            "rooms": 1,
+            "roomContext": "룸, 퀸사이즈침대 1개",
+            "cancellationText": "4월 9일(금) 전 전액 환불 가능 · 정확한 현지 시각·기존 예약과의 일치 미확인",
+            "cancellationPolicyMatched": false,
+            "paymentTiming": "property",
+            "availabilityVerified": false,
+            "publicRateVerified": false,
+            "hotelMatched": true,
+            "searchEvidence": {
+              "checkIn": "2027-04-10",
+              "checkOut": "2027-04-12",
+              "adults": 2,
+              "children": null,
+              "rooms": 1
+            },
+            "note": "실제 결제 전 요금 내역에서 세금 분리·합계 검산. 고객·카드 정보 입력 및 예약 확정 없음. 아동 수·취소 시각·공개 요금·객실 명칭 대응은 별도 확인."
+          }
+        }
+      ]
     }
   ]
 }

@@ -34,7 +34,7 @@ function card(view,data){
  <section class="rate-list" aria-label="호텔 요금 비교">
  ${row('내 예약',booked,currency,{css:'booked-price'})}
  ${row('메리어트',official?displayPrice(official.rate,currency):null,currency,{css:'official-price'+(officialLower?' lower':''),note:officialNote})}
- ${visibleSellers.map(s=>row(s.name,s.price,currency,{css:'seller-price'+(s.reviewLead?' lower':''),note:[s.source,`${time(s.checkedAt)} 확인`,s.refreshFailed?`${time(s.failedAt)} 재조회 실패 · 확인값 유지`:s.ageExpired?'24시간 경과 · 현재가 확인':'',s.reviewLead?`${officialOld?'지난 공식 세전가':'공식 세전가'}보다 ${money(s.screen.difference,currency)} 낮음 · ${s.screen.priceMargin?'가격 차이 검토':'1% 초과 차이 미달'} · 세금·객실 조건 확인`:s.brg.verified?s.brg.label:s.brg.wrongRoom?'객실·침대 조건 불일치':'객실·세금 조건 확인'].filter(Boolean).join(' · ')})).join('')}${visibleSellers.length?'':row('타사 요금',null,currency)}
+ ${visibleSellers.map(s=>row(s.name,s.price,currency,{css:'seller-price'+(s.reviewLead?' lower':''),note:[s.source,`${time(s.checkedAt)} 확인`,s.refreshFailed?`${time(s.failedAt)} 재조회 실패 · 확인값 유지`:s.ageExpired?'24시간 경과 · 현재가 확인':'',s.reviewLead?`${officialOld?'지난 공식 세전가':'공식 세전가'}보다 ${money(s.screen.difference,currency)} 낮음 · ${s.screen.priceMargin?'가격 차이 검토':'1% 초과 차이 미달'} · 세금·객실 조건 확인`:s.brg.verified?s.brg.label:s.brg.wrongRoom?'객실·침대 조건 불일치':s.price.basis==='pre-tax'?'객실·취소 조건 확인':'객실·세금 조건 확인'].filter(Boolean).join(' · ')})).join('')}${visibleSellers.length?'':row('타사 요금',null,currency)}
  </section>
  <details class="quick-price"><summary>Google 총액 빠른 비교 <span>수수료 입력 없이</span></summary>
  <form class="quick-price-form" data-quick-stay-id="${esc(stay.id)}">
