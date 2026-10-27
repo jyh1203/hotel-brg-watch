@@ -11,8 +11,8 @@ test('reservation-first UI: two gates, booking modes, private preferences, point
   assert.match(await root.locator('.dual-check').innerText(),/BRG 조건.*내 예약보다 유리/s);
   assert.match(await root.locator('.claim-window').innerText(),/새 공식 예약 완료 후 24시간/);
   assert.doesNotMatch(await root.locator('.claim-window').innerText(),/예약 시각.*확인/);
-  assert.match(await root.locator('.plan-prices').innerText(),/€252\.72.*€189\.54.*€199\.34.*€79\.46/s);
-  assert.match(await root.locator('.estimate-note').innerText(),/참고 추정.*두 조건 충족으로 판정하지/s);
+  assert.match(await root.locator('.plan-prices').innerText(),/€252\.72.*€189\.54.*미확인/s);
+  assert.match(await root.locator('.estimate-note').innerText(),/Marriott 세금·VAT가 미확인/);
   assert.equal(await root.locator('.claim-overview').getAttribute('data-plan-state'),'checking');
   assert.equal(await card.locator('.rate-list').isVisible(),false);
   await root.locator('.plan-primary').click();assert.equal(await root.locator('.claim-details').getAttribute('open'),'');

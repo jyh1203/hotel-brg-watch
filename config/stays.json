@@ -9,13 +9,16 @@
       "id": "madrid-carlton",
       "hotel": "AC Hotel Carlton Madrid",
       "ota": {
+        "precisionHotels": {"propertyId": "3691", "publicPropertyId": "120202"},
         "urls": {
           "Booking.com": "https://www.booking.com/hotel/es/carlton.en-gb.html",
           "Agoda": "https://www.agoda.com/en-gb/ac-hotel-carlton-madrid_4/hotel/madrid-es.html",
-          "Expedia": "https://www.expedia.com/Madrid-Hotels-AC-Hotel-Carlton-Madrid-By-Marriott.h3691.Hotel-Information"
+          "Expedia": "https://www.expedia.com/Madrid-Hotels-AC-Hotel-Carlton-Madrid-By-Marriott.h3691.Hotel-Information",
+          "Hotels.com": "https://kr.hotels.com/ho120202/ac-hotel-kalteun-madeulideu-bai-melieoteu-madeulideu-seupein/"
         },
         "hotelAliases": {
           "Booking.com": ["AC 호텔 칼튼 마드리드, 메리어트 라이프스타일 호텔"],
+          "Hotels.com": ["AC 호텔 칼튼 마드리드 바이 메리어트", "AC Hotel Carlton Madrid by Marriott"],
           "Agoda": ["AC Hotel Carlton Madrid"],
           "Expedia": ["AC Hotel Carlton Madrid by Marriott", "AC 호텔 칼튼 마드리드 바이 메리어트"]
         }
@@ -52,6 +55,10 @@
     {
       "id": "bilbao-ercilla",
       "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+      "ota": {
+        "precisionHotels": {"propertyId": "177076", "publicPropertyId": "112051"},
+        "urls": {"Hotels.com": "https://www.hotels.com/ho112051/hotel-ercilla-de-bilbao-autograph-collection-bilbao-spain/"}
+      },
       "timeZone": "Europe/Madrid",
       "city": { "name": "Bilbao", "googleEntityId": "/m/01dzy" },
       "checkIn": "2027-04-07",
@@ -85,6 +92,11 @@
     {
       "id": "bordeaux-moxy",
       "hotel": "Moxy Bordeaux",
+      "ota": {
+        "precisionHotels": {"propertyId": "65705899", "publicPropertyId": "2103588768"},
+        "urls": {"Hotels.com": "https://kr.hotels.com/ho2103588768/moxy-bordeaux-hotel-boleudo-peulangseu/"},
+        "hotelAliases": {"Hotels.com": ["모시 보르도 호텔", "Moxy Bordeaux Hotel"]}
+      },
       "timeZone": "Europe/Paris",
       "city": { "name": "Bordeaux", "googleEntityId": "/m/01b85" },
       "checkIn": "2027-04-10",
@@ -118,6 +130,11 @@
     {
       "id": "barcelona-four-points",
       "hotel": "Four Points by Sheraton Barcelona Diagonal",
+      "ota": {
+        "precisionHotels": {"url": "https://kr.hotels.com/ho205599/po-poincheu-bai-swelaton-baleusellona-diagonal-baleusellona-seupein/", "publicPropertyId": "205599"},
+        "urls": {"Hotels.com": "https://kr.hotels.com/ho205599/po-poincheu-bai-swelaton-baleusellona-diagonal-baleusellona-seupein/"},
+        "hotelAliases": {"Hotels.com": ["포 포인츠 바이 쉐라톤 바르셀로나 디아고날"]}
+      },
       "timeZone": "Europe/Madrid",
       "city": { "name": "Barcelona", "googleEntityId": "/m/01f62" },
       "checkIn": "2027-04-13",

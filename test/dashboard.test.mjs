@@ -15,7 +15,7 @@ test('reservation-first dashboard retains price evidence, actions and collapsed 
   const bordeaux=page.locator('article[data-stay-id="bordeaux-moxy"]');
   await bordeaux.locator('.price-details>summary').click();
   const hotels=bordeaux.locator('.seller-price').filter({hasText:'Hotels.com'});
-  assert.match(await hotels.innerText(),/판매처 화면.*€252\.72.*세전.*€35\.08.*€287\.80/s);
+  assert.match(await hotels.innerText(),/판매처 (?:화면|정밀 확인).*€252\.72.*세전.*€35\.08.*€287\.80/s);
   assert.doesNotMatch(await hotels.innerText(),/재조회 실패/);
   assert.equal(await page.getByRole('link',{name:'공식 접수창 열기 · 최종 확인 필요 ↗',exact:true,includeHidden:true}).count(),fixture.config.stays.length);
   assert.equal(await madrid.locator('.hotel-details p').first().isVisible(),false);

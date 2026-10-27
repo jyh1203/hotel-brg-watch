@@ -47,3 +47,24 @@ The draft includes observed conditions, missing checks, reward, calculation basi
 - Official form prefill/integration, claim response retrieval and proactive event notifications.
 
 The owner approved website improvement, not any actual new reservation, cancellation or claim submission.
+
+## Precision verification pipeline
+
+`npm run verify:brg` uses `MARRIOTT_CDP_URL` and optional `STAY_IDS` with the dedicated regular Chrome. It executes owned-tab Marriott rate/policy reads followed sequentially by Hotels.com selected refundable/no-breakfast/pay-at-property checkout reads. The production `collect:full` CDP path performs the same verification by default; `SKIP_PRECISION=1` disables this additional branch explicitly. No booking/guest/card fields or final submission controls are sent.
+
+The repeatable Hotels.com adapter reads visible selected calendar controls (including year), adult/child inputs and room counts, then selects one bed-compatible refundable/no-extras offer. It reads the full refund policy tab including the exact local cancellation time and penalty, then reconciles that same offer's full-stay checkout subtotal/taxes/city tax/total. Public access requires the visible sign-in option, guest checkout, no selected-rate restriction and current price. Missing room-name mapping remains unknown; bed alone never becomes a named Marriott room match.
+
+Marriott inspection reads actual selected date/occupancy controls and member flexible details. The 24-hour freshness limit is not the claim window. An unchecked tax display toggle is not independent pretax proof in the precision path; explicit scoped totals and arithmetic are required. A fixed cancellation penalty is retained as a fixed amount, not automatically converted to “first night plus tax.”
+
+`comparePreciseFacts` checks each actual source against the requested reservation, then against the other source; two sources agreeing on the wrong dates/hotel still fail. Matching, mismatching and unknown are separate states. The current model requires exact deadline and comparable penalty semantics. Current tax breakdown does not automatically establish post-BRG tax rules.
+
+Verification resides in `data/marriott-status.json` per-stay `verification` and is included by the existing build. It is not appended to price history or a separate untracked file, preserving the existing unattended commit allowlist. The standalone verifier updates only verification; it does not refresh the ordinary collector's success timestamp. The UI retains each source's observation time and rejects a different reservation scope or stale proof for readiness.
+
+Public page evidence excludes checkout/session URLs, credentials, cookies and personal input values. Stable property links are identified from observed provider property pages; navigation parameters are only targets, and visible controls remain the proof. Browser preferences continue to be local only. Source-specific failures remain partial/error observations rather than fabricated matching conditions.
+
+Precision evidence suppresses the old `allInEstimate` headline if Marriott's VAT/pretax basis is explicitly unverified: keep the conditional post-discount room amount, but do not publish a fabricated final total/saving. Exact scoped current totals can be observed separately from verification that every tax is excluded.
+
+Bind rate-details links to the selected flexible-member button's own rate container, not the first information icon in the room card. An earlier Stay Longer promotion may otherwise attach a different penalty to the flexible quote. Preserve lower observed refundable display rates as a warning that the flexible rate alone may not establish the lowest eligible direct reference; do not promote that unverified reference to eligible status.
+
+
+For final-review reads, use only the exact accessible flexible-member button, validate the checkout room against the expected room/bed before attaching prices, and export only closed-set price labels/money/date tokens. Never retain an arbitrary ancestor's text from an authenticated booking page. The verification writer rejects account-like summaries and email/payment-identification strings before saving public status data. A changed checkout room suspends quote availability/price proof; it is not allowed to inherit the earlier rate-card identity.

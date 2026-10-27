@@ -189,6 +189,24 @@ export function readMarriottCalendarRange() {
   return result.checkIn&&result.checkOut?result:null;
 }
 
+
+export function readMarriottGuestCounts(){
+ const out={};
+ for(const label of ['Adults','Children','Rooms']){
+  const input=[...document.querySelectorAll('input')].find(e=>e.getBoundingClientRect().width&&new RegExp(label,'i').test((e.getAttribute('aria-label')??'')+' '+e.name+' '+e.id)&&/^\d+$/.test(e.value));
+  if(input){out[label.toLowerCase()]=Number(input.value);continue;}
+  const plus=[...document.querySelectorAll('button')].find(e=>e.getBoundingClientRect().width&&new RegExp('^Increase number of '+label+'$','i').test(e.getAttribute('aria-label')??''));
+  let parent=plus?.parentElement;
+  for(let depth=0;depth<4&&parent;depth++,parent=parent.parentElement){
+   const minus=[...parent.querySelectorAll('button')].some(e=>new RegExp('^Decrease number of '+label+'$','i').test(e.getAttribute('aria-label')??''));
+   const walker=document.createTreeWalker(parent,NodeFilter.SHOW_TEXT);const numbers=[];let node;
+   while((node=walker.nextNode())){const value=node.textContent.trim();if(/^\d+$/.test(value))numbers.push(value);}
+   if(minus&&numbers.length===1){out[label.toLowerCase()]=Number(numbers[0]);break;}
+  }
+ }
+ return out;
+}
+
 async function pickDate(page, iso) {
   const month = monthLabel(iso);
   for (let step = 0; step < 13; step += 1) {
@@ -245,12 +263,14 @@ export async function collectMarriottRate(context, stay, fx, options = {}) {
   // Marriott room CTA uses a named popup; opening a second room tab can cause
   // that popup target to be reused by the wrong tab and strand the transition
   // on the rooms page instead of rateListMenu.
-  const page = browserDiagnostics.authMethod === "cdp-profile" && context.pages().length
+  const page = options.ownedPageOnly !== true && browserDiagnostics.authMethod === "cdp-profile" && context.pages().length
     ? context.pages()[0]
     : await context.newPage();
   const recorder = options.artifactDir ? createMarriottRecorder(context, options.artifactDir) : null;
   await recorder?.start();
   let ratePage;
+  let observedDates = null;
+  let observedGuests = null;
   let stage = "opening official room page";
   try {
     // Start with the public booking form, which establishes the booking session.
@@ -259,6 +279,7 @@ export async function collectMarriottRate(context, stay, fx, options = {}) {
     // DOMContentLoaded never resolves, even though the booking form is already
     // usable. Continue as soon as the main response is committed, then wait for
     // the actual form control needed by the collector.
+    if (options.ownedPageOnly === true) await page.bringToFront();
     const response = await page.goto(officialUrl, { waitUntil: "commit", timeout: 45000 });
     await page.locator("body").waitFor({ state: "attached", timeout: 15000 });
     const cookie = page.getByRole("button", { name: "Reject All", exact: true });
@@ -276,11 +297,22 @@ export async function collectMarriottRate(context, stay, fx, options = {}) {
     stage = "selecting dates";
     await pickDate(page, stay.checkIn);
     await pickDate(page, stay.checkOut);
+    observedDates = await page.evaluate(readMarriottCalendarRange);
     await page.getByRole("button", { name: "Done", exact: true }).first().click();
     stage = "setting guest count";
     await page.getByRole("button", { name: "Select number of guests dropdown", exact: true }).click();
-    // Each hotel uses a fresh context, so the booking form starts with one adult.
-    for (let n = 1; n < stay.adults; n += 1) await page.getByRole("button", { name: "Increase number of Adults", exact: true }).click();
+    const counts=await page.evaluate(readMarriottGuestCounts);
+    for(const [label,target] of [['Adults',stay.adults],['Children',stay.children??0],['Rooms',stay.rooms??1]]){
+      const current=counts[label.toLowerCase()];
+      if(Number.isInteger(current)&&current>=0&&Math.abs(target-current)<=8){
+        const direction=target>=current?'Increase':'Decrease';
+        for(let n=0;n<Math.abs(target-current);n++)await page.getByRole('button',{name:`${direction} number of ${label}`,exact:true}).click();
+      }else if(label==='Adults'){
+        for(let n=1;n<stay.adults;n++)await page.getByRole('button',{name:'Increase number of Adults',exact:true}).click();
+      }
+    }
+    observedGuests = await page.evaluate(readMarriottGuestCounts);
+    await options.inspectGuests?.({page,observedGuests});
     await page.getByRole("button", { name: "Done", exact: true }).first().click();
     stage = "opening rate list";
     // Allow the booking form to commit its hidden date/guest fields, then submit
@@ -382,6 +414,7 @@ export async function collectMarriottRate(context, stay, fx, options = {}) {
         transitionSnapshot ?? await inspectMarriottPage(ratePage)
       );
     }
+    if (options.ownedPageOnly === true) await ratePage.bringToFront();
     await ratePage.waitForLoadState("domcontentloaded", { timeout: debugRun ? 15000 : 30000 }).catch(() => {});
     stage = "loading rate list";
     await ratePage.getByRole("heading", { name: /Select a Room and Rate|객실.*요금/i }).waitFor({ state: "visible", timeout: debugRun ? 15000 : 60000 });
@@ -417,6 +450,7 @@ export async function collectMarriottRate(context, stay, fx, options = {}) {
     // others, so match the visible text rather than depending on one tag name.
     await card.getByText("Flexible Rate", { exact: true }).first().waitFor({ state: "visible", timeout: 30000 });
     const text = await card.innerText();
+    if (options.inspectSelection) await options.inspectSelection({page:ratePage,card,text,stay});
     let rate = parseMarriottRate(text);
     if (!rate) throw new Error("선택 객실의 회원 변경 가능 요금을 읽지 못했습니다.");
     if (!rate.freeCancellation) {
@@ -436,15 +470,21 @@ export async function collectMarriottRate(context, stay, fx, options = {}) {
     // Validate visible date controls rather than trusting an old booking session.
     const dateLabel = iso => new Intl.DateTimeFormat("en-US", { month: "short", day: "2-digit", timeZone: "UTC" }).format(new Date(`${iso}T00:00:00Z`));
     if (![stay.checkIn, stay.checkOut].every(iso => searchText.includes(dateLabel(iso)))) throw new Error("검색 날짜가 요청과 다릅니다.");
+    let precision = {};
+    if (options.inspectRate) {
+      try { precision = await options.inspectRate({page:ratePage,card,rate,stay,observedDates,observedGuests}); }
+      catch { precision = {precisionState:"details-unavailable",amountBasis:"unknown",preTaxVerified:false,taxesIncluded:null}; }
+    }
     const networkMetadata = recorder?.networkEvents
       .filter((entry) => isMarriottRateRequestUrl(entry.url))
       .slice(-20) ?? [];
     await recorder?.discardTrace();
-    return { status: "ok", ...rate, taxesIncluded: false, amountBasis: "pre-tax", collectionMethod: "official-booking-form",
+    return { status: "ok", ...rate, taxesIncluded: false, amountBasis: "pre-tax", ...precision, collectionMethod: "official-booking-form",
       roomPoolCode: actualRoomPool, checkIn: stay.checkIn, checkOut: stay.checkOut, adults: stay.adults,
-      comparable: false, capturedAt: new Date().toISOString(), totalKrw: Math.round(rate.totalAmount * fx.rates[rate.currency]),
-      browser: browserDiagnostics, networkMetadata, sourceUrl, officialUrl, note: "공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인." };
+      comparable: false, capturedAt: new Date().toISOString(), totalKrw: Math.round((precision.totalAmount??rate.totalAmount) * fx.rates[rate.currency]),
+      browser: browserDiagnostics, networkMetadata, sourceUrl, officialUrl, note: precision.amountBasis==='unknown'?"공식 동일 객실·일정·인원의 표시가 확인. 세금·수수료 제외 근거와 상세 조건은 정밀 검증 결과를 확인하세요.":"공식 예약 폼에서 동일 객실·일정·인원 조회. 세금·수수료 제외 회원 변경 가능 요금. 최저 공개 요금 및 상세 취소 조건은 별도 확인." };
   } catch (error) {
+    await options.inspectFailure?.({page:ratePage??page,stage}).catch(()=>{});
     const body = ratePage
       ? await ratePage.locator("body").innerText({ timeout: 5000 }).catch(() => "")
       : await page.locator("body").innerText({ timeout: 5000 }).catch(() => "");

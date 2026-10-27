@@ -29,7 +29,7 @@ export function reviewBrg({stay,rate,price,checkedAt,old=false,official,official
   ['official','최신 메리어트 동일조건 최저 공개 객실료 확인',!officialOld&&freshObservation(official?.checkedAt,now)&&positive(currentAmount)&&current?.lowestPublicRateVerified===true&&current?.comparable===true],
   ['hotel','동일 호텔 확인',rate?.hotelMatched===true||rate?.hotelVerified===true],
   ['scope','동일 날짜·성인·아동·객실 수 확인',scope],
-  ['room','동일 객실·침대 확인',Boolean(stay.match?.roomPatterns?.length)&&Boolean(stay.match?.bedPatterns?.length)&&room.roomMatched],
+  ['room','동일 객실·침대 확인',Boolean(stay.match?.roomPatterns?.length)&&Boolean(stay.match?.bedPatterns?.length)&&(rate?.roomIdentityVerified===true||room.roomMatched)],
   ['cancellation','취소 시각·시간대·위약금 확인',rate?.cancellationPolicyMatched===true],
   ['inclusions','조식 등 포함 혜택 확인',rate?.inclusionsMatched===true],
   ['payment','선결제·환불 조건 확인',rate?.paymentPolicyMatched===true],
@@ -47,6 +47,7 @@ export function reviewBrg({stay,rate,price,checkedAt,old=false,official,official
  let label='BRG 조건 확인 필요';
  if(!fresh)label='재조회 필요';
  else if(wrongRoom)label='객실 조건 불일치';
+ else if(current?.precisionTaxVerified===false)label='공식 세전가 정밀 확인 중';
  else if(!positive(amount))label='세전 객실료 확인 필요';
  else if(!officialOld&&positive(currentAmount)&&priceCheck.pass===false)label='BRG 가격 차이 미달';
  else if(verified)label='신청 검토 후보 · Marriott 심사 필요';

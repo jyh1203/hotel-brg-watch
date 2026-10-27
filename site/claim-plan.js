@@ -1,4 +1,4 @@
-import {reviewBrg,claimWindow,freshObservation} from './brg-readiness.js';
+import {reviewBrg,claimWindow,freshObservation} from './brg-readiness.js?v=20261027-precision-v1';
 import {policyUrl} from './brg.js';
 const DAY=86400000;
 const positive=n=>Number.isFinite(n)&&n>0;
@@ -65,10 +65,11 @@ export function evaluatePlan(view,prefs={},now=Date.now()){
   checks.push({key:'window',label:booking.window.label,ok:booking.window.ok},{key:'reservation',label:booking.mode==='plan'?'현재 공식 최저 동일조건 요금으로 새 예약 필요':'공식 직접 예약·본보이 연결·최저 동일조건 요금 확인',ok:booking.reservation&&bookingAmountMatched});
   const conditions=checks.filter(c=>!['window','reservation'].includes(c.key));
   const conditionsReady=conditions.every(c=>c.ok);
-  const cost=approvalCost({stay,roomAmount:review.amount,reward:prefs.reward??'discount',taxRules:official?.rate.approvedTaxRules,now});
+  let cost=approvalCost({stay,roomAmount:review.amount,reward:prefs.reward??'discount',taxRules:official?.rate.approvedTaxRules,now});
+  if(view.precision&&official?.rate.precisionTaxVerified===false&&cost.state!=='confirmed-calculation')cost={...cost,total:null,saving:null,state:'unknown',cheaper:false,taxNote:'Marriott 표시가의 VAT·세금 분리 근거 미확인'};
   const ready=checks.every(c=>c.ok)&&!review.wrongRoom;
   const rejected=review.wrongRoom||seller.rate?.cancellationPolicyMismatch===true||seller.rate?.inclusionsMismatch===true||seller.rate?.publicRateDisallowed===true;
-  const priceFail=!seller.old&&!officialOld&&review.amount!==null&&positive(officialAmount)&&!review.pricePass;
+  const priceFail=!seller.old&&!officialOld&&official?.rate.amountBasis==='pre-tax'&&review.amount!==null&&positive(officialAmount)&&!review.pricePass;
   const worthwhile=ready&&cost.cheaper;
   const state=booking.window.state==='closed'?'closed':rejected||priceFail?'mismatch':worthwhile?'ready':ready&&cost.state==='confirmed-calculation'?'not-cheaper':conditionsReady&&booking.mode==='plan'?'booking-needed':'checking';
   const labels={closed:'신청기한 경과',mismatch:rejected?'요금 조건 불일치':'BRG 가격 차이 미달',ready:'두 조건 충족 · 신청 준비 완료','not-cheaper':'BRG 가능해도 기존 예약 유지 유리','booking-needed':'가격·요금 조건 확인 · 새 공식 예약 필요',checking:review.pricePass||seller.reviewLead?'가격 후보 · 조건 확인 중':'비교 요금 확인 중'};

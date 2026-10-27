@@ -10,6 +10,8 @@ import { sanitizeDiagnosticUrl } from "./marriott-artifacts.mjs";
 import { readGoogleSearchEvidence, validateSearchEvidence } from './google-search-evidence.mjs';
 import { collectOtaChecks } from './ota.mjs';
 import {mergeOtaAttempts} from './ota-status.mjs';
+import {inspectMarriottPrecision} from './marriott-precision.mjs';
+import {verifyStay} from './brg-verifier.mjs';
 
 const root = path.resolve(import.meta.dirname, "..");
 const config = JSON.parse(await fs.readFile(path.join(root, "config/stays.json"), "utf8"));
@@ -263,8 +265,14 @@ if (collectMarriott) {
         }
         marriott = await collectMarriottRate(session.context, stay, fx, {
           browser: session.diagnostics,
+          ownedPageOnly:true,
+          ...(process.env.SKIP_PRECISION!=='1'&&process.env.MARRIOTT_CDP_URL?{inspectRate:inspectMarriottPrecision}:{}),
           artifactDir: marriottArtifactDir(stay.id, attempt)
         });
+        if(process.env.SKIP_PRECISION!=='1'&&process.env.MARRIOTT_CDP_URL){
+          results[index].verification=await verifyStay(session.context,stay,marriott);
+          delete marriott.precisionObservation;
+        }
       } catch (error) {
         marriott = {
           status: "error",
@@ -307,6 +315,7 @@ const statusRun = {
     const diagnostics = marriott.diagnostics ?? {};
     return {
       id: result.id,
+      ...(result.verification?{verification:result.verification}:{}),
       status: marriott.status ?? "error",
       state: marriott.status === "ok" ? "ok" : diagnostics.state ?? "dom-not-ready",
       error: marriott.status === "ok" ? null : marriott.error,
@@ -338,7 +347,7 @@ async function saveAttempts(file, next) {
   if(file===otaStatusPath)next=mergeOtaAttempts(previous,next);
   else {
     const ids = new Set(next.results.map(x => x.id));
-    next.results = [...(previous.results ?? []).filter(x => !ids.has(x.id)), ...next.results];
+    next.results = [...(previous.results ?? []).filter(x => !ids.has(x.id)), ...next.results.map(r=>({...r,...(!r.verification&&previous.results?.find(p=>p.id===r.id)?.verification?{verification:previous.results.find(p=>p.id===r.id).verification}:{})}))];
   }
   await fs.writeFile(file, `${JSON.stringify(next, null, 2)}\n`);
 }
@@ -358,7 +367,8 @@ function runTimestamp() { return new Date().toISOString(); }
 const persistedResults = results.map((result) => {
   const marriott = result.marriott?.status === "ok" ? result.marriott : null;
   if (result.status !== "ok" && !marriott) return null;
-  return { ...result, ...(marriott ? { marriott } : { marriott: undefined }) };
+  const {verification:_verification,...priceResult}=result;
+  return { ...priceResult, ...(marriott ? { marriott } : { marriott: undefined }) };
 }).filter(Boolean);
 const run = { capturedAt: new Date().toISOString(), fx, results: persistedResults };
 if (persistedResults.length) {
