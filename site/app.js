@@ -1,6 +1,6 @@
 import {parsePriceInput,quickPriceComparison} from './quick-price.js';
 import {reviewProviders} from './brg.js';
-import {hotelView,validOfficial,displayPrice} from './rate-display.js';
+import {hotelView,validOfficial,displayPrice} from './rate-display.js?v=20261027-tax-observation';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=(n,c)=>new Intl.NumberFormat('ko-KR',{style:'currency',currency:c,maximumFractionDigits:c==='JPY'?0:2}).format(n);
 const time=at=>at&&!Number.isNaN(Date.parse(at))?new Date(at).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):'확인 기록 없음';
