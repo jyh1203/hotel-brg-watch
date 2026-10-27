@@ -89371,6 +89371,1208 @@
           }
         }
       ]
+    },
+    {
+      "capturedAt": "2026-10-27T20:12:46.054Z",
+      "fx": {
+        "rates": {
+          "EUR": 1480.44
+        },
+        "dates": {
+          "EUR": "2026-10-27"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "status": "ok",
+          "hotel": "AC Hotel Carlton Madrid",
+          "detailUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGAMSBwjrDxAEGAcyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwiY0rangNuXAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJN0xQNXo4eWlyOXpLQVJvTEwyY3ZNWFI0T0hacU1EQVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1086051,
+          "bookedAmount": 733.6,
+          "bookedRoomSubtotal": 666.9,
+          "bookedCurrency": "EUR",
+          "checkIn": "2027-04-03",
+          "checkOut": "2027-04-07",
+          "adults": 2,
+          "nights": 4,
+          "officialReference": null,
+          "providers": [],
+          "roomRates": [
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193.75,
+              "totalAmount": 775,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Expedia.com · €775",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "standard"
+                ],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1147341
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193.75,
+              "totalAmount": 775,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Earn rewards on this stay · Save with free membership · Standard Room, 1 King Bed · 1 king bed · Free cancellation until Apr 2 · €775",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": true,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": "Expedia.com",
+              "publicRate": false,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1147341
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 222.5,
+              "totalAmount": 890,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Standard Room, 1 King Bed · 1 king bed · Free cancellation until Apr 2 · breakfast · €890",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": true,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1317592
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193.75,
+              "totalAmount": 775,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Standard Room, 1 Queen Bed · 1 queen bed · Free cancellation until Apr 2 · €775",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [
+                  "queen"
+                ],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1147341
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193,
+              "totalAmount": 772,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Booking.com · Free cancellation until Apr 2 · Free Wi-Fi · €772",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [
+                  "standard"
+                ],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1142900
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193.75,
+              "totalAmount": 775,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Travelocity.com · Free cancellation until Apr 2 · Free Wi-Fi · €775",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [
+                  "standard"
+                ],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1147341
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193.75,
+              "totalAmount": 775,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Hotels.com · Free cancellation until Apr 2 · Free Wi-Fi · €775",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [
+                  "standard"
+                ],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": "Hotels.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1147341
+            }
+          ],
+          "lowestProvider": null,
+          "freeCancellation": {
+            "amountBasis": "tax-included",
+            "nightlyAmount": 193,
+            "totalAmount": 772,
+            "estimatedFromNightly": false,
+            "currency": "EUR",
+            "context": "Booking.com · Free cancellation until Apr 2 · Free Wi-Fi · €772",
+            "freeCancellation": true,
+            "cancellationDeadline": "2027-04-02",
+            "matchEvidence": {
+              "roomMatched": false,
+              "cancellationMatched": true,
+              "missingRoomPatterns": [
+                "standard"
+              ],
+              "missingBedPatterns": [],
+              "excludedMatches": [],
+              "offeredDeadline": "2027-04-02",
+              "expectedDeadline": "2027-04-02"
+            },
+            "provider": "Booking.com",
+            "publicRate": true,
+            "availabilityVerified": false,
+            "displayMode": "stay-total",
+            "totalKrw": 1142900
+          },
+          "exactCandidate": {
+            "amountBasis": "tax-included",
+            "nightlyAmount": 193.75,
+            "totalAmount": 775,
+            "estimatedFromNightly": false,
+            "currency": "EUR",
+            "context": "Earn rewards on this stay · Save with free membership · Standard Room, 1 King Bed · 1 king bed · Free cancellation until Apr 2 · €775",
+            "freeCancellation": true,
+            "cancellationDeadline": "2027-04-02",
+            "matchEvidence": {
+              "roomMatched": true,
+              "cancellationMatched": true,
+              "missingRoomPatterns": [],
+              "missingBedPatterns": [],
+              "excludedMatches": [],
+              "offeredDeadline": "2027-04-02",
+              "expectedDeadline": "2027-04-02"
+            },
+            "provider": "Expedia.com",
+            "publicRate": false,
+            "availabilityVerified": false,
+            "displayMode": "stay-total",
+            "totalKrw": 1147341
+          },
+          "displayMode": "stay-total",
+          "amountBasis": "tax-included",
+          "taxEvidence": "Google Hotels Stay total · Price for 4 nights with taxes + fees",
+          "dateConfirmed": true,
+          "occupancyConfirmed": true,
+          "roomCountConfirmed": false,
+          "searchEvidence": {
+            "source": "google-visible-controls",
+            "checkIn": "2027-04-03",
+            "checkOut": "2027-04-07",
+            "occupancyText": "Adults\nRemove adult\n2\n2\nAdd adult\nChildren\nRemove child\n0\n0\nAdd child\nCancel\nDone",
+            "adults": 2,
+            "children": 0,
+            "rooms": null
+          },
+          "otaChecks": [
+            {
+              "provider": "Booking.com",
+              "capturedAt": "2026-10-27T20:09:14.817Z",
+              "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+              "status": "pending",
+              "state": "matching-offer-unavailable",
+              "sourceOrigin": "https://www.booking.com"
+            },
+            {
+              "provider": "Agoda",
+              "capturedAt": "2026-10-27T20:09:27.772Z",
+              "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+              "state": "room-or-cancellation-unverified",
+              "status": "pending",
+              "sourceOrigin": "https://www.agoda.com"
+            },
+            {
+              "provider": "Expedia",
+              "capturedAt": "2026-10-27T20:09:40.455Z",
+              "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+              "state": "blocked",
+              "status": "error",
+              "sourceOrigin": "https://www.expedia.com"
+            }
+          ],
+          "capturedAt": "2026-10-27T20:09:49.652Z",
+          "candidateKind": "exact",
+          "candidateSavingsAmount": null,
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "bilbao-ercilla",
+          "status": "ok",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "detailUrl": "https://www.google.com/travel/search?q=Hotel+Ercilla+de+Bilbao%2C+Autograph+Collection&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGAcSBwjrDxAEGAoyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwi4quW7gNuXAxUAAAAAHQAAAAAQBg&qs=MidDaGtJZ2I2T3RmTzF4NFliR2cwdlp5OHhNV0ozT0dZeE1GOHlFQUU&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 700248,
+          "bookedAmount": 473,
+          "bookedRoomSubtotal": 473,
+          "bookedCurrency": "EUR",
+          "checkIn": "2027-04-07",
+          "checkOut": "2027-04-10",
+          "adults": 2,
+          "nights": 3,
+          "officialReference": null,
+          "providers": [],
+          "roomRates": [
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 149.66666666666666,
+              "totalAmount": 449,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Expedia.com · €449",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "stylish"
+                ],
+                "missingBedPatterns": [
+                  "double"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-06"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 664718
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 149.66666666666666,
+              "totalAmount": 449,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Earn rewards on this stay · Save with free membership · Room, 1 Double Bed · 1 double bed · €449",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "stylish"
+                ],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-06"
+              },
+              "provider": "Expedia.com",
+              "publicRate": false,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 664718
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 166.33333333333334,
+              "totalAmount": 499,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Room, 1 Double Bed · 1 double bed · Free cancellation until Apr 6 · €499",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-06",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [
+                  "stylish"
+                ],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-06",
+                "expectedDeadline": "2027-04-06"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 738740
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 204.33333333333334,
+              "totalAmount": 613,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Room, 1 Double Bed · 1 double bed · Free cancellation until Apr 6 · breakfast · €613",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-06",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [
+                  "stylish"
+                ],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-06",
+                "expectedDeadline": "2027-04-06"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 907510
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 149,
+              "totalAmount": 447,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Booking.com · Free Wi-Fi · €447",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "stylish"
+                ],
+                "missingBedPatterns": [
+                  "double"
+                ],
+                "excludedMatches": [
+                  "king"
+                ],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-06"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 661757
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 149.66666666666666,
+              "totalAmount": 449,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Hotels.com · Free Wi-Fi · €449",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "stylish"
+                ],
+                "missingBedPatterns": [
+                  "double"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-06"
+              },
+              "provider": "Hotels.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 664718
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 149.66666666666666,
+              "totalAmount": 449,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Travelocity.com · Free Wi-Fi · €449",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "stylish"
+                ],
+                "missingBedPatterns": [
+                  "double"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-06"
+              },
+              "provider": "Hotels.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 664718
+            }
+          ],
+          "lowestProvider": null,
+          "freeCancellation": {
+            "amountBasis": "tax-included",
+            "nightlyAmount": 166.33333333333334,
+            "totalAmount": 499,
+            "estimatedFromNightly": false,
+            "currency": "EUR",
+            "context": "Room, 1 Double Bed · 1 double bed · Free cancellation until Apr 6 · €499",
+            "freeCancellation": true,
+            "cancellationDeadline": "2027-04-06",
+            "matchEvidence": {
+              "roomMatched": false,
+              "cancellationMatched": true,
+              "missingRoomPatterns": [
+                "stylish"
+              ],
+              "missingBedPatterns": [],
+              "excludedMatches": [],
+              "offeredDeadline": "2027-04-06",
+              "expectedDeadline": "2027-04-06"
+            },
+            "provider": "Expedia.com",
+            "publicRate": true,
+            "availabilityVerified": false,
+            "displayMode": "stay-total",
+            "totalKrw": 738740
+          },
+          "exactCandidate": null,
+          "displayMode": "stay-total",
+          "amountBasis": "tax-included",
+          "taxEvidence": "Google Hotels Stay total · Price for 3 nights with taxes + fees",
+          "dateConfirmed": true,
+          "occupancyConfirmed": true,
+          "roomCountConfirmed": false,
+          "searchEvidence": {
+            "source": "google-visible-controls",
+            "checkIn": "2027-04-07",
+            "checkOut": "2027-04-10",
+            "occupancyText": "Adults\nRemove adult\n2\n2\nAdd adult\nChildren\nRemove child\n0\n0\nAdd child\nCancel\nDone",
+            "adults": 2,
+            "children": 0,
+            "rooms": null
+          },
+          "otaChecks": [
+            {
+              "provider": "Booking.com",
+              "capturedAt": "2026-10-27T20:09:57.776Z",
+              "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
+              "state": "hotel-unverified",
+              "status": "pending",
+              "sourceOrigin": "https://www.booking.com"
+            },
+            {
+              "provider": "Agoda",
+              "capturedAt": "2026-10-27T20:10:00.243Z",
+              "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
+              "status": "pending",
+              "state": "link-unavailable"
+            },
+            {
+              "provider": "Expedia",
+              "capturedAt": "2026-10-27T20:10:00.243Z",
+              "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
+              "state": "hotel-unverified",
+              "status": "pending",
+              "sourceOrigin": "https://www.expedia.com"
+            }
+          ],
+          "capturedAt": "2026-10-27T20:10:03.953Z",
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsAmount": null,
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "bordeaux-moxy",
+          "status": "ok",
+          "hotel": "Moxy Bordeaux",
+          "detailUrl": "https://www.google.com/travel/search?q=Moxy+Bordeaux&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGAoSBwjrDxAEGAwyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwiw8dXCgNuXAxUAAAAAHQAAAAAQBw&qs=MihDaG9JbGVTeGxlSHZsNzNQQVJvTkwyY3ZNVEZ4Y0dSZmVHeHpZaEFC&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 412747,
+          "bookedAmount": 278.8,
+          "bookedRoomSubtotal": 269,
+          "bookedCurrency": "EUR",
+          "checkIn": "2027-04-10",
+          "checkOut": "2027-04-12",
+          "adults": 2,
+          "nights": 2,
+          "officialReference": null,
+          "providers": [],
+          "roomRates": [
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 124,
+              "totalAmount": 248,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Expedia.com · €248",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "moxy sleeper"
+                ],
+                "missingBedPatterns": [
+                  "queen"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 367149
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 124,
+              "totalAmount": 248,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Earn rewards on this stay · Save with free membership · Room, 1 Queen Bed · 1 queen bed · €248",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "moxy sleeper"
+                ],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Expedia.com",
+              "publicRate": false,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 367149
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 144.5,
+              "totalAmount": 289,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Room, 1 Queen Bed · 1 queen bed · Free cancellation until Apr 9 · €289",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-09",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [
+                  "moxy sleeper"
+                ],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-09",
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 427847
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 151,
+              "totalAmount": 302,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Room, 1 Queen Bed · 1 queen bed · breakfast · €302",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "moxy sleeper"
+                ],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 447093
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 123.5,
+              "totalAmount": 247,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Booking.com · Free Wi-Fi · €247",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "moxy sleeper"
+                ],
+                "missingBedPatterns": [
+                  "queen"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 365669
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 124,
+              "totalAmount": 248,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Hotels.com · Free Wi-Fi · €248",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "moxy sleeper"
+                ],
+                "missingBedPatterns": [
+                  "queen"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Hotels.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 367149
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 124,
+              "totalAmount": 248,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Travelocity.com · Free Wi-Fi · €248",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "moxy sleeper"
+                ],
+                "missingBedPatterns": [
+                  "queen"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-09"
+              },
+              "provider": "Hotels.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 367149
+            }
+          ],
+          "lowestProvider": null,
+          "freeCancellation": {
+            "amountBasis": "tax-included",
+            "nightlyAmount": 144.5,
+            "totalAmount": 289,
+            "estimatedFromNightly": false,
+            "currency": "EUR",
+            "context": "Room, 1 Queen Bed · 1 queen bed · Free cancellation until Apr 9 · €289",
+            "freeCancellation": true,
+            "cancellationDeadline": "2027-04-09",
+            "matchEvidence": {
+              "roomMatched": false,
+              "cancellationMatched": true,
+              "missingRoomPatterns": [
+                "moxy sleeper"
+              ],
+              "missingBedPatterns": [],
+              "excludedMatches": [],
+              "offeredDeadline": "2027-04-09",
+              "expectedDeadline": "2027-04-09"
+            },
+            "provider": "Expedia.com",
+            "publicRate": true,
+            "availabilityVerified": false,
+            "displayMode": "stay-total",
+            "totalKrw": 427847
+          },
+          "exactCandidate": null,
+          "displayMode": "stay-total",
+          "amountBasis": "tax-included",
+          "taxEvidence": "Google Hotels Stay total · Price for 2 nights with taxes + fees",
+          "dateConfirmed": true,
+          "occupancyConfirmed": true,
+          "roomCountConfirmed": false,
+          "searchEvidence": {
+            "source": "google-visible-controls",
+            "checkIn": "2027-04-10",
+            "checkOut": "2027-04-12",
+            "occupancyText": "Adults\nRemove adult\n2\n2\nAdd adult\nChildren\nRemove child\n0\n0\nAdd child\nCancel\nDone",
+            "adults": 2,
+            "children": 0,
+            "rooms": null
+          },
+          "otaChecks": [
+            {
+              "provider": "Booking.com",
+              "capturedAt": "2026-10-27T20:10:11.429Z",
+              "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
+              "state": "hotel-unverified",
+              "status": "pending",
+              "sourceOrigin": "https://www.booking.com"
+            },
+            {
+              "provider": "Agoda",
+              "capturedAt": "2026-10-27T20:10:13.596Z",
+              "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
+              "status": "pending",
+              "state": "link-unavailable"
+            },
+            {
+              "provider": "Expedia",
+              "capturedAt": "2026-10-27T20:10:13.596Z",
+              "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
+              "state": "hotel-unverified",
+              "status": "pending",
+              "sourceOrigin": "https://www.expedia.com"
+            }
+          ],
+          "capturedAt": "2026-10-27T20:10:17.153Z",
+          "candidateKind": "free-cancel-review",
+          "candidateSavingsAmount": null,
+          "candidateSavingsKrw": null
+        },
+        {
+          "id": "barcelona-four-points",
+          "status": "ok",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "detailUrl": "https://www.google.com/travel/search?q=Four+Points+by+Sheraton+Barcelona+Diagonal&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGA0SBwjrDxAEGBAyAggAGgAqBwoFOgNVU0Q&ved=0CAAQ5JsGahcKEwjA3OTIgNuXAxUAAAAAHQAAAAAQBw&qs=MiZDaGdJaTlhSm5kRzJvSTNGQVJvTEwyY3ZNWFJrTVcwd2F6SVFBUQ&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 985884,
+          "bookedAmount": 665.94,
+          "bookedRoomSubtotal": 555,
+          "bookedCurrency": "EUR",
+          "checkIn": "2027-04-13",
+          "checkOut": "2027-04-16",
+          "adults": 2,
+          "nights": 3,
+          "officialReference": null,
+          "providers": [],
+          "roomRates": [
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 206.33333333333334,
+              "totalAmount": 619,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Expedia.com · €619",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "classic"
+                ],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-11"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 916392
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 206.33333333333334,
+              "totalAmount": 619,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Earn rewards on this stay · Save with free membership · Classic Room, 1 King Bed · 1 king bed · €619",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": true,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-11"
+              },
+              "provider": "Expedia.com",
+              "publicRate": false,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 916392
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 227,
+              "totalAmount": 681,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · €681",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-11",
+              "matchEvidence": {
+                "roomMatched": true,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-11",
+                "expectedDeadline": "2027-04-11"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1008180
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 240,
+              "totalAmount": 720,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Classic Room, 1 King Bed · 1 king bed · breakfast · €720",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": true,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-11"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1065917
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 206.33333333333334,
+              "totalAmount": 619,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Hotels.com · Free Wi-Fi · €619",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "classic"
+                ],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-11"
+              },
+              "provider": "Hotels.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 916392
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 205.66666666666666,
+              "totalAmount": 617,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Booking.com · Free Wi-Fi · €617",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "classic"
+                ],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-11"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 913431
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 206.33333333333334,
+              "totalAmount": 619,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Travelocity.com · Free Wi-Fi · €619",
+              "freeCancellation": false,
+              "cancellationDeadline": null,
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": false,
+                "missingRoomPatterns": [
+                  "classic"
+                ],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": null,
+                "expectedDeadline": "2027-04-11"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 916392
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 226.66666666666666,
+              "totalAmount": 680,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Vio.com · Free cancellation until Apr 11 · €680",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-11",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [
+                  "classic"
+                ],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-11",
+                "expectedDeadline": "2027-04-11"
+              },
+              "provider": "Booking.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1006699
+            }
+          ],
+          "lowestProvider": null,
+          "freeCancellation": {
+            "amountBasis": "tax-included",
+            "nightlyAmount": 226.66666666666666,
+            "totalAmount": 680,
+            "estimatedFromNightly": false,
+            "currency": "EUR",
+            "context": "Vio.com · Free cancellation until Apr 11 · €680",
+            "freeCancellation": true,
+            "cancellationDeadline": "2027-04-11",
+            "matchEvidence": {
+              "roomMatched": false,
+              "cancellationMatched": true,
+              "missingRoomPatterns": [
+                "classic"
+              ],
+              "missingBedPatterns": [
+                "king"
+              ],
+              "excludedMatches": [],
+              "offeredDeadline": "2027-04-11",
+              "expectedDeadline": "2027-04-11"
+            },
+            "provider": "Booking.com",
+            "publicRate": true,
+            "availabilityVerified": false,
+            "displayMode": "stay-total",
+            "totalKrw": 1006699
+          },
+          "exactCandidate": {
+            "amountBasis": "tax-included",
+            "nightlyAmount": 227,
+            "totalAmount": 681,
+            "estimatedFromNightly": false,
+            "currency": "EUR",
+            "context": "Classic Room, 1 King Bed · 1 king bed · Free cancellation until Apr 11 · €681",
+            "freeCancellation": true,
+            "cancellationDeadline": "2027-04-11",
+            "matchEvidence": {
+              "roomMatched": true,
+              "cancellationMatched": true,
+              "missingRoomPatterns": [],
+              "missingBedPatterns": [],
+              "excludedMatches": [],
+              "offeredDeadline": "2027-04-11",
+              "expectedDeadline": "2027-04-11"
+            },
+            "provider": "Expedia.com",
+            "publicRate": true,
+            "availabilityVerified": false,
+            "displayMode": "stay-total",
+            "totalKrw": 1008180
+          },
+          "displayMode": "stay-total",
+          "amountBasis": "tax-included",
+          "taxEvidence": "Google Hotels Stay total · Price for 3 nights with taxes + fees",
+          "dateConfirmed": true,
+          "occupancyConfirmed": true,
+          "roomCountConfirmed": false,
+          "searchEvidence": {
+            "source": "google-visible-controls",
+            "checkIn": "2027-04-13",
+            "checkOut": "2027-04-16",
+            "occupancyText": "Adults\nRemove adult\n2\n2\nAdd adult\nChildren\nRemove child\n0\n0\nAdd child\nCancel\nDone",
+            "adults": 2,
+            "children": 0,
+            "rooms": null
+          },
+          "otaChecks": [
+            {
+              "provider": "Booking.com",
+              "capturedAt": "2026-10-27T20:10:25.089Z",
+              "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
+              "state": "hotel-unverified",
+              "status": "pending",
+              "sourceOrigin": "https://www.booking.com"
+            },
+            {
+              "provider": "Agoda",
+              "capturedAt": "2026-10-27T20:10:28.520Z",
+              "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
+              "status": "pending",
+              "state": "link-unavailable"
+            },
+            {
+              "provider": "Expedia",
+              "capturedAt": "2026-10-27T20:10:28.521Z",
+              "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
+              "state": "hotel-unverified",
+              "status": "pending",
+              "sourceOrigin": "https://www.expedia.com"
+            }
+          ],
+          "capturedAt": "2026-10-27T20:10:32.669Z",
+          "candidateKind": "exact",
+          "candidateSavingsAmount": null,
+          "candidateSavingsKrw": null
+        }
+      ]
     }
   ],
   "config": {
@@ -89648,18 +90850,944 @@
     ]
   },
   "collectorStatus": {
-    "capturedAt": "2026-10-27T01:05:46.220Z",
+    "capturedAt": "2026-10-27T20:12:46.051Z",
     "results": [
       {
+        "id": "madrid-carlton",
+        "status": "blocked",
+        "state": "blocked",
+        "error": "confirming specific dates: 요금 전환 상태: blocked",
+        "capturedAt": "2026-10-27T20:11:01.220Z",
+        "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+        "diagnostics": {
+          "stage": "confirming specific dates",
+          "responseStatus": null,
+          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=4&fromDate=04%2F03%2F2027&toDate=04%2F07%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=MADCA&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F03%2F2027&t-end=04%2F07%2F2027&fromDateDefaultFormat=04%2F03%2F2027&toDateDefaultFormat=04%2F07%2F2027&fromToDate_submit=04%2F07%2F2027&fromToDate=04%2F03%2F2027&roomPoolCode=doub",
+          "title": "Access Denied",
+          "bodyLength": 230,
+          "selectors": {
+            "dateInput": false,
+            "viewRates": false,
+            "roomCards": false,
+            "rateCards": false,
+            "login": false,
+            "cookieConsent": false
+          },
+          "browser": {
+            "platform": "linux-x64",
+            "headless": false,
+            "channel": null,
+            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+            "persistent": false,
+            "browserVersion": "151.0.7922.34",
+            "authMethod": "none"
+          }
+        },
+        "verification": {
+          "schemaVersion": 1,
+          "scope": "[\"madrid-carlton\",\"2027-04-03\",\"2027-04-07\",2,0,1,\"EUR\",\"Standard King Room / Guest Room / 1 King\",733.6,\"2027-04-02 23:59 (호텔 현지시간)\"]",
+          "capturedAt": "2026-10-27T06:02:06.045Z",
+          "official": {
+            "provider": "Marriott",
+            "scope": "[\"madrid-carlton\",\"2027-04-03\",\"2027-04-07\",2,0,1,\"EUR\",\"Standard King Room / Guest Room / 1 King\",733.6,\"2027-04-02 23:59 (호텔 현지시간)\"]",
+            "capturedAt": "2026-10-27T06:01:33.947Z",
+            "status": "pending",
+            "state": "detailed-policy-observed",
+            "facts": {
+              "hotelId": "madrid-carlton",
+              "search": {
+                "checkIn": "2027-04-03",
+                "checkOut": "2027-04-07",
+                "adults": 2,
+                "children": 0,
+                "rooms": 1
+              },
+              "roomIdentity": null,
+              "lowerRefundableDisplayAmounts": [
+                666,
+                702
+              ],
+              "lowestPublicRateVerified": false,
+              "availabilityVerified": false,
+              "cancellation": {
+                "freeUntil": "2027-04-02T21:59:00.000Z",
+                "penalty": {
+                  "kind": "fixed-amount",
+                  "amount": 199.1,
+                  "currency": "EUR",
+                  "taxesIncluded": null
+                },
+                "evidence": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 2, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 199.10 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
+                "verified": true
+              },
+              "payment": null,
+              "inclusions": null,
+              "price": null
+            },
+            "evidence": {
+              "rateCard": "Standard 2 Twins Room, Guest room, 2 Twin\nRoom Details\nRates from\n166EUR Avg / Night\n666 Total Per Room\nHide Rates\nMember Rate Stay Longer on Us\nMOST POPULAR\n\nSave even more when you stay longer\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n166EUR Avg / Night\n666 Total Per Room\nSelect\nFlexible Rate\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n190EUR Avg / Night\n760 Total Per Room\nSelect\nMember Rate Stay Longer on Us\n\nIncludes breakfast\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n191EUR Avg / Night\n766 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n170EUR Avg / Night\n682 Total Per Room\nSelect\nStay Longer on Us\n\nSave 10% or more as you stay longer\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n175EUR Avg / Night\n702 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nIncludes breakfast, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n196EUR Avg / Night\n785 Total Per Room\nSelect\nStay Longer On Us\n\nSave 10% or more as you stay longer, includes breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n201EUR Avg / Night\n806 Total Per Room\nSelect\nStay in the City Offer\n\nBuffet breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n201EUR Avg / Night\n806 Total Per Room\nSelect\nMember Rate Stay for Breakfast\n\nBuffet breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n217EUR Avg / Night\n871 Total Per Room\nSelect\nRoom and Breakfast rate\n\nIncludes breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n224EUR Avg / Night\n896 Total Per Room\nSelect",
+              "selectedDates": {
+                "checkIn": "2027-04-03",
+                "checkOut": "2027-04-07"
+              },
+              "selectedGuests": {
+                "adults": 2,
+                "children": 0,
+                "rooms": 1
+              },
+              "policyText": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 2, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 199.10 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
+              "policyRequests": [
+                {
+                  "path": "/mi/query/PhoenixBookDTTGetRateDetails",
+                  "status": 200
+                }
+              ],
+              "quoteState": "quote-revalidation-required"
+            },
+            "rate": {
+              "status": "ok",
+              "room": "Standard 2 Twins Room, Guest room, 2 Twin",
+              "rateName": "Member Flexible Rate",
+              "currency": "EUR",
+              "totalAmount": 760,
+              "amountBasis": "unknown",
+              "prepaid": false,
+              "checkIn": "2027-04-03",
+              "checkOut": "2027-04-07",
+              "adults": 2,
+              "capturedAt": "2026-10-27T06:01:46.847Z",
+              "freeCancellation": true,
+              "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/"
+            }
+          },
+          "offers": [
+            {
+              "provider": "Hotels.com",
+              "scope": "[\"madrid-carlton\",\"2027-04-03\",\"2027-04-07\",2,0,1,\"EUR\",\"Standard King Room / Guest Room / 1 King\",733.6,\"2027-04-02 23:59 (호텔 현지시간)\"]",
+              "capturedAt": "2026-10-27T06:02:05.967Z",
+              "status": "error",
+              "state": "cancellation-policy-timeout",
+              "facts": {
+                "hotelId": "madrid-carlton",
+                "search": {
+                  "checkIn": "2027-04-03",
+                  "checkOut": "2027-04-07",
+                  "adults": 2,
+                  "children": 0,
+                  "rooms": 1
+                },
+                "bedMatched": true,
+                "roomIdentity": null,
+                "inclusions": {
+                  "breakfast": false
+                }
+              },
+              "evidence": {
+                "hotel": [
+                  "AC 호텔 칼튼 마드리드 바이 메리어트",
+                  "AC Hotel Carlton Madrid by Marriott"
+                ],
+                "propertyUrl": "https://kr.hotels.com/ho120202/ac-hotel-kalteun-madeulideu-bai-melieoteu-madeulideu-seupein/",
+                "occupancy": {
+                  "adults": 2,
+                  "children": 0,
+                  "rooms": 1
+                },
+                "dates": {
+                  "checkIn": "2027-04-03",
+                  "checkOut": "2027-04-07"
+                },
+                "roomText": "스탠다드룸, 킹사이즈침대 1개 사진 모두 보기\n객실\n4\n스탠다드룸, 킹사이즈침대 1개\n9.4\n9.4점 만점 중 10점\n최고예요\n이용 후기 15개\n(이용 후기 15개)\n16㎡\n침실 1개\n2명\n킹사이즈침대 1개\n무료 WiFi\n자세히 보기\n자세히 보기\n취소 정책\n전액 환불 가능\n4월 2일(금) 전까지\n4월 2일 전 전액 환불 가능\n+ €0\n4월 2일 전 전액 환불 가능\n+ €20\n지금 예약하고 나중에 결제\n추가 사항\n추가 없음\n+ €0\n뷔페 아침 식사\n+ €26\n저희 사이트에서 1개 남았어요!\n현재 가격은 €176\n€176\n총 요금: €772\n세금 및 수수료 포함\n예약하기\n예약\n아직 금액이 청구되지 않습니다."
+              }
+            }
+          ],
+          "comparisons": [
+            {
+              "provider": "Hotels.com",
+              "checks": [
+                {
+                  "key": "scope",
+                  "label": "동일 예약 범위",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "호텔·일정·인원·객실 기준에 연결됨"
+                },
+                {
+                  "key": "fresh",
+                  "label": "양쪽 요금 최신 확인",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "관측 시각 기준 24시간 이내"
+                },
+                {
+                  "key": "hotel",
+                  "label": "동일 호텔",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "실제 호텔 인식 결과와 감시 호텔이 모두 같아야 함"
+                },
+                {
+                  "key": "dates",
+                  "label": "동일 날짜·인원·객실 수",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "양쪽 화면에서 요청한 연도·일정·인원·객실 수를 직접 확인"
+                },
+                {
+                  "key": "room",
+                  "label": "동일 객실·침대",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "inclusions",
+                  "label": "동일 포함 혜택",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "cancellation",
+                  "label": "정확한 무료취소 마감",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "penalty",
+                  "label": "취소 후 위약금 규정",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "payment",
+                  "label": "결제·보증 방식",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "public",
+                  "label": "공개 접근·제한 없는 타사 요금",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "비로그인 선택 요금과 게스트 결제 진행 근거"
+                },
+                {
+                  "key": "official",
+                  "label": "공식 동일조건 최저 공개 요금",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "회원요금 포함, 같은 객실·혜택·취소조건끼리 비교"
+                },
+                {
+                  "key": "available",
+                  "label": "양쪽 실제 예약 가능",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "선택 요금의 미확정 예약 요약 확인"
+                },
+                {
+                  "key": "basis",
+                  "label": "같은 통화 세전 전체 객실료",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "세금·수수료 내역 검산 근거 필요"
+                },
+                {
+                  "key": "margin",
+                  "label": "공식 세전가보다 1% 초과 저렴",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "환율·추정 세전가로 통과시키지 않음"
+                }
+              ],
+              "conditionsVerified": false,
+              "state": "partial",
+              "mismatches": [],
+              "unknown": [
+                "room",
+                "inclusions",
+                "cancellation",
+                "penalty",
+                "payment",
+                "public",
+                "official",
+                "available",
+                "basis",
+                "margin"
+              ],
+              "price": {
+                "status": "금액 확인 필요"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "bilbao-ercilla",
+        "status": "error",
+        "state": "calendar-unavailable",
+        "error": "opening date picker: locator.click: Timeout 15000ms exceeded.",
+        "capturedAt": "2026-10-27T20:11:40.238Z",
+        "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+        "diagnostics": {
+          "stage": "opening date picker",
+          "responseStatus": null,
+          "finalUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+          "title": "Boutique Rooms & Suites | Hotel Ercilla de Bilbao, Autograph Collection",
+          "bodyLength": 2958,
+          "selectors": {
+            "dateInput": true,
+            "viewRates": true,
+            "roomCards": true,
+            "rateCards": false,
+            "login": false,
+            "cookieConsent": false
+          },
+          "browser": {
+            "platform": "linux-x64",
+            "headless": false,
+            "channel": null,
+            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+            "persistent": false,
+            "browserVersion": "151.0.7922.34",
+            "authMethod": "none"
+          }
+        },
+        "verification": {
+          "schemaVersion": 1,
+          "scope": "[\"bilbao-ercilla\",\"2027-04-07\",\"2027-04-10\",2,0,1,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",473,\"2027-04-06 23:59 (호텔 현지시간)\"]",
+          "capturedAt": "2026-10-27T06:04:02.800Z",
+          "official": {
+            "provider": "Marriott",
+            "scope": "[\"bilbao-ercilla\",\"2027-04-07\",\"2027-04-10\",2,0,1,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",473,\"2027-04-06 23:59 (호텔 현지시간)\"]",
+            "capturedAt": "2026-10-27T06:03:25.683Z",
+            "status": "pending",
+            "state": "detailed-policy-observed",
+            "facts": {
+              "hotelId": "bilbao-ercilla",
+              "search": {
+                "checkIn": "2027-04-07",
+                "checkOut": "2027-04-10",
+                "adults": 2,
+                "children": 0,
+                "rooms": 1
+              },
+              "roomIdentity": "Stylish Room / Guest Room / 1 Double Bed",
+              "lowerRefundableDisplayAmounts": [],
+              "lowestPublicRateVerified": true,
+              "availabilityVerified": false,
+              "cancellation": {
+                "freeUntil": "2027-04-06T21:59:00.000Z",
+                "penalty": {
+                  "kind": "fixed-amount",
+                  "amount": 166,
+                  "currency": "EUR",
+                  "taxesIncluded": null
+                },
+                "evidence": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 6, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 166.00 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. This fee equals 1 night of your room charge (for the first night of your reservation). When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
+                "verified": true
+              },
+              "payment": null,
+              "inclusions": null,
+              "price": null
+            },
+            "evidence": {
+              "rateCard": "Stylish, Guest room, 1 Double\nRoom Details\nRates from\n144EUR Avg / Night\n432 Total Per Room\nHide Rates\nFlexible Rate\nMOST POPULAR\n\nFree cancellation before or on Apr 06, 2027\nMember Rate\n161EUR Avg / Night\n483 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n144EUR Avg / Night\n432 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nIncludes breakfast, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n177EUR Avg / Night\n531 Total Per Room\nSelect\nMember Bed and Breakfast Rate\n\nIncludes breakfast per person per night\n\nFree cancellation before or on Apr 06, 2027\nPackage Rate\n197EUR Avg / Night\n592 Total Per Room\nSelect\nincludes breakfast per person per night\n\nFree cancellation before or on Apr 06, 2027\nPackage Rate\n203EUR Avg / Night\n610 Total Per Room\nSelect",
+              "selectedDates": {
+                "checkIn": "2027-04-07",
+                "checkOut": "2027-04-10"
+              },
+              "selectedGuests": {
+                "adults": 2,
+                "children": 0,
+                "rooms": 1
+              },
+              "policyText": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 6, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 166.00 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. This fee equals 1 night of your room charge (for the first night of your reservation). When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
+              "policyRequests": [
+                {
+                  "path": "/mi/query/PhoenixBookDTTGetRateDetails",
+                  "status": 200
+                }
+              ],
+              "quoteState": "quote-revalidation-required"
+            },
+            "rate": {
+              "status": "ok",
+              "room": "Stylish, Guest room, 1 Double",
+              "rateName": "Member Flexible Rate",
+              "currency": "EUR",
+              "totalAmount": 483,
+              "amountBasis": "unknown",
+              "prepaid": false,
+              "checkIn": "2027-04-07",
+              "checkOut": "2027-04-10",
+              "adults": 2,
+              "capturedAt": "2026-10-27T06:03:39.433Z",
+              "freeCancellation": true,
+              "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/"
+            }
+          },
+          "offers": [
+            {
+              "provider": "Hotels.com",
+              "scope": "[\"bilbao-ercilla\",\"2027-04-07\",\"2027-04-10\",2,0,1,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",473,\"2027-04-06 23:59 (호텔 현지시간)\"]",
+              "capturedAt": "2026-10-27T06:04:02.403Z",
+              "status": "pending",
+              "state": "checkout-evidence-partial",
+              "facts": {
+                "hotelId": "bilbao-ercilla",
+                "search": {
+                  "checkIn": "2027-04-07",
+                  "checkOut": "2027-04-10",
+                  "adults": 2,
+                  "children": 0,
+                  "rooms": 1
+                },
+                "bedMatched": true,
+                "roomIdentity": null,
+                "inclusions": {
+                  "breakfast": false
+                },
+                "cancellation": {
+                  "freeUntil": "2027-04-06T21:59:00.000Z",
+                  "penalty": {
+                    "kind": "first-night",
+                    "taxesIncluded": true
+                  },
+                  "evidence": "취소 정책 취소 정책 환불 불가 전액 환불 가능 전액 환불 부분 환불 오늘 오늘부터 4월 6일(화)까지 전액 환불 4월 6일 4월 6일(화)부터 체크인 시점까지 부분 환불 체크인 다음 날짜 전 4월 6일 전액 환불 4월 6일 23:59 전까지 예약을 취소하시면 전액 환불해 드립니다. 시간은 숙박 시설의 현지 시간을 기준으로 합니다. 다음 날짜 후 4월 6일 부분 환불 그 후에는 첫 1박 요금과 세금 및 수수료가 부과됩니다.",
+                  "verified": true
+                },
+                "payment": {
+                  "timing": "property",
+                  "guarantee": "card"
+                },
+                "price": {
+                  "roomAmount": 451.82,
+                  "totalAmount": 496.99,
+                  "knownPayableTotal": 496.99,
+                  "taxesAndFees": 45.17,
+                  "priceBreakdown": {
+                    "currency": "EUR",
+                    "displayedTotal": 496.99,
+                    "verified": true,
+                    "nonRoomChargesComplete": true,
+                    "charges": [
+                      {
+                        "kind": "tax",
+                        "label": "세금",
+                        "amount": 45.17,
+                        "currency": "EUR",
+                        "includedInDisplayedTotal": true
+                      }
+                    ]
+                  },
+                  "preTaxVerified": true,
+                  "preTaxAmount": 451.82,
+                  "amountBasis": "pre-tax",
+                  "currency": "EUR"
+                },
+                "restrictionsChecked": true,
+                "publicRate": true,
+                "availabilityVerified": false
+              },
+              "evidence": {
+                "hotel": [
+                  "Hotel Ercilla de Bilbao, Autograph Collection"
+                ],
+                "propertyUrl": "https://kr.hotels.com/ho112051/hotel-eleusiya-de-bilbao-otogeulaepeu-keollegsyeon-bilbao-seupein/",
+                "occupancy": {
+                  "adults": 2,
+                  "children": 0,
+                  "rooms": 1
+                },
+                "dates": {
+                  "checkIn": "2027-04-07",
+                  "checkOut": "2027-04-10"
+                },
+                "roomText": "관심을 보인 옵션\n룸, 더블침대 1개 사진 모두 보기\n객실\n6\n룸, 더블침대 1개\n8.6\n8.6점 만점 중 10점\n훌륭해요\n이용 후기 19개\n(이용 후기 19개)\n25㎡\n2명\n더블침대 1개\n무료 WiFi\n자세히 보기\n자세히 보기\n취소 정책\n모든 정책 옵션에 대한 세부 정보\n환불 불가\n+ €0\n4월 6일 전 전액 환불 가능\n+ €15\n지금 예약하고 나중에 결제\n추가 사항\n추가 없음\n+ €0\n2인 아침 식사\n+ €35\n저희 사이트에서 5개 남았어요!\n현재 가격은 €135\n€135\n총 요금: €447\n세금 및 수수료 포함\n예약하기\n예약\n아직 금액이 청구되지 않습니다.",
+                "cancellation": "취소 정책 취소 정책 환불 불가 전액 환불 가능 전액 환불 부분 환불 오늘 오늘부터 4월 6일(화)까지 전액 환불 4월 6일 4월 6일(화)부터 체크인 시점까지 부분 환불 체크인 다음 날짜 전 4월 6일 전액 환불 4월 6일 23:59 전까지 예약을 취소하시면 전액 환불해 드립니다. 시간은 숙박 시설의 현지 시간을 기준으로 합니다. 다음 날짜 후 4월 6일 부분 환불 그 후에는 첫 1박 요금과 세금 및 수수료가 부과됩니다.",
+                "selectedText": "관심을 보인 옵션\n룸, 더블침대 1개 사진 모두 보기\n객실\n6\n룸, 더블침대 1개\n8.6\n8.6점 만점 중 10점\n훌륭해요\n이용 후기 19개\n(이용 후기 19개)\n25㎡\n2명\n더블침대 1개\n무료 WiFi\n자세히 보기\n자세히 보기\n취소 정책\n모든 정책 옵션에 대한 세부 정보\n환불 불가\n+ €0\n4월 6일 전 전액 환불 가능\n+ €15\n지금 예약하고 나중에 결제\n추가 사항\n추가 없음\n+ €0\n2인 아침 식사\n+ €35\n저희 사이트에서 5개 남았어요!\n현재 가격은 €151\n€151\n총 요금: €497\n세금 및 수수료 포함\n예약\n예약하기\n아직 금액이 청구되지 않습니다.",
+                "payment": "결제 옵션 선택 4월 6일(화) 전 전액 환불 가능 숙박 시 결제 EUR 통화로 숙박 시설에 직접 결제합니다. 현재 가격은 €151 €151 총 요금: €497 세금 및 수수료 포함 현장 결제 숙박하실 때까지 금액이 청구되지 않습니다. 지금 결제 EUR 통화로 청구됩니다. 직불/신용카드로 결제하실 수 있습니다. 현재 가격은 €151 €151 총 요금: €497 세금 및 수수료 포함 지금 결제 아직 금액이 청구되지 않습니다.",
+                "priceText": "3박 €150.61/1박 €451.82 세금 €45.17 총 금액 €496.99 오늘 결제 €0.00 숙박 시설에서 결제 €496.99"
+              }
+            }
+          ],
+          "comparisons": [
+            {
+              "provider": "Hotels.com",
+              "checks": [
+                {
+                  "key": "scope",
+                  "label": "동일 예약 범위",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "호텔·일정·인원·객실 기준에 연결됨"
+                },
+                {
+                  "key": "fresh",
+                  "label": "양쪽 요금 최신 확인",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "관측 시각 기준 24시간 이내"
+                },
+                {
+                  "key": "hotel",
+                  "label": "동일 호텔",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "실제 호텔 인식 결과와 감시 호텔이 모두 같아야 함"
+                },
+                {
+                  "key": "dates",
+                  "label": "동일 날짜·인원·객실 수",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "양쪽 화면에서 요청한 연도·일정·인원·객실 수를 직접 확인"
+                },
+                {
+                  "key": "room",
+                  "label": "동일 객실·침대",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "inclusions",
+                  "label": "동일 포함 혜택",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "cancellation",
+                  "label": "정확한 무료취소 마감",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "공식 \"2027-04-06T21:59:00.000Z\" / 타사 \"2027-04-06T21:59:00.000Z\""
+                },
+                {
+                  "key": "penalty",
+                  "label": "취소 후 위약금 규정",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "payment",
+                  "label": "결제·보증 방식",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "public",
+                  "label": "공개 접근·제한 없는 타사 요금",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "비로그인 선택 요금과 게스트 결제 진행 근거"
+                },
+                {
+                  "key": "official",
+                  "label": "공식 동일조건 최저 공개 요금",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "회원요금 포함, 같은 객실·혜택·취소조건끼리 비교"
+                },
+                {
+                  "key": "available",
+                  "label": "양쪽 실제 예약 가능",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "선택 요금의 미확정 예약 요약 확인"
+                },
+                {
+                  "key": "basis",
+                  "label": "같은 통화 세전 전체 객실료",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "세금·수수료 내역 검산 근거 필요"
+                },
+                {
+                  "key": "margin",
+                  "label": "공식 세전가보다 1% 초과 저렴",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "환율·추정 세전가로 통과시키지 않음"
+                }
+              ],
+              "conditionsVerified": false,
+              "state": "partial",
+              "mismatches": [],
+              "unknown": [
+                "room",
+                "inclusions",
+                "penalty",
+                "payment",
+                "available",
+                "basis",
+                "margin"
+              ],
+              "price": {
+                "status": "금액 확인 필요"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "bordeaux-moxy",
+        "status": "blocked",
+        "state": "blocked",
+        "error": "confirming specific dates: 요금 전환 상태: blocked",
+        "capturedAt": "2026-10-27T20:12:13.234Z",
+        "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+        "diagnostics": {
+          "stage": "confirming specific dates",
+          "responseStatus": null,
+          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr",
+          "title": "Access Denied",
+          "bodyLength": 230,
+          "selectors": {
+            "dateInput": false,
+            "viewRates": false,
+            "roomCards": false,
+            "rateCards": false,
+            "login": false,
+            "cookieConsent": false
+          },
+          "browser": {
+            "platform": "linux-x64",
+            "headless": false,
+            "channel": null,
+            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+            "persistent": false,
+            "browserVersion": "151.0.7922.34",
+            "authMethod": "none"
+          }
+        },
+        "verification": {
+          "schemaVersion": 1,
+          "scope": "[\"bordeaux-moxy\",\"2027-04-10\",\"2027-04-12\",2,0,1,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",278.8,\"2027-04-09 23:59 (호텔 현지시간)\"]",
+          "capturedAt": "2026-10-27T06:13:05.088Z",
+          "official": {
+            "provider": "Marriott",
+            "scope": "[\"bordeaux-moxy\",\"2027-04-10\",\"2027-04-12\",2,0,1,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",278.8,\"2027-04-09 23:59 (호텔 현지시간)\"]",
+            "capturedAt": "2026-10-27T06:12:27.622Z",
+            "status": "pending",
+            "state": "detailed-policy-observed",
+            "facts": {
+              "hotelId": "bordeaux-moxy",
+              "search": {
+                "checkIn": "2027-04-10",
+                "checkOut": "2027-04-12",
+                "adults": 2,
+                "children": 0,
+                "rooms": 1
+              },
+              "roomIdentity": "Moxy Sleeper / Guest Room / 1 Queen",
+              "lowerRefundableDisplayAmounts": [],
+              "lowestPublicRateVerified": true,
+              "availabilityVerified": false,
+              "cancellation": {
+                "freeUntil": "2027-04-09T21:59:00.000Z",
+                "penalty": {
+                  "kind": "fixed-amount",
+                  "amount": 127.9,
+                  "currency": "EUR",
+                  "taxesIncluded": null
+                },
+                "evidence": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 9, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 127.90 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
+                "verified": true
+              },
+              "payment": null,
+              "inclusions": null,
+              "price": null
+            },
+            "evidence": {
+              "rateCard": "Moxy Sleeper, Guest room, 1 Queen\nRoom Details\nRates from\n114EUR Avg / Night\n229 Total Per Room\nHide Rates\nFlexible Rate\nMOST POPULAR\n\nFree cancellation before or on Apr 09, 2027\nMember Rate\n134EUR Avg / Night\n269 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n114EUR Avg / Night\n229 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable with Breakfast\n\nIncludes breakfast for 2 guests daily at hotel restaurant, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n140EUR Avg / Night\n281 Total Per Room\nSelect\nStay for Breakfast Rate\n\nIncludes breakfast\n\nFree cancellation before or on Apr 09, 2027\nMember Rate\n163EUR Avg / Night\n326 Total Per Room\nSelect",
+              "selectedDates": {
+                "checkIn": "2027-04-10",
+                "checkOut": "2027-04-12"
+              },
+              "selectedGuests": {
+                "adults": 2,
+                "children": 0,
+                "rooms": 1
+              },
+              "policyText": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 9, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 127.90 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
+              "policyRequests": [
+                {
+                  "path": "/mi/query/PhoenixBookDTTGetRateDetails",
+                  "status": 200
+                }
+              ],
+              "quoteState": "quote-details-unavailable"
+            },
+            "rate": {
+              "status": "ok",
+              "room": "Moxy Sleeper, Guest room, 1 Queen",
+              "rateName": "Member Flexible Rate",
+              "currency": "EUR",
+              "totalAmount": 269,
+              "amountBasis": "unknown",
+              "prepaid": false,
+              "checkIn": "2027-04-10",
+              "checkOut": "2027-04-12",
+              "adults": 2,
+              "capturedAt": "2026-10-27T06:12:36.855Z",
+              "freeCancellation": true,
+              "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/"
+            }
+          },
+          "offers": [
+            {
+              "provider": "Hotels.com",
+              "scope": "[\"bordeaux-moxy\",\"2027-04-10\",\"2027-04-12\",2,0,1,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",278.8,\"2027-04-09 23:59 (호텔 현지시간)\"]",
+              "capturedAt": "2026-10-27T06:13:04.915Z",
+              "status": "pending",
+              "state": "selected-offer-observed",
+              "facts": {
+                "hotelId": "bordeaux-moxy",
+                "search": {
+                  "checkIn": "2027-04-10",
+                  "checkOut": "2027-04-12",
+                  "adults": 2,
+                  "children": 0,
+                  "rooms": 1
+                },
+                "bedMatched": true,
+                "roomIdentity": null,
+                "inclusions": {
+                  "breakfast": false
+                },
+                "cancellation": {
+                  "freeUntil": "2027-04-09T21:59:00.000Z",
+                  "penalty": {
+                    "kind": "first-night",
+                    "taxesIncluded": true
+                  },
+                  "evidence": "취소 정책 취소 정책 환불 불가 전액 환불 가능 전액 환불 부분 환불 오늘 오늘부터 4월 9일(금)까지 전액 환불 4월 9일 4월 9일(금)부터 체크인 시점까지 부분 환불 체크인 다음 날짜 전 4월 9일 전액 환불 4월 9일 23:59 전까지 예약을 취소하시면 전액 환불해 드립니다. 시간은 숙박 시설의 현지 시간을 기준으로 합니다. 다음 날짜 후 4월 9일 부분 환불 그 후에는 첫 1박 요금과 세금 및 수수료가 부과됩니다.",
+                  "verified": true
+                },
+                "payment": {
+                  "timing": "property",
+                  "guarantee": "card"
+                },
+                "price": {
+                  "roomAmount": 252.72,
+                  "totalAmount": 287.8,
+                  "knownPayableTotal": 287.8,
+                  "taxesAndFees": 35.08,
+                  "priceBreakdown": {
+                    "currency": "EUR",
+                    "displayedTotal": 287.8,
+                    "verified": true,
+                    "nonRoomChargesComplete": true,
+                    "charges": [
+                      {
+                        "kind": "tax",
+                        "label": "세금",
+                        "amount": 25.28,
+                        "currency": "EUR",
+                        "includedInDisplayedTotal": true
+                      },
+                      {
+                        "kind": "tax",
+                        "label": "현지세",
+                        "amount": 9.8,
+                        "currency": "EUR",
+                        "includedInDisplayedTotal": true
+                      }
+                    ]
+                  },
+                  "preTaxVerified": true,
+                  "preTaxAmount": 252.72,
+                  "amountBasis": "pre-tax",
+                  "currency": "EUR"
+                },
+                "restrictionsChecked": true,
+                "publicRate": true,
+                "availabilityVerified": true
+              },
+              "evidence": {
+                "hotel": [
+                  "모시 보르도 호텔",
+                  "Moxy Bordeaux Hotel"
+                ],
+                "propertyUrl": "https://kr.hotels.com/ho2103588768/moxy-bordeaux-hotel-boleudo-peulangseu/",
+                "occupancy": {
+                  "adults": 2,
+                  "children": 0,
+                  "rooms": 1
+                },
+                "dates": {
+                  "checkIn": "2027-04-10",
+                  "checkOut": "2027-04-12"
+                },
+                "roomText": "관심을 보인 옵션\n룸, 퀸사이즈침대 1개 사진 모두 보기\n객실\n7\n룸, 퀸사이즈침대 1개\n8.8\n8.8점 만점 중 10점\n훌륭해요\n이용 후기 30개\n(이용 후기 30개)\n17㎡\n침실 1개\n2명\n퀸사이즈침대 1개\n무료 WiFi\n자세히 보기\n자세히 보기\n취소 정책\n모든 정책 옵션에 대한 세부 정보\n환불 불가\n+ €0\n4월 9일 전 전액 환불 가능\n+ €19\n지금 예약하고 나중에 결제\n추가 사항\n추가 없음\n+ €0\n뷔페 아침 식사\n+ €25\n저희 사이트에서 5개 남았어요!\n현재 가격은 €108\n€108\n총 요금: €247\n세금 및 수수료 포함\n예약하기\n예약\n아직 금액이 청구되지 않습니다.",
+                "cancellation": "취소 정책 취소 정책 환불 불가 전액 환불 가능 전액 환불 부분 환불 오늘 오늘부터 4월 9일(금)까지 전액 환불 4월 9일 4월 9일(금)부터 체크인 시점까지 부분 환불 체크인 다음 날짜 전 4월 9일 전액 환불 4월 9일 23:59 전까지 예약을 취소하시면 전액 환불해 드립니다. 시간은 숙박 시설의 현지 시간을 기준으로 합니다. 다음 날짜 후 4월 9일 부분 환불 그 후에는 첫 1박 요금과 세금 및 수수료가 부과됩니다.",
+                "selectedText": "관심을 보인 옵션\n룸, 퀸사이즈침대 1개 사진 모두 보기\n객실\n7\n룸, 퀸사이즈침대 1개\n8.8\n8.8점 만점 중 10점\n훌륭해요\n이용 후기 30개\n(이용 후기 30개)\n17㎡\n침실 1개\n2명\n퀸사이즈침대 1개\n무료 WiFi\n자세히 보기\n자세히 보기\n취소 정책\n모든 정책 옵션에 대한 세부 정보\n환불 불가\n+ €0\n4월 9일 전 전액 환불 가능\n+ €19\n지금 예약하고 나중에 결제\n추가 사항\n추가 없음\n+ €0\n뷔페 아침 식사\n+ €27\n저희 사이트에서 5개 남았어요!\n현재 가격은 €126\n€126\n총 요금: €288\n세금 및 수수료 포함\n예약\n예약하기\n아직 금액이 청구되지 않습니다.",
+                "payment": "결제 옵션 선택 4월 9일(금) 전 전액 환불 가능 숙박 시 결제 EUR 통화로 숙박 시설에 직접 결제합니다. 현재 가격은 €126 €126 총 요금: €288 세금 및 수수료 포함 현장 결제 숙박하실 때까지 금액이 청구되지 않습니다. 지금 결제 EUR 통화로 청구됩니다. 직불/신용카드로 결제하실 수 있습니다. 현재 가격은 €126 €126 총 요금: €288 세금 및 수수료 포함 지금 결제 아직 금액이 청구되지 않습니다.",
+                "priceText": "2박 €126.36/1박 €252.72 세금 €25.28 현지세 €9.80 총 금액 €287.80 오늘 결제 €0.00 숙박 시설에서 결제 €287.80"
+              }
+            }
+          ],
+          "comparisons": [
+            {
+              "provider": "Hotels.com",
+              "checks": [
+                {
+                  "key": "scope",
+                  "label": "동일 예약 범위",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "호텔·일정·인원·객실 기준에 연결됨"
+                },
+                {
+                  "key": "fresh",
+                  "label": "양쪽 요금 최신 확인",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "관측 시각 기준 24시간 이내"
+                },
+                {
+                  "key": "hotel",
+                  "label": "동일 호텔",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "실제 호텔 인식 결과와 감시 호텔이 모두 같아야 함"
+                },
+                {
+                  "key": "dates",
+                  "label": "동일 날짜·인원·객실 수",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "양쪽 화면에서 요청한 연도·일정·인원·객실 수를 직접 확인"
+                },
+                {
+                  "key": "room",
+                  "label": "동일 객실·침대",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "inclusions",
+                  "label": "동일 포함 혜택",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "cancellation",
+                  "label": "정확한 무료취소 마감",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "공식 \"2027-04-09T21:59:00.000Z\" / 타사 \"2027-04-09T21:59:00.000Z\""
+                },
+                {
+                  "key": "penalty",
+                  "label": "취소 후 위약금 규정",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "payment",
+                  "label": "결제·보증 방식",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "실제 선택 요금 근거 부족"
+                },
+                {
+                  "key": "public",
+                  "label": "공개 접근·제한 없는 타사 요금",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "비로그인 선택 요금과 게스트 결제 진행 근거"
+                },
+                {
+                  "key": "official",
+                  "label": "공식 동일조건 최저 공개 요금",
+                  "state": "matched",
+                  "ok": true,
+                  "reason": "회원요금 포함, 같은 객실·혜택·취소조건끼리 비교"
+                },
+                {
+                  "key": "available",
+                  "label": "양쪽 실제 예약 가능",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "선택 요금의 미확정 예약 요약 확인"
+                },
+                {
+                  "key": "basis",
+                  "label": "같은 통화 세전 전체 객실료",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "세금·수수료 내역 검산 근거 필요"
+                },
+                {
+                  "key": "margin",
+                  "label": "공식 세전가보다 1% 초과 저렴",
+                  "state": "unknown",
+                  "ok": false,
+                  "reason": "환율·추정 세전가로 통과시키지 않음"
+                }
+              ],
+              "conditionsVerified": false,
+              "state": "partial",
+              "mismatches": [],
+              "unknown": [
+                "room",
+                "inclusions",
+                "penalty",
+                "payment",
+                "available",
+                "basis",
+                "margin"
+              ],
+              "price": {
+                "status": "금액 확인 필요"
+              }
+            }
+          ]
+        }
+      },
+      {
         "id": "barcelona-four-points",
-        "status": "ok",
-        "state": "ok",
-        "error": null,
-        "capturedAt": "2026-10-27T01:05:43.475Z",
+        "status": "blocked",
+        "state": "blocked",
+        "error": "confirming specific dates: 요금 전환 상태: blocked",
+        "capturedAt": "2026-10-27T20:12:43.369Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
         "diagnostics": {
-          "finalUrl": null,
-          "browser": null
+          "stage": "confirming specific dates",
+          "responseStatus": null,
+          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king",
+          "title": "Access Denied",
+          "bodyLength": 228,
+          "selectors": {
+            "dateInput": false,
+            "viewRates": false,
+            "roomCards": false,
+            "rateCards": false,
+            "login": false,
+            "cookieConsent": false
+          },
+          "browser": {
+            "platform": "linux-x64",
+            "headless": false,
+            "channel": null,
+            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+            "persistent": false,
+            "browserVersion": "151.0.7922.34",
+            "authMethod": "none"
+          }
         },
         "verification": {
           "schemaVersion": 1,
@@ -89950,862 +92078,16 @@
             }
           ]
         }
-      },
-      {
-        "id": "madrid-carlton",
-        "status": "ok",
-        "state": "ok",
-        "error": null,
-        "capturedAt": "2026-10-27T01:01:44.733Z",
-        "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
-        "diagnostics": {
-          "finalUrl": null,
-          "browser": null
-        },
-        "verification": {
-          "schemaVersion": 1,
-          "scope": "[\"madrid-carlton\",\"2027-04-03\",\"2027-04-07\",2,0,1,\"EUR\",\"Standard King Room / Guest Room / 1 King\",733.6,\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "capturedAt": "2026-10-27T06:02:06.045Z",
-          "official": {
-            "provider": "Marriott",
-            "scope": "[\"madrid-carlton\",\"2027-04-03\",\"2027-04-07\",2,0,1,\"EUR\",\"Standard King Room / Guest Room / 1 King\",733.6,\"2027-04-02 23:59 (호텔 현지시간)\"]",
-            "capturedAt": "2026-10-27T06:01:33.947Z",
-            "status": "pending",
-            "state": "detailed-policy-observed",
-            "facts": {
-              "hotelId": "madrid-carlton",
-              "search": {
-                "checkIn": "2027-04-03",
-                "checkOut": "2027-04-07",
-                "adults": 2,
-                "children": 0,
-                "rooms": 1
-              },
-              "roomIdentity": null,
-              "lowerRefundableDisplayAmounts": [
-                666,
-                702
-              ],
-              "lowestPublicRateVerified": false,
-              "availabilityVerified": false,
-              "cancellation": {
-                "freeUntil": "2027-04-02T21:59:00.000Z",
-                "penalty": {
-                  "kind": "fixed-amount",
-                  "amount": 199.1,
-                  "currency": "EUR",
-                  "taxesIncluded": null
-                },
-                "evidence": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 2, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 199.10 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
-                "verified": true
-              },
-              "payment": null,
-              "inclusions": null,
-              "price": null
-            },
-            "evidence": {
-              "rateCard": "Standard 2 Twins Room, Guest room, 2 Twin\nRoom Details\nRates from\n166EUR Avg / Night\n666 Total Per Room\nHide Rates\nMember Rate Stay Longer on Us\nMOST POPULAR\n\nSave even more when you stay longer\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n166EUR Avg / Night\n666 Total Per Room\nSelect\nFlexible Rate\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n190EUR Avg / Night\n760 Total Per Room\nSelect\nMember Rate Stay Longer on Us\n\nIncludes breakfast\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n191EUR Avg / Night\n766 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n170EUR Avg / Night\n682 Total Per Room\nSelect\nStay Longer on Us\n\nSave 10% or more as you stay longer\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n175EUR Avg / Night\n702 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nIncludes breakfast, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n196EUR Avg / Night\n785 Total Per Room\nSelect\nStay Longer On Us\n\nSave 10% or more as you stay longer, includes breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n201EUR Avg / Night\n806 Total Per Room\nSelect\nStay in the City Offer\n\nBuffet breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n201EUR Avg / Night\n806 Total Per Room\nSelect\nMember Rate Stay for Breakfast\n\nBuffet breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n217EUR Avg / Night\n871 Total Per Room\nSelect\nRoom and Breakfast rate\n\nIncludes breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n224EUR Avg / Night\n896 Total Per Room\nSelect",
-              "selectedDates": {
-                "checkIn": "2027-04-03",
-                "checkOut": "2027-04-07"
-              },
-              "selectedGuests": {
-                "adults": 2,
-                "children": 0,
-                "rooms": 1
-              },
-              "policyText": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 2, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 199.10 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
-              "policyRequests": [
-                {
-                  "path": "/mi/query/PhoenixBookDTTGetRateDetails",
-                  "status": 200
-                }
-              ],
-              "quoteState": "quote-revalidation-required"
-            },
-            "rate": {
-              "status": "ok",
-              "room": "Standard 2 Twins Room, Guest room, 2 Twin",
-              "rateName": "Member Flexible Rate",
-              "currency": "EUR",
-              "totalAmount": 760,
-              "amountBasis": "unknown",
-              "prepaid": false,
-              "checkIn": "2027-04-03",
-              "checkOut": "2027-04-07",
-              "adults": 2,
-              "capturedAt": "2026-10-27T06:01:46.847Z",
-              "freeCancellation": true,
-              "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/"
-            }
-          },
-          "offers": [
-            {
-              "provider": "Hotels.com",
-              "scope": "[\"madrid-carlton\",\"2027-04-03\",\"2027-04-07\",2,0,1,\"EUR\",\"Standard King Room / Guest Room / 1 King\",733.6,\"2027-04-02 23:59 (호텔 현지시간)\"]",
-              "capturedAt": "2026-10-27T06:02:05.967Z",
-              "status": "error",
-              "state": "cancellation-policy-timeout",
-              "facts": {
-                "hotelId": "madrid-carlton",
-                "search": {
-                  "checkIn": "2027-04-03",
-                  "checkOut": "2027-04-07",
-                  "adults": 2,
-                  "children": 0,
-                  "rooms": 1
-                },
-                "bedMatched": true,
-                "roomIdentity": null,
-                "inclusions": {
-                  "breakfast": false
-                }
-              },
-              "evidence": {
-                "hotel": [
-                  "AC 호텔 칼튼 마드리드 바이 메리어트",
-                  "AC Hotel Carlton Madrid by Marriott"
-                ],
-                "propertyUrl": "https://kr.hotels.com/ho120202/ac-hotel-kalteun-madeulideu-bai-melieoteu-madeulideu-seupein/",
-                "occupancy": {
-                  "adults": 2,
-                  "children": 0,
-                  "rooms": 1
-                },
-                "dates": {
-                  "checkIn": "2027-04-03",
-                  "checkOut": "2027-04-07"
-                },
-                "roomText": "스탠다드룸, 킹사이즈침대 1개 사진 모두 보기\n객실\n4\n스탠다드룸, 킹사이즈침대 1개\n9.4\n9.4점 만점 중 10점\n최고예요\n이용 후기 15개\n(이용 후기 15개)\n16㎡\n침실 1개\n2명\n킹사이즈침대 1개\n무료 WiFi\n자세히 보기\n자세히 보기\n취소 정책\n전액 환불 가능\n4월 2일(금) 전까지\n4월 2일 전 전액 환불 가능\n+ €0\n4월 2일 전 전액 환불 가능\n+ €20\n지금 예약하고 나중에 결제\n추가 사항\n추가 없음\n+ €0\n뷔페 아침 식사\n+ €26\n저희 사이트에서 1개 남았어요!\n현재 가격은 €176\n€176\n총 요금: €772\n세금 및 수수료 포함\n예약하기\n예약\n아직 금액이 청구되지 않습니다."
-              }
-            }
-          ],
-          "comparisons": [
-            {
-              "provider": "Hotels.com",
-              "checks": [
-                {
-                  "key": "scope",
-                  "label": "동일 예약 범위",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "호텔·일정·인원·객실 기준에 연결됨"
-                },
-                {
-                  "key": "fresh",
-                  "label": "양쪽 요금 최신 확인",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "관측 시각 기준 24시간 이내"
-                },
-                {
-                  "key": "hotel",
-                  "label": "동일 호텔",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "실제 호텔 인식 결과와 감시 호텔이 모두 같아야 함"
-                },
-                {
-                  "key": "dates",
-                  "label": "동일 날짜·인원·객실 수",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "양쪽 화면에서 요청한 연도·일정·인원·객실 수를 직접 확인"
-                },
-                {
-                  "key": "room",
-                  "label": "동일 객실·침대",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "inclusions",
-                  "label": "동일 포함 혜택",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "cancellation",
-                  "label": "정확한 무료취소 마감",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "penalty",
-                  "label": "취소 후 위약금 규정",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "payment",
-                  "label": "결제·보증 방식",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "public",
-                  "label": "공개 접근·제한 없는 타사 요금",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "비로그인 선택 요금과 게스트 결제 진행 근거"
-                },
-                {
-                  "key": "official",
-                  "label": "공식 동일조건 최저 공개 요금",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "회원요금 포함, 같은 객실·혜택·취소조건끼리 비교"
-                },
-                {
-                  "key": "available",
-                  "label": "양쪽 실제 예약 가능",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "선택 요금의 미확정 예약 요약 확인"
-                },
-                {
-                  "key": "basis",
-                  "label": "같은 통화 세전 전체 객실료",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "세금·수수료 내역 검산 근거 필요"
-                },
-                {
-                  "key": "margin",
-                  "label": "공식 세전가보다 1% 초과 저렴",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "환율·추정 세전가로 통과시키지 않음"
-                }
-              ],
-              "conditionsVerified": false,
-              "state": "partial",
-              "mismatches": [],
-              "unknown": [
-                "room",
-                "inclusions",
-                "cancellation",
-                "penalty",
-                "payment",
-                "public",
-                "official",
-                "available",
-                "basis",
-                "margin"
-              ],
-              "price": {
-                "status": "금액 확인 필요"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "bilbao-ercilla",
-        "status": "ok",
-        "state": "ok",
-        "error": null,
-        "capturedAt": "2026-10-27T01:03:03.569Z",
-        "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
-        "diagnostics": {
-          "finalUrl": null,
-          "browser": null
-        },
-        "verification": {
-          "schemaVersion": 1,
-          "scope": "[\"bilbao-ercilla\",\"2027-04-07\",\"2027-04-10\",2,0,1,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",473,\"2027-04-06 23:59 (호텔 현지시간)\"]",
-          "capturedAt": "2026-10-27T06:04:02.800Z",
-          "official": {
-            "provider": "Marriott",
-            "scope": "[\"bilbao-ercilla\",\"2027-04-07\",\"2027-04-10\",2,0,1,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",473,\"2027-04-06 23:59 (호텔 현지시간)\"]",
-            "capturedAt": "2026-10-27T06:03:25.683Z",
-            "status": "pending",
-            "state": "detailed-policy-observed",
-            "facts": {
-              "hotelId": "bilbao-ercilla",
-              "search": {
-                "checkIn": "2027-04-07",
-                "checkOut": "2027-04-10",
-                "adults": 2,
-                "children": 0,
-                "rooms": 1
-              },
-              "roomIdentity": "Stylish Room / Guest Room / 1 Double Bed",
-              "lowerRefundableDisplayAmounts": [],
-              "lowestPublicRateVerified": true,
-              "availabilityVerified": false,
-              "cancellation": {
-                "freeUntil": "2027-04-06T21:59:00.000Z",
-                "penalty": {
-                  "kind": "fixed-amount",
-                  "amount": 166,
-                  "currency": "EUR",
-                  "taxesIncluded": null
-                },
-                "evidence": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 6, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 166.00 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. This fee equals 1 night of your room charge (for the first night of your reservation). When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
-                "verified": true
-              },
-              "payment": null,
-              "inclusions": null,
-              "price": null
-            },
-            "evidence": {
-              "rateCard": "Stylish, Guest room, 1 Double\nRoom Details\nRates from\n144EUR Avg / Night\n432 Total Per Room\nHide Rates\nFlexible Rate\nMOST POPULAR\n\nFree cancellation before or on Apr 06, 2027\nMember Rate\n161EUR Avg / Night\n483 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n144EUR Avg / Night\n432 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nIncludes breakfast, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n177EUR Avg / Night\n531 Total Per Room\nSelect\nMember Bed and Breakfast Rate\n\nIncludes breakfast per person per night\n\nFree cancellation before or on Apr 06, 2027\nPackage Rate\n197EUR Avg / Night\n592 Total Per Room\nSelect\nincludes breakfast per person per night\n\nFree cancellation before or on Apr 06, 2027\nPackage Rate\n203EUR Avg / Night\n610 Total Per Room\nSelect",
-              "selectedDates": {
-                "checkIn": "2027-04-07",
-                "checkOut": "2027-04-10"
-              },
-              "selectedGuests": {
-                "adults": 2,
-                "children": 0,
-                "rooms": 1
-              },
-              "policyText": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 6, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 166.00 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. This fee equals 1 night of your room charge (for the first night of your reservation). When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
-              "policyRequests": [
-                {
-                  "path": "/mi/query/PhoenixBookDTTGetRateDetails",
-                  "status": 200
-                }
-              ],
-              "quoteState": "quote-revalidation-required"
-            },
-            "rate": {
-              "status": "ok",
-              "room": "Stylish, Guest room, 1 Double",
-              "rateName": "Member Flexible Rate",
-              "currency": "EUR",
-              "totalAmount": 483,
-              "amountBasis": "unknown",
-              "prepaid": false,
-              "checkIn": "2027-04-07",
-              "checkOut": "2027-04-10",
-              "adults": 2,
-              "capturedAt": "2026-10-27T06:03:39.433Z",
-              "freeCancellation": true,
-              "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/"
-            }
-          },
-          "offers": [
-            {
-              "provider": "Hotels.com",
-              "scope": "[\"bilbao-ercilla\",\"2027-04-07\",\"2027-04-10\",2,0,1,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",473,\"2027-04-06 23:59 (호텔 현지시간)\"]",
-              "capturedAt": "2026-10-27T06:04:02.403Z",
-              "status": "pending",
-              "state": "checkout-evidence-partial",
-              "facts": {
-                "hotelId": "bilbao-ercilla",
-                "search": {
-                  "checkIn": "2027-04-07",
-                  "checkOut": "2027-04-10",
-                  "adults": 2,
-                  "children": 0,
-                  "rooms": 1
-                },
-                "bedMatched": true,
-                "roomIdentity": null,
-                "inclusions": {
-                  "breakfast": false
-                },
-                "cancellation": {
-                  "freeUntil": "2027-04-06T21:59:00.000Z",
-                  "penalty": {
-                    "kind": "first-night",
-                    "taxesIncluded": true
-                  },
-                  "evidence": "취소 정책 취소 정책 환불 불가 전액 환불 가능 전액 환불 부분 환불 오늘 오늘부터 4월 6일(화)까지 전액 환불 4월 6일 4월 6일(화)부터 체크인 시점까지 부분 환불 체크인 다음 날짜 전 4월 6일 전액 환불 4월 6일 23:59 전까지 예약을 취소하시면 전액 환불해 드립니다. 시간은 숙박 시설의 현지 시간을 기준으로 합니다. 다음 날짜 후 4월 6일 부분 환불 그 후에는 첫 1박 요금과 세금 및 수수료가 부과됩니다.",
-                  "verified": true
-                },
-                "payment": {
-                  "timing": "property",
-                  "guarantee": "card"
-                },
-                "price": {
-                  "roomAmount": 451.82,
-                  "totalAmount": 496.99,
-                  "knownPayableTotal": 496.99,
-                  "taxesAndFees": 45.17,
-                  "priceBreakdown": {
-                    "currency": "EUR",
-                    "displayedTotal": 496.99,
-                    "verified": true,
-                    "nonRoomChargesComplete": true,
-                    "charges": [
-                      {
-                        "kind": "tax",
-                        "label": "세금",
-                        "amount": 45.17,
-                        "currency": "EUR",
-                        "includedInDisplayedTotal": true
-                      }
-                    ]
-                  },
-                  "preTaxVerified": true,
-                  "preTaxAmount": 451.82,
-                  "amountBasis": "pre-tax",
-                  "currency": "EUR"
-                },
-                "restrictionsChecked": true,
-                "publicRate": true,
-                "availabilityVerified": false
-              },
-              "evidence": {
-                "hotel": [
-                  "Hotel Ercilla de Bilbao, Autograph Collection"
-                ],
-                "propertyUrl": "https://kr.hotels.com/ho112051/hotel-eleusiya-de-bilbao-otogeulaepeu-keollegsyeon-bilbao-seupein/",
-                "occupancy": {
-                  "adults": 2,
-                  "children": 0,
-                  "rooms": 1
-                },
-                "dates": {
-                  "checkIn": "2027-04-07",
-                  "checkOut": "2027-04-10"
-                },
-                "roomText": "관심을 보인 옵션\n룸, 더블침대 1개 사진 모두 보기\n객실\n6\n룸, 더블침대 1개\n8.6\n8.6점 만점 중 10점\n훌륭해요\n이용 후기 19개\n(이용 후기 19개)\n25㎡\n2명\n더블침대 1개\n무료 WiFi\n자세히 보기\n자세히 보기\n취소 정책\n모든 정책 옵션에 대한 세부 정보\n환불 불가\n+ €0\n4월 6일 전 전액 환불 가능\n+ €15\n지금 예약하고 나중에 결제\n추가 사항\n추가 없음\n+ €0\n2인 아침 식사\n+ €35\n저희 사이트에서 5개 남았어요!\n현재 가격은 €135\n€135\n총 요금: €447\n세금 및 수수료 포함\n예약하기\n예약\n아직 금액이 청구되지 않습니다.",
-                "cancellation": "취소 정책 취소 정책 환불 불가 전액 환불 가능 전액 환불 부분 환불 오늘 오늘부터 4월 6일(화)까지 전액 환불 4월 6일 4월 6일(화)부터 체크인 시점까지 부분 환불 체크인 다음 날짜 전 4월 6일 전액 환불 4월 6일 23:59 전까지 예약을 취소하시면 전액 환불해 드립니다. 시간은 숙박 시설의 현지 시간을 기준으로 합니다. 다음 날짜 후 4월 6일 부분 환불 그 후에는 첫 1박 요금과 세금 및 수수료가 부과됩니다.",
-                "selectedText": "관심을 보인 옵션\n룸, 더블침대 1개 사진 모두 보기\n객실\n6\n룸, 더블침대 1개\n8.6\n8.6점 만점 중 10점\n훌륭해요\n이용 후기 19개\n(이용 후기 19개)\n25㎡\n2명\n더블침대 1개\n무료 WiFi\n자세히 보기\n자세히 보기\n취소 정책\n모든 정책 옵션에 대한 세부 정보\n환불 불가\n+ €0\n4월 6일 전 전액 환불 가능\n+ €15\n지금 예약하고 나중에 결제\n추가 사항\n추가 없음\n+ €0\n2인 아침 식사\n+ €35\n저희 사이트에서 5개 남았어요!\n현재 가격은 €151\n€151\n총 요금: €497\n세금 및 수수료 포함\n예약\n예약하기\n아직 금액이 청구되지 않습니다.",
-                "payment": "결제 옵션 선택 4월 6일(화) 전 전액 환불 가능 숙박 시 결제 EUR 통화로 숙박 시설에 직접 결제합니다. 현재 가격은 €151 €151 총 요금: €497 세금 및 수수료 포함 현장 결제 숙박하실 때까지 금액이 청구되지 않습니다. 지금 결제 EUR 통화로 청구됩니다. 직불/신용카드로 결제하실 수 있습니다. 현재 가격은 €151 €151 총 요금: €497 세금 및 수수료 포함 지금 결제 아직 금액이 청구되지 않습니다.",
-                "priceText": "3박 €150.61/1박 €451.82 세금 €45.17 총 금액 €496.99 오늘 결제 €0.00 숙박 시설에서 결제 €496.99"
-              }
-            }
-          ],
-          "comparisons": [
-            {
-              "provider": "Hotels.com",
-              "checks": [
-                {
-                  "key": "scope",
-                  "label": "동일 예약 범위",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "호텔·일정·인원·객실 기준에 연결됨"
-                },
-                {
-                  "key": "fresh",
-                  "label": "양쪽 요금 최신 확인",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "관측 시각 기준 24시간 이내"
-                },
-                {
-                  "key": "hotel",
-                  "label": "동일 호텔",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "실제 호텔 인식 결과와 감시 호텔이 모두 같아야 함"
-                },
-                {
-                  "key": "dates",
-                  "label": "동일 날짜·인원·객실 수",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "양쪽 화면에서 요청한 연도·일정·인원·객실 수를 직접 확인"
-                },
-                {
-                  "key": "room",
-                  "label": "동일 객실·침대",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "inclusions",
-                  "label": "동일 포함 혜택",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "cancellation",
-                  "label": "정확한 무료취소 마감",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "공식 \"2027-04-06T21:59:00.000Z\" / 타사 \"2027-04-06T21:59:00.000Z\""
-                },
-                {
-                  "key": "penalty",
-                  "label": "취소 후 위약금 규정",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "payment",
-                  "label": "결제·보증 방식",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "public",
-                  "label": "공개 접근·제한 없는 타사 요금",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "비로그인 선택 요금과 게스트 결제 진행 근거"
-                },
-                {
-                  "key": "official",
-                  "label": "공식 동일조건 최저 공개 요금",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "회원요금 포함, 같은 객실·혜택·취소조건끼리 비교"
-                },
-                {
-                  "key": "available",
-                  "label": "양쪽 실제 예약 가능",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "선택 요금의 미확정 예약 요약 확인"
-                },
-                {
-                  "key": "basis",
-                  "label": "같은 통화 세전 전체 객실료",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "세금·수수료 내역 검산 근거 필요"
-                },
-                {
-                  "key": "margin",
-                  "label": "공식 세전가보다 1% 초과 저렴",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "환율·추정 세전가로 통과시키지 않음"
-                }
-              ],
-              "conditionsVerified": false,
-              "state": "partial",
-              "mismatches": [],
-              "unknown": [
-                "room",
-                "inclusions",
-                "penalty",
-                "payment",
-                "available",
-                "basis",
-                "margin"
-              ],
-              "price": {
-                "status": "금액 확인 필요"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "bordeaux-moxy",
-        "status": "ok",
-        "state": "ok",
-        "error": null,
-        "capturedAt": "2026-10-27T01:04:22.232Z",
-        "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
-        "diagnostics": {
-          "finalUrl": null,
-          "browser": null
-        },
-        "verification": {
-          "schemaVersion": 1,
-          "scope": "[\"bordeaux-moxy\",\"2027-04-10\",\"2027-04-12\",2,0,1,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",278.8,\"2027-04-09 23:59 (호텔 현지시간)\"]",
-          "capturedAt": "2026-10-27T06:13:05.088Z",
-          "official": {
-            "provider": "Marriott",
-            "scope": "[\"bordeaux-moxy\",\"2027-04-10\",\"2027-04-12\",2,0,1,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",278.8,\"2027-04-09 23:59 (호텔 현지시간)\"]",
-            "capturedAt": "2026-10-27T06:12:27.622Z",
-            "status": "pending",
-            "state": "detailed-policy-observed",
-            "facts": {
-              "hotelId": "bordeaux-moxy",
-              "search": {
-                "checkIn": "2027-04-10",
-                "checkOut": "2027-04-12",
-                "adults": 2,
-                "children": 0,
-                "rooms": 1
-              },
-              "roomIdentity": "Moxy Sleeper / Guest Room / 1 Queen",
-              "lowerRefundableDisplayAmounts": [],
-              "lowestPublicRateVerified": true,
-              "availabilityVerified": false,
-              "cancellation": {
-                "freeUntil": "2027-04-09T21:59:00.000Z",
-                "penalty": {
-                  "kind": "fixed-amount",
-                  "amount": 127.9,
-                  "currency": "EUR",
-                  "taxesIncluded": null
-                },
-                "evidence": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 9, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 127.90 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
-                "verified": true
-              },
-              "payment": null,
-              "inclusions": null,
-              "price": null
-            },
-            "evidence": {
-              "rateCard": "Moxy Sleeper, Guest room, 1 Queen\nRoom Details\nRates from\n114EUR Avg / Night\n229 Total Per Room\nHide Rates\nFlexible Rate\nMOST POPULAR\n\nFree cancellation before or on Apr 09, 2027\nMember Rate\n134EUR Avg / Night\n269 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n114EUR Avg / Night\n229 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable with Breakfast\n\nIncludes breakfast for 2 guests daily at hotel restaurant, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n140EUR Avg / Night\n281 Total Per Room\nSelect\nStay for Breakfast Rate\n\nIncludes breakfast\n\nFree cancellation before or on Apr 09, 2027\nMember Rate\n163EUR Avg / Night\n326 Total Per Room\nSelect",
-              "selectedDates": {
-                "checkIn": "2027-04-10",
-                "checkOut": "2027-04-12"
-              },
-              "selectedGuests": {
-                "adults": 2,
-                "children": 0,
-                "rooms": 1
-              },
-              "policyText": "Rate Details Member Rate Flexible Additional Information Commissionable Rate Holding Your Reservation We will need a credit card number to reserve your room. Cancelling Your Reservation You may cancel your reservation for no charge before 11:59 PM local hotel time on April 9, 2027 (1 day[s] before arrival). Please note that we will assess a fee of 127.90 EUR if you must cancel after this deadline. If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card. When You Check-in Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age). Modifying Your Reservation Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).",
-              "policyRequests": [
-                {
-                  "path": "/mi/query/PhoenixBookDTTGetRateDetails",
-                  "status": 200
-                }
-              ],
-              "quoteState": "quote-details-unavailable"
-            },
-            "rate": {
-              "status": "ok",
-              "room": "Moxy Sleeper, Guest room, 1 Queen",
-              "rateName": "Member Flexible Rate",
-              "currency": "EUR",
-              "totalAmount": 269,
-              "amountBasis": "unknown",
-              "prepaid": false,
-              "checkIn": "2027-04-10",
-              "checkOut": "2027-04-12",
-              "adults": 2,
-              "capturedAt": "2026-10-27T06:12:36.855Z",
-              "freeCancellation": true,
-              "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/"
-            }
-          },
-          "offers": [
-            {
-              "provider": "Hotels.com",
-              "scope": "[\"bordeaux-moxy\",\"2027-04-10\",\"2027-04-12\",2,0,1,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",278.8,\"2027-04-09 23:59 (호텔 현지시간)\"]",
-              "capturedAt": "2026-10-27T06:13:04.915Z",
-              "status": "pending",
-              "state": "selected-offer-observed",
-              "facts": {
-                "hotelId": "bordeaux-moxy",
-                "search": {
-                  "checkIn": "2027-04-10",
-                  "checkOut": "2027-04-12",
-                  "adults": 2,
-                  "children": 0,
-                  "rooms": 1
-                },
-                "bedMatched": true,
-                "roomIdentity": null,
-                "inclusions": {
-                  "breakfast": false
-                },
-                "cancellation": {
-                  "freeUntil": "2027-04-09T21:59:00.000Z",
-                  "penalty": {
-                    "kind": "first-night",
-                    "taxesIncluded": true
-                  },
-                  "evidence": "취소 정책 취소 정책 환불 불가 전액 환불 가능 전액 환불 부분 환불 오늘 오늘부터 4월 9일(금)까지 전액 환불 4월 9일 4월 9일(금)부터 체크인 시점까지 부분 환불 체크인 다음 날짜 전 4월 9일 전액 환불 4월 9일 23:59 전까지 예약을 취소하시면 전액 환불해 드립니다. 시간은 숙박 시설의 현지 시간을 기준으로 합니다. 다음 날짜 후 4월 9일 부분 환불 그 후에는 첫 1박 요금과 세금 및 수수료가 부과됩니다.",
-                  "verified": true
-                },
-                "payment": {
-                  "timing": "property",
-                  "guarantee": "card"
-                },
-                "price": {
-                  "roomAmount": 252.72,
-                  "totalAmount": 287.8,
-                  "knownPayableTotal": 287.8,
-                  "taxesAndFees": 35.08,
-                  "priceBreakdown": {
-                    "currency": "EUR",
-                    "displayedTotal": 287.8,
-                    "verified": true,
-                    "nonRoomChargesComplete": true,
-                    "charges": [
-                      {
-                        "kind": "tax",
-                        "label": "세금",
-                        "amount": 25.28,
-                        "currency": "EUR",
-                        "includedInDisplayedTotal": true
-                      },
-                      {
-                        "kind": "tax",
-                        "label": "현지세",
-                        "amount": 9.8,
-                        "currency": "EUR",
-                        "includedInDisplayedTotal": true
-                      }
-                    ]
-                  },
-                  "preTaxVerified": true,
-                  "preTaxAmount": 252.72,
-                  "amountBasis": "pre-tax",
-                  "currency": "EUR"
-                },
-                "restrictionsChecked": true,
-                "publicRate": true,
-                "availabilityVerified": true
-              },
-              "evidence": {
-                "hotel": [
-                  "모시 보르도 호텔",
-                  "Moxy Bordeaux Hotel"
-                ],
-                "propertyUrl": "https://kr.hotels.com/ho2103588768/moxy-bordeaux-hotel-boleudo-peulangseu/",
-                "occupancy": {
-                  "adults": 2,
-                  "children": 0,
-                  "rooms": 1
-                },
-                "dates": {
-                  "checkIn": "2027-04-10",
-                  "checkOut": "2027-04-12"
-                },
-                "roomText": "관심을 보인 옵션\n룸, 퀸사이즈침대 1개 사진 모두 보기\n객실\n7\n룸, 퀸사이즈침대 1개\n8.8\n8.8점 만점 중 10점\n훌륭해요\n이용 후기 30개\n(이용 후기 30개)\n17㎡\n침실 1개\n2명\n퀸사이즈침대 1개\n무료 WiFi\n자세히 보기\n자세히 보기\n취소 정책\n모든 정책 옵션에 대한 세부 정보\n환불 불가\n+ €0\n4월 9일 전 전액 환불 가능\n+ €19\n지금 예약하고 나중에 결제\n추가 사항\n추가 없음\n+ €0\n뷔페 아침 식사\n+ €25\n저희 사이트에서 5개 남았어요!\n현재 가격은 €108\n€108\n총 요금: €247\n세금 및 수수료 포함\n예약하기\n예약\n아직 금액이 청구되지 않습니다.",
-                "cancellation": "취소 정책 취소 정책 환불 불가 전액 환불 가능 전액 환불 부분 환불 오늘 오늘부터 4월 9일(금)까지 전액 환불 4월 9일 4월 9일(금)부터 체크인 시점까지 부분 환불 체크인 다음 날짜 전 4월 9일 전액 환불 4월 9일 23:59 전까지 예약을 취소하시면 전액 환불해 드립니다. 시간은 숙박 시설의 현지 시간을 기준으로 합니다. 다음 날짜 후 4월 9일 부분 환불 그 후에는 첫 1박 요금과 세금 및 수수료가 부과됩니다.",
-                "selectedText": "관심을 보인 옵션\n룸, 퀸사이즈침대 1개 사진 모두 보기\n객실\n7\n룸, 퀸사이즈침대 1개\n8.8\n8.8점 만점 중 10점\n훌륭해요\n이용 후기 30개\n(이용 후기 30개)\n17㎡\n침실 1개\n2명\n퀸사이즈침대 1개\n무료 WiFi\n자세히 보기\n자세히 보기\n취소 정책\n모든 정책 옵션에 대한 세부 정보\n환불 불가\n+ €0\n4월 9일 전 전액 환불 가능\n+ €19\n지금 예약하고 나중에 결제\n추가 사항\n추가 없음\n+ €0\n뷔페 아침 식사\n+ €27\n저희 사이트에서 5개 남았어요!\n현재 가격은 €126\n€126\n총 요금: €288\n세금 및 수수료 포함\n예약\n예약하기\n아직 금액이 청구되지 않습니다.",
-                "payment": "결제 옵션 선택 4월 9일(금) 전 전액 환불 가능 숙박 시 결제 EUR 통화로 숙박 시설에 직접 결제합니다. 현재 가격은 €126 €126 총 요금: €288 세금 및 수수료 포함 현장 결제 숙박하실 때까지 금액이 청구되지 않습니다. 지금 결제 EUR 통화로 청구됩니다. 직불/신용카드로 결제하실 수 있습니다. 현재 가격은 €126 €126 총 요금: €288 세금 및 수수료 포함 지금 결제 아직 금액이 청구되지 않습니다.",
-                "priceText": "2박 €126.36/1박 €252.72 세금 €25.28 현지세 €9.80 총 금액 €287.80 오늘 결제 €0.00 숙박 시설에서 결제 €287.80"
-              }
-            }
-          ],
-          "comparisons": [
-            {
-              "provider": "Hotels.com",
-              "checks": [
-                {
-                  "key": "scope",
-                  "label": "동일 예약 범위",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "호텔·일정·인원·객실 기준에 연결됨"
-                },
-                {
-                  "key": "fresh",
-                  "label": "양쪽 요금 최신 확인",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "관측 시각 기준 24시간 이내"
-                },
-                {
-                  "key": "hotel",
-                  "label": "동일 호텔",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "실제 호텔 인식 결과와 감시 호텔이 모두 같아야 함"
-                },
-                {
-                  "key": "dates",
-                  "label": "동일 날짜·인원·객실 수",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "양쪽 화면에서 요청한 연도·일정·인원·객실 수를 직접 확인"
-                },
-                {
-                  "key": "room",
-                  "label": "동일 객실·침대",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "inclusions",
-                  "label": "동일 포함 혜택",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "cancellation",
-                  "label": "정확한 무료취소 마감",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "공식 \"2027-04-09T21:59:00.000Z\" / 타사 \"2027-04-09T21:59:00.000Z\""
-                },
-                {
-                  "key": "penalty",
-                  "label": "취소 후 위약금 규정",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "payment",
-                  "label": "결제·보증 방식",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "실제 선택 요금 근거 부족"
-                },
-                {
-                  "key": "public",
-                  "label": "공개 접근·제한 없는 타사 요금",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "비로그인 선택 요금과 게스트 결제 진행 근거"
-                },
-                {
-                  "key": "official",
-                  "label": "공식 동일조건 최저 공개 요금",
-                  "state": "matched",
-                  "ok": true,
-                  "reason": "회원요금 포함, 같은 객실·혜택·취소조건끼리 비교"
-                },
-                {
-                  "key": "available",
-                  "label": "양쪽 실제 예약 가능",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "선택 요금의 미확정 예약 요약 확인"
-                },
-                {
-                  "key": "basis",
-                  "label": "같은 통화 세전 전체 객실료",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "세금·수수료 내역 검산 근거 필요"
-                },
-                {
-                  "key": "margin",
-                  "label": "공식 세전가보다 1% 초과 저렴",
-                  "state": "unknown",
-                  "ok": false,
-                  "reason": "환율·추정 세전가로 통과시키지 않음"
-                }
-              ],
-              "conditionsVerified": false,
-              "state": "partial",
-              "mismatches": [],
-              "unknown": [
-                "room",
-                "inclusions",
-                "penalty",
-                "payment",
-                "available",
-                "basis",
-                "margin"
-              ],
-              "price": {
-                "status": "금액 확인 필요"
-              }
-            }
-          ]
-        }
       }
     ]
   },
   "googleStatus": {
-    "capturedAt": "2026-10-27T00:31:27.973Z",
+    "capturedAt": "2026-10-27T20:12:46.053Z",
     "results": [
       {
         "id": "madrid-carlton",
         "status": "ok",
-        "capturedAt": "2026-10-27T00:31:27.973Z",
+        "capturedAt": "2026-10-27T20:12:46.054Z",
         "error": null,
         "state": "ok",
         "dateConfirmed": true,
@@ -90813,42 +92095,42 @@
       },
       {
         "id": "bilbao-ercilla",
-        "status": "error",
-        "capturedAt": "2026-10-27T00:31:27.973Z",
-        "error": "page.waitForFunction: Timeout 30000ms exceeded.",
-        "state": "hotel-result",
-        "dateConfirmed": false,
-        "occupancyConfirmed": false
+        "status": "ok",
+        "capturedAt": "2026-10-27T20:12:46.054Z",
+        "error": null,
+        "state": "ok",
+        "dateConfirmed": true,
+        "occupancyConfirmed": true
       },
       {
         "id": "bordeaux-moxy",
-        "status": "error",
-        "capturedAt": "2026-10-27T00:31:27.973Z",
-        "error": "page.waitForFunction: Timeout 30000ms exceeded.",
-        "state": "hotel-result",
-        "dateConfirmed": false,
-        "occupancyConfirmed": false
+        "status": "ok",
+        "capturedAt": "2026-10-27T20:12:46.054Z",
+        "error": null,
+        "state": "ok",
+        "dateConfirmed": true,
+        "occupancyConfirmed": true
       },
       {
         "id": "barcelona-four-points",
-        "status": "error",
-        "capturedAt": "2026-10-27T00:31:27.973Z",
-        "error": "page.waitForFunction: Timeout 30000ms exceeded.",
-        "state": "hotel-result",
-        "dateConfirmed": false,
-        "occupancyConfirmed": false
+        "status": "ok",
+        "capturedAt": "2026-10-27T20:12:46.054Z",
+        "error": null,
+        "state": "ok",
+        "dateConfirmed": true,
+        "occupancyConfirmed": true
       }
     ]
   },
   "otaStatus": {
-    "capturedAt": "2026-10-27T02:00:03.664Z",
+    "capturedAt": "2026-10-27T20:12:46.053Z",
     "results": [
       {
         "id": "madrid-carlton",
         "providers": [
           {
             "provider": "Booking.com",
-            "capturedAt": "2026-10-27T00:25:14.871Z",
+            "capturedAt": "2026-10-27T20:09:14.817Z",
             "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
             "status": "pending",
             "state": "matching-offer-unavailable",
@@ -90917,7 +92199,7 @@
           },
           {
             "provider": "Agoda",
-            "capturedAt": "2026-10-27T00:25:28.915Z",
+            "capturedAt": "2026-10-27T20:09:27.772Z",
             "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
             "state": "room-or-cancellation-unverified",
             "status": "pending",
@@ -90925,7 +92207,7 @@
           },
           {
             "provider": "Expedia",
-            "capturedAt": "2026-10-27T00:25:39.278Z",
+            "capturedAt": "2026-10-27T20:09:40.455Z",
             "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
             "state": "blocked",
             "status": "error",
@@ -90961,7 +92243,7 @@
         "providers": [
           {
             "provider": "Booking.com",
-            "capturedAt": "2026-10-26T20:39:19.144Z",
+            "capturedAt": "2026-10-27T20:09:57.776Z",
             "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
             "state": "hotel-unverified",
             "status": "pending",
@@ -90969,78 +92251,25 @@
           },
           {
             "provider": "Agoda",
-            "capturedAt": "2026-10-26T20:39:21.025Z",
+            "capturedAt": "2026-10-27T20:10:00.243Z",
             "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
             "status": "pending",
             "state": "link-unavailable"
           },
           {
             "provider": "Expedia",
-            "capturedAt": "2026-10-26T20:39:21.025Z",
+            "capturedAt": "2026-10-27T20:10:00.243Z",
             "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
             "state": "hotel-unverified",
             "status": "pending",
             "sourceOrigin": "https://www.expedia.com"
           }
         ],
-        "state": "google-unavailable"
-      },
-      {
-        "id": "barcelona-four-points",
-        "providers": [
-          {
-            "provider": "Booking.com",
-            "capturedAt": "2026-10-26T20:39:49.938Z",
-            "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
-            "state": "hotel-unverified",
-            "status": "pending",
-            "sourceOrigin": "https://www.booking.com"
-          },
-          {
-            "provider": "Agoda",
-            "capturedAt": "2026-10-26T20:39:52.124Z",
-            "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
-            "status": "pending",
-            "state": "link-unavailable"
-          },
-          {
-            "provider": "Expedia",
-            "capturedAt": "2026-10-26T20:39:52.124Z",
-            "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
-            "state": "hotel-unverified",
-            "status": "pending",
-            "sourceOrigin": "https://www.expedia.com"
-          }
-        ],
-        "state": "google-unavailable"
+        "state": "attempted"
       },
       {
         "id": "bordeaux-moxy",
-        "state": "manual-checkout-observed",
         "providers": [
-          {
-            "provider": "Booking.com",
-            "capturedAt": "2026-10-26T20:39:34.536Z",
-            "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
-            "state": "hotel-unverified",
-            "status": "pending",
-            "sourceOrigin": "https://www.booking.com"
-          },
-          {
-            "provider": "Agoda",
-            "capturedAt": "2026-10-26T20:39:36.425Z",
-            "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
-            "status": "pending",
-            "state": "link-unavailable"
-          },
-          {
-            "provider": "Expedia",
-            "capturedAt": "2026-10-26T20:39:36.425Z",
-            "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
-            "state": "hotel-unverified",
-            "status": "pending",
-            "sourceOrigin": "https://www.expedia.com"
-          },
           {
             "provider": "Hotels.com",
             "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
@@ -91101,8 +92330,61 @@
               },
               "note": "실제 결제 전 요금 내역에서 세금 분리·합계 검산. 고객·카드 정보 입력 및 예약 확정 없음. 아동 수·취소 시각·공개 요금·객실 명칭 대응은 별도 확인."
             }
+          },
+          {
+            "provider": "Booking.com",
+            "capturedAt": "2026-10-27T20:10:11.429Z",
+            "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
+            "state": "hotel-unverified",
+            "status": "pending",
+            "sourceOrigin": "https://www.booking.com"
+          },
+          {
+            "provider": "Agoda",
+            "capturedAt": "2026-10-27T20:10:13.596Z",
+            "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
+            "status": "pending",
+            "state": "link-unavailable"
+          },
+          {
+            "provider": "Expedia",
+            "capturedAt": "2026-10-27T20:10:13.596Z",
+            "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
+            "state": "hotel-unverified",
+            "status": "pending",
+            "sourceOrigin": "https://www.expedia.com"
           }
-        ]
+        ],
+        "state": "attempted"
+      },
+      {
+        "id": "barcelona-four-points",
+        "providers": [
+          {
+            "provider": "Booking.com",
+            "capturedAt": "2026-10-27T20:10:25.089Z",
+            "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
+            "state": "hotel-unverified",
+            "status": "pending",
+            "sourceOrigin": "https://www.booking.com"
+          },
+          {
+            "provider": "Agoda",
+            "capturedAt": "2026-10-27T20:10:28.520Z",
+            "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
+            "status": "pending",
+            "state": "link-unavailable"
+          },
+          {
+            "provider": "Expedia",
+            "capturedAt": "2026-10-27T20:10:28.521Z",
+            "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
+            "state": "hotel-unverified",
+            "status": "pending",
+            "sourceOrigin": "https://www.expedia.com"
+          }
+        ],
+        "state": "attempted"
       }
     ]
   }
