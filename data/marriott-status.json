@@ -1,8 +1,37 @@
 {
-  "capturedAt": "2026-10-28T01:08:16.556Z",
+  "capturedAt": "2026-10-28T20:28:15.884Z",
   "results": [
     {
       "id": "madrid-carlton",
+      "status": "blocked",
+      "state": "blocked",
+      "error": "confirming specific dates: 요금 전환 상태: blocked",
+      "capturedAt": "2026-10-28T20:26:20.999Z",
+      "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+      "diagnostics": {
+        "stage": "confirming specific dates",
+        "responseStatus": null,
+        "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=4&fromDate=04%2F03%2F2027&toDate=04%2F07%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=MADCA&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F03%2F2027&t-end=04%2F07%2F2027&fromDateDefaultFormat=04%2F03%2F2027&toDateDefaultFormat=04%2F07%2F2027&fromToDate_submit=04%2F07%2F2027&fromToDate=04%2F03%2F2027&roomPoolCode=doub",
+        "title": "Access Denied",
+        "bodyLength": 228,
+        "selectors": {
+          "dateInput": false,
+          "viewRates": false,
+          "roomCards": false,
+          "rateCards": false,
+          "login": false,
+          "cookieConsent": false
+        },
+        "browser": {
+          "platform": "linux-x64",
+          "headless": false,
+          "channel": null,
+          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+          "persistent": false,
+          "browserVersion": "151.0.7922.34",
+          "authMethod": "none"
+        }
+      },
       "verification": {
         "schemaVersion": 1,
         "scope": "[\"madrid-carlton\",\"2027-04-03\",\"2027-04-07\",2,0,1,\"EUR\",\"Standard King Room / Guest Room / 1 King\",733.6,\"2027-04-02 23:59 (호텔 현지시간)\"]",
@@ -244,19 +273,39 @@
             }
           }
         ]
-      },
-      "status": "ok",
-      "state": "ok",
-      "error": null,
-      "capturedAt": "2026-10-28T01:02:13.176Z",
-      "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
-      "diagnostics": {
-        "finalUrl": null,
-        "browser": null
       }
     },
     {
       "id": "bilbao-ercilla",
+      "status": "blocked",
+      "state": "blocked",
+      "error": "confirming specific dates: 요금 전환 상태: blocked",
+      "capturedAt": "2026-10-28T20:26:50.074Z",
+      "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+      "diagnostics": {
+        "stage": "confirming specific dates",
+        "responseStatus": null,
+        "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr",
+        "title": "Access Denied",
+        "bodyLength": 228,
+        "selectors": {
+          "dateInput": false,
+          "viewRates": false,
+          "roomCards": false,
+          "rateCards": false,
+          "login": false,
+          "cookieConsent": false
+        },
+        "browser": {
+          "platform": "linux-x64",
+          "headless": false,
+          "channel": null,
+          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+          "persistent": false,
+          "browserVersion": "151.0.7922.34",
+          "authMethod": "none"
+        }
+      },
       "verification": {
         "schemaVersion": 1,
         "scope": "[\"bilbao-ercilla\",\"2027-04-07\",\"2027-04-10\",2,0,1,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",473,\"2027-04-06 23:59 (호텔 현지시간)\"]",
@@ -536,19 +585,39 @@
             }
           }
         ]
-      },
-      "status": "ok",
-      "state": "ok",
-      "error": null,
-      "capturedAt": "2026-10-28T01:04:00.520Z",
-      "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
-      "diagnostics": {
-        "finalUrl": null,
-        "browser": null
       }
     },
     {
       "id": "bordeaux-moxy",
+      "status": "error",
+      "state": "calendar-unavailable",
+      "error": "opening date picker: locator.click: Timeout 15000ms exceeded.",
+      "capturedAt": "2026-10-28T20:27:40.319Z",
+      "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+      "diagnostics": {
+        "stage": "opening date picker",
+        "responseStatus": null,
+        "finalUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+        "title": "Rooms | Moxy Bordeaux",
+        "bodyLength": 4874,
+        "selectors": {
+          "dateInput": true,
+          "viewRates": true,
+          "roomCards": true,
+          "rateCards": false,
+          "login": false,
+          "cookieConsent": false
+        },
+        "browser": {
+          "platform": "linux-x64",
+          "headless": false,
+          "channel": null,
+          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+          "persistent": false,
+          "browserVersion": "151.0.7922.34",
+          "authMethod": "none"
+        }
+      },
       "verification": {
         "schemaVersion": 1,
         "scope": "[\"bordeaux-moxy\",\"2027-04-10\",\"2027-04-12\",2,0,1,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",278.8,\"2027-04-09 23:59 (호텔 현지시간)\"]",
@@ -836,19 +905,39 @@
             }
           }
         ]
-      },
-      "status": "ok",
-      "state": "ok",
-      "error": null,
-      "capturedAt": "2026-10-28T01:05:51.869Z",
-      "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
-      "diagnostics": {
-        "finalUrl": null,
-        "browser": null
       }
     },
     {
       "id": "barcelona-four-points",
+      "status": "blocked",
+      "state": "blocked",
+      "error": "confirming specific dates: 요금 전환 상태: blocked",
+      "capturedAt": "2026-10-28T20:28:13.141Z",
+      "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+      "diagnostics": {
+        "stage": "confirming specific dates",
+        "responseStatus": null,
+        "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king",
+        "title": "Access Denied",
+        "bodyLength": 228,
+        "selectors": {
+          "dateInput": false,
+          "viewRates": false,
+          "roomCards": false,
+          "rateCards": false,
+          "login": false,
+          "cookieConsent": false
+        },
+        "browser": {
+          "platform": "linux-x64",
+          "headless": false,
+          "channel": null,
+          "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+          "persistent": false,
+          "browserVersion": "151.0.7922.34",
+          "authMethod": "none"
+        }
+      },
       "verification": {
         "schemaVersion": 1,
         "scope": "[\"barcelona-four-points\",\"2027-04-13\",\"2027-04-16\",2,0,1,\"EUR\",\"Classic Room / 1 King Bed\",665.94,\"2027-04-11 23:59 (호텔 현지시간)\"]",
@@ -1138,15 +1227,6 @@
             }
           }
         ]
-      },
-      "status": "ok",
-      "state": "ok",
-      "error": null,
-      "capturedAt": "2026-10-28T01:07:53.013Z",
-      "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
-      "diagnostics": {
-        "finalUrl": null,
-        "browser": null
       }
     }
   ]
