@@ -90573,6 +90573,294 @@
           "candidateSavingsKrw": null
         }
       ]
+    },
+    {
+      "capturedAt": "2026-10-28T00:36:49.877Z",
+      "fx": {
+        "rates": {
+          "EUR": 1480.44
+        },
+        "dates": {
+          "EUR": "2026-10-27"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "status": "ok",
+          "hotel": "AC Hotel Carlton Madrid",
+          "detailUrl": "https://www.google.com/travel/search?q=AC+Hotel+Carlton+Madrid&adults=2&hl=en&curr=EUR&ts=CAEaHBIYEhIKBwjrDxAEGAMSBwjrDxAEGAcyAggAGgAqBwoFOgNVU0Q&qs=MiZDaGdJN0xQNXo4eWlyOXpLQVJvTEwyY3ZNWFI0T0hacU1EQVFBUQ&ved=0CAAQ5JsGahcKEwjI54fHutuXAxUAAAAAHQAAAAAQBg&ap=ugEGcHJpY2Vz",
+          "bookedKrw": 1086051,
+          "bookedAmount": 733.6,
+          "bookedRoomSubtotal": 666.9,
+          "bookedCurrency": "EUR",
+          "checkIn": "2027-04-03",
+          "checkOut": "2027-04-07",
+          "adults": 2,
+          "nights": 4,
+          "officialReference": null,
+          "providers": [],
+          "roomRates": [
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193.75,
+              "totalAmount": 775,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Travelocity.com · Free cancellation until Apr 2 · Free Wi-Fi · €775",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [
+                  "standard"
+                ],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": null,
+              "publicRate": null,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1147341
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193.75,
+              "totalAmount": 775,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Standard Room, 1 King Bed · 1 king bed · Free cancellation until Apr 2 · €775",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": true,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": null,
+              "publicRate": null,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1147341
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 222.75,
+              "totalAmount": 891,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Standard Room, 1 King Bed · 1 king bed · Free cancellation until Apr 2 · breakfast · €891",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": true,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": null,
+              "publicRate": null,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1319072
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193.75,
+              "totalAmount": 775,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Standard Room, 1 Queen Bed · 1 queen bed · Free cancellation until Apr 2 · €775",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [
+                  "queen"
+                ],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": null,
+              "publicRate": null,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1147341
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193.75,
+              "totalAmount": 775,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Expedia.com · Free cancellation until Apr 2 · Free Wi-Fi · €775",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [
+                  "standard"
+                ],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": "Expedia.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1147341
+            },
+            {
+              "amountBasis": "tax-included",
+              "nightlyAmount": 193.75,
+              "totalAmount": 775,
+              "estimatedFromNightly": false,
+              "currency": "EUR",
+              "context": "Hotels.com · Free cancellation until Apr 2 · Free Wi-Fi · €775",
+              "freeCancellation": true,
+              "cancellationDeadline": "2027-04-02",
+              "matchEvidence": {
+                "roomMatched": false,
+                "cancellationMatched": true,
+                "missingRoomPatterns": [
+                  "standard"
+                ],
+                "missingBedPatterns": [
+                  "king"
+                ],
+                "excludedMatches": [],
+                "offeredDeadline": "2027-04-02",
+                "expectedDeadline": "2027-04-02"
+              },
+              "provider": "Hotels.com",
+              "publicRate": true,
+              "availabilityVerified": false,
+              "displayMode": "stay-total",
+              "totalKrw": 1147341
+            }
+          ],
+          "lowestProvider": null,
+          "freeCancellation": {
+            "amountBasis": "tax-included",
+            "nightlyAmount": 193.75,
+            "totalAmount": 775,
+            "estimatedFromNightly": false,
+            "currency": "EUR",
+            "context": "Travelocity.com · Free cancellation until Apr 2 · Free Wi-Fi · €775",
+            "freeCancellation": true,
+            "cancellationDeadline": "2027-04-02",
+            "matchEvidence": {
+              "roomMatched": false,
+              "cancellationMatched": true,
+              "missingRoomPatterns": [
+                "standard"
+              ],
+              "missingBedPatterns": [
+                "king"
+              ],
+              "excludedMatches": [],
+              "offeredDeadline": "2027-04-02",
+              "expectedDeadline": "2027-04-02"
+            },
+            "provider": null,
+            "publicRate": null,
+            "availabilityVerified": false,
+            "displayMode": "stay-total",
+            "totalKrw": 1147341
+          },
+          "exactCandidate": {
+            "amountBasis": "tax-included",
+            "nightlyAmount": 193.75,
+            "totalAmount": 775,
+            "estimatedFromNightly": false,
+            "currency": "EUR",
+            "context": "Standard Room, 1 King Bed · 1 king bed · Free cancellation until Apr 2 · €775",
+            "freeCancellation": true,
+            "cancellationDeadline": "2027-04-02",
+            "matchEvidence": {
+              "roomMatched": true,
+              "cancellationMatched": true,
+              "missingRoomPatterns": [],
+              "missingBedPatterns": [],
+              "excludedMatches": [],
+              "offeredDeadline": "2027-04-02",
+              "expectedDeadline": "2027-04-02"
+            },
+            "provider": null,
+            "publicRate": null,
+            "availabilityVerified": false,
+            "displayMode": "stay-total",
+            "totalKrw": 1147341
+          },
+          "displayMode": "stay-total",
+          "amountBasis": "tax-included",
+          "taxEvidence": "Google Hotels Stay total · Price for 4 nights with taxes + fees",
+          "dateConfirmed": true,
+          "occupancyConfirmed": true,
+          "roomCountConfirmed": false,
+          "searchEvidence": {
+            "source": "google-visible-controls",
+            "checkIn": "2027-04-03",
+            "checkOut": "2027-04-07",
+            "occupancyText": "Adults\nRemove adult\n2\n2\nAdd adult\nChildren\nRemove child\n0\n0\nAdd child\nCancel\nDone",
+            "adults": 2,
+            "children": 0,
+            "rooms": null
+          },
+          "otaChecks": [
+            {
+              "provider": "Booking.com",
+              "capturedAt": "2026-10-28T00:29:51.288Z",
+              "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+              "status": "error",
+              "state": "search-timeout"
+            },
+            {
+              "provider": "Agoda",
+              "capturedAt": "2026-10-28T00:30:11.050Z",
+              "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+              "status": "error",
+              "state": "search-timeout"
+            },
+            {
+              "provider": "Expedia",
+              "capturedAt": "2026-10-28T00:30:22.874Z",
+              "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
+              "status": "error",
+              "state": "search-timeout"
+            }
+          ],
+          "capturedAt": "2026-10-28T00:30:36.820Z",
+          "candidateKind": "exact",
+          "candidateSavingsAmount": null,
+          "candidateSavingsKrw": null
+        }
+      ]
     }
   ],
   "config": {
@@ -90850,14 +91138,14 @@
     ]
   },
   "collectorStatus": {
-    "capturedAt": "2026-10-27T20:12:46.051Z",
+    "capturedAt": "2026-10-28T00:36:49.873Z",
     "results": [
       {
         "id": "madrid-carlton",
         "status": "blocked",
         "state": "blocked",
         "error": "confirming specific dates: 요금 전환 상태: blocked",
-        "capturedAt": "2026-10-27T20:11:01.220Z",
+        "capturedAt": "2026-10-28T00:34:59.314Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
@@ -91128,21 +91416,21 @@
       },
       {
         "id": "bilbao-ercilla",
-        "status": "error",
-        "state": "calendar-unavailable",
-        "error": "opening date picker: locator.click: Timeout 15000ms exceeded.",
-        "capturedAt": "2026-10-27T20:11:40.238Z",
+        "status": "blocked",
+        "state": "blocked",
+        "error": "confirming specific dates: 요금 전환 상태: blocked",
+        "capturedAt": "2026-10-28T00:35:31.599Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
         "diagnostics": {
-          "stage": "opening date picker",
+          "stage": "confirming specific dates",
           "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
-          "title": "Boutique Rooms & Suites | Hotel Ercilla de Bilbao, Autograph Collection",
-          "bodyLength": 2958,
+          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr",
+          "title": "Access Denied",
+          "bodyLength": 230,
           "selectors": {
-            "dateInput": true,
-            "viewRates": true,
-            "roomCards": true,
+            "dateInput": false,
+            "viewRates": false,
+            "roomCards": false,
             "rateCards": false,
             "login": false,
             "cookieConsent": false
@@ -91440,21 +91728,21 @@
       },
       {
         "id": "bordeaux-moxy",
-        "status": "blocked",
-        "state": "blocked",
-        "error": "confirming specific dates: 요금 전환 상태: blocked",
-        "capturedAt": "2026-10-27T20:12:13.234Z",
+        "status": "error",
+        "state": "calendar-unavailable",
+        "error": "opening date picker: locator.click: Timeout 15000ms exceeded.",
+        "capturedAt": "2026-10-28T00:36:13.287Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
         "diagnostics": {
-          "stage": "confirming specific dates",
+          "stage": "opening date picker",
           "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr",
-          "title": "Access Denied",
-          "bodyLength": 230,
+          "finalUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+          "title": "Rooms | Moxy Bordeaux",
+          "bodyLength": 4874,
           "selectors": {
-            "dateInput": false,
-            "viewRates": false,
-            "roomCards": false,
+            "dateInput": true,
+            "viewRates": true,
+            "roomCards": true,
             "rateCards": false,
             "login": false,
             "cookieConsent": false
@@ -91763,14 +92051,14 @@
         "status": "blocked",
         "state": "blocked",
         "error": "confirming specific dates: 요금 전환 상태: blocked",
-        "capturedAt": "2026-10-27T20:12:43.369Z",
+        "capturedAt": "2026-10-28T00:36:47.114Z",
         "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
         "diagnostics": {
           "stage": "confirming specific dates",
           "responseStatus": null,
           "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king",
           "title": "Access Denied",
-          "bodyLength": 228,
+          "bodyLength": 230,
           "selectors": {
             "dateInput": false,
             "viewRates": false,
@@ -92082,12 +92370,12 @@
     ]
   },
   "googleStatus": {
-    "capturedAt": "2026-10-27T20:12:46.053Z",
+    "capturedAt": "2026-10-28T00:36:49.876Z",
     "results": [
       {
         "id": "madrid-carlton",
         "status": "ok",
-        "capturedAt": "2026-10-27T20:12:46.054Z",
+        "capturedAt": "2026-10-28T00:36:49.876Z",
         "error": null,
         "state": "ok",
         "dateConfirmed": true,
@@ -92095,46 +92383,45 @@
       },
       {
         "id": "bilbao-ercilla",
-        "status": "ok",
-        "capturedAt": "2026-10-27T20:12:46.054Z",
-        "error": null,
-        "state": "ok",
-        "dateConfirmed": true,
-        "occupancyConfirmed": true
+        "status": "error",
+        "capturedAt": "2026-10-28T00:36:49.876Z",
+        "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+        "state": "hotel-result",
+        "dateConfirmed": false,
+        "occupancyConfirmed": false
       },
       {
         "id": "bordeaux-moxy",
-        "status": "ok",
-        "capturedAt": "2026-10-27T20:12:46.054Z",
-        "error": null,
-        "state": "ok",
-        "dateConfirmed": true,
-        "occupancyConfirmed": true
+        "status": "error",
+        "capturedAt": "2026-10-28T00:36:49.876Z",
+        "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+        "state": "hotel-result",
+        "dateConfirmed": false,
+        "occupancyConfirmed": false
       },
       {
         "id": "barcelona-four-points",
-        "status": "ok",
-        "capturedAt": "2026-10-27T20:12:46.054Z",
-        "error": null,
-        "state": "ok",
-        "dateConfirmed": true,
-        "occupancyConfirmed": true
+        "status": "error",
+        "capturedAt": "2026-10-28T00:36:49.876Z",
+        "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+        "state": "hotel-result",
+        "dateConfirmed": false,
+        "occupancyConfirmed": false
       }
     ]
   },
   "otaStatus": {
-    "capturedAt": "2026-10-27T20:12:46.053Z",
+    "capturedAt": "2026-10-28T00:36:49.875Z",
     "results": [
       {
         "id": "madrid-carlton",
         "providers": [
           {
             "provider": "Booking.com",
-            "capturedAt": "2026-10-27T20:09:14.817Z",
+            "capturedAt": "2026-10-28T00:29:51.288Z",
             "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-            "status": "pending",
-            "state": "matching-offer-unavailable",
-            "sourceOrigin": "https://www.booking.com",
+            "status": "error",
+            "state": "search-timeout",
             "checkoutObservation": {
               "state": "checkout-total-observed",
               "currency": "EUR",
@@ -92199,19 +92486,17 @@
           },
           {
             "provider": "Agoda",
-            "capturedAt": "2026-10-27T20:09:27.772Z",
+            "capturedAt": "2026-10-28T00:30:11.050Z",
             "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-            "state": "room-or-cancellation-unverified",
-            "status": "pending",
-            "sourceOrigin": "https://www.agoda.com"
+            "status": "error",
+            "state": "search-timeout"
           },
           {
             "provider": "Expedia",
-            "capturedAt": "2026-10-27T20:09:40.455Z",
+            "capturedAt": "2026-10-28T00:30:22.874Z",
             "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-            "state": "blocked",
             "status": "error",
-            "sourceOrigin": "https://www.expedia.com",
+            "state": "search-timeout",
             "checkoutObservation": {
               "state": "checkout-total-observed",
               "currency": "EUR",
@@ -92265,7 +92550,7 @@
             "sourceOrigin": "https://www.expedia.com"
           }
         ],
-        "state": "attempted"
+        "state": "google-unavailable"
       },
       {
         "id": "bordeaux-moxy",
@@ -92355,7 +92640,7 @@
             "sourceOrigin": "https://www.expedia.com"
           }
         ],
-        "state": "attempted"
+        "state": "google-unavailable"
       },
       {
         "id": "barcelona-four-points",
@@ -92384,7 +92669,7 @@
             "sourceOrigin": "https://www.expedia.com"
           }
         ],
-        "state": "attempted"
+        "state": "google-unavailable"
       }
     ]
   }
