@@ -1,10 +1,10 @@
 {
-  "capturedAt": "2026-10-29T00:57:02.318Z",
+  "capturedAt": "2026-10-29T20:27:03.961Z",
   "results": [
     {
       "id": "madrid-carlton",
       "status": "ok",
-      "capturedAt": "2026-10-29T00:57:02.318Z",
+      "capturedAt": "2026-10-29T20:27:03.961Z",
       "error": null,
       "state": "ok",
       "dateConfirmed": true,
@@ -13,7 +13,7 @@
     {
       "id": "bilbao-ercilla",
       "status": "ok",
-      "capturedAt": "2026-10-29T00:57:02.318Z",
+      "capturedAt": "2026-10-29T20:27:03.961Z",
       "error": null,
       "state": "ok",
       "dateConfirmed": true,
@@ -22,7 +22,7 @@
     {
       "id": "bordeaux-moxy",
       "status": "ok",
-      "capturedAt": "2026-10-29T00:57:02.318Z",
+      "capturedAt": "2026-10-29T20:27:03.961Z",
       "error": null,
       "state": "ok",
       "dateConfirmed": true,
@@ -31,7 +31,7 @@
     {
       "id": "barcelona-four-points",
       "status": "ok",
-      "capturedAt": "2026-10-29T00:57:02.318Z",
+      "capturedAt": "2026-10-29T20:27:03.961Z",
       "error": null,
       "state": "ok",
       "dateConfirmed": true,
