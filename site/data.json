@@ -96962,6 +96962,301 @@
           "candidateSavingsKrw": null
         }
       ]
+    },
+    {
+      "capturedAt": "2026-10-31T01:08:45.804Z",
+      "fx": {
+        "rates": {
+          "EUR": 1491.76
+        },
+        "dates": {
+          "EUR": "2026-10-30"
+        },
+        "source": "frankfurter.app",
+        "errors": {}
+      },
+      "results": [
+        {
+          "id": "madrid-carlton",
+          "hotel": "AC Hotel Carlton Madrid",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Standard King Room, Guest room, 1 King",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before or on Apr 02, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 190,
+            "currency": "EUR",
+            "totalAmount": 760,
+            "taxesIncluded": null,
+            "amountBasis": "unknown",
+            "prepaid": false,
+            "preTaxVerified": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "doub",
+            "checkIn": "2027-04-03",
+            "checkOut": "2027-04-07",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-10-31T01:02:06.687Z",
+            "totalKrw": 1133738,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "156.0.8078.47"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              },
+              {
+                "method": "POST",
+                "resourceType": "fetch",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/query/PhoenixBookDTTGetRateDetails"
+              },
+              {
+                "method": "GET",
+                "resourceType": "document",
+                "status": 307,
+                "url": "https://www.marriott.com/reservation/reviewDetails.mi"
+              },
+              {
+                "method": "GET",
+                "resourceType": "document",
+                "status": 200,
+                "url": "https://www.marriott.com/reservation/reviewguestinformation.mi"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+            "note": "공식 동일 객실·일정·인원의 표시가 확인. 세금·수수료 제외 근거와 상세 조건은 정밀 검증 결과를 확인하세요."
+          }
+        },
+        {
+          "id": "bilbao-ercilla",
+          "hotel": "Hotel Ercilla de Bilbao, Autograph Collection",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Stylish, Guest room, 1 Double",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before or on Apr 06, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 161,
+            "currency": "EUR",
+            "totalAmount": 483,
+            "taxesIncluded": null,
+            "amountBasis": "unknown",
+            "prepaid": false,
+            "preTaxVerified": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "genr",
+            "checkIn": "2027-04-07",
+            "checkOut": "2027-04-10",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-10-31T01:04:08.877Z",
+            "totalKrw": 720520,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "156.0.8078.47"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              },
+              {
+                "method": "POST",
+                "resourceType": "fetch",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/query/PhoenixBookDTTGetRateDetails"
+              },
+              {
+                "method": "GET",
+                "resourceType": "document",
+                "status": 307,
+                "url": "https://www.marriott.com/reservation/reviewDetails.mi"
+              },
+              {
+                "method": "GET",
+                "resourceType": "document",
+                "status": 200,
+                "url": "https://www.marriott.com/reservation/reviewguestinformation.mi"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+            "note": "공식 동일 객실·일정·인원의 표시가 확인. 세금·수수료 제외 근거와 상세 조건은 정밀 검증 결과를 확인하세요."
+          }
+        },
+        {
+          "id": "bordeaux-moxy",
+          "hotel": "Moxy Bordeaux",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Moxy Sleeper, Guest room, 1 Queen",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before or on Apr 09, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 134,
+            "currency": "EUR",
+            "totalAmount": 269,
+            "taxesIncluded": null,
+            "amountBasis": "unknown",
+            "prepaid": false,
+            "preTaxVerified": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "genr",
+            "checkIn": "2027-04-10",
+            "checkOut": "2027-04-12",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-10-31T01:06:13.706Z",
+            "totalKrw": 401283,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "156.0.8078.47"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              },
+              {
+                "method": "POST",
+                "resourceType": "fetch",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/query/PhoenixBookDTTGetRateDetails"
+              },
+              {
+                "method": "GET",
+                "resourceType": "document",
+                "status": 307,
+                "url": "https://www.marriott.com/reservation/reviewDetails.mi"
+              },
+              {
+                "method": "GET",
+                "resourceType": "document",
+                "status": 200,
+                "url": "https://www.marriott.com/reservation/reviewguestinformation.mi"
+              },
+              {
+                "method": "GET",
+                "resourceType": "fetch",
+                "status": 200,
+                "url": "https://www.marriott.com/reservation/reviewguestinformation.mi"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+            "note": "공식 동일 객실·일정·인원의 표시가 확인. 세금·수수료 제외 근거와 상세 조건은 정밀 검증 결과를 확인하세요."
+          }
+        },
+        {
+          "id": "barcelona-four-points",
+          "hotel": "Four Points by Sheraton Barcelona Diagonal",
+          "status": "not-collected",
+          "error": "공식가만 갱신한 실행입니다. Google은 최근 수집 시각을 참고하세요.",
+          "marriott": {
+            "status": "ok",
+            "room": "Classic, Guest room, 1 King Super",
+            "rateName": "Member Flexible Rate",
+            "cancellation": "Free cancellation before 11:59 PM local hotel time on April 11, 2027",
+            "freeCancellation": true,
+            "nightlyAmount": 185,
+            "currency": "EUR",
+            "totalAmount": 555,
+            "taxesIncluded": null,
+            "amountBasis": "unknown",
+            "prepaid": false,
+            "preTaxVerified": false,
+            "collectionMethod": "official-booking-form",
+            "roomPoolCode": "d000000002",
+            "checkIn": "2027-04-13",
+            "checkOut": "2027-04-16",
+            "adults": 2,
+            "comparable": false,
+            "capturedAt": "2026-10-31T01:08:21.432Z",
+            "totalKrw": 827927,
+            "browser": {
+              "platform": "linux-x64",
+              "headless": false,
+              "channel": "external-chrome-cdp",
+              "executable": null,
+              "persistent": true,
+              "authMethod": "cdp-profile",
+              "userDataDir": null,
+              "browserVersion": "156.0.8078.47"
+            },
+            "networkMetadata": [
+              {
+                "method": "POST",
+                "resourceType": "xhr",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/phoenix-reservation/v1/fetchHotelHeaderCustomerData"
+              },
+              {
+                "method": "POST",
+                "resourceType": "fetch",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/query/PhoenixBookDTTGetRateDetails"
+              },
+              {
+                "method": "POST",
+                "resourceType": "fetch",
+                "status": 200,
+                "url": "https://www.marriott.com/mi/query/PhoenixBookDTTGetRateDetails"
+              },
+              {
+                "method": "GET",
+                "resourceType": "document",
+                "status": 307,
+                "url": "https://www.marriott.com/reservation/reviewDetails.mi"
+              },
+              {
+                "method": "GET",
+                "resourceType": "document",
+                "status": 200,
+                "url": "https://www.marriott.com/reservation/reviewguestinformation.mi"
+              }
+            ],
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+            "officialUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+            "note": "공식 동일 객실·일정·인원의 표시가 확인. 세금·수수료 제외 근거와 상세 조건은 정밀 검증 결과를 확인하세요."
+          }
+        }
+      ]
     }
   ],
   "config": {
@@ -97239,47 +97534,18 @@
     ]
   },
   "collectorStatus": {
-    "capturedAt": "2026-10-31T00:48:45.809Z",
+    "capturedAt": "2026-10-31T01:08:45.800Z",
     "results": [
       {
         "id": "madrid-carlton",
-        "status": "blocked",
-        "state": "blocked",
-        "error": "confirming specific dates: 요금 전환 상태: blocked",
-        "capturedAt": "2026-10-31T00:47:06.127Z",
-        "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
-        "diagnostics": {
-          "stage": "confirming specific dates",
-          "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=4&fromDate=04%2F03%2F2027&toDate=04%2F07%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=MADCA&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F03%2F2027&t-end=04%2F07%2F2027&fromDateDefaultFormat=04%2F03%2F2027&toDateDefaultFormat=04%2F07%2F2027&fromToDate_submit=04%2F07%2F2027&fromToDate=04%2F03%2F2027&roomPoolCode=doub",
-          "title": "Access Denied",
-          "bodyLength": 230,
-          "selectors": {
-            "dateInput": false,
-            "viewRates": false,
-            "roomCards": false,
-            "rateCards": false,
-            "login": false,
-            "cookieConsent": false
-          },
-          "browser": {
-            "platform": "linux-x64",
-            "headless": false,
-            "channel": null,
-            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-            "persistent": false,
-            "browserVersion": "151.0.7922.34",
-            "authMethod": "none"
-          }
-        },
         "verification": {
           "schemaVersion": 1,
           "scope": "[\"madrid-carlton\",\"2027-04-03\",\"2027-04-07\",2,0,1,\"EUR\",\"Standard King Room / Guest Room / 1 King\",733.6,\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "capturedAt": "2026-10-30T01:02:38.487Z",
+          "capturedAt": "2026-10-31T01:02:29.003Z",
           "official": {
             "provider": "Marriott",
             "scope": "[\"madrid-carlton\",\"2027-04-03\",\"2027-04-07\",2,0,1,\"EUR\",\"Standard King Room / Guest Room / 1 King\",733.6,\"2027-04-02 23:59 (호텔 현지시간)\"]",
-            "capturedAt": "2026-10-30T01:01:54.373Z",
+            "capturedAt": "2026-10-31T01:01:46.739Z",
             "status": "pending",
             "state": "detailed-policy-observed",
             "facts": {
@@ -97314,7 +97580,7 @@
               "price": null
             },
             "evidence": {
-              "rateCard": "ALMOST SOLD OUT\nStandard King Room, Guest room, 1 King\nRoom Details\nRates from\n166EUR Avg / Night\n666 Total Per Room\nHide Rates\n\nSave on this and every stay by joining Marriott Bonvoy at checkout. Membership is free.\n\nMember Rate Stay Longer on Us\nMOST POPULAR\n\nSave even more when you stay longer\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n166EUR Avg / Night\n666 Total Per Room\nSelect\nFlexible Rate\n\nFree cancellation before or on Apr 02, 2027\nMEMBERS SAVE €20\nMember Rate\n190EUR Avg / Night\n760 Total Per Room\nSelect\nNon-Member Rate\n195EUR Avg / Night\n780 Total Per Room\nSelect\nMember Rate Stay Longer on Us\n\nIncludes breakfast\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n191EUR Avg / Night\n766 Total Per Room\nSelect\nStay Longer on Us\n\nSave 10% or more as you stay longer\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n175EUR Avg / Night\n702 Total Per Room\nSelect\nStay Longer On Us\n\nSave 10% or more as you stay longer, includes breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n201EUR Avg / Night\n806 Total Per Room\nSelect\nStay in the City Offer\n\nBuffet breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n201EUR Avg / Night\n806 Total Per Room\nSelect\nMember Rate Stay for Breakfast\n\nBuffet breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n217EUR Avg / Night\n871 Total Per Room\nSelect\nRoom and Breakfast rate\n\nIncludes breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n224EUR Avg / Night\n896 Total Per Room\nSelect",
+              "rateCard": "ALMOST SOLD OUT\nStandard King Room, Guest room, 1 King\nRoom Details\nRates from\n166EUR Avg / Night\n666 Total Per Room\nHide Rates\n\nSave on this and every stay by joining Marriott Bonvoy at checkout. Membership is free.\n\nMember Rate Stay Longer on Us\nMOST POPULAR\n\nSave even more when you stay longer\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n166EUR Avg / Night\n666 Total Per Room\nSelect\nFlexible Rate\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n190EUR Avg / Night\n760 Total Per Room\nSelect\nNon-Member Rate\n195EUR Avg / Night\n780 Total Per Room\nSelect\nMember Rate Stay Longer on Us\n\nIncludes breakfast\n\nFree cancellation before or on Apr 02, 2027\nMember Rate\n191EUR Avg / Night\n766 Total Per Room\nSelect\nStay Longer on Us\n\nSave 10% or more as you stay longer\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n175EUR Avg / Night\n702 Total Per Room\nSelect\nStay Longer On Us\n\nSave 10% or more as you stay longer, includes breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n201EUR Avg / Night\n806 Total Per Room\nSelect\nStay in the City Offer\n\nBuffet breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n201EUR Avg / Night\n806 Total Per Room\nSelect\nMember Rate Stay for Breakfast\n\nBuffet breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n217EUR Avg / Night\n871 Total Per Room\nSelect\nRoom and Breakfast rate\n\nIncludes breakfast\n\nFree cancellation before or on Apr 02, 2027\nPackage Rate\n224EUR Avg / Night\n896 Total Per Room\nSelect",
               "selectedDates": {
                 "checkIn": "2027-04-03",
                 "checkOut": "2027-04-07"
@@ -97344,7 +97610,7 @@
               "checkIn": "2027-04-03",
               "checkOut": "2027-04-07",
               "adults": 2,
-              "capturedAt": "2026-10-30T01:02:15.709Z",
+              "capturedAt": "2026-10-31T01:02:06.687Z",
               "freeCancellation": true,
               "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/"
             }
@@ -97353,7 +97619,7 @@
             {
               "provider": "Hotels.com",
               "scope": "[\"madrid-carlton\",\"2027-04-03\",\"2027-04-07\",2,0,1,\"EUR\",\"Standard King Room / Guest Room / 1 King\",733.6,\"2027-04-02 23:59 (호텔 현지시간)\"]",
-              "capturedAt": "2026-10-30T01:02:38.402Z",
+              "capturedAt": "2026-10-31T01:02:28.911Z",
               "status": "error",
               "state": "cancellation-policy-timeout",
               "facts": {
@@ -97513,47 +97779,27 @@
               }
             }
           ]
+        },
+        "status": "ok",
+        "state": "ok",
+        "error": null,
+        "capturedAt": "2026-10-31T01:02:06.687Z",
+        "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
+        "diagnostics": {
+          "finalUrl": null,
+          "browser": null
         }
       },
       {
         "id": "bilbao-ercilla",
-        "status": "blocked",
-        "state": "blocked",
-        "error": "confirming specific dates: 요금 전환 상태: blocked",
-        "capturedAt": "2026-10-31T00:47:37.217Z",
-        "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
-        "diagnostics": {
-          "stage": "confirming specific dates",
-          "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr",
-          "title": "Access Denied",
-          "bodyLength": 230,
-          "selectors": {
-            "dateInput": false,
-            "viewRates": false,
-            "roomCards": false,
-            "rateCards": false,
-            "login": false,
-            "cookieConsent": false
-          },
-          "browser": {
-            "platform": "linux-x64",
-            "headless": false,
-            "channel": null,
-            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-            "persistent": false,
-            "browserVersion": "151.0.7922.34",
-            "authMethod": "none"
-          }
-        },
         "verification": {
           "schemaVersion": 1,
           "scope": "[\"bilbao-ercilla\",\"2027-04-07\",\"2027-04-10\",2,0,1,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",473,\"2027-04-06 23:59 (호텔 현지시간)\"]",
-          "capturedAt": "2026-10-30T01:04:32.224Z",
+          "capturedAt": "2026-10-31T01:04:34.013Z",
           "official": {
             "provider": "Marriott",
             "scope": "[\"bilbao-ercilla\",\"2027-04-07\",\"2027-04-10\",2,0,1,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",473,\"2027-04-06 23:59 (호텔 현지시간)\"]",
-            "capturedAt": "2026-10-30T01:03:56.304Z",
+            "capturedAt": "2026-10-31T01:03:49.114Z",
             "status": "pending",
             "state": "detailed-policy-observed",
             "facts": {
@@ -97585,7 +97831,7 @@
               "price": null
             },
             "evidence": {
-              "rateCard": "Stylish, Guest room, 1 Double\nRoom Details\nRates from\n144EUR Avg / Night\n432 Total Per Room\nHide Rates\n\nSave on this and every stay by joining Marriott Bonvoy at checkout. Membership is free.\n\nFlexible Rate\nMOST POPULAR\n\nFree cancellation before or on Apr 06, 2027\nMEMBERS SAVE €13\nMember Rate\n161EUR Avg / Night\n483 Total Per Room\nSelect\nNon-Member Rate\n165EUR Avg / Night\n496 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMEMBERS SAVE €15\nMember Rate\n144EUR Avg / Night\n432 Total Per Room\nSelect\nNon-Member Rate\n149EUR Avg / Night\n447 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nIncludes breakfast, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMEMBERS SAVE €18\nMember Rate\n177EUR Avg / Night\n531 Total Per Room\nSelect\nNon-Member Rate\n183EUR Avg / Night\n549 Total Per Room\nSelect\nMember Bed and Breakfast Rate\n\nIncludes breakfast per person per night\n\nFree cancellation before or on Apr 06, 2027\nPackage Rate\n197EUR Avg / Night\n592 Total Per Room\nSelect\nincludes breakfast per person per night\n\nFree cancellation before or on Apr 06, 2027\nPackage Rate\n203EUR Avg / Night\n610 Total Per Room\nSelect",
+              "rateCard": "Stylish, Guest room, 1 Double\nRoom Details\nRates from\n144EUR Avg / Night\n432 Total Per Room\nHide Rates\n\nSave on this and every stay by joining Marriott Bonvoy at checkout. Membership is free.\n\nFlexible Rate\nMOST POPULAR\n\nFree cancellation before or on Apr 06, 2027\nMember Rate\n161EUR Avg / Night\n483 Total Per Room\nSelect\nNon-Member Rate\n165EUR Avg / Night\n496 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n144EUR Avg / Night\n432 Total Per Room\nSelect\nNon-Member Rate\n149EUR Avg / Night\n447 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nIncludes breakfast, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n177EUR Avg / Night\n531 Total Per Room\nSelect\nNon-Member Rate\n183EUR Avg / Night\n549 Total Per Room\nSelect\nMember Bed and Breakfast Rate\n\nIncludes breakfast per person per night\n\nFree cancellation before or on Apr 06, 2027\nPackage Rate\n197EUR Avg / Night\n592 Total Per Room\nSelect\nincludes breakfast per person per night\n\nFree cancellation before or on Apr 06, 2027\nPackage Rate\n203EUR Avg / Night\n610 Total Per Room\nSelect",
               "selectedDates": {
                 "checkIn": "2027-04-07",
                 "checkOut": "2027-04-10"
@@ -97615,7 +97861,7 @@
               "checkIn": "2027-04-07",
               "checkOut": "2027-04-10",
               "adults": 2,
-              "capturedAt": "2026-10-30T01:04:05.518Z",
+              "capturedAt": "2026-10-31T01:04:08.877Z",
               "freeCancellation": true,
               "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/"
             }
@@ -97624,7 +97870,7 @@
             {
               "provider": "Hotels.com",
               "scope": "[\"bilbao-ercilla\",\"2027-04-07\",\"2027-04-10\",2,0,1,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",473,\"2027-04-06 23:59 (호텔 현지시간)\"]",
-              "capturedAt": "2026-10-30T01:04:31.851Z",
+              "capturedAt": "2026-10-31T01:04:33.538Z",
               "status": "pending",
               "state": "checkout-evidence-partial",
               "facts": {
@@ -97825,47 +98071,27 @@
               }
             }
           ]
+        },
+        "status": "ok",
+        "state": "ok",
+        "error": null,
+        "capturedAt": "2026-10-31T01:04:08.877Z",
+        "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
+        "diagnostics": {
+          "finalUrl": null,
+          "browser": null
         }
       },
       {
         "id": "bordeaux-moxy",
-        "status": "blocked",
-        "state": "blocked",
-        "error": "confirming specific dates: 요금 전환 상태: blocked",
-        "capturedAt": "2026-10-31T00:48:13.101Z",
-        "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
-        "diagnostics": {
-          "stage": "confirming specific dates",
-          "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr",
-          "title": "Access Denied",
-          "bodyLength": 230,
-          "selectors": {
-            "dateInput": false,
-            "viewRates": false,
-            "roomCards": false,
-            "rateCards": false,
-            "login": false,
-            "cookieConsent": false
-          },
-          "browser": {
-            "platform": "linux-x64",
-            "headless": false,
-            "channel": null,
-            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-            "persistent": false,
-            "browserVersion": "151.0.7922.34",
-            "authMethod": "none"
-          }
-        },
         "verification": {
           "schemaVersion": 1,
           "scope": "[\"bordeaux-moxy\",\"2027-04-10\",\"2027-04-12\",2,0,1,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",278.8,\"2027-04-09 23:59 (호텔 현지시간)\"]",
-          "capturedAt": "2026-10-30T01:06:28.102Z",
+          "capturedAt": "2026-10-31T01:06:40.472Z",
           "official": {
             "provider": "Marriott",
             "scope": "[\"bordeaux-moxy\",\"2027-04-10\",\"2027-04-12\",2,0,1,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",278.8,\"2027-04-09 23:59 (호텔 현지시간)\"]",
-            "capturedAt": "2026-10-30T01:05:53.775Z",
+            "capturedAt": "2026-10-31T01:05:53.775Z",
             "status": "pending",
             "state": "detailed-policy-observed",
             "facts": {
@@ -97897,7 +98123,7 @@
               "price": null
             },
             "evidence": {
-              "rateCard": "Moxy Sleeper, Guest room, 1 Queen\nRoom Details\nRates from\n114EUR Avg / Night\n229 Total Per Room\nHide Rates\n\nSave on this and every stay by joining Marriott Bonvoy at checkout. Membership is free.\n\nFlexible Rate\nMOST POPULAR\n\nFree cancellation before or on Apr 09, 2027\nMEMBERS SAVE €9\nMember Rate\n134EUR Avg / Night\n269 Total Per Room\nSelect\nNon-Member Rate\n139EUR Avg / Night\n278 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMEMBERS SAVE €8\nMember Rate\n114EUR Avg / Night\n229 Total Per Room\nSelect\nNon-Member Rate\n118EUR Avg / Night\n237 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable with Breakfast\n\nIncludes breakfast for 2 guests daily at hotel restaurant, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMEMBERS SAVE €10\nMember Rate\n140EUR Avg / Night\n281 Total Per Room\nSelect\nNon-Member Rate\n145EUR Avg / Night\n291 Total Per Room\nSelect\nStay for Breakfast Rate\n\nIncludes breakfast\n\nMEMBERS SAVE €12\nMember Rate\n163EUR Avg / Night\n326 Total Per Room\nSelect\nNon-Member Rate\n169EUR Avg / Night\n338 Total Per Room\nSelect",
+              "rateCard": "Moxy Sleeper, Guest room, 1 Queen\nRoom Details\nRates from\n114EUR Avg / Night\n229 Total Per Room\nHide Rates\n\nSave on this and every stay by joining Marriott Bonvoy at checkout. Membership is free.\n\nFlexible Rate\nMOST POPULAR\n\nFree cancellation before or on Apr 09, 2027\nMember Rate\n134EUR Avg / Night\n269 Total Per Room\nSelect\nNon-Member Rate\n139EUR Avg / Night\n278 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n114EUR Avg / Night\n229 Total Per Room\nSelect\nNon-Member Rate\n118EUR Avg / Night\n237 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable with Breakfast\n\nIncludes breakfast for 2 guests daily at hotel restaurant, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n140EUR Avg / Night\n281 Total Per Room\nSelect\nNon-Member Rate\n145EUR Avg / Night\n291 Total Per Room\nSelect\nStay for Breakfast Rate\n\nIncludes breakfast\n\nMember Rate\n163EUR Avg / Night\n326 Total Per Room\nSelect\nNon-Member Rate\n169EUR Avg / Night\n338 Total Per Room\nSelect",
               "selectedDates": {
                 "checkIn": "2027-04-10",
                 "checkOut": "2027-04-12"
@@ -97927,7 +98153,7 @@
               "checkIn": "2027-04-10",
               "checkOut": "2027-04-12",
               "adults": 2,
-              "capturedAt": "2026-10-30T01:06:04.562Z",
+              "capturedAt": "2026-10-31T01:06:13.706Z",
               "freeCancellation": true,
               "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/"
             }
@@ -97936,7 +98162,7 @@
             {
               "provider": "Hotels.com",
               "scope": "[\"bordeaux-moxy\",\"2027-04-10\",\"2027-04-12\",2,0,1,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",278.8,\"2027-04-09 23:59 (호텔 현지시간)\"]",
-              "capturedAt": "2026-10-30T01:06:27.831Z",
+              "capturedAt": "2026-10-31T01:06:40.163Z",
               "status": "pending",
               "state": "selected-offer-observed",
               "facts": {
@@ -98145,47 +98371,27 @@
               }
             }
           ]
+        },
+        "status": "ok",
+        "state": "ok",
+        "error": null,
+        "capturedAt": "2026-10-31T01:06:13.706Z",
+        "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+        "diagnostics": {
+          "finalUrl": null,
+          "browser": null
         }
       },
       {
         "id": "barcelona-four-points",
-        "status": "blocked",
-        "state": "blocked",
-        "error": "confirming specific dates: 요금 전환 상태: blocked",
-        "capturedAt": "2026-10-31T00:48:43.085Z",
-        "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
-        "diagnostics": {
-          "stage": "confirming specific dates",
-          "responseStatus": null,
-          "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king",
-          "title": "Access Denied",
-          "bodyLength": 228,
-          "selectors": {
-            "dateInput": false,
-            "viewRates": false,
-            "roomCards": false,
-            "rateCards": false,
-            "login": false,
-            "cookieConsent": false
-          },
-          "browser": {
-            "platform": "linux-x64",
-            "headless": false,
-            "channel": null,
-            "executable": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
-            "persistent": false,
-            "browserVersion": "151.0.7922.34",
-            "authMethod": "none"
-          }
-        },
         "verification": {
           "schemaVersion": 1,
           "scope": "[\"barcelona-four-points\",\"2027-04-13\",\"2027-04-16\",2,0,1,\"EUR\",\"Classic Room / 1 King Bed\",665.94,\"2027-04-11 23:59 (호텔 현지시간)\"]",
-          "capturedAt": "2026-10-30T01:08:35.652Z",
+          "capturedAt": "2026-10-31T01:08:43.252Z",
           "official": {
             "provider": "Marriott",
             "scope": "[\"barcelona-four-points\",\"2027-04-13\",\"2027-04-16\",2,0,1,\"EUR\",\"Classic Room / 1 King Bed\",665.94,\"2027-04-11 23:59 (호텔 현지시간)\"]",
-            "capturedAt": "2026-10-30T01:07:53.424Z",
+            "capturedAt": "2026-10-31T01:08:01.673Z",
             "status": "pending",
             "state": "detailed-policy-observed",
             "facts": {
@@ -98217,7 +98423,7 @@
               "price": null
             },
             "evidence": {
-              "rateCard": "Classic, Guest room, 1 King Super\nRoom Details\nRates from\n167EUR Avg / Night\n501 Total Per Room\nHide Rates\n\nSave on this and every stay by joining Marriott Bonvoy at checkout. Membership is free.\n\nFlexible Rate\nMOST POPULAR\n\nMEMBERS SAVE €12\nMember Rate\n185EUR Avg / Night\n555 Total Per Room\nSelect\nNon-Member Rate\n189EUR Avg / Night\n567 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMEMBERS SAVE €9\nMember Rate\n167EUR Avg / Night\n501 Total Per Room\nSelect\nNon-Member Rate\n170EUR Avg / Night\n510 Total Per Room\nSelect\nBed and Brews Package\n\nFree cancellation before or on Apr 11, 2027\nPackage Rate\n193EUR Avg / Night\n579 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nIncludes breakfast, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMEMBERS SAVE €11\nMember Rate\n197EUR Avg / Night\n591 Total Per Room\nSelect\nNon-Member Rate\n200EUR Avg / Night\n602 Total Per Room\nSelect\nMember Stay for Breakfast Rate\n\nIncludes\n\nFree cancellation before or on Apr 11, 2027\nPackage Rate\n219EUR Avg / Night\n657 Total Per Room\nSelect\nRegular Rate with Breakfast\n\nIncludes breakfast\n\nFree cancellation before or on Apr 11, 2027\nPackage Rate\n223EUR Avg / Night\n669 Total Per Room\nSelect\nDiscover Poblenou\n\nCoolest neighborhood in town, includes breakfast for 2 guests, upgrade to Premium Room, self parking, late check-out 4 pm\n\nFree cancellation before or on Apr 12, 2027\nPackage Rate\n256EUR Avg / Night\n769 Total Per Room\nSelect",
+              "rateCard": "Classic, Guest room, 1 King Super\nRoom Details\nRates from\n167EUR Avg / Night\n501 Total Per Room\nHide Rates\n\nSave on this and every stay by joining Marriott Bonvoy at checkout. Membership is free.\n\nFlexible Rate\nMOST POPULAR\n\nMember Rate\n185EUR Avg / Night\n555 Total Per Room\nSelect\nNon-Member Rate\n189EUR Avg / Night\n567 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nPrepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n167EUR Avg / Night\n501 Total Per Room\nSelect\nNon-Member Rate\n170EUR Avg / Night\n510 Total Per Room\nSelect\nBed and Brews Package\n\nFree cancellation before or on Apr 11, 2027\nPackage Rate\n193EUR Avg / Night\n579 Total Per Room\nSelect\nPrepay Non-refundable Non-changeable\n\nIncludes breakfast, prepay in full, non-refundable if cancelled more than 1 day after booking, no changes\n\nMember Rate\n197EUR Avg / Night\n591 Total Per Room\nSelect\nNon-Member Rate\n200EUR Avg / Night\n602 Total Per Room\nSelect\nMember Stay for Breakfast Rate\n\nIncludes\n\nFree cancellation before or on Apr 11, 2027\nPackage Rate\n219EUR Avg / Night\n657 Total Per Room\nSelect\nRegular Rate with Breakfast\n\nIncludes breakfast\n\nFree cancellation before or on Apr 11, 2027\nPackage Rate\n223EUR Avg / Night\n669 Total Per Room\nSelect\nDiscover Poblenou\n\nCoolest neighborhood in town, includes breakfast for 2 guests, upgrade to Premium Room, self parking, late check-out 4 pm\n\nFree cancellation before or on Apr 12, 2027\nPackage Rate\n256EUR Avg / Night\n769 Total Per Room\nSelect",
               "selectedDates": {
                 "checkIn": "2027-04-13",
                 "checkOut": "2027-04-16"
@@ -98247,7 +98453,7 @@
               "checkIn": "2027-04-13",
               "checkOut": "2027-04-16",
               "adults": 2,
-              "capturedAt": "2026-10-30T01:08:12.778Z",
+              "capturedAt": "2026-10-31T01:08:21.432Z",
               "freeCancellation": true,
               "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/"
             }
@@ -98256,7 +98462,7 @@
             {
               "provider": "Hotels.com",
               "scope": "[\"barcelona-four-points\",\"2027-04-13\",\"2027-04-16\",2,0,1,\"EUR\",\"Classic Room / 1 King Bed\",665.94,\"2027-04-11 23:59 (호텔 현지시간)\"]",
-              "capturedAt": "2026-10-30T01:08:35.295Z",
+              "capturedAt": "2026-10-31T01:08:42.905Z",
               "status": "pending",
               "state": "selected-offer-observed",
               "facts": {
@@ -98467,6 +98673,15 @@
               }
             }
           ]
+        },
+        "status": "ok",
+        "state": "ok",
+        "error": null,
+        "capturedAt": "2026-10-31T01:08:21.432Z",
+        "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
+        "diagnostics": {
+          "finalUrl": null,
+          "browser": null
         }
       }
     ]
