@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-10-31T19:31:23.369Z",
+  "capturedAt": "2026-11-01T00:10:54.145Z",
   "results": [
     {
       "id": "madrid-carlton",
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-31T19:29:43.071Z",
+      "capturedAt": "2026-11-01T00:09:29.033Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -280,7 +280,7 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-31T19:30:14.397Z",
+      "capturedAt": "2026-11-01T00:09:57.300Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -592,7 +592,7 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-31T19:30:47.989Z",
+      "capturedAt": "2026-11-01T00:10:24.862Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -912,14 +912,14 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-10-31T19:31:20.633Z",
+      "capturedAt": "2026-11-01T00:10:51.477Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
         "responseStatus": null,
         "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king",
         "title": "Access Denied",
-        "bodyLength": 228,
+        "bodyLength": 230,
         "selectors": {
           "dateInput": false,
           "viewRates": false,
