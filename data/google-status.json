@@ -1,41 +1,41 @@
 {
-  "capturedAt": "2026-11-06T01:44:27.353Z",
+  "capturedAt": "2026-11-06T21:01:06.106Z",
   "results": [
     {
       "id": "madrid-carlton",
-      "status": "error",
-      "capturedAt": "2026-11-06T01:44:27.353Z",
-      "error": "page.waitForFunction: Timeout 30000ms exceeded.",
-      "state": "hotel-result",
-      "dateConfirmed": false,
-      "occupancyConfirmed": false
+      "status": "ok",
+      "capturedAt": "2026-11-06T21:01:06.106Z",
+      "error": null,
+      "state": "ok",
+      "dateConfirmed": true,
+      "occupancyConfirmed": true
     },
     {
       "id": "bilbao-ercilla",
-      "status": "error",
-      "capturedAt": "2026-11-06T01:44:27.353Z",
-      "error": "page.waitForFunction: Timeout 30000ms exceeded.",
-      "state": "hotel-result",
-      "dateConfirmed": false,
-      "occupancyConfirmed": false
+      "status": "ok",
+      "capturedAt": "2026-11-06T21:01:06.107Z",
+      "error": null,
+      "state": "ok",
+      "dateConfirmed": true,
+      "occupancyConfirmed": true
     },
     {
       "id": "bordeaux-moxy",
-      "status": "error",
-      "capturedAt": "2026-11-06T01:44:27.353Z",
-      "error": "page.waitForFunction: Timeout 30000ms exceeded.",
-      "state": "hotel-result",
-      "dateConfirmed": false,
-      "occupancyConfirmed": false
+      "status": "ok",
+      "capturedAt": "2026-11-06T21:01:06.107Z",
+      "error": null,
+      "state": "ok",
+      "dateConfirmed": true,
+      "occupancyConfirmed": true
     },
     {
       "id": "barcelona-four-points",
-      "status": "error",
-      "capturedAt": "2026-11-06T01:44:27.353Z",
-      "error": "가격 후보를 찾지 못했습니다.",
-      "state": "hotel-result",
-      "dateConfirmed": false,
-      "occupancyConfirmed": false
+      "status": "ok",
+      "capturedAt": "2026-11-06T21:01:06.107Z",
+      "error": null,
+      "state": "ok",
+      "dateConfirmed": true,
+      "occupancyConfirmed": true
     }
   ]
 }
