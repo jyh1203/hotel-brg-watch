@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-11-09T00:54:34.219Z",
+  "capturedAt": "2026-11-09T23:53:01.409Z",
   "results": [
     {
       "id": "madrid-carlton",
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-11-09T00:52:45.195Z",
+      "capturedAt": "2026-11-09T23:51:16.647Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -279,14 +279,14 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-11-09T00:53:18.635Z",
+      "capturedAt": "2026-11-09T23:51:47.988Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
         "responseStatus": null,
         "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F07%2F2027&toDate=04%2F10%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BIOAK&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F07%2F2027&t-end=04%2F10%2F2027&fromDateDefaultFormat=04%2F07%2F2027&toDateDefaultFormat=04%2F10%2F2027&fromToDate_submit=04%2F10%2F2027&fromToDate=04%2F07%2F2027&roomPoolCode=genr",
         "title": "Access Denied",
-        "bodyLength": 230,
+        "bodyLength": 228,
         "selectors": {
           "dateInput": false,
           "viewRates": false,
@@ -591,14 +591,14 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-11-09T00:54:00.839Z",
+      "capturedAt": "2026-11-09T23:52:28.128Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
         "responseStatus": null,
         "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr",
         "title": "Access Denied",
-        "bodyLength": 230,
+        "bodyLength": 228,
         "selectors": {
           "dateInput": false,
           "viewRates": false,
@@ -911,14 +911,14 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-11-09T00:54:31.473Z",
+      "capturedAt": "2026-11-09T23:52:58.674Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
         "responseStatus": null,
         "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=3&fromDate=04%2F13%2F2027&toDate=04%2F16%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BCNFP&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F13%2F2027&t-end=04%2F16%2F2027&fromDateDefaultFormat=04%2F13%2F2027&toDateDefaultFormat=04%2F16%2F2027&fromToDate_submit=04%2F16%2F2027&fromToDate=04%2F13%2F2027&roomPoolCode=king",
         "title": "Access Denied",
-        "bodyLength": 230,
+        "bodyLength": 228,
         "selectors": {
           "dateInput": false,
           "viewRates": false,
