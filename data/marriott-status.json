@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-11-10T03:39:49.272Z",
+  "capturedAt": "2026-11-10T21:25:01.910Z",
   "results": [
     {
       "id": "madrid-carlton",
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-11-10T03:38:07.647Z",
+      "capturedAt": "2026-11-10T21:23:23.546Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/madca-ac-hotel-carlton-madrid/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -279,7 +279,7 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-11-10T03:38:40.252Z",
+      "capturedAt": "2026-11-10T21:23:52.544Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bioak-hotel-ercilla-de-bilbao-autograph-collection/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
@@ -588,21 +588,21 @@
     },
     {
       "id": "bordeaux-moxy",
-      "status": "blocked",
-      "state": "blocked",
-      "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-11-10T03:39:15.329Z",
+      "status": "error",
+      "state": "calendar-unavailable",
+      "error": "opening date picker: locator.click: Timeout 15000ms exceeded.",
+      "capturedAt": "2026-11-10T21:24:30.877Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
       "diagnostics": {
-        "stage": "confirming specific dates",
+        "stage": "opening date picker",
         "responseStatus": null,
-        "finalUrl": "https://www.marriott.com/reservation/availabilitySearch.mi?destinationAddress.country=&lengthOfStay=2&fromDate=04%2F10%2F2027&toDate=04%2F12%2F2027&numberOfRooms=1&numberOfAdults=2&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&childrenAges=&clusterCode=none&corporateCode=&groupCode=&isHwsGroupSearch=true&propertyCode=BODOX&useRewardsPoints=false&flexibleDateSearch=false&t-start=04%2F10%2F2027&t-end=04%2F12%2F2027&fromDateDefaultFormat=04%2F10%2F2027&toDateDefaultFormat=04%2F12%2F2027&fromToDate_submit=04%2F12%2F2027&fromToDate=04%2F10%2F2027&roomPoolCode=genr",
-        "title": "Access Denied",
-        "bodyLength": 230,
+        "finalUrl": "https://www.marriott.com/en-us/hotels/bodox-moxy-bordeaux/rooms/",
+        "title": "Rooms | Moxy Bordeaux",
+        "bodyLength": 4874,
         "selectors": {
-          "dateInput": false,
-          "viewRates": false,
-          "roomCards": false,
+          "dateInput": true,
+          "viewRates": true,
+          "roomCards": true,
           "rateCards": false,
           "login": false,
           "cookieConsent": false
@@ -911,7 +911,7 @@
       "status": "blocked",
       "state": "blocked",
       "error": "confirming specific dates: 요금 전환 상태: blocked",
-      "capturedAt": "2026-11-10T03:39:46.505Z",
+      "capturedAt": "2026-11-10T21:24:59.155Z",
       "sourceUrl": "https://www.marriott.com/en-us/hotels/bcnfp-four-points-barcelona-diagonal/rooms/",
       "diagnostics": {
         "stage": "confirming specific dates",
