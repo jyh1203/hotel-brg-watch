@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-11-09T23:53:01.551Z",
+  "capturedAt": "2026-11-10T03:39:49.274Z",
   "results": [
     {
       "id": "madrid-carlton",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-11-09T23:49:22.800Z",
+          "capturedAt": "2026-11-10T03:33:09.684Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "matching-offer-unavailable",
@@ -75,15 +75,14 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-11-09T23:49:38.054Z",
+          "capturedAt": "2026-11-10T03:33:25.002Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
-          "state": "room-or-cancellation-unverified",
-          "status": "pending",
-          "sourceOrigin": "https://www.agoda.com"
+          "status": "error",
+          "state": "search-timeout"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-11-09T23:49:53.729Z",
+          "capturedAt": "2026-11-10T03:33:36.669Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "state": "blocked",
           "status": "error",
@@ -141,7 +140,7 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     },
     {
       "id": "bordeaux-moxy",
@@ -231,7 +230,7 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     },
     {
       "id": "barcelona-four-points",
@@ -260,7 +259,7 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     }
   ]
 }
