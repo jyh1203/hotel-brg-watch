@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-16T23:51:04.686Z",
+  "capturedAt": "2026-11-17T03:56:08.234Z",
   "results": [
     {
       "id": "madrid-carlton",
@@ -111,7 +111,7 @@
           }
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     },
     {
       "id": "bilbao-ercilla",
@@ -140,7 +140,7 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     },
     {
       "id": "bordeaux-moxy",
@@ -230,7 +230,7 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     },
     {
       "id": "barcelona-four-points",
@@ -258,7 +258,7 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     }
   ]
 }
