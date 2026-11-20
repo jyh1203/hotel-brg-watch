@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-11-19T22:46:06.082Z",
+  "capturedAt": "2026-11-20T02:20:51.696Z",
   "results": [
     {
       "id": "madrid-carlton",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-11-19T22:42:16.821Z",
+          "capturedAt": "2026-11-20T02:17:46.207Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "matching-offer-unavailable",
@@ -75,7 +75,7 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-11-19T22:42:30.344Z",
+          "capturedAt": "2026-11-20T02:18:00.040Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "state": "room-or-cancellation-unverified",
           "status": "pending",
@@ -83,7 +83,7 @@
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-11-19T22:42:46.315Z",
+          "capturedAt": "2026-11-20T02:18:11.562Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "status": "error",
           "state": "search-timeout",
@@ -118,7 +118,7 @@
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-11-19T22:43:11.779Z",
+          "capturedAt": "2026-11-20T02:18:31.380Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -126,14 +126,14 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-11-19T22:43:14.153Z",
+          "capturedAt": "2026-11-20T02:18:33.574Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-11-19T22:43:14.153Z",
+          "capturedAt": "2026-11-20T02:18:33.574Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -208,7 +208,7 @@
         },
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-11-19T22:43:26.589Z",
+          "capturedAt": "2026-11-20T02:18:42.476Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -216,14 +216,14 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-11-19T22:43:28.753Z",
+          "capturedAt": "2026-11-20T02:18:44.778Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-11-19T22:43:28.754Z",
+          "capturedAt": "2026-11-20T02:18:44.778Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -237,7 +237,7 @@
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-11-19T22:43:40.459Z",
+          "capturedAt": "2026-11-20T02:18:53.728Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -245,14 +245,14 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-11-19T22:43:42.844Z",
+          "capturedAt": "2026-11-20T02:18:55.761Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-11-19T22:43:42.844Z",
+          "capturedAt": "2026-11-20T02:18:55.761Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
