@@ -1,10 +1,10 @@
 {
-  "capturedAt": "2026-11-20T22:20:26.364Z",
+  "capturedAt": "2026-11-21T02:15:55.349Z",
   "results": [
     {
       "id": "madrid-carlton",
       "status": "ok",
-      "capturedAt": "2026-11-20T22:20:26.364Z",
+      "capturedAt": "2026-11-21T02:15:55.349Z",
       "error": null,
       "state": "ok",
       "dateConfirmed": true,
@@ -13,7 +13,7 @@
     {
       "id": "bilbao-ercilla",
       "status": "ok",
-      "capturedAt": "2026-11-20T22:20:26.364Z",
+      "capturedAt": "2026-11-21T02:15:55.349Z",
       "error": null,
       "state": "ok",
       "dateConfirmed": true,
@@ -21,17 +21,17 @@
     },
     {
       "id": "bordeaux-moxy",
-      "status": "ok",
-      "capturedAt": "2026-11-20T22:20:26.364Z",
-      "error": null,
-      "state": "ok",
-      "dateConfirmed": true,
-      "occupancyConfirmed": true
+      "status": "error",
+      "capturedAt": "2026-11-21T02:15:55.349Z",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded.",
+      "state": "hotel-result",
+      "dateConfirmed": false,
+      "occupancyConfirmed": false
     },
     {
       "id": "barcelona-four-points",
       "status": "ok",
-      "capturedAt": "2026-11-20T22:20:26.364Z",
+      "capturedAt": "2026-11-21T02:15:55.349Z",
       "error": null,
       "state": "ok",
       "dateConfirmed": true,

@@ -1,12 +1,12 @@
 {
-  "capturedAt": "2026-11-20T22:20:26.363Z",
+  "capturedAt": "2026-11-21T02:15:55.348Z",
   "results": [
     {
       "id": "madrid-carlton",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-11-20T22:16:52.427Z",
+          "capturedAt": "2026-11-21T02:11:01.080Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "matching-offer-unavailable",
@@ -75,7 +75,7 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-11-20T22:17:06.838Z",
+          "capturedAt": "2026-11-21T02:11:17.258Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "state": "room-or-cancellation-unverified",
           "status": "pending",
@@ -83,7 +83,7 @@
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-11-20T22:17:20.745Z",
+          "capturedAt": "2026-11-21T02:11:29.310Z",
           "scope": "[\"2027-04-03\",\"2027-04-07\",2,\"EUR\",\"Standard King Room / Guest Room / 1 King\",\"2027-04-02 23:59 (호텔 현지시간)\"]",
           "state": "blocked",
           "status": "error",
@@ -119,7 +119,7 @@
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-11-20T22:17:39.002Z",
+          "capturedAt": "2026-11-21T02:11:37.294Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -127,14 +127,14 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-11-20T22:17:41.078Z",
+          "capturedAt": "2026-11-21T02:11:39.942Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-11-20T22:17:41.078Z",
+          "capturedAt": "2026-11-21T02:11:39.942Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
@@ -230,14 +230,14 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     },
     {
       "id": "barcelona-four-points",
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-11-20T22:18:03.079Z",
+          "capturedAt": "2026-11-21T02:13:01.261Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -245,18 +245,18 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-11-20T22:18:05.861Z",
-          "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
-          "state": "hotel-unverified",
-          "status": "pending",
-          "sourceOrigin": "https://www.agoda.com"
-        },
-        {
-          "provider": "Expedia",
-          "capturedAt": "2026-11-20T22:18:08.571Z",
+          "capturedAt": "2026-11-21T02:13:04.148Z",
           "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
+        },
+        {
+          "provider": "Expedia",
+          "capturedAt": "2026-11-21T02:13:04.148Z",
+          "scope": "[\"2027-04-13\",\"2027-04-16\",2,\"EUR\",\"Classic Room / 1 King Bed\",\"2027-04-11 23:59 (호텔 현지시간)\"]",
+          "state": "blocked",
+          "status": "error",
+          "sourceOrigin": "https://www.expedia.com"
         }
       ],
       "state": "attempted"
