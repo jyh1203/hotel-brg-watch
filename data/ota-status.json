@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-24T02:29:13.046Z",
+  "capturedAt": "2026-11-24T05:24:37.051Z",
   "results": [
     {
       "id": "madrid-carlton",
@@ -118,7 +118,7 @@
       "providers": [
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-11-24T02:25:50.209Z",
+          "capturedAt": "2026-11-24T05:19:32.909Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -126,14 +126,14 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-11-24T02:25:52.271Z",
+          "capturedAt": "2026-11-24T05:19:35.053Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-11-24T02:25:52.271Z",
+          "capturedAt": "2026-11-24T05:19:35.053Z",
           "scope": "[\"2027-04-07\",\"2027-04-10\",2,\"EUR\",\"Stylish Room / Guest Room / 1 Double Bed\",\"2027-04-06 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -208,7 +208,7 @@
         },
         {
           "provider": "Booking.com",
-          "capturedAt": "2026-11-24T02:26:02.118Z",
+          "capturedAt": "2026-11-24T05:19:45.954Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -216,14 +216,14 @@
         },
         {
           "provider": "Agoda",
-          "capturedAt": "2026-11-24T02:26:04.303Z",
+          "capturedAt": "2026-11-24T05:19:47.977Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
           "status": "pending",
           "state": "link-unavailable"
         },
         {
           "provider": "Expedia",
-          "capturedAt": "2026-11-24T02:26:04.303Z",
+          "capturedAt": "2026-11-24T05:19:47.977Z",
           "scope": "[\"2027-04-10\",\"2027-04-12\",2,\"EUR\",\"Moxy Sleeper / Guest Room / 1 Queen\",\"2027-04-09 23:59 (호텔 현지시간)\"]",
           "state": "hotel-unverified",
           "status": "pending",
@@ -259,7 +259,7 @@
           "sourceOrigin": "https://www.expedia.com"
         }
       ],
-      "state": "attempted"
+      "state": "google-unavailable"
     }
   ]
 }
